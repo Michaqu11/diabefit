@@ -71,16 +71,10 @@ const Sidebar: React.FC<IfirstChildProps> = ({layout, updateLayout}) => {
   
 
   return <div className='sidebar'>
-  <div className={`sidebar__menu__item`} onClick={()=>updateLayout(false)}>
-        <div className="sidebar__menu__item__icon">
-        <i className='bx bx-menu'/>
-        </div>
-        <div className="sidebar__menu__item__text">
-            Diabefit
-        </div>
-    </div>
+
   <div ref={sidebarRef} className="sidebar__menu">
-    
+    <div className='separator'>
+    </div>
       <div
           ref={indicatorRef}
           className="sidebar__menu__indicator"

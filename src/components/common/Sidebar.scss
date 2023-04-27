@@ -1,11 +1,12 @@
+
 .sidebar {
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 120vh;
     width: 320px;
     background-color: #fff;
-
+    
     &__logo {
         display: grid;
         place-items: center;
@@ -53,4 +54,12 @@
             transition: 0.3s ease-in-out;
         }
     }
+}
+
+.sidebar__menu {
+    height: 100%;
+}
+
+.separator {
+    margin-top: 2rem;
 }

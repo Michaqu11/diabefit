@@ -1,16 +1,84 @@
-.layout-on {
-    padding: 50px 0px 0px 370px;
-}
+:root {
+    --landscape-width: 25; // % OR vw for responsive window resizing!
+    --portrait-width: 80vhpx;
+    --header-height: 4rem;
+    --header-height-font: 2rem;
+    --header-height-margin: 1rem;
+    --secs: 0.4s;
+    --bg-left: rgb(255, 255, 255);
+    --bg-main: #ffffff;
+  }
+  
+  body {
+    min-height: 100vh;
+    max-width: 100vw;
+    color: #2b2b2b;
+    margin: 0;
+    overflow: hidden; // Disable scrolling on body
+  }
 
-.layout-off {
-    padding: 10px;
-}
-
-
-
-.sidebar__menu__item__icon{
-    padding: 10px;
-    i {
-        font-size: 1.75rem;
+  .sidebar{
+    border-right: 1px solid rgba(0,0,0,.12);
+  }
+  
+  #layout {
+    display: flex; // Flexbox definition
+    overflow: hidden; // Disable scrolling on layout
+  
+    // Style in common for sidebars and main area:
+    .header {
+      position: relative;
+      height: var(--header-height);
+      text-align: center; // Horizontal center
+      .title { position: absolute; left: 0; right: 0; }
     }
-}
+    .content {
+      overflow: auto;
+      box-sizing: border-box;
+      height: calc(100vh - var(--header-height));
+      padding: 1rem;
+    }
+     .icon { position: fixed; z-index: 2;
+      left: 0;
+      width: var(--header-height); height: var(--header-height);
+      line-height: var(--header-height); font-size: var(--header-height);
+      text-align: center; user-select: none; cursor: pointer;
+    }
+  }
+  
+  // Main area specific style:
+  #main { background: var(--bg-main); flex-grow: 1;
+    .header { border-bottom: 1px solid rgba(0,0,0,.12);
+      .title{
+        font-size: var(--header-height-font);
+        margin-top:var(--header-height-margin);
+      }
+      @media (orientation: landscape) {
+        .title { transition: left var(--secs), right var(--secs);
+          &.left-closed { left: var(--header-height); }
+          &.right-closed { right: var(--header-height); }
+        }
+      }
+    }
+  }
+  
+  // Style in common for both sidebars:
+  #left { transition: width var(--secs); width: 0;
+    @media (orientation: landscape) {
+      &.open { width: calc(1% * var(--landscape-width)); }
+    } // <-- Landscape ONLY sidebars
+    .sidebar { transition: transform var(--secs); // <-- Portrait AND landscape!
+    //   @media (orientation: portrait) { width: var(--portrait-width); }
+      @media (orientation: landscape) { width: calc(1vw * var(--landscape-width)); }
+      .header { width: calc(100% - var(--header-height)); }
+    }
+  }
+  
+  // Left sidebar specific style:
+  #left { z-index: 5;
+    .sidebar { background: var(--bg-left);
+      &.closed { transform: translateX(-100%); } // <-- Left portrait AND landscape!
+      .header { left: var(--header-height); }
+    }
+  }
+  
