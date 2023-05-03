@@ -42,12 +42,8 @@ const sidebarNavItems:ISidebarNav[] = [
       section: 'setting'
   },
 ]
-interface IfirstChildProps {
-  layout: boolean,
-  updateLayout: (arg: boolean) => void
 
-}
-const Sidebar: React.FC<IfirstChildProps> = ({layout, updateLayout}) => {
+const Sidebar: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [stepHeight, setStepHeight] = useState(0);
   const sidebarRef = useRef<any>();
@@ -71,14 +67,6 @@ const Sidebar: React.FC<IfirstChildProps> = ({layout, updateLayout}) => {
   
 
   return <div className='sidebar'>
-  <div className={`sidebar__menu__item`} onClick={()=>updateLayout(false)}>
-        <div className="sidebar__menu__item__icon">
-        <i className='bx bx-menu'/>
-        </div>
-        <div className="sidebar__menu__item__text">
-            Diabefit
-        </div>
-    </div>
   <div ref={sidebarRef} className="sidebar__menu">
     
       <div
