@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Setting  from "./pages/Setting";
-import MainLayout from './components/layout/MainLayout';
+import MasterLayout from './components/layout/MasterLayout';
 import NewEntry from './pages/NewEntry';
 import NewProduct from './pages/NewProduct';
 import NewBolus from './pages/NewBolus';
@@ -12,7 +12,7 @@ import "./App.scss"
 const App: React.FC = () => {
   return <div>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<MasterLayout />}>
           <Route index element={<Home />}/>
           <Route path="/entry" element={<NewEntry />}/>
           <Route path="/bolus" element={<NewBolus />}/>
