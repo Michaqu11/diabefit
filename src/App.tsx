@@ -9,18 +9,22 @@ import Home from './pages/Home';
 import "boxicons/css/boxicons.min.css"
 import "./App.scss"
 
+
 const App: React.FC = () => {
-  return <div>
-      <Routes>
-        <Route path="/" element={<MasterLayout />}>
+  return( 
+  <div className='root'>
+      <MasterLayout />
+      <div className='router'>
+        <Routes>
           <Route index element={<Home />}/>
           <Route path="/entry" element={<NewEntry />}/>
           <Route path="/bolus" element={<NewBolus />}/>
           <Route path="/product" element={<NewProduct />}/>
           <Route path="/setting" element={<Setting />}/>
-        </Route>
-      </Routes>
+        </Routes>
+      </div>
   </div>
+  );
 };
 
 export default App;
