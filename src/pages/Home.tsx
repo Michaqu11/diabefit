@@ -6,7 +6,7 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import DateList from '../components/dateList/DateList';
+import DateList from '../components/common/dateList/DateList';
 
 const Home: React.FC = () => {
 

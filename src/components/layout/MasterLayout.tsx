@@ -1,18 +1,13 @@
 import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Sidebar from '../common/Sidebar';
+import Navbar from '../common/sidebar/Navbar';
 
 import "./MasterLayout.scss"
 import { Outlet } from 'react-router';
@@ -49,14 +44,6 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
 }));
 
 const DrawerHeader = styled('div')(({ theme }) => ({
@@ -69,7 +56,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -82,7 +68,7 @@ export default function PersistentDrawerLeft() {
 
   const checkOpen = () => {
     if(open){
-        setOpen(false);
+      setOpen(false);
     }
   }
 
@@ -105,32 +91,11 @@ export default function PersistentDrawerLeft() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-            <Sidebar />
-        </List>
-        
-    </Drawer>
+
+
     <Main open={open} onClick={checkOpen}>
-    <   DrawerHeader />
+    <DrawerHeader />
+    <Navbar stateValue={open} onStateChange={handleDrawerClose}/>
     <Outlet />
     </Main>
     </Box>
