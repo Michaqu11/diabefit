@@ -5,7 +5,7 @@ import MasterLayout from './components/layout/MasterLayout';
 import NewEntry from './pages/NewEntry';
 import NewProduct from './pages/NewProduct';
 import NewBolus from './pages/NewBolus';
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 import "boxicons/css/boxicons.min.css"
 import "./App.scss"
 
