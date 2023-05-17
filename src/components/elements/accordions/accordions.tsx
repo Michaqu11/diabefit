@@ -1,6 +1,4 @@
 import * as React from 'react';
-// import { Accordion, AccordionSummary, AccordionDetails  }from './accordionsStyle'
-import Divider from '@mui/material/Divider';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -8,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import './accordions.scss'
+import AccordionDetail from './accordionDetail';
 
 export default function CustomizedAccordions() {
 
@@ -17,11 +16,11 @@ export default function CustomizedAccordions() {
       kcal: number,
       prot: number,
       fats: number,
-      carbs: number
+      carbs: number,
+      image?: string
     }
     
     interface IDay {
-      summary?: IDayElement,
       elements?: IDayElement[]
     }
 
@@ -30,6 +29,30 @@ export default function CustomizedAccordions() {
       name: string,
       empty: boolean,
       extension?: IDay
+    }
+
+
+
+    const lunch:IDay ={
+      elements: [
+        {
+          mealName: "Kebab",
+          grams: 200,
+          kcal: 510,
+          prot: 28.4,
+          fats: 32.4,
+          carbs: 28.0,
+          image:'https://staticsmaker.iplsc.com/smaker_production_2022_11_16/26bb30c30d60775239c5bc09c9735973-recipe_main.jpg'
+        },
+        {
+          mealName: "Frytki",
+          grams: 500,
+          kcal: 220,
+          prot: 0,
+          fats: 0,
+          carbs: 55.0
+        }
+      ]
     }
 
     const days:IDays[] = [
@@ -46,7 +69,8 @@ export default function CustomizedAccordions() {
       {
         id: 3,
         name: 'Lunch',
-        empty: true
+        empty: false,
+        extension:lunch
       },
       {
         id: 4,
@@ -93,19 +117,29 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
   const details = (extension: IDay | undefined) => {
     if(!extension) return <div></div>
     const value: IValues = summaryNutritionalValues(extension.elements)
-    return <div>
-           {extension.elements && extension.elements.map((el: IDayElement)=> (
-            <Typography>
-            {el.mealName} | {el.grams}
-            </Typography>
-           ))}
-           <Divider />
-
-            <Typography>
-            {value.kcal} kcal | Prot. {value.prot} | Fats {value.fats}g | Crabs {value.carbs}g
-            </Typography>
-    
+    return <div className='summary'>
+      <Typography>
+      {value.kcal} kcal P {value.prot} F {value.fats}g C {value.carbs}g
+      </Typography>
     </div>
+  }
+
+  interface IElement {
+    header: string,
+    secondary: string,
+    image: string,
+  }
+
+  const elements =  (elements: IDayElement[] | undefined): IElement[] | undefined => {
+    if(!elements) return undefined
+
+    return elements.map((el: IDayElement)  => {
+      return {
+      header: `${el.mealName} | ${el.kcal} kcal`,
+      secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g`,
+      image: el.image ? el.image : ''
+    }})
+
   }
 
 
@@ -128,10 +162,12 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
          id={element.name}
         >
           <Typography>{element.name}</Typography>
+          {
+           !element.empty ? <Typography sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography> : ''
+          }
         </AccordionSummary>
         <AccordionDetails>
-         
-          {details(element.extension)}
+          <AccordionDetail elementsProps={elements(element.extension?.elements)} />
         </AccordionDetails>
       </Accordion>
 
