@@ -24,7 +24,7 @@ const CustomizedAccordions: React.FC<Props> = ({elementsProps}) => {
       <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
       {
         elementsProps && elementsProps.map(e=> {
-          return <ListItem>
+          return <ListItem key={e.header}>
               <ListItemAvatar>
               {e.image ? <Avatar src={e.image} /> :
                 <Avatar>

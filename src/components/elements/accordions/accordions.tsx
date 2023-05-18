@@ -28,7 +28,7 @@ export default function CustomizedAccordions() {
       id: number,
       name: string,
       empty: boolean,
-      extension?: IDay
+      extension: IDay
     }
 
 
@@ -59,12 +59,14 @@ export default function CustomizedAccordions() {
       {
         id: 1,
         name: 'Breakfast',
-        empty: true
+        empty: true,
+        extension: [] as IDay
       },
       {
         id: 2,
         name: 'Snack I',
-        empty: true
+        empty: true,
+        extension: [] as IDay
       },
       {
         id: 3,
@@ -75,17 +77,20 @@ export default function CustomizedAccordions() {
       {
         id: 4,
         name: 'Snack II',
-        empty: true
+        empty: true,
+        extension: [] as IDay
       },
       {
         id: 5,
         name: 'Dinner',
-        empty: true
+        empty: true,
+        extension: [] as IDay
       },
       {
         id: 6,
         name: 'Snack III',
-        empty: true
+        empty: true,
+        extension: [] as IDay
       },
     ]
 
@@ -163,7 +168,7 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
         >
           <Typography>{element.name}</Typography>
           {
-           !element.empty ? <Typography sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography> : ''
+           !element.empty ? <Typography component={'span'} sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography> : ''
           }
         </AccordionSummary>
         <AccordionDetails>
