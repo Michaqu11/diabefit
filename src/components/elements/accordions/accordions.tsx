@@ -7,7 +7,8 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import AddIcon from '@mui/icons-material/Add';
 import './accordions.scss'
 import AccordionDetail from './accordionDetail';
-
+import IconButton from '@mui/material/IconButton';
+import Grid from '@mui/material/Grid';
 export default function CustomizedAccordions() {
 
     interface IDayElement {
@@ -123,9 +124,9 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
     if(!extension) return <div></div>
     const value: IValues = summaryNutritionalValues(extension.elements)
     return <div className='summary'>
-      <Typography>
+
       {value.kcal} kcal P {value.prot} F {value.fats}g C {value.carbs}g
-      </Typography>
+
     </div>
   }
 
@@ -150,29 +151,42 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
 
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
-  const handleChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
+  // const handleChange =
+  //   (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+  //     setExpanded(isExpanded ? panel : false);
+  //   };
+
 
   return (
     <div>
       {
       days.map((element: IDays) => (
 
-      <Accordion expanded={expanded === `panel${element.id}`} onChange={handleChange(`panel${element.id}`)} key={element.id} sx={{marginBottom: "5px", borderRadius: "10px"}}>
+      <Accordion expanded={expanded === `panel${element.id}`} key={element.id} sx={{marginBottom: "5px", borderRadius: "10px"}}>
         <AccordionSummary
-         expandIcon={element.empty ? <AddIcon />: <ExpandMoreIcon />}
+         expandIcon={element.empty ? <IconButton aria-label="AddIcon" size="medium"><AddIcon /></IconButton>: 
+          <IconButton aria-label="handleChange" size="medium" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }><ExpandMoreIcon /> </IconButton>}
          aria-controls={element.name + "-content"}
          id={element.name}
         >
-          <Typography>{element.name}</Typography>
+          <Typography>{element.name} </Typography>
           {
-           !element.empty ? <Typography component={'span'} sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography> : ''
+           !element.empty ?
+            <Grid container xs={12} justifyContent="space-between">
+              <Grid item xs={11}>
+                  <Typography component={'span'} sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography>
+              </Grid>
+              <Grid item xs={1}>
+                <IconButton aria-label="AddIcon" size="medium"><AddIcon /></IconButton>
+              </Grid>
+            </Grid>
+            : ''
+           
           }
         </AccordionSummary>
         <AccordionDetails>
           <AccordionDetail elementsProps={elements(element.extension?.elements)} />
+         
         </AccordionDetails>
       </Accordion>
 
