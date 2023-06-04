@@ -9,6 +9,7 @@ import './accordions.scss'
 import AccordionDetail from './accordionDetail';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
+import FunctionsOutlinedIcon from '@mui/icons-material/FunctionsOutlined';
 
 export default function CustomizedAccordions() {
 
@@ -121,13 +122,28 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
   }
 }
 
+const [width, setWidth] = React.useState<number>(window.innerWidth);
+
+function handleWindowSizeChange() {
+    setWidth(window.innerWidth);
+}
+React.useEffect(() => {
+    window.addEventListener('resize', handleWindowSizeChange);
+
+    return () => {
+        window.removeEventListener('resize', handleWindowSizeChange);
+    }
+}, []);
+
+
   const details = (extension: IDay | undefined) => {
     if(!extension) return <div></div>
     const value: IValues = summaryNutritionalValues(extension.elements)
     return <p className='summary'>
-
-      {value.kcal} kcal P {value.prot} F {value.fats}g C {value.carbs}g
-
+      {
+        width >= 450 ? `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
+        : `${value.kcal} kcal | C ${value.carbs}g`
+      }
     </p>
   }
   
@@ -159,9 +175,9 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
         
       <Accordion expanded={expanded === `panel${element.id}`} key={element.id} sx={{marginBottom: "5px", borderRadius: "10px"}}>
         <AccordionSummary
-         sx={{flexDirection:  !element.empty ? "row" : ""}}
-         expandIcon={element.empty ? <IconButton aria-label="AddIcon" size="medium"><AddIcon /> </IconButton> : 
-          <IconButton aria-label="handleChange" size="medium" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }> <ExpandMoreIcon /> </IconButton>}
+         sx={{flexDirection: !element.empty ? "row" : ""}}
+         expandIcon={element.empty ? <IconButton aria-label="AddIcon" size="small"><AddIcon /> </IconButton> : 
+          <IconButton aria-label="handleChange" size="small" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }> <ExpandMoreIcon /> </IconButton>}
          
         aria-controls={element.name + "-content"}
         id={element.name}
@@ -171,8 +187,10 @@ const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
            !element.empty ?
             <Grid container justifyContent="space-between">
                 <Typography component={'span'} sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography>
-
-                <IconButton className={"MyIconButton"} aria-label="AddIcon" size="medium" sx={{marginLeft: '2px'}}><AddIcon /></IconButton>
+                <Grid sx={{display: "flex", justifyContent:'center', marginLeft: '2px'}}>
+                  <IconButton className={"MyIconButton"} aria-label="FunctionsOutlinedIcon" size="small"><FunctionsOutlinedIcon /></IconButton>
+                  <IconButton className={"MyIconButton"} aria-label="AddIcon " size="small"><AddIcon  /></IconButton>
+                </Grid>
             </Grid>
             : ''
            
