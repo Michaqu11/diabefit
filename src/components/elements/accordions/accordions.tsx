@@ -86,8 +86,8 @@ export default function CustomizedAccordions() {
       {
         id: 5,
         name: 'Dinner',
-        empty: true,
-        extension: [] as IDay
+        empty: false,
+        extension:lunch
       },
       {
         id: 6,
@@ -166,14 +166,30 @@ React.useEffect(() => {
 
   }
 
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = React.useState<({id: number, status: boolean})[]>(Array.from({length: days.length}, (_, i) => (
+    {
+      id: i,
+      status: false
+    }
+  )));
+
+  const checkStatus = (id: number) => {
+    if(expanded.filter(exp => exp.id === id)[0].status){
+      return true;
+    }
+    return false;
+  }
+
+  const handleChangeExpanded = (id: number) => {
+    setExpanded(expanded.map(exp => exp.id === id ? {...exp, status: !exp.status} : {...exp}));
+  }
 
   return (
     <div>
       {
       days.map((element: IDays) => (
         
-      <Accordion expanded={expanded === `panel${element.id}`} key={element.id} sx={{marginBottom: "5px", borderRadius: "10px"}}>
+      <Accordion expanded={checkStatus(element.id - 1)} key={element.id} sx={{marginBottom: "5px", borderRadius: "10px"}}>
         <AccordionSummary
          sx={{flexDirection: !element.empty ? "row" : ""}}
          expandIcon={element.empty ? <IconButton aria-label="AddIcon" size="small"><AddIcon /> </IconButton> : ''
@@ -189,7 +205,7 @@ React.useEffect(() => {
             <Grid container justifyContent="space-between">
               <Grid sx={{display: "flex", justifyContent:'center'}}>
                 <Typography component={'span'} sx={{ color: 'text.secondary' }}>{details(element.extension)}</Typography>
-                <IconButton className={"MyIconButton"} sx={{rotate: expanded  ? '180deg' : '', marginLeft: '2px'}} aria-label="handleChange" size="small" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }> <ExpandMoreIcon /></IconButton>
+                <IconButton className={"MyIconButton"} sx={{rotate: checkStatus(element.id - 1)  ? '180deg' : '', marginLeft: '2px'}} aria-label="handleChange" size="small" onClick={()=> handleChangeExpanded(element.id-1) }> <ExpandMoreIcon /></IconButton>
               </Grid>
               <Grid sx={{display: "flex", justifyContent:'center', marginLeft: '2px', marginRight: '3px'}}>
                 <IconButton className={"MyIconButton"} aria-label="FunctionsOutlinedIcon" size="small"><FunctionsOutlinedIcon /></IconButton>
