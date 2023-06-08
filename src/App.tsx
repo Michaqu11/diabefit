@@ -6,6 +6,7 @@ import NewEntry from './pages/NewEntry';
 import NewProduct from './pages/NewProduct';
 import NewBolus from './pages/NewBolus';
 import Home from './pages/home/Home';
+import AddProduct from './pages/AddProduct';
 import "boxicons/css/boxicons.min.css"
 import "./App.scss"
 
@@ -21,6 +22,7 @@ const App: React.FC = () => {
           <Route path="/bolus" element={<NewBolus />}/>
           <Route path="/product" element={<NewProduct />}/>
           <Route path="/setting" element={<Setting />}/>
+          <Route path="/add/:id" element={<AddProduct />}/>
         </Routes>
       </div>
   </div>

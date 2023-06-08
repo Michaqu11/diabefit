@@ -10,6 +10,7 @@ import AccordionDetail from './accordionDetail';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import FunctionsOutlinedIcon from '@mui/icons-material/FunctionsOutlined';
+import { Link } from 'react-router-dom';
 
 export default function CustomizedAccordions() {
 
@@ -192,7 +193,11 @@ React.useEffect(() => {
       <Accordion expanded={checkStatus(element.id - 1)} key={element.id} sx={{marginBottom: "5px", borderRadius: "10px"}}>
         <AccordionSummary
          sx={{flexDirection: !element.empty ? "row" : ""}}
-         expandIcon={element.empty ? <IconButton aria-label="AddIcon" size="small"><AddIcon /> </IconButton> : ''
+         expandIcon={element.empty ? 
+          <IconButton component={Link}  
+          to={`add/${element.id}`}      
+          state={{ meal: element.name }}
+          aria-label="AddIcon" size="small"><AddIcon /> </IconButton>: ''
           // <IconButton aria-label="handleChange" size="small" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }> <ExpandMoreIcon /> </IconButton>
         }
          
@@ -209,7 +214,7 @@ React.useEffect(() => {
               </Grid>
               <Grid sx={{display: "flex", justifyContent:'center', marginLeft: '2px', marginRight: '3px'}}>
                 <IconButton className={"MyIconButton"} aria-label="FunctionsOutlinedIcon" size="small"><FunctionsOutlinedIcon /></IconButton>
-                <IconButton className={"MyIconButton"} aria-label="AddIcon " size="small"><AddIcon  /></IconButton>
+                <IconButton component={Link} to={`add/${element.id}`}  state={{ meal: element.name  }} className={"MyIconButton"} aria-label="AddIcon " size="small"><AddIcon  /></IconButton>
               </Grid>
             </Grid>
             : ''
