@@ -213,7 +213,7 @@ export default function CustomizedAccordions() {
                 <IconButton
                   component={Link}
                   to={`add/${element.id}`}
-                  state={{ meal: element.name }}
+                  state={{ meal: element.name, days: days.map((e) => e.name) }}
                   aria-label="AddIcon"
                   size="small"
                 >
@@ -269,9 +269,12 @@ export default function CustomizedAccordions() {
                   <IconButton
                     component={Link}
                     to={`add/${element.id}`}
-                    state={{ meal: element.name }}
+                    state={{
+                      meal: element.name,
+                      days: days.map((e) => e.name),
+                    }}
                     className={"MyIconButton"}
-                    aria-label="AddIcon "
+                    aria-label="AddIcon"
                     size="small"
                   >
                     <AddIcon />

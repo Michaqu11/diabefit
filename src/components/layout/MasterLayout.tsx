@@ -87,7 +87,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Diabetico
+            Diabefit
           </Typography>
         </Toolbar>
       </AppBar>
