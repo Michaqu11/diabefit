@@ -1,12 +1,12 @@
 import React from "react";
-import Button from '@mui/joy/Button';
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
+import Button from "@mui/joy/Button";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
 
 import {
   VisibilityContext,
   slidingWindow,
-  getItemsPos
+  getItemsPos,
 } from "react-horizontal-scrolling-menu";
 
 export function LeftArrow() {
@@ -17,11 +17,11 @@ export function LeftArrow() {
     isFirstItemVisible,
     scrollToItem,
     visibleElements,
-    initComplete
+    initComplete,
   } = React.useContext(VisibilityContext);
 
   const [disabled, setDisabled] = React.useState(
-    !initComplete || (initComplete && isFirstItemVisible)
+    !initComplete || (initComplete && isFirstItemVisible),
   );
   React.useEffect(() => {
     // NOTE: detect if whole component visible
@@ -33,7 +33,7 @@ export function LeftArrow() {
   // NOTE: for center items
   const prevGroupItems = slidingWindow(
     items.toItemsKeys(),
-    visibleItems
+    visibleItems,
   ).prev();
   const { center } = getItemsPos(prevGroupItems);
   const scrollPrevCentered = () =>
@@ -41,8 +41,8 @@ export function LeftArrow() {
 
   return (
     <Button disabled={disabled} variant="plain" onClick={scrollPrevCentered}>
-        <KeyboardArrowLeftIcon />
-     </Button>
+      <KeyboardArrowLeftIcon />
+    </Button>
   );
 }
 
@@ -53,11 +53,11 @@ export function RightArrow() {
     items,
     scrollToItem,
     visibleItems,
-    visibleElements
+    visibleElements,
   } = React.useContext(VisibilityContext);
 
   const [disabled, setDisabled] = React.useState(
-    !visibleElements.length && isLastItemVisible
+    !visibleElements.length && isLastItemVisible,
   );
   React.useEffect(() => {
     if (visibleElements.length) {
@@ -68,7 +68,7 @@ export function RightArrow() {
   // NOTE: for center items
   const nextGroupItems = slidingWindow(
     items.toItemsKeys(),
-    visibleItems
+    visibleItems,
   ).next();
   const { center } = getItemsPos(nextGroupItems);
   const scrollNextCentered = () =>
@@ -76,7 +76,7 @@ export function RightArrow() {
 
   return (
     <Button disabled={disabled} variant="plain" onClick={scrollNextCentered}>
-       <KeyboardArrowRightIcon />
+      <KeyboardArrowRightIcon />
     </Button>
   );
 }

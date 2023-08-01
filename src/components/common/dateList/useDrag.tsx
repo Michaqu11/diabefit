@@ -17,7 +17,7 @@ export default function useDrag() {
         setDragging(false);
         setClicked(false);
       }),
-    []
+    [],
   );
 
   const dragMove = (ev: React.MouseEvent, cb: (posDif: number) => void) => {
@@ -41,6 +41,6 @@ export default function useDrag() {
     dragMove,
     dragging,
     position,
-    setDragging
+    setDragging,
   };
 }

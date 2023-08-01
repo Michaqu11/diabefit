@@ -1,12 +1,12 @@
 import React from "react";
-import Button from '@mui/joy/Button';
+import Button from "@mui/joy/Button";
 import { VisibilityContext } from "react-horizontal-scrolling-menu";
 
 export function Card({
   itemId,
   selected,
   onClick,
-  title
+  title,
 }: {
   itemId: string;
   selected: boolean;
@@ -19,8 +19,13 @@ export function Card({
 
   return (
     <div>
-        <Button className="cardButton" variant={selected ? 'soft' : 'plain'} onClick={() => onClick(visibility)} 
-        >{text[0] + "\n" + text[1]}</Button>
+      <Button
+        className="cardButton"
+        variant={selected ? "soft" : "plain"}
+        onClick={() => onClick(visibility)}
+      >
+        {text[0] + "\n" + text[1]}
+      </Button>
     </div>
   );
 }
