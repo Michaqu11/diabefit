@@ -1,6 +1,6 @@
 import Paper from "@mui/material/Paper";
 import useMediaQuery from "@mui/material/useMediaQuery";
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import "./Page.scss";
 import SearchInput from "../components/elements/products/search/SearchInput";
@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const AddProduct: React.FC = () => {
-  // let { id } = useParams();
+  let { id } = useParams();
   const location = useLocation();
   const { meal } = location.state;
   const { days } = location.state;
@@ -44,6 +44,9 @@ const AddProduct: React.FC = () => {
               color="primary"
               component={Link}
               to={`/`}
+              state={{ 
+                id: id
+              }}
               aria-label="back"
             >
               <ArrowBackIosNewIcon />

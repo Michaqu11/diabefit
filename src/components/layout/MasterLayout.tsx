@@ -72,6 +72,10 @@ export default function PersistentDrawerLeft() {
     }
   };
 
+  const clearState = () => {
+     window.location.reload();
+    }; 
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -86,7 +90,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="div" onClick={clearState}>
             Diabefit
           </Typography>
         </Toolbar>
