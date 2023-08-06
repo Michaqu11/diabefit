@@ -87,9 +87,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
 
   const renderRow = (meal: IMealElement, divider: boolean) => {
     return (
-      <>
+      <div key={meal.mealName}>
         <ListItem
-          key={meal.mealName}
           secondaryAction={
             <BpCheckbox
               edge="end"
@@ -105,7 +104,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
           </ListItemButton>
         </ListItem>
         {divider && displayDivider()}
-      </>
+      </div>
     );
   };
 
