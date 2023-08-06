@@ -4,10 +4,11 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Typography,
 } from "@mui/material";
 import React, { useState } from "react";
 import BpCheckbox from "./Checkbox";
-
+import "./ProductsList.scss";
 type Props = {
   searchKey: string;
 };
@@ -85,6 +86,15 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     return <Divider />;
   };
 
+  const details = (extension: IMealElement) => {
+    return (
+      <span>
+        P {extension.prot}g F {extension.fats}gC {extension.carbs}g (
+        {extension.kcal}kcal)
+      </span>
+    );
+  };
+
   const renderRow = (meal: IMealElement, divider: boolean) => {
     return (
       <div key={meal.mealName}>
@@ -100,7 +110,12 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
           disablePadding
         >
           <ListItemButton>
-            <ListItemText primary={meal.mealName} />
+            <ListItemText className="productdetail">
+              {meal.mealName}
+              <Typography component={"div"} sx={{ color: "text.secondary" }}>
+                {details(meal)}
+              </Typography>
+            </ListItemText>
           </ListItemButton>
         </ListItem>
         {divider && displayDivider()}
