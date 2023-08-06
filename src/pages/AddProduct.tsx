@@ -4,6 +4,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useLocation } from "react-router-dom";
 import "./Page.scss";
 import SearchInput from "../components/elements/products/search/SearchInput";
+import ProductsList from "../components/elements/products/ProductsList";
 import Divider from "@mui/material/Divider";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Button, Grid, IconButton, Menu, MenuItem } from "@mui/material";
@@ -19,6 +20,7 @@ const AddProduct: React.FC = () => {
 
   const [mealName, setMealName] = useState<String>(meal);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [searchKey, setSearchKey] = useState<string>("");
 
   const open = Boolean(anchorEl);
 
@@ -62,8 +64,9 @@ const AddProduct: React.FC = () => {
           </Grid>
         </Grid>
         <div className={!Mobile ? "container-mobile" : "container-desktop"}>
-          <SearchInput />
+          <SearchInput searchKey={searchKey} setSearchKey={setSearchKey} />
           <Divider sx={{ marginTop: "10px" }} />
+          <ProductsList searchKey={searchKey} />
         </div>
       </Paper>
       <Menu
