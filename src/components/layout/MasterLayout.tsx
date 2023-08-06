@@ -73,8 +73,8 @@ export default function PersistentDrawerLeft() {
   };
 
   const clearState = () => {
-     window.location.reload();
-    }; 
+    window.location.reload();
+  };
 
   return (
     <Box sx={{ display: "flex" }}>

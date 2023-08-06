@@ -16,7 +16,7 @@ type Props = {
   dayId: number;
 };
 
-const CustomizedAccordions: React.FC<Props> = ({dayId}) => {
+const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   interface IDayElement {
     mealName: string;
     grams: number;
@@ -217,9 +217,9 @@ const CustomizedAccordions: React.FC<Props> = ({dayId}) => {
                 <IconButton
                   component={Link}
                   to={`add/${dayId}`}
-                  state={{ 
-                    meal: element.name, days: 
-                    days.map((e) => e.name)
+                  state={{
+                    meal: element.name,
+                    days: days.map((e) => e.name),
                   }}
                   aria-label="AddIcon"
                   size="small"
@@ -301,7 +301,6 @@ const CustomizedAccordions: React.FC<Props> = ({dayId}) => {
       ))}
     </div>
   );
-
-}
+};
 
 export default CustomizedAccordions;

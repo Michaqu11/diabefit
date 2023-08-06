@@ -12,20 +12,26 @@ import { LeftArrow, RightArrow } from "./arrows";
 import useDrag from "./useDrag";
 import { Card } from "./card";
 import "./DateList.scss";
-import {  DatesList, getNow, decodeShortDate, getDateSubtract, getDateAddition } from "../share/MomentFunctions";
+import {
+  DatesList,
+  getNow,
+  decodeShortDate,
+  getDateSubtract,
+  getDateAddition,
+} from "../share/MomentFunctions";
 
 type Props = {
   dayId: number;
   setDay: (state: number) => void;
 };
 
-const DateList: React.FC<Props> = ({dayId, setDay}) =>  {
+const DateList: React.FC<Props> = ({ dayId, setDay }) => {
   type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 
   const { dragStart, dragStop, dragMove, dragging } = useDrag();
 
   const [selected, setSelected] = React.useState<string>(
-    getNow(decodeShortDate(dayId))
+    getNow(decodeShortDate(dayId)),
   );
 
   const [deviceType, setDeviceType] = useState("");
@@ -39,7 +45,7 @@ const DateList: React.FC<Props> = ({dayId, setDay}) =>  {
     for (i = 0; i <= 15; i++) {
       result.push(getDateAddition(i, decodeShortDate(dayId)));
     }
-    
+
     return result;
   };
 
@@ -72,7 +78,7 @@ const DateList: React.FC<Props> = ({dayId, setDay}) =>  {
       }
       setSelected(selected !== itemId ? itemId : "");
       scrollToItem(getItemById(itemId), "smooth", "center", "nearest");
-      setDay(unix)
+      setDay(unix);
     };
 
   const apiRef = React.useRef({} as scrollVisibilityApiType);
@@ -119,6 +125,6 @@ const DateList: React.FC<Props> = ({dayId, setDay}) =>  {
       </ScrollMenu>
     </div>
   );
-}
+};
 
 export default DateList;

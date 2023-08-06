@@ -14,7 +14,7 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   let tempId = encodeShortDate();
 
-  if(location.state){
+  if (location.state) {
     const { id } = location.state;
     tempId = Number(id);
   }
@@ -22,21 +22,20 @@ const Home: React.FC = () => {
 
   const setDay = (e: number) => {
     setDayId(e);
-    navigate(location.pathname, {}); 
-  }
-  
+    navigate(location.pathname, {});
+  };
+
   const clearState = () => {
-    navigate(location.pathname, {}); 
-  }
+    navigate(location.pathname, {});
+  };
 
   window.addEventListener("beforeunload", clearState);
 
-
   return (
     <Paper elevation={!Mobile ? 0 : 1}>
-      <DateList dayId={dayId} setDay={event => setDay(event)} />
+      <DateList dayId={dayId} setDay={(event) => setDay(event)} />
       <div className={!Mobile ? "container-mobile" : "container-desktop"}>
-        <CustomizedAccordions dayId={dayId}/>
+        <CustomizedAccordions dayId={dayId} />
       </div>
     </Paper>
   );

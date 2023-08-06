@@ -46,8 +46,8 @@ const AddProduct: React.FC = () => {
               color="primary"
               component={Link}
               to={`/`}
-              state={{ 
-                id: id
+              state={{
+                id: id,
               }}
               aria-label="back"
             >
