@@ -1,6 +1,5 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import moment from "moment";
 
 import {
   ScrollMenu,
@@ -13,32 +12,40 @@ import { LeftArrow, RightArrow } from "./arrows";
 import useDrag from "./useDrag";
 import { Card } from "./card";
 import "./DateList.scss";
+import {
+  DatesList,
+  getNow,
+  decodeShortDate,
+  getDateSubtract,
+  getDateAddition,
+} from "../share/MomentFunctions";
 
-function DateList() {
+type Props = {
+  dayId: number;
+  setDay: (state: number) => void;
+};
+
+const DateList: React.FC<Props> = ({ dayId, setDay }) => {
   type scrollVisibilityApiType = React.ContextType<typeof VisibilityContext>;
 
   const { dragStart, dragStop, dragMove, dragging } = useDrag();
 
   const [selected, setSelected] = React.useState<string>(
-    moment().format("DD MM YYYY"),
+    getNow(decodeShortDate(dayId)),
   );
 
   const [deviceType, setDeviceType] = useState("");
 
   const date = () => {
-    let result: { date: String; id: String }[] = [];
+    let result: DatesList[] = [];
     for (var i = 15; i > 0; i--) {
-      result.push({
-        date: moment().subtract(i, "days").format("ddd DD"),
-        id: moment().subtract(i, "days").format("DD MM YYYY"),
-      });
+      result.push(getDateSubtract(i, decodeShortDate(dayId)));
     }
+
     for (i = 0; i <= 15; i++) {
-      result.push({
-        date: moment().add(i, "days").format("ddd DD"),
-        id: moment().add(i, "days").format("DD MM YYYY"),
-      });
+      result.push(getDateAddition(i, decodeShortDate(dayId)));
     }
+
     return result;
   };
 
@@ -64,21 +71,21 @@ function DateList() {
       });
 
   const handleItemClick =
-    (itemId: string) =>
+    (itemId: string, unix: number) =>
     ({ getItemById, scrollToItem }: scrollVisibilityApiType) => {
       if (dragging) {
         return false;
       }
       setSelected(selected !== itemId ? itemId : "");
-
       scrollToItem(getItemById(itemId), "smooth", "center", "nearest");
+      setDay(unix);
     };
 
   const apiRef = React.useRef({} as scrollVisibilityApiType);
 
   const init = () => {
     apiRef.current.scrollToItem(
-      apiRef.current.getItemById(moment().format("DD MM YYYY")),
+      apiRef.current.getItemById(getNow(decodeShortDate(dayId))),
       "auto",
       "center",
     );
@@ -111,13 +118,13 @@ function DateList() {
             title={element.date}
             itemId={element.id}
             key={element.id}
-            onClick={handleItemClick(element.id)}
+            onClick={handleItemClick(element.id, element.unix)}
             selected={element.id === selected}
           />
         ))}
       </ScrollMenu>
     </div>
   );
-}
+};
 
 export default DateList;

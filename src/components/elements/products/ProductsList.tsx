@@ -122,7 +122,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     const products = meals
       .map((meal: IMealElement, index: number) => {
         if (meal.mealName.toLowerCase().includes(searchKey.toLowerCase())) {
-          return renderRow(meal, index != meals.length - 1);
+          return renderRow(meal, index !== meals.length - 1);
         }
         return undefined;
       })

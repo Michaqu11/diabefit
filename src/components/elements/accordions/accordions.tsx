@@ -12,7 +12,11 @@ import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
 
-export default function CustomizedAccordions() {
+type Props = {
+  dayId: number;
+};
+
+const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   interface IDayElement {
     mealName: string;
     grams: number;
@@ -212,8 +216,11 @@ export default function CustomizedAccordions() {
               element.empty ? (
                 <IconButton
                   component={Link}
-                  to={`add/${element.id}`}
-                  state={{ meal: element.name, days: days.map((e) => e.name) }}
+                  to={`add/${dayId}`}
+                  state={{
+                    meal: element.name,
+                    days: days.map((e) => e.name),
+                  }}
                   aria-label="AddIcon"
                   size="small"
                 >
@@ -268,7 +275,7 @@ export default function CustomizedAccordions() {
                   </IconButton>
                   <IconButton
                     component={Link}
-                    to={`add/${element.id}`}
+                    to={`add/${dayId}`}
                     state={{
                       meal: element.name,
                       days: days.map((e) => e.name),
@@ -294,4 +301,6 @@ export default function CustomizedAccordions() {
       ))}
     </div>
   );
-}
+};
+
+export default CustomizedAccordions;
