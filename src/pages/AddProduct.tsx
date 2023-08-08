@@ -1,7 +1,6 @@
 import Paper from "@mui/material/Paper";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useParams } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 import "./Page.scss";
 import SearchInput from "../components/elements/products/search/SearchInput";
 import ProductsList from "../components/elements/products/ProductsList";
@@ -10,15 +9,15 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Button, Grid, IconButton, Menu, MenuItem } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { EDays } from "../types/days";
 
 const AddProduct: React.FC = () => {
-  let { id } = useParams();
-  const location = useLocation();
-  const { meal } = location.state;
-  const { days } = location.state;
+  let { id, meal } = useParams();
   const Mobile = useMediaQuery("(min-width:700px)");
 
-  const [mealName, setMealName] = useState<String>(meal);
+  const [mealName, setMealName] = useState<String>(
+    Object.values(EDays)[Number(meal) - 1],
+  );
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [searchKey, setSearchKey] = useState<string>("");
 
@@ -81,7 +80,7 @@ const AddProduct: React.FC = () => {
           "aria-labelledby": "basic-button",
         }}
       >
-        {days
+        {Object.values(EDays)
           .filter((e: String) => e !== mealName)
           .map((e: String, index: number) => (
             <div key={index}>

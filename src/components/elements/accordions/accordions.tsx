@@ -11,33 +11,13 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
+import { EDays, IDay, IDayElement, IDays } from "../../../types/days";
 
 type Props = {
   dayId: number;
 };
 
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
-  interface IDayElement {
-    mealName: string;
-    grams: number;
-    kcal: number;
-    prot: number;
-    fats: number;
-    carbs: number;
-    image?: string;
-  }
-
-  interface IDay {
-    elements?: IDayElement[];
-  }
-
-  interface IDays {
-    id: number;
-    name: string;
-    empty: boolean;
-    extension: IDay;
-  }
-
   const lunch: IDay = {
     elements: [
       {
@@ -64,37 +44,37 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   const days: IDays[] = [
     {
       id: 1,
-      name: "Breakfast",
+      name: EDays.BREAKFAST,
       empty: true,
       extension: [] as IDay,
     },
     {
       id: 2,
-      name: "Snack I",
+      name: EDays.SNACK_1,
       empty: true,
       extension: [] as IDay,
     },
     {
       id: 3,
-      name: "Lunch",
+      name: EDays.LUNCH,
       empty: false,
       extension: lunch,
     },
     {
       id: 4,
-      name: "Snack II",
+      name: EDays.SNACK_2,
       empty: true,
       extension: [] as IDay,
     },
     {
       id: 5,
-      name: "Dinner",
+      name: EDays.DINNER,
       empty: false,
       extension: lunch,
     },
     {
       id: 6,
-      name: "Snack III",
+      name: EDays.SNACK_3,
       empty: true,
       extension: [] as IDay,
     },
@@ -202,6 +182,12 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     );
   };
 
+  const routeHandler = (dayId: number, element: IDays) => {
+    return `add/${dayId}/${
+      Object.values(EDays).indexOf(element.name as unknown as EDays) + 1
+    }`;
+  };
+
   return (
     <div>
       {days.map((element: IDays) => (
@@ -216,7 +202,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
               element.empty ? (
                 <IconButton
                   component={Link}
-                  to={`add/${dayId}`}
+                  to={routeHandler(dayId, element)}
                   state={{
                     meal: element.name,
                     days: days.map((e) => e.name),
@@ -275,7 +261,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                   </IconButton>
                   <IconButton
                     component={Link}
-                    to={`add/${dayId}`}
+                    to={routeHandler(dayId, element)}
                     state={{
                       meal: element.name,
                       days: days.map((e) => e.name),
