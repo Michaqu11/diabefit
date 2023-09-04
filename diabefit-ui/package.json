@@ -20,7 +20,9 @@
     "@types/react": "^18.0.38",
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.5.0",
     "boxicons": "^2.1.4",
+    "crypto-js": "^4.1.1",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -69,6 +71,7 @@
     ]
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.1",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-prettier": "^5.0.0",
