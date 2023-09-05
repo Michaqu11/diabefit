@@ -8,11 +8,14 @@ import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Navbar from "../common/sidebar/Navbar";
-
 import "./MasterLayout.scss";
 import { Outlet } from "react-router";
 
 const drawerWidth = 280;
+
+type PersistentDrawerLeftProps = {
+  login: boolean;
+};
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
@@ -55,7 +58,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+const PersistentDrawerLeft: React.FC<PersistentDrawerLeftProps> = ({
+  login,
+}) => {
   const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -85,6 +90,7 @@ export default function PersistentDrawerLeft() {
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
+            disabled={!login}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
@@ -103,4 +109,6 @@ export default function PersistentDrawerLeft() {
       </Main>
     </Box>
   );
-}
+};
+
+export default PersistentDrawerLeft;
