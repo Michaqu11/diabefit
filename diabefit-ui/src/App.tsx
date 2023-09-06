@@ -52,18 +52,23 @@ const App: React.FC = () => {
   return (
     <div className="root">
       {profile ? (
-        <><MasterLayout /><div className="router">
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/entry" element={<NewEntry />} />
-            <Route path="/bolus" element={<NewBolus />} />
-            <Route path="/product" element={<NewProduct />} />
-            <Route path="/setting" element={<Setting />} />
-            <Route path="/add/:id/:meal" element={<AddProduct />} />
-          </Routes>
-        </div></>
+        <>
+          <MasterLayout />
+          <div className="router">
+            <Routes>
+              <Route index element={<Home />} />
+              <Route path="/entry" element={<NewEntry />} />
+              <Route path="/bolus" element={<NewBolus />} />
+              <Route path="/product" element={<NewProduct />} />
+              <Route path="/setting" element={<Setting />} />
+              <Route path="/add/:id/:meal" element={<AddProduct />} />
+            </Routes>
+          </div>
+        </>
       ) : (
-        <><EmptyLayout login={loginStatus} /><Box
+        <>
+          <EmptyLayout login={loginStatus} />
+          <Box
             display="flex"
             justifyContent="center"
             alignItems="center"
@@ -72,7 +77,8 @@ const App: React.FC = () => {
             <Button variant="outlined" size="large" onClick={() => login()}>
               Sign in with Google 🚀
             </Button>
-          </Box></>
+          </Box>
+        </>
       )}
     </div>
   );

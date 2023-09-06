@@ -13,7 +13,6 @@ import { Outlet } from "react-router";
 
 const drawerWidth = 280;
 
-
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
 }>(({ theme, open }) => ({

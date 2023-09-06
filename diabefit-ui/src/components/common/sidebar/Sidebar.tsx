@@ -68,42 +68,49 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
 
   const logOut = () => {
     googleLogout();
-    clearProfile()
+    clearProfile();
     window.location.reload();
-  }
+  };
 
   return (
     <Box sx={{ width: 250 }} onKeyDown={() => toggleDrawer(false)}>
-      {profile ?
-      (<List>
-        <ListItem disablePadding>
-          <ListItemButton>
-            <ListItemIcon>
-              <Avatar src={profile.picture} />
-            </ListItemIcon>
-            <ListItemText primary={profile.given_name} />
-          </ListItemButton>
-        </ListItem>
-        <Grid container>
-          <Grid xs display="flex" justifyContent="right" alignItems="center">
-            <Button style={{paddingBottom: '0px', marginRight: '10px'}} variant="text" size="small" onClick={logOut}>Log out</Button>
+      {profile ? (
+        <List>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <Avatar src={profile.picture} />
+              </ListItemIcon>
+              <ListItemText primary={profile.given_name} />
+            </ListItemButton>
+          </ListItem>
+          <Grid container>
+            <Grid xs display="flex" justifyContent="right" alignItems="center">
+              <Button
+                style={{ paddingBottom: "0px", marginRight: "10px" }}
+                variant="text"
+                size="small"
+                onClick={logOut}
+              >
+                Log out
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-      
-        <Divider sx={{ paddingBottom: "5px"}} />
 
-        {sidebarNavItems.map((item, index) => (
-          <Link to={item.to} key={index}>
-            <ListItem disablePadding sx={{ paddingTop: "5px" }}>
-              <ListItemButton>
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.display} />
-              </ListItemButton>
-            </ListItem>
-          </Link>
-        ))}
-      </List>) : null
-}
+          <Divider sx={{ paddingBottom: "5px" }} />
+
+          {sidebarNavItems.map((item, index) => (
+            <Link to={item.to} key={index}>
+              <ListItem disablePadding sx={{ paddingTop: "5px" }}>
+                <ListItemButton>
+                  <ListItemIcon>{item.icon}</ListItemIcon>
+                  <ListItemText primary={item.display} />
+                </ListItemButton>
+              </ListItem>
+            </Link>
+          ))}
+        </List>
+      ) : null}
     </Box>
   );
 };

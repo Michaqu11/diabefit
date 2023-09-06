@@ -7,5 +7,5 @@ export const getProfile = () => {
 };
 
 export const clearProfile = () => {
-    sessionStorage.removeItem("profile");
-  };
+  sessionStorage.removeItem("profile");
+};
