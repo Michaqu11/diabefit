@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { GoogleLogin, googleLogout, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import Setting from "./pages/Setting";
 import MasterLayout from "./components/layout/MasterLayout";
 import NewEntry from "./pages/NewEntry";
