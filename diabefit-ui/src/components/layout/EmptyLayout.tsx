@@ -7,11 +7,14 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import Navbar from "../common/sidebar/Navbar";
 import "./MasterLayout.scss";
 import { Outlet } from "react-router";
 
 const drawerWidth = 280;
+
+type PersistentDrawerLeftProps = {
+  login: boolean;
+};
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
@@ -54,22 +57,10 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-const PersistentDrawerLeft: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const checkOpen = () => {
-    if (open) {
-      setOpen(false);
-    }
-  };
+const PersistentDrawerLeft: React.FC<PersistentDrawerLeftProps> = ({
+  login,
+}) => {
+  const [open] = React.useState(false);
 
   const clearState = () => {
     window.location.reload();
@@ -78,12 +69,12 @@ const PersistentDrawerLeft: React.FC = () => {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} onClick={checkOpen}>
+      <AppBar position="fixed">
         <Toolbar>
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            disabled={!login}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
@@ -95,9 +86,8 @@ const PersistentDrawerLeft: React.FC = () => {
         </Toolbar>
       </AppBar>
 
-      <Main open={open} onClick={checkOpen}>
+      <Main>
         <DrawerHeader />
-        <Navbar stateValue={open} onStateChange={handleDrawerClose} />
         <Outlet />
       </Main>
     </Box>
