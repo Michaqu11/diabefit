@@ -11,12 +11,13 @@ import AddProduct from "./pages/AddProduct";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
 import axios from "axios";
-import { Box, Button, Grid } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { getProfile, saveProfile } from "./store/sessionStorage";
+import EmptyLayout from "./components/layout/EmptyLayout";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>();
-  const [profile, setProfile] = useState<any>(getProfile);
+  const [profile, setProfile] = useState<any>(getProfile());
   const [loginStatus, setLogin] = useState<boolean>(profile !== null);
 
   const login = useGoogleLogin({
@@ -27,11 +28,6 @@ const App: React.FC = () => {
 
     onError: (error) => console.log("Login Failed:", error),
   });
-
-  // const logOut = () => {
-  //   googleLogout();
-  //   setProfile(null);
-  // };
 
   useEffect(() => {
     if (user) {
@@ -55,9 +51,8 @@ const App: React.FC = () => {
 
   return (
     <div className="root">
-      <MasterLayout login={loginStatus} />
       {profile ? (
-        <div className="router">
+        <><MasterLayout /><div className="router">
           <Routes>
             <Route index element={<Home />} />
             <Route path="/entry" element={<NewEntry />} />
@@ -66,18 +61,18 @@ const App: React.FC = () => {
             <Route path="/setting" element={<Setting />} />
             <Route path="/add/:id/:meal" element={<AddProduct />} />
           </Routes>
-        </div>
+        </div></>
       ) : (
-        <Box
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="90vh"
-        >
-          <Button variant="outlined" size="large" onClick={() => login()}>
-            Sign in with Google 🚀
-          </Button>
-        </Box>
+        <><EmptyLayout login={loginStatus} /><Box
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            minHeight="90vh"
+          >
+            <Button variant="outlined" size="large" onClick={() => login()}>
+              Sign in with Google 🚀
+            </Button>
+          </Box></>
       )}
     </div>
   );

@@ -5,3 +5,7 @@ export const saveProfile = (profile: any) => {
 export const getProfile = () => {
   return JSON.parse(sessionStorage.getItem("profile") as string);
 };
+
+export const clearProfile = () => {
+    sessionStorage.removeItem("profile");
+  };

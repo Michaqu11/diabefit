@@ -7,7 +7,6 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import { deepOrange } from "@mui/material/colors";
 import { ReactElement, useState } from "react";
 
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
@@ -16,7 +15,9 @@ import VaccinesIcon from "@mui/icons-material/Vaccines";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { Link } from "react-router-dom";
-import { getProfile } from "../../../store/sessionStorage";
+import { clearProfile, getProfile } from "../../../store/sessionStorage";
+import { Button, Grid } from "@mui/material";
+import { googleLogout } from "@react-oauth/google";
 
 interface IChildProps {
   toggleDrawer: (arg: boolean) => void;
@@ -63,11 +64,18 @@ const sidebarNavItems: ISidebarNav[] = [
 ];
 
 const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
-  const [profile] = useState<any>(getProfile);
+  const [profile] = useState<any>(getProfile());
+
+  const logOut = () => {
+    googleLogout();
+    clearProfile()
+    window.location.reload();
+  }
 
   return (
     <Box sx={{ width: 250 }} onKeyDown={() => toggleDrawer(false)}>
-      <List>
+      {profile ?
+      (<List>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemIcon>
@@ -76,8 +84,13 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
             <ListItemText primary={profile.given_name} />
           </ListItemButton>
         </ListItem>
-
-        <Divider sx={{ paddingBottom: "5px", paddingTop: "5px" }} />
+        <Grid container>
+          <Grid xs display="flex" justifyContent="right" alignItems="center">
+            <Button style={{paddingBottom: '0px', marginRight: '10px'}} variant="text" size="small" onClick={logOut}>Log out</Button>
+          </Grid>
+        </Grid>
+      
+        <Divider sx={{ paddingBottom: "5px"}} />
 
         {sidebarNavItems.map((item, index) => (
           <Link to={item.to} key={index}>
@@ -89,7 +102,8 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
             </ListItem>
           </Link>
         ))}
-      </List>
+      </List>) : null
+}
     </Box>
   );
 };
