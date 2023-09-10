@@ -1,0 +1,4 @@
+Django==4.1.7
+django-cors-headers==3.14.0
+fatsecret==0.4.0
+rauth==0.7.3
