@@ -31,19 +31,20 @@ export const searchFood = async(foodName: string) => {
       const data = requestData('foods.search.v2', { search_expression: foodName})
       const params = oauth.authorize(data)
 
-      axios({
+      return axios({
         method: data.method,
         url: data.url,
         params:params 
         
       })
         .then((response) => {
-          console.log(response.data); 
+          return response.data; 
         })
         .catch((error) => {
           console.error(error); 
+          return undefined;
         });
-        autocomplete('taco')
+
 }
 
 export const autocomplete = async(searchExpresion: string) => {
@@ -51,16 +52,17 @@ export const autocomplete = async(searchExpresion: string) => {
   const data = requestData('foods.autocomplete.v2', { expression: searchExpresion})
   const params = oauth.authorize(data)
 
-  axios({
+  return axios({
     method: data.method,
     url: data.url,
     params:params 
     
   })
     .then((response) => {
-      console.log(response.data); 
+      return response.data; 
     })
     .catch((error) => {
       console.error(error); 
+      return undefined;
     });
 }
