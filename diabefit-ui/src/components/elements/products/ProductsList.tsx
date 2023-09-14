@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import BpCheckbox from "./Checkbox";
 import "./ProductsList.scss";
 import { searchFood } from "../../../api/fatsecret-api";
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from "react-infinite-scroll-component";
 
 type Props = {
   searchKey: string;
@@ -128,11 +128,10 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
           };
         })
       : undefined;
-    setHasMore(result && total_results ? result.length < total_results : false)
-    return result
+    setHasMore(result && total_results ? result.length < total_results : false);
+    return result;
   };
 
-  
   const setProps = (mealsProps: IMealElement[] | undefined) => {
     const products = mealsProps
       ? mealsProps.map((meal: IMealElement, index: number) => {
@@ -142,15 +141,12 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     setProducts(products);
   };
 
-
   const loadMore = async () => {
-    const res = await formatProductsData(searchKey, pageNumber + 1)
+    const res = await formatProductsData(searchKey, pageNumber + 1);
 
-      if(meals && res)
-      setMeals(convertMealToBeUnique( [...meals, ...res]))
-  
-      setPageNumber(pageNumber + 1)
-   
+    if (meals && res) setMeals(convertMealToBeUnique([...meals, ...res]));
+
+    setPageNumber(pageNumber + 1);
   };
 
   const convertMealToBeUnique = (meals: IMealElement[]) => {
@@ -170,7 +166,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       setMeals(mealsProps ? convertMealToBeUnique(mealsProps) : undefined);
     };
     searchFoodProps();
-    setPageNumber(0)
+    setPageNumber(0);
   }, [searchKey]);
 
   return (
@@ -192,7 +188,11 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
             hasMore={hasMore}
             height={600}
             loader={<p style={{ textAlign: "center" }}>Loading...</p>}
-            endMessage={<p style={{ textAlign: "center" }}><b>No more data to load.</b></p>}
+            endMessage={
+              <p style={{ textAlign: "center" }}>
+                <b>No more data to load.</b>
+              </p>
+            }
           >
             {products}
           </InfiniteScroll>

@@ -22,7 +22,7 @@ const requestData = (method: string, params: any) => {
       method: method,
       format: "json",
       oauth_signature_method: "HMAC-SHA1",
-      max_results: '50',
+      max_results: "50",
       ...params,
     },
   };
