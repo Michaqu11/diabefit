@@ -85,7 +85,7 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
             </ListItemButton>
           </ListItem>
           <Grid container>
-            <Grid xs display="flex" justifyContent="right" alignItems="center">
+            <Grid display="flex" justifyContent="right" alignItems="center">
               <Button
                 style={{ paddingBottom: "0px", marginRight: "10px" }}
                 variant="text"
