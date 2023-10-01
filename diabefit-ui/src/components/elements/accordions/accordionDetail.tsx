@@ -2,16 +2,10 @@ import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import ImageIcon from "@mui/icons-material/Image";
 
 import "./accordionDetail.scss";
-interface IElement {
-  header: string;
-  secondary: string;
-  image: string;
-}
+import { IElement } from "./accordions";
+import { Divider } from "@mui/material";
 
 type Props = {
   elementsProps: IElement[] | undefined;
@@ -20,20 +14,12 @@ type Props = {
 const CustomizedAccordions: React.FC<Props> = ({ elementsProps }) => {
   return (
     <div>
+      <Divider />
       <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
         {elementsProps &&
           elementsProps.map((e) => {
             return (
-              <ListItem key={e.header}>
-                <ListItemAvatar>
-                  {e.image ? (
-                    <Avatar src={e.image} />
-                  ) : (
-                    <Avatar>
-                      <ImageIcon />
-                    </Avatar>
-                  )}
-                </ListItemAvatar>
+              <ListItem style={{padding: '2px 4px'}} key={e.header}>
                 <ListItemText primary={e.header} secondary={e.secondary} />
               </ListItem>
             );

@@ -14,7 +14,6 @@ interface IDayElement {
   prot: number;
   fats: number;
   carbs: number;
-  image?: string;
 }
 
 interface IDay {

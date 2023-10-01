@@ -17,6 +17,19 @@ type Props = {
   dayId: number;
 };
 
+export interface IElement {
+  header: string;
+  secondary: string;
+}
+
+interface IValues {
+  kcal: number;
+  prot: number;
+  fats: number;
+  carbs: number;
+}
+
+
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   const lunch: IDay = {
     elements: [
@@ -27,9 +40,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
         prot: 28.4,
         fats: 32.4,
         carbs: 28.0,
-        image:
-          "https://staticsmaker.iplsc.com/smaker_production_2022_11_16/26bb30c30d60775239c5bc09c9735973-recipe_main.jpg",
-      },
+             },
       {
         mealName: "Frytki",
         grams: 500,
@@ -79,13 +90,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
       extension: [] as IDay,
     },
   ];
-
-  interface IValues {
-    kcal: number;
-    prot: number;
-    fats: number;
-    carbs: number;
-  }
 
   const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
     let kcal = 0,
@@ -138,11 +142,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     );
   };
 
-  interface IElement {
-    header: string;
-    secondary: string;
-    image: string;
-  }
 
   const elements = (
     elements: IDayElement[] | undefined,
@@ -153,7 +152,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
       return {
         header: `${el.mealName} | ${el.kcal} kcal`,
         secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g`,
-        image: el.image ? el.image : "",
       };
     });
   };
