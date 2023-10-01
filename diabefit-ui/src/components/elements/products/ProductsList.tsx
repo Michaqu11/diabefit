@@ -1,7 +1,6 @@
 import {
   Divider,
   Grid,
-  List,
   ListItem,
   ListItemButton,
   ListItemText,
@@ -12,23 +11,18 @@ import BpCheckbox from "./Checkbox";
 import "./ProductsList.scss";
 import { searchFood } from "../../../api/fatsecret-api";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { IMealElement } from "../../../types/meal";
+import { addMeal, removeMeal } from "../../../store/mealsStorage";
 
 type Props = {
   searchKey: string;
 };
 
 const ProductsList: React.FC<Props> = ({ searchKey }) => {
-  interface IMealElement {
-    mealName: string;
-    displayName: string;
-    id: number;
-    grams: number;
-    kcal: number;
-    prot: number;
-    fats: number;
-    carbs: number;
-    image?: string;
-  }
+
+
+  const [dayID, eDayID] = window.location.pathname.slice(5).split('/')
+
   const empty = (info: string = "No products to display") => {
     return (
       <ListItem component="div" disablePadding sx={{ marginTop: "50px" }}>
@@ -47,18 +41,21 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [meals, setMeals] = useState<IMealElement[]>();
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
+  
   useEffect(() => {
     setProps(meals);
   }, [checked, meals]);
 
-  const handleToggle = (value: string) => () => {
-    const currentIndex = checked.indexOf(value);
+  const handleToggle = (meal: IMealElement) => () => {
+    const currentIndex = checked.indexOf(meal.mealName);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newChecked.push(meal.mealName);
+      addMeal(dayID, Number(eDayID), meal)
     } else {
       newChecked.splice(currentIndex, 1);
+      removeMeal(dayID, Number(eDayID), meal)
     }
 
     setChecked(newChecked);
@@ -81,10 +78,11 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     return (
       <div key={meal.mealName}>
         <ListItem
+        style={{backgroundColor: `${checked.includes(meal.mealName) ? 'rgba(30,130,192,0.1)': 'rgb(255,255,255)'}`}}
           secondaryAction={
             <BpCheckbox
               edge="end"
-              onChange={handleToggle(meal.mealName)}
+              onChange={handleToggle(meal)}
               checked={checked.includes(meal.mealName)}
               inputProps={{ "aria-labelledby": meal.mealName }}
             />
@@ -119,7 +117,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
             displayName: meal.food_name
               .slice(0, 35)
               .concat(meal.food_name.length > 35 ? "..." : ""),
-            id: meal.id,
+            id: meal.food_id,
             grams: serving.metric_serving_amount,
             kcal: serving.calories,
             prot: serving.protein,
