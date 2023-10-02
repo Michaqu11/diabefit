@@ -12,7 +12,8 @@ import "./ProductsList.scss";
 import { searchFood } from "../../../api/fatsecret-api";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { IMealElement } from "../../../types/meal";
-import { addMeal, removeMeal } from "../../../store/mealsStorage";
+import { addMeal, readSpecificDayMeal, removeMeal } from "../../../store/mealsStorage";
+import { AllDay } from "../../../store/storagesTypes";
 
 type Props = {
   searchKey: string;
@@ -33,7 +34,9 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     );
   };
 
-  const [checked, setChecked] = useState<string[]>([]);
+  const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as AllDay | undefined
+
+  const [checked, setChecked] = useState<string[]>(checkedData ? checkedData.meals.map((meal: IMealElement)=> meal.id):[]);
 
   const [products, setProducts] = useState<JSX.Element[] | JSX.Element>(
     empty(),
@@ -47,11 +50,11 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   }, [checked, meals]);
 
   const handleToggle = (meal: IMealElement) => () => {
-    const currentIndex = checked.indexOf(meal.mealName);
+    const currentIndex = checked.indexOf(meal.id);
     const newChecked = [...checked];
 
     if (currentIndex === -1) {
-      newChecked.push(meal.mealName);
+      newChecked.push(meal.id);
       addMeal(dayID, Number(eDayID), meal)
     } else {
       newChecked.splice(currentIndex, 1);
@@ -78,13 +81,13 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     return (
       <div key={meal.mealName}>
         <ListItem
-        style={{backgroundColor: `${checked.includes(meal.mealName) ? 'rgba(30,130,192,0.1)': 'rgb(255,255,255)'}`}}
+        style={{backgroundColor: `${checked.includes(meal.id) ? 'rgba(30,130,192,0.1)': 'rgb(255,255,255)'}`}}
           secondaryAction={
             <BpCheckbox
               edge="end"
               onChange={handleToggle(meal)}
-              checked={checked.includes(meal.mealName)}
-              inputProps={{ "aria-labelledby": meal.mealName }}
+              checked={checked.includes(meal.id)}
+              inputProps={{ "aria-labelledby": meal.id }}
             />
           }
           disablePadding

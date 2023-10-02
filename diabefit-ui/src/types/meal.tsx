@@ -1,7 +1,7 @@
 export interface IMealElement {
     mealName: string;
     displayName: string;
-    id: number;
+    id: string;
     grams: number;
     kcal: number;
     prot: number;

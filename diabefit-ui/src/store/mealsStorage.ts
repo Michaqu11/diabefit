@@ -17,11 +17,11 @@ const isDayExist = (dayID: string, allMeals: AllMeal)=>{
 
 const putMealIntoDay = (dayID: string, dayIndex: number, meal: IMealElement, allMeals: AllMeal) => {
   const newDay = allMeals[dayID]
-  debugger
   if(newDay) {
     newDay[dayIndex-1].meals.push(meal)
     allMeals[dayID] = newDay
   }
+
   return allMeals
 }
 
@@ -72,12 +72,11 @@ export const readDayMeal = (dayID: string) => {
   return []
 }
 
-export const readDayElementMeal = (dayID: string, dayIndex: number,) => {
+export const readSpecificDayMeal = (dayID: string, dayIndex: number,) => {
   const mealsFromStore = localStorage.getItem("meals")
   if(mealsFromStore) {
     const allMeals = JSON.parse(mealsFromStore) as AllMeal
-    return allMeals[dayID][dayIndex - 1]
+    return allMeals[dayID] ? allMeals[dayID][dayIndex - 1] : undefined
   }
-  return []
+  return undefined
 }
-

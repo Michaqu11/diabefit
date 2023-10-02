@@ -1,3 +1,5 @@
+import { IMealElement } from "./meal";
+
 enum EDays {
   BREAKFAST = "Breakfast",
   SNACK_1 = "Snack I",
@@ -9,6 +11,7 @@ enum EDays {
 
 interface IDayElement {
   mealName: string;
+  id: string;
   grams: number;
   kcal: number;
   prot: number;
@@ -17,15 +20,10 @@ interface IDayElement {
 }
 
 interface IDay {
-  elements?: IDayElement[];
-}
-
-interface IDays {
   id: number;
   name: string;
-  empty: boolean;
-  extension: IDay;
+  meals: IMealElement[]
 }
 
-export type { IDayElement, IDay, IDays };
+export type { IDayElement, IDay };
 export { EDays };
