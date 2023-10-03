@@ -23,6 +23,9 @@ type Props = {
 export interface IElement {
   header: string;
   secondary: string;
+  id: string;
+  dayID: string;
+  dayIndex: number;
 }
 
 interface IValues {
@@ -34,7 +37,27 @@ interface IValues {
 
 
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
-  const days: IDay[] = readDayMeal(dayId.toString()) ?? mockAllDays
+
+  const [days, setDays] = React.useState<IDay[]>(readDayMeal(dayId.toString()) ?? mockAllDays)
+
+
+ const changedData = (id: number)=>{
+    const meals = readDayMeal(dayId.toString())
+    if(meals) {
+      setDays(meals) 
+    if(!meals[id].meals.length)
+      setExpanded(
+        expanded.map((exp) =>
+          exp.id === id ? { ...exp, status: !exp.status } : { ...exp },
+        ),
+      );
+      }
+  }
+
+  function format2Decimals(num: number) {
+  
+    return Math.round(num * 100) / 100;
+  }
 
   const summaryNutritionalValues = (elements: IMealElement[] | undefined) => {
     let kcal = 0,
@@ -51,10 +74,10 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
       });
 
     return {
-      kcal: kcal,
-      prot: prot,
-      fats: fats,
-      carbs: carbs,
+      kcal: format2Decimals(kcal),
+      prot: format2Decimals(prot),
+      fats: format2Decimals(fats),
+      carbs: format2Decimals(carbs),
     };
   };
 
@@ -90,6 +113,8 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
 
   const elements = (
     elements: IMealElement[] | undefined,
+    dayID: string,
+    dayIndex: number
   ): IElement[] | undefined => {
     if (!elements) return undefined;
 
@@ -97,6 +122,9 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
       return {
         header: `${el.mealName} | ${el.kcal} kcal`,
         secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g`,
+        id: el.id,
+        dayIndex: dayIndex,
+        dayID: dayID
       };
     });
   };
@@ -153,7 +181,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                   aria-label="AddIcon"
                   size="small"
                 >
-                  <AddIcon />{" "}
+                  <AddIcon />
                 </IconButton>
               ) : (
                 ""
@@ -163,7 +191,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
             aria-controls={day.name + "-content"}
             id={day.name}
           >
-            <Typography>{day.name} </Typography>
+            <Typography>{day.name}</Typography>
             {day.meals.length ? (
               <Grid container justifyContent="space-between">
                 <Grid sx={{ display: "flex", justifyContent: "center" }}>
@@ -183,7 +211,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     size="small"
                     onClick={() => handleChangeExpanded(day.id - 1)}
                   >
-                    {" "}
                     <ExpandMoreIcon />
                   </IconButton>
                 </Grid>
@@ -221,11 +248,13 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
               ""
             )}
           </AccordionSummary>
+          {day.meals.length ?
           <AccordionDetails>
             <AccordionDetail
-              elementsProps={elements(day.meals)}
-            />
-          </AccordionDetails>
+              elementsProps={elements(day.meals, dayId.toString(), Object.values(EDays).indexOf(day.name as unknown as EDays) + 1)}
+              changedData={changedData}
+           />
+          </AccordionDetails> : ''}
         </Accordion>
       ))}
     </div>

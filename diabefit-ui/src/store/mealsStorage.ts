@@ -49,13 +49,13 @@ export const addMeal = (dayID: string, dayIndex: number, meal: IMealElement) => 
   }
 }
 
-export const removeMeal = (dayID: string, dayIndex: number, meal: IMealElement) => {
+export const removeMeal = (dayID: string, dayIndex: number, id: string) => {
   const mealsFromStore = localStorage.getItem("meals")
   if(mealsFromStore) {
     const allMeals = JSON.parse(mealsFromStore) as AllMeal
     if(isDayExist(dayID, allMeals)) {
       const mealsToRemove = allMeals[dayID]
-      const newMeals = mealsToRemove[dayIndex-1].meals.filter(m => m.id !== meal.id)
+      const newMeals = mealsToRemove[dayIndex-1].meals.filter(m => m.id !== id)
       mealsToRemove[dayIndex-1].meals = newMeals
       allMeals[dayID] = mealsToRemove;
       localStorage.setItem("meals", JSON.stringify(allMeals));

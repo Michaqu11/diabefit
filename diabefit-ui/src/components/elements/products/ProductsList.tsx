@@ -58,7 +58,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       addMeal(dayID, Number(eDayID), meal)
     } else {
       newChecked.splice(currentIndex, 1);
-      removeMeal(dayID, Number(eDayID), meal)
+      removeMeal(dayID, Number(eDayID), meal.id)
     }
 
     setChecked(newChecked);
