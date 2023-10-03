@@ -12,7 +12,11 @@ import "./ProductsList.scss";
 import { searchFood } from "../../../api/fatsecret-api";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { IMealElement } from "../../../types/meal";
-import { addMeal, readSpecificDayMeal, removeMeal } from "../../../store/mealsStorage";
+import {
+  addMeal,
+  readSpecificDayMeal,
+  removeMeal,
+} from "../../../store/mealsStorage";
 import { AllDay } from "../../../store/storagesTypes";
 
 type Props = {
@@ -20,9 +24,7 @@ type Props = {
 };
 
 const ProductsList: React.FC<Props> = ({ searchKey }) => {
-
-
-  const [dayID, eDayID] = window.location.pathname.slice(5).split('/')
+  const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
 
   const empty = (info: string = "No products to display") => {
     return (
@@ -34,9 +36,13 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     );
   };
 
-  const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as AllDay | undefined
+  const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as
+    | AllDay
+    | undefined;
 
-  const [checked, setChecked] = useState<string[]>(checkedData ? checkedData.meals.map((meal: IMealElement)=> meal.id):[]);
+  const [checked, setChecked] = useState<string[]>(
+    checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
+  );
 
   const [products, setProducts] = useState<JSX.Element[] | JSX.Element>(
     empty(),
@@ -44,7 +50,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [meals, setMeals] = useState<IMealElement[]>();
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  
+
   useEffect(() => {
     setProps(meals);
   }, [checked, meals]);
@@ -55,10 +61,10 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
 
     if (currentIndex === -1) {
       newChecked.push(meal.id);
-      addMeal(dayID, Number(eDayID), meal)
+      addMeal(dayID, Number(eDayID), meal);
     } else {
       newChecked.splice(currentIndex, 1);
-      removeMeal(dayID, Number(eDayID), meal.id)
+      removeMeal(dayID, Number(eDayID), meal.id);
     }
 
     setChecked(newChecked);
@@ -81,7 +87,13 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     return (
       <div key={meal.mealName}>
         <ListItem
-        style={{backgroundColor: `${checked.includes(meal.id) ? 'rgba(30,130,192,0.1)': 'rgb(255,255,255)'}`}}
+          style={{
+            backgroundColor: `${
+              checked.includes(meal.id)
+                ? "rgba(30,130,192,0.1)"
+                : "rgb(255,255,255)"
+            }`,
+          }}
           secondaryAction={
             <BpCheckbox
               edge="end"

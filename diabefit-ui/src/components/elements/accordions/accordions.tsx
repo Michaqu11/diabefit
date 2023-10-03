@@ -35,27 +35,25 @@ interface IValues {
   carbs: number;
 }
 
-
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
+  const [days, setDays] = React.useState<IDay[]>(
+    readDayMeal(dayId.toString()) ?? mockAllDays,
+  );
 
-  const [days, setDays] = React.useState<IDay[]>(readDayMeal(dayId.toString()) ?? mockAllDays)
-
-
- const changedData = (id: number)=>{
-    const meals = readDayMeal(dayId.toString())
-    if(meals) {
-      setDays(meals) 
-    if(!meals[id].meals.length)
-      setExpanded(
-        expanded.map((exp) =>
-          exp.id === id ? { ...exp, status: !exp.status } : { ...exp },
-        ),
-      );
-      }
-  }
+  const changedData = (id: number) => {
+    const meals = readDayMeal(dayId.toString());
+    if (meals) {
+      setDays(meals);
+      if (!meals[id].meals.length)
+        setExpanded(
+          expanded.map((exp) =>
+            exp.id === id ? { ...exp, status: !exp.status } : { ...exp },
+          ),
+        );
+    }
+  };
 
   function format2Decimals(num: number) {
-  
     return Math.round(num * 100) / 100;
   }
 
@@ -110,11 +108,10 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     );
   };
 
-
   const elements = (
     elements: IMealElement[] | undefined,
     dayID: string,
-    dayIndex: number
+    dayIndex: number,
   ): IElement[] | undefined => {
     if (!elements) return undefined;
 
@@ -124,7 +121,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
         secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g`,
         id: el.id,
         dayIndex: dayIndex,
-        dayID: dayID
+        dayID: dayID,
       };
     });
   };
@@ -248,13 +245,21 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
               ""
             )}
           </AccordionSummary>
-          {day.meals.length ?
-          <AccordionDetails>
-            <AccordionDetail
-              elementsProps={elements(day.meals, dayId.toString(), Object.values(EDays).indexOf(day.name as unknown as EDays) + 1)}
-              changedData={changedData}
-           />
-          </AccordionDetails> : ''}
+          {day.meals.length ? (
+            <AccordionDetails>
+              <AccordionDetail
+                elementsProps={elements(
+                  day.meals,
+                  dayId.toString(),
+                  Object.values(EDays).indexOf(day.name as unknown as EDays) +
+                    1,
+                )}
+                changedData={changedData}
+              />
+            </AccordionDetails>
+          ) : (
+            ""
+          )}
         </Accordion>
       ))}
     </div>

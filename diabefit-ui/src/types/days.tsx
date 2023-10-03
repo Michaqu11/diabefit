@@ -22,7 +22,7 @@ interface IDayElement {
 interface IDay {
   id: number;
   name: string;
-  meals: IMealElement[]
+  meals: IMealElement[];
 }
 
 export type { IDayElement, IDay };
