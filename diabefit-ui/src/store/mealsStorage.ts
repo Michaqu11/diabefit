@@ -77,7 +77,7 @@ export const readDayMeal = (dayID: string) => {
     const allMeals = JSON.parse(mealsFromStore) as AllMeal;
     return allMeals[dayID];
   }
-  return [];
+  return undefined;
 };
 
 export const readSpecificDayMeal = (dayID: string, dayIndex: number) => {

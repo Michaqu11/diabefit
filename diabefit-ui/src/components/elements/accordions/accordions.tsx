@@ -36,9 +36,44 @@ interface IValues {
 }
 
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
-  const [days, setDays] = React.useState<IDay[]>(
-    readDayMeal(dayId.toString()) ?? mockAllDays,
-  );
+  const [days, setDays] = React.useState<IDay[]>([]);
+
+  React.useEffect(() => {
+    setDays(
+      readDayMeal(dayId.toString()) ?? [
+        {
+          id: 1,
+          name: EDays.BREAKFAST,
+          meals: [],
+        },
+        {
+          id: 2,
+          name: EDays.SNACK_1,
+          meals: [],
+        },
+        {
+          id: 3,
+          name: EDays.LUNCH,
+          meals: [],
+        },
+        {
+          id: 4,
+          name: EDays.SNACK_2,
+          meals: [],
+        },
+        {
+          id: 5,
+          name: EDays.DINNER,
+          meals: [],
+        },
+        {
+          id: 6,
+          name: EDays.SNACK_3,
+          meals: [],
+        },
+      ],
+    );
+  }, [dayId]);
 
   const changedData = (id: number) => {
     const meals = readDayMeal(dayId.toString());
