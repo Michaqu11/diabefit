@@ -11,7 +11,10 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
-import { EDays, IDay, IDayElement, IDays } from "../../../types/days";
+import { EDays, IDay } from "../../../types/days";
+import { readDayMeal } from "../../../store/mealsStorage";
+import { IMealElement } from "../../../types/meal";
+import { mockAllDays } from "../../../store/storagesTypes";
 
 type Props = {
   dayId: number;
@@ -20,6 +23,9 @@ type Props = {
 export interface IElement {
   header: string;
   secondary: string;
+  id: string;
+  dayID: string;
+  dayIndex: number;
 }
 
 interface IValues {
@@ -29,87 +35,47 @@ interface IValues {
   carbs: number;
 }
 
-
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
-  const lunch: IDay = {
-    elements: [
-      {
-        mealName: "Kebab",
-        grams: 200,
-        kcal: 510,
-        prot: 28.4,
-        fats: 32.4,
-        carbs: 28.0,
-             },
-      {
-        mealName: "Frytki",
-        grams: 500,
-        kcal: 220,
-        prot: 0,
-        fats: 0,
-        carbs: 55.0,
-      },
-    ],
+  const [days, setDays] = React.useState<IDay[]>(
+    readDayMeal(dayId.toString()) ?? mockAllDays,
+  );
+
+  const changedData = (id: number) => {
+    const meals = readDayMeal(dayId.toString());
+    if (meals) {
+      setDays(meals);
+      if (!meals[id].meals.length)
+        setExpanded(
+          expanded.map((exp) =>
+            exp.id === id ? { ...exp, status: !exp.status } : { ...exp },
+          ),
+        );
+    }
   };
 
-  const days: IDays[] = [
-    {
-      id: 1,
-      name: EDays.BREAKFAST,
-      empty: true,
-      extension: [] as IDay,
-    },
-    {
-      id: 2,
-      name: EDays.SNACK_1,
-      empty: true,
-      extension: [] as IDay,
-    },
-    {
-      id: 3,
-      name: EDays.LUNCH,
-      empty: false,
-      extension: lunch,
-    },
-    {
-      id: 4,
-      name: EDays.SNACK_2,
-      empty: true,
-      extension: [] as IDay,
-    },
-    {
-      id: 5,
-      name: EDays.DINNER,
-      empty: false,
-      extension: lunch,
-    },
-    {
-      id: 6,
-      name: EDays.SNACK_3,
-      empty: true,
-      extension: [] as IDay,
-    },
-  ];
+  function format2Decimals(num: number) {
+    return Math.round(num * 100) / 100;
+  }
 
-  const summaryNutritionalValues = (elements: IDayElement[] | undefined) => {
+  const summaryNutritionalValues = (elements: IMealElement[] | undefined) => {
     let kcal = 0,
       prot = 0,
       fats = 0,
       carbs = 0;
 
     elements &&
-      elements.forEach((element: IDayElement) => {
-        kcal += element.kcal;
-        prot += element.prot;
-        fats += element.fats;
-        carbs += element.carbs;
+      elements.forEach((element: IMealElement) => {
+        kcal += Number(element.kcal);
+        prot += Number(element.prot);
+        fats += Number(element.fats);
+        carbs += Number(element.carbs);
       });
 
     return {
-      kcal: kcal,
-      prot: prot,
-      fats: fats,
-      carbs: carbs,
+      kcal: format2Decimals(kcal),
+      prot: format2Decimals(prot),
+      fats: format2Decimals(fats),
+      carbs: format2Decimals(carbs),
     };
   };
 
@@ -126,9 +92,9 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     };
   }, []);
 
-  const details = (extension: IDay | undefined) => {
-    if (!extension) return <div></div>;
-    const value: IValues = summaryNutritionalValues(extension.elements);
+  const details = (meals: IMealElement[] | undefined) => {
+    if (!meals) return <div></div>;
+    const value: IValues = summaryNutritionalValues(meals);
     return (
       <p className="summary">
         {width >= 450
@@ -142,16 +108,20 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     );
   };
 
-
   const elements = (
-    elements: IDayElement[] | undefined,
+    elements: IMealElement[] | undefined,
+    dayID: string,
+    dayIndex: number,
   ): IElement[] | undefined => {
     if (!elements) return undefined;
 
-    return elements.map((el: IDayElement) => {
+    return elements.map((el: IMealElement) => {
       return {
         header: `${el.mealName} | ${el.kcal} kcal`,
         secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g`,
+        id: el.id,
+        dayIndex: dayIndex,
+        dayID: dayID,
       };
     });
   };
@@ -159,7 +129,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   const [expanded, setExpanded] = React.useState<
     { id: number; status: boolean }[]
   >(
-    Array.from({ length: days.length }, (_, i) => ({
+    Array.from({ length: 15 }, (_, i) => ({
       id: i,
       status: false,
     })),
@@ -180,7 +150,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     );
   };
 
-  const routeHandler = (dayId: number, element: IDays) => {
+  const routeHandler = (dayId: number, element: IDay) => {
     return `add/${dayId}/${
       Object.values(EDays).indexOf(element.name as unknown as EDays) + 1
     }`;
@@ -188,57 +158,56 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
 
   return (
     <div>
-      {days.map((element: IDays) => (
+      {days.map((day: IDay) => (
         <Accordion
-          expanded={checkStatus(element.id - 1)}
-          key={element.id}
+          expanded={checkStatus(day.id - 1)}
+          key={day.id}
           sx={{ marginBottom: "5px", borderRadius: "10px" }}
         >
           <AccordionSummary
-            sx={{ flexDirection: !element.empty ? "row" : "" }}
+            sx={{ flexDirection: day.meals.length ? "row" : "" }}
             expandIcon={
-              element.empty ? (
+              !day.meals.length ? (
                 <IconButton
                   component={Link}
-                  to={routeHandler(dayId, element)}
+                  to={routeHandler(dayId, day)}
                   state={{
-                    meal: element.name,
+                    meal: day.name,
                     days: days.map((e) => e.name),
                   }}
                   aria-label="AddIcon"
                   size="small"
                 >
-                  <AddIcon />{" "}
+                  <AddIcon />
                 </IconButton>
               ) : (
                 ""
               )
               // <IconButton aria-label="handleChange" size="small" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }> <ExpandMoreIcon /> </IconButton>
             }
-            aria-controls={element.name + "-content"}
-            id={element.name}
+            aria-controls={day.name + "-content"}
+            id={day.name}
           >
-            <Typography>{element.name} </Typography>
-            {!element.empty ? (
+            <Typography>{day.name}</Typography>
+            {day.meals.length ? (
               <Grid container justifyContent="space-between">
                 <Grid sx={{ display: "flex", justifyContent: "center" }}>
                   <Typography
                     component={"span"}
                     sx={{ color: "text.secondary" }}
                   >
-                    {details(element.extension)}
+                    {details(day.meals)}
                   </Typography>
                   <IconButton
                     className={"MyIconButton"}
                     sx={{
-                      rotate: checkStatus(element.id - 1) ? "180deg" : "",
+                      rotate: checkStatus(day.id - 1) ? "180deg" : "",
                       marginLeft: "2px",
                     }}
                     aria-label="handleChange"
                     size="small"
-                    onClick={() => handleChangeExpanded(element.id - 1)}
+                    onClick={() => handleChangeExpanded(day.id - 1)}
                   >
-                    {" "}
                     <ExpandMoreIcon />
                   </IconButton>
                 </Grid>
@@ -259,9 +228,9 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                   </IconButton>
                   <IconButton
                     component={Link}
-                    to={routeHandler(dayId, element)}
+                    to={routeHandler(dayId, day)}
                     state={{
-                      meal: element.name,
+                      meal: day.name,
                       days: days.map((e) => e.name),
                     }}
                     className={"MyIconButton"}
@@ -276,11 +245,21 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
               ""
             )}
           </AccordionSummary>
-          <AccordionDetails>
-            <AccordionDetail
-              elementsProps={elements(element.extension?.elements)}
-            />
-          </AccordionDetails>
+          {day.meals.length ? (
+            <AccordionDetails>
+              <AccordionDetail
+                elementsProps={elements(
+                  day.meals,
+                  dayId.toString(),
+                  Object.values(EDays).indexOf(day.name as unknown as EDays) +
+                    1,
+                )}
+                changedData={changedData}
+              />
+            </AccordionDetails>
+          ) : (
+            ""
+          )}
         </Accordion>
       ))}
     </div>
