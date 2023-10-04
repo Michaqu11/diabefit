@@ -36,3 +36,9 @@
 .MyIconButton:hover {
   background-color: inherit !important;
 }
+
+.accordianDetailItem {
+  .MuiTypography-root  {
+    white-space: nowrap !important;
+  }
+}

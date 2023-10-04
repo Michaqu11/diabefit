@@ -195,6 +195,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     <div>
       {days.map((day: IDay) => (
         <Accordion
+        className='accordianDetailItem'
           expanded={checkStatus(day.id - 1)}
           key={day.id}
           sx={{ marginBottom: "5px", borderRadius: "10px" }}
