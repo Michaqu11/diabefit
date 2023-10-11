@@ -11,29 +11,20 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
-import { EDays, IDay } from "../../../types/days";
+import {
+  EDays,
+  ICalculatePanel,
+  IDay,
+  IElement,
+  IValues,
+} from "../../../types/days";
 import { readDayMeal } from "../../../store/mealsStorage";
 import { IMealElement } from "../../../types/meal";
-import { mockAllDays } from "../../../store/storagesTypes";
+import CalculatePanel from "../glucose-calculate/creating-panel";
 
 type Props = {
   dayId: number;
 };
-
-export interface IElement {
-  header: string;
-  secondary: string;
-  id: string;
-  dayID: string;
-  dayIndex: number;
-}
-
-interface IValues {
-  kcal: number;
-  prot: number;
-  fats: number;
-  carbs: number;
-}
 
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   const [days, setDays] = React.useState<IDay[]>([]);
@@ -45,31 +36,37 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
           id: 1,
           name: EDays.BREAKFAST,
           meals: [],
+          units: undefined,
         },
         {
           id: 2,
           name: EDays.SNACK_1,
           meals: [],
+          units: undefined,
         },
         {
           id: 3,
           name: EDays.LUNCH,
           meals: [],
+          units: undefined,
         },
         {
           id: 4,
           name: EDays.SNACK_2,
           meals: [],
+          units: undefined,
         },
         {
           id: 5,
           name: EDays.DINNER,
           meals: [],
+          units: undefined,
         },
         {
           id: 6,
           name: EDays.SNACK_3,
           meals: [],
+          units: undefined,
         },
       ],
     );
@@ -119,6 +116,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   function handleWindowSizeChange() {
     setWidth(window.innerWidth);
   }
+
   React.useEffect(() => {
     window.addEventListener("resize", handleWindowSizeChange);
 
@@ -191,11 +189,16 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     }`;
   };
 
+  const [openCalculate, setOpenCalculate] = React.useState<ICalculatePanel>({
+    open: false,
+    day: undefined,
+  });
+
   return (
     <div>
       {days.map((day: IDay) => (
         <Accordion
-        className='accordianDetailItem'
+          className="accordianDetailItem"
           expanded={checkStatus(day.id - 1)}
           key={day.id}
           sx={{ marginBottom: "5px", borderRadius: "10px" }}
@@ -219,7 +222,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
               ) : (
                 ""
               )
-              // <IconButton aria-label="handleChange" size="small" onClick={()=> setExpanded(!expanded ? `panel${element.id}` : false) }> <ExpandMoreIcon /> </IconButton>
             }
             aria-controls={day.name + "-content"}
             id={day.name}
@@ -259,6 +261,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     className={"MyIconButton"}
                     aria-label="FunctionsOutlinedIcon"
                     size="small"
+                    onClick={() => setOpenCalculate({ open: true, day })}
                   >
                     <FunctionsOutlinedIcon />
                   </IconButton>
@@ -298,6 +301,10 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
           )}
         </Accordion>
       ))}
+      <CalculatePanel
+        openCalculate={openCalculate}
+        setOpenCalculate={setOpenCalculate}
+      />
     </div>
   );
 };

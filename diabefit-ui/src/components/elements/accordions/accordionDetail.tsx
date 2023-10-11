@@ -4,10 +4,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
 import "./accordionDetail.scss";
-import { IElement } from "./accordions";
 import { Divider, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { removeMeal } from "../../../store/mealsStorage";
+import { IElement } from "../../../types/days";
 type Props = {
   elementsProps: IElement[] | undefined;
   changedData: (t: number) => void;

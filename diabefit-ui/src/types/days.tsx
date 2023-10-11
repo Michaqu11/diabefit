@@ -25,5 +25,23 @@ interface IDay {
   meals: IMealElement[];
 }
 
-export type { IDayElement, IDay };
+interface IElement {
+  header: string;
+  secondary: string;
+  id: string;
+  dayID: string;
+  dayIndex: number;
+}
+interface IValues {
+  kcal: number;
+  prot: number;
+  fats: number;
+  carbs: number;
+}
+interface ICalculatePanel {
+  open: boolean;
+  day: IDay | undefined;
+}
+
+export type { IDayElement, IDay, IElement, IValues, ICalculatePanel };
 export { EDays };
