@@ -1,11 +1,14 @@
 import * as React from "react";
 import dayjs from "dayjs";
 import {
+  Alert,
+  AlertTitle,
   Box,
   Button,
   Card,
   CardActions,
   CardContent,
+  Collapse,
   Dialog,
   DialogActions,
   DialogContent,
@@ -16,7 +19,6 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
-  TextField,
 } from "@mui/material";
 import {
   LocalizationProvider,
@@ -25,6 +27,7 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ICalculatePanel } from "../../../types/days";
 import CalculateIcon from "@mui/icons-material/Calculate";
+import { calculateGlucose } from "../../../shared/calculator/glucose-calculator";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -43,6 +46,34 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
 
   const [bloodSugar, setBloodSugar] = React.useState(0);
   const [carbs, setCarbs] = React.useState(0);
+
+  const [foodInsulin, setFoodInsulin] = React.useState<number>(0);
+  const [correctionInsulin, setCorrectionnsulin] = React.useState<number>(0);
+
+  const [alertOpen, setAlertOpen] = React.useState(false);
+
+  const tempFoodInsulin = React.useRef<number>(0);
+  const tempCorrectionInsulin = React.useRef<number>(0);
+
+  const calculateGlucoseEmit = () => {
+    const [food, correction] = calculateGlucose(bloodSugar, carbs);
+    tempFoodInsulin.current = food;
+    tempCorrectionInsulin.current = correction;
+    setAlertOpen(true);
+  };
+
+  const acceptGlucose = () => {
+    setFoodInsulin(tempFoodInsulin.current);
+    setCorrectionnsulin(tempCorrectionInsulin.current);
+    setAlertOpen(false);
+  };
+
+  const getResult = () => {
+    return (
+      (tempFoodInsulin.current ?? 0) + (tempCorrectionInsulin.current ?? 0)
+    );
+  };
+
   return (
     <Dialog open={props.openCalculate.open} onClose={handleCalculateClickClose}>
       <DialogTitle style={{ textAlign: "center", marginBottom: "10px" }}>
@@ -91,7 +122,29 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             />
           </FormControl>
           <Divider />
-
+          <Collapse in={alertOpen}>
+            <Alert
+              severity="success"
+              color="info"
+              action={
+                <div style={{ display: "flex", flexDirection: "column" }}>
+                  <Button color="inherit" size="small" onClick={acceptGlucose}>
+                    Accept
+                  </Button>
+                  <Button
+                    color="inherit"
+                    size="small"
+                    onClick={() => setAlertOpen(false)}
+                  >
+                    Dismiss
+                  </Button>
+                </div>
+              }
+            >
+              <strong>Bolus advice</strong>
+              <AlertTitle>{getResult()} units</AlertTitle>
+            </Alert>
+          </Collapse>
           <Card variant="outlined">
             <CardContent
               style={{
@@ -111,12 +164,39 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
                 padding: "0px",
               }}
             >
-              <Button variant="text">Calculate</Button>
+              <Button variant="text" onClick={calculateGlucoseEmit}>
+                Calculate
+              </Button>
             </CardActions>
           </Card>
 
-          <TextField label="Insulin (foods)" variant="outlined" />
-          <TextField label="Insulin (correction)" variant="outlined" />
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="component-simple">Insulin (foods)</InputLabel>
+            <OutlinedInput
+              value={foodInsulin}
+              onChange={(food) =>
+                setCorrectionnsulin(Number(food.target.value))
+              }
+              label="Insulin (foods)"
+              aria-describedby="outlined-sugar-text"
+            />
+            <FormHelperText id="outlined-sugar-text"></FormHelperText>
+          </FormControl>
+
+          <FormControl variant="outlined">
+            <InputLabel htmlFor="component-simple">
+              Insulin (correction)
+            </InputLabel>
+            <OutlinedInput
+              value={correctionInsulin}
+              onChange={(correction) =>
+                setCorrectionnsulin(Number(correction.target.value))
+              }
+              label="Insulin (correction)"
+              aria-describedby="outlined-sugar-text"
+            />
+            <FormHelperText id="outlined-sugar-text"></FormHelperText>
+          </FormControl>
         </Box>
       </DialogContent>
       <DialogActions>
