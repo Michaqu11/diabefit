@@ -86,7 +86,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             display: "flex",
             justifyContent: "center",
             flexDirection: "column",
-            gap: "7px",
+            gap: "10px",
           }}
         >
           <div></div>
