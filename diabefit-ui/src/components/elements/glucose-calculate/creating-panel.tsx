@@ -19,6 +19,7 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
+  Snackbar,
 } from "@mui/material";
 import {
   LocalizationProvider,
@@ -27,8 +28,12 @@ import {
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ICalculatePanel } from "../../../types/days";
 import CalculateIcon from "@mui/icons-material/Calculate";
-import { calculateGlucose } from "../../../shared/calculator/glucose-calculator";
-
+import {
+  calculateGlucose,
+  roundUnits,
+} from "../../../shared/calculator/glucose-calculator";
+import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydrate-exchange-calculator";
+import { useSnackbar } from "notistack";
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
   setOpenCalculate: (value: React.SetStateAction<ICalculatePanel>) => void;
@@ -44,22 +49,42 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     handleCalculateClickClose();
   };
 
-  const [bloodSugar, setBloodSugar] = React.useState(0);
-  const [carbs, setCarbs] = React.useState(0);
+  const [bloodSugar, setBloodSugar] = React.useState<number | string>("");
+  const [carbs, setCarbs] = React.useState<number | string>("");
 
-  const [foodInsulin, setFoodInsulin] = React.useState<number>(0);
-  const [correctionInsulin, setCorrectionnsulin] = React.useState<number>(0);
+  const [foodInsulin, setFoodInsulin] = React.useState<number | string>("");
+  const [correctionInsulin, setCorrectionnsulin] = React.useState<
+    number | string
+  >("");
 
   const [alertOpen, setAlertOpen] = React.useState(false);
 
   const tempFoodInsulin = React.useRef<number>(0);
   const tempCorrectionInsulin = React.useRef<number>(0);
 
+  React.useEffect(() => {
+    setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
+    setBloodSugar("");
+    setFoodInsulin("");
+    setCorrectionnsulin("");
+  }, [props.openCalculate]);
+
+  const { enqueueSnackbar } = useSnackbar();
+
   const calculateGlucoseEmit = () => {
-    const [food, correction] = calculateGlucose(bloodSugar, carbs);
-    tempFoodInsulin.current = food;
-    tempCorrectionInsulin.current = correction;
-    setAlertOpen(true);
+    if (bloodSugar && carbs) {
+      const [food, correction] = calculateGlucose(
+        bloodSugar as number,
+        carbs as number,
+      );
+      tempFoodInsulin.current = food;
+      tempCorrectionInsulin.current = correction;
+      setAlertOpen(true);
+    } else
+      enqueueSnackbar("Sugar and carbs are required!", {
+        preventDuplicate: true,
+        variant: "warning",
+      });
   };
 
   const acceptGlucose = () => {
@@ -69,8 +94,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   };
 
   const getResult = () => {
-    return (
-      (tempFoodInsulin.current ?? 0) + (tempCorrectionInsulin.current ?? 0)
+    return roundUnits(
+      (tempFoodInsulin.current ?? 0) + (tempCorrectionInsulin.current ?? 0),
     );
   };
 
@@ -121,7 +146,6 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               aria-describedby="outlined-sugar-text"
             />
           </FormControl>
-          <Divider />
           <Collapse in={alertOpen}>
             <Alert
               severity="success"
@@ -145,7 +169,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               <AlertTitle>{getResult()} units</AlertTitle>
             </Alert>
           </Collapse>
-          <Card variant="outlined">
+          <Divider />
+          <Card variant="outlined" style={{ marginBottom: "10px" }}>
             <CardContent
               style={{
                 display: "flex",
