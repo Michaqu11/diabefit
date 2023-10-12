@@ -14,6 +14,7 @@ import axios from "axios";
 import { Box, Button } from "@mui/material";
 import { getProfile, saveProfile } from "./store/sessionStorage";
 import EmptyLayout from "./components/layout/EmptyLayout";
+import { SnackbarProvider } from "notistack";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>();
@@ -50,37 +51,39 @@ const App: React.FC = () => {
   }, [user]);
 
   return (
-    <div className="root">
-      {profile ? (
-        <>
-          <MasterLayout />
-          <div className="router">
-            <Routes>
-              <Route index element={<Home />} />
-              <Route path="/entry" element={<NewEntry />} />
-              <Route path="/bolus" element={<NewBolus />} />
-              <Route path="/product" element={<NewProduct />} />
-              <Route path="/setting" element={<Setting />} />
-              <Route path="/add/:id/:meal" element={<AddProduct />} />
-            </Routes>
-          </div>
-        </>
-      ) : (
-        <>
-          <EmptyLayout login={loginStatus} />
-          <Box
-            display="flex"
-            justifyContent="center"
-            alignItems="center"
-            minHeight="90vh"
-          >
-            <Button variant="outlined" size="large" onClick={() => login()}>
-              Sign in with Google 🚀
-            </Button>
-          </Box>
-        </>
-      )}
-    </div>
+    <SnackbarProvider maxSnack={2} autoHideDuration={2000}>
+      <div className="root">
+        {profile ? (
+          <>
+            <MasterLayout />
+            <div className="router">
+              <Routes>
+                <Route index element={<Home />} />
+                <Route path="/entry" element={<NewEntry />} />
+                <Route path="/bolus" element={<NewBolus />} />
+                <Route path="/product" element={<NewProduct />} />
+                <Route path="/setting" element={<Setting />} />
+                <Route path="/add/:id/:meal" element={<AddProduct />} />
+              </Routes>
+            </div>
+          </>
+        ) : (
+          <>
+            <EmptyLayout login={loginStatus} />
+            <Box
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              minHeight="90vh"
+            >
+              <Button variant="outlined" size="large" onClick={() => login()}>
+                Sign in with Google 🚀
+              </Button>
+            </Box>
+          </>
+        )}
+      </div>
+    </SnackbarProvider>
   );
 };
 
