@@ -17,7 +17,7 @@ import {
   readSpecificDayMeal,
   removeMeal,
 } from "../../../store/mealsStorage";
-import { AllDay } from "../../../store/storagesTypes";
+import { IDay } from "../../../types/days";
 
 type Props = {
   searchKey: string;
@@ -37,7 +37,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   };
 
   const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as
-    | AllDay
+    | IDay
     | undefined;
 
   const [checked, setChecked] = useState<string[]>(

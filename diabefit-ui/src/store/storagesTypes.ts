@@ -1,20 +1,7 @@
-import { EDays } from "../types/days";
-import { IMealElement } from "../types/meal";
-
-export interface UnitsType {
-  short: number;
-  long: number;
-}
-
-export interface AllDay {
-  id: number;
-  name: string;
-  units: UnitsType | undefined;
-  meals: IMealElement[];
-}
+import { EDays, IDay } from "../types/days";
 
 export interface AllMeal {
-  [key: string]: AllDay[];
+  [key: string]: IDay[];
 }
 
 export const mockAllDays = [
@@ -22,36 +9,36 @@ export const mockAllDays = [
     id: 1,
     name: EDays.BREAKFAST,
     meals: [],
-    units: undefined,
+    units: null,
   },
   {
     id: 2,
     name: EDays.SNACK_1,
     meals: [],
-    units: undefined,
+    units: null,
   },
   {
     id: 3,
     name: EDays.LUNCH,
     meals: [],
-    units: undefined,
+    units: null,
   },
   {
     id: 4,
     name: EDays.SNACK_2,
     meals: [],
-    units: undefined,
+    units: null,
   },
   {
     id: 5,
     name: EDays.DINNER,
     meals: [],
-    units: undefined,
+    units: null,
   },
   {
     id: 6,
     name: EDays.SNACK_3,
     meals: [],
-    units: undefined,
+    units: null,
   },
 ];

@@ -18,11 +18,16 @@ interface IDayElement {
   fats: number;
   carbs: number;
 }
+interface UnitsType {
+  short: number;
+  long?: number;
+}
 
 interface IDay {
   id: number;
   name: string;
   meals: IMealElement[];
+  units: UnitsType | null;
 }
 
 interface IElement {
@@ -40,8 +45,16 @@ interface IValues {
 }
 interface ICalculatePanel {
   open: boolean;
+  dayId: number | undefined;
   day: IDay | undefined;
 }
 
-export type { IDayElement, IDay, IElement, IValues, ICalculatePanel };
+export type {
+  IDayElement,
+  IDay,
+  IElement,
+  IValues,
+  ICalculatePanel,
+  UnitsType,
+};
 export { EDays };

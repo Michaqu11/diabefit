@@ -88,3 +88,16 @@ export const readSpecificDayMeal = (dayID: string, dayIndex: number) => {
   }
   return undefined;
 };
+
+export const addUnits = (dayID: string, dayIndex: number, unit: number) => {
+  const mealsFromStore = localStorage.getItem("meals");
+  let allMeals = {} as AllMeal;
+  if (mealsFromStore) {
+    allMeals = JSON.parse(mealsFromStore) as AllMeal;
+    const newUnits = {
+      short: unit,
+    };
+    allMeals[dayID][dayIndex - 1].units = newUnits;
+    localStorage.setItem("meals", JSON.stringify(allMeals));
+  }
+};

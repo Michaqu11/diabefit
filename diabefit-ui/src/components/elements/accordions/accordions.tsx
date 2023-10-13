@@ -17,8 +17,9 @@ import {
   IDay,
   IElement,
   IValues,
+  UnitsType,
 } from "../../../types/days";
-import { readDayMeal } from "../../../store/mealsStorage";
+import { addUnits, readDayMeal } from "../../../store/mealsStorage";
 import { IMealElement } from "../../../types/meal";
 import CalculatePanel from "../glucose-calculate/creating-panel";
 
@@ -36,37 +37,37 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
           id: 1,
           name: EDays.BREAKFAST,
           meals: [],
-          units: undefined,
+          units: null,
         },
         {
           id: 2,
           name: EDays.SNACK_1,
           meals: [],
-          units: undefined,
+          units: null,
         },
         {
           id: 3,
           name: EDays.LUNCH,
           meals: [],
-          units: undefined,
+          units: null,
         },
         {
           id: 4,
           name: EDays.SNACK_2,
           meals: [],
-          units: undefined,
+          units: null,
         },
         {
           id: 5,
           name: EDays.DINNER,
           meals: [],
-          units: undefined,
+          units: null,
         },
         {
           id: 6,
           name: EDays.SNACK_3,
           meals: [],
-          units: undefined,
+          units: null,
         },
       ],
     );
@@ -125,17 +126,26 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     };
   }, []);
 
-  const details = (meals: IMealElement[] | undefined) => {
+  const details = (
+    meals: IMealElement[] | undefined,
+    units: UnitsType | null,
+  ) => {
     if (!meals) return <div></div>;
     const value: IValues = summaryNutritionalValues(meals);
     return (
       <p className="summary">
         {width >= 450
-          ? `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
+          ? units
+            ? ` Units ${units.short}u ${value.kcal} kcal | C ${value.carbs}g`
+            : `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
           : width >= 310
-          ? `${value.kcal} kcal | C ${value.carbs}g`
+          ? units
+            ? ` ${units.short}u | ${value.kcal} kcal`
+            : `${value.kcal} kcal | C ${value.carbs}g`
           : width >= 250
-          ? `${value.kcal} kcal`
+          ? units
+            ? `${units.short}u`
+            : `${value.kcal} kcal`
           : ""}
       </p>
     );
@@ -191,8 +201,22 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
 
   const [openCalculate, setOpenCalculate] = React.useState<ICalculatePanel>({
     open: false,
+    dayId: undefined,
     day: undefined,
   });
+
+  const saveGlucose = (calculatePanel: ICalculatePanel) => {
+    if (
+      calculatePanel.day?.id !== undefined &&
+      calculatePanel.dayId !== undefined &&
+      calculatePanel.day?.units
+    )
+      addUnits(
+        calculatePanel.dayId.toString(),
+        calculatePanel.day?.id,
+        calculatePanel.day?.units?.short,
+      );
+  };
 
   return (
     <div>
@@ -234,7 +258,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     component={"span"}
                     sx={{ color: "text.secondary" }}
                   >
-                    {details(day.meals)}
+                    {details(day.meals, day.units)}
                   </Typography>
                   <IconButton
                     className={"MyIconButton"}
@@ -261,7 +285,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     className={"MyIconButton"}
                     aria-label="FunctionsOutlinedIcon"
                     size="small"
-                    onClick={() => setOpenCalculate({ open: true, day })}
+                    onClick={() => setOpenCalculate({ open: true, dayId, day })}
                   >
                     <FunctionsOutlinedIcon />
                   </IconButton>
@@ -304,6 +328,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
       <CalculatePanel
         openCalculate={openCalculate}
         setOpenCalculate={setOpenCalculate}
+        saveGlucose={saveGlucose}
       />
     </div>
   );
