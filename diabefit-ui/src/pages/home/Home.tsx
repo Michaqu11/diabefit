@@ -2,10 +2,10 @@ import "./Home.scss";
 import Paper from "@mui/material/Paper";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import DateList from "../../components/common/dateList/DateList";
-import CustomizedAccordions from "../../components/elements/accordions/accordions";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { encodeShortDate } from "../../components/common/share/MomentFunctions";
+import CustomizedAccordions from "../../components/elements/accordions/accordions";
 
 const Home: React.FC = () => {
   const Mobile = useMediaQuery("(min-width:700px)");

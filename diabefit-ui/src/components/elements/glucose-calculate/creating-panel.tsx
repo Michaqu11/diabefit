@@ -19,7 +19,6 @@ import {
   InputAdornment,
   InputLabel,
   OutlinedInput,
-  Snackbar,
 } from "@mui/material";
 import {
   LocalizationProvider,
@@ -37,16 +36,12 @@ import { useSnackbar } from "notistack";
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
   setOpenCalculate: (value: React.SetStateAction<ICalculatePanel>) => void;
+  saveGlucose: (calculatePanel: ICalculatePanel) => void;
 }
 
 const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const handleCalculateClickClose = () => {
-    props.setOpenCalculate({ open: false, day: undefined });
-  };
-
-  const saveCalculation = () => {
-    console.log("Save..");
-    handleCalculateClickClose();
+    props.setOpenCalculate({ open: false, dayId: undefined, day: undefined });
   };
 
   const [bloodSugar, setBloodSugar] = React.useState<number | string>("");
@@ -97,6 +92,12 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     return roundUnits(
       (tempFoodInsulin.current ?? 0) + (tempCorrectionInsulin.current ?? 0),
     );
+  };
+  const saveCalculation = () => {
+    const openCalculate = { ...props.openCalculate };
+    if (openCalculate.day) openCalculate.day.units = { short: getResult() };
+    props.saveGlucose(openCalculate);
+    handleCalculateClickClose();
   };
 
   return (
