@@ -10,5 +10,7 @@ urlpatterns = [
     path("settings/units", views.units, name="settings"),
     path("settings/allUnits", views.all_units, name="settings"),
     path("settings/insulin", views.insulin, name="settings"),
+    path("settings/range", views.range, name="settings"),
     path("settings", views.insulin, name="settings"),
+    path("libreAPI", views.libre, name="libre"),
 ]

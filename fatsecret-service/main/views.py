@@ -5,7 +5,8 @@ from django.views.decorators.csrf import csrf_exempt
 from rauth.service import OAuth1Service
 
 from storage.database import is_user_exist, get_user_insulin_correction, get_user_units, get_user_insulin, set_user, \
-    get_user_all_units, set_user_settings
+    get_user_all_units, set_user_settings, set_user_libre_api, get_user_target_range, get_user_diabetes_type, \
+    get_user_libre_api
 
 consumer_key = "a10b021da4fa4e4abaf91c1f047ea9c6"
 consumer_secret = "712c2646d33a48caa69ddb4a5574febf"
@@ -59,14 +60,15 @@ def search(request):
 
 @csrf_exempt
 def login(request):
-    # id = request.POST['id']
-    user = is_user_exist('123321')
-    print('user', user)
-    if not user:
-        print('halo?')
-        result = set_user('123321')
-        return JsonResponse({"result": True if result else False}, safe=False)
-    return JsonResponse({"result": True}, safe=False)
+    if request.method == 'POST':
+        body_unicode = request.body.decode('utf-8')
+        body = json.loads(body_unicode)
+        user = is_user_exist(body['id'])
+        if not user:
+            result = set_user(body['id'])
+            return JsonResponse({"result": True if result else False}, safe=False)
+        return JsonResponse({"result": True}, safe=False)
+    return JsonResponse({"result": False}, safe=False)
 
 
 @csrf_exempt
@@ -77,6 +79,7 @@ def units(request):
 
     return JsonResponse(result, safe=False)
 
+
 @csrf_exempt
 def all_units(request):
     result = {
@@ -84,6 +87,7 @@ def all_units(request):
     }
 
     return JsonResponse(result, safe=False)
+
 
 @csrf_exempt
 def insulin_correction(request):
@@ -93,27 +97,40 @@ def insulin_correction(request):
 
     return JsonResponse(result, safe=False)
 
+
 @csrf_exempt
 def insulin(request):
     result = get_user_insulin(request.GET.get('id'))
 
     return JsonResponse(result, safe=False)
 
+
+@csrf_exempt
+def range(request):
+    result = get_user_target_range(request.GET.get('id'))
+
+    return JsonResponse(result, safe=False)
+
+
 @csrf_exempt
 def all_settings(body):
     id = body['id']
     result = {
+        "diabetesType": get_user_diabetes_type(id),
         "units": get_user_all_units(id),
         "insulinCorrection": get_user_insulin_correction(id),
-        "insulin": get_user_insulin(id)
+        "insulin": get_user_insulin(id),
+        "targetRange": get_user_target_range(id)
     }
 
     return JsonResponse(result, safe=False)
+
 
 @csrf_exempt
 def set_settings(body):
     result = set_user_settings(body)
     return JsonResponse({"result": result}, safe=False)
+
 
 @csrf_exempt
 def settings(request):
@@ -124,3 +141,24 @@ def settings(request):
     else:
         return all_settings(body)
 
+
+@csrf_exempt
+def set_libre(body):
+    result = set_user_libre_api(body)
+    return JsonResponse({"result": result}, safe=False)
+
+
+@csrf_exempt
+def get_libre(body):
+    api = get_user_libre_api(body['id'])
+    return JsonResponse(api, safe=False)
+
+
+@csrf_exempt
+def libre(request):
+    body_unicode = request.body.decode('utf-8')
+    body = json.loads(body_unicode)
+    if request.method == 'POST':
+        return set_libre(body)
+    else:
+        return get_libre(body)
