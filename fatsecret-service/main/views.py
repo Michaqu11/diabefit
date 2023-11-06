@@ -66,8 +66,13 @@ def login(request):
         user = is_user_exist(body['id'])
         if not user:
             result = set_user(body['id'])
-            return JsonResponse({"result": True if result else False}, safe=False)
-        return JsonResponse({"result": True}, safe=False)
+        else:
+            result = {
+                "settings": all_settings(body['id']),
+                "libreAPI": get_libre(body['id'])
+            }
+
+        return JsonResponse(result, safe=False)
     return JsonResponse({"result": False}, safe=False)
 
 
@@ -113,8 +118,7 @@ def range(request):
 
 
 @csrf_exempt
-def all_settings(body):
-    id = body['id']
+def all_settings(id):
     result = {
         "diabetesType": get_user_diabetes_type(id),
         "units": get_user_all_units(id),
@@ -123,7 +127,7 @@ def all_settings(body):
         "targetRange": get_user_target_range(id)
     }
 
-    return JsonResponse(result, safe=False)
+    return result
 
 
 @csrf_exempt
@@ -139,7 +143,7 @@ def settings(request):
     if request.method == 'POST':
         return set_settings(body)
     else:
-        return all_settings(body)
+        return JsonResponse(all_settings(body['id']), safe=False)
 
 
 @csrf_exempt
@@ -149,9 +153,9 @@ def set_libre(body):
 
 
 @csrf_exempt
-def get_libre(body):
-    api = get_user_libre_api(body['id'])
-    return JsonResponse(api, safe=False)
+def get_libre(id):
+    api = get_user_libre_api(id)
+    return api
 
 
 @csrf_exempt
@@ -161,4 +165,4 @@ def libre(request):
     if request.method == 'POST':
         return set_libre(body)
     else:
-        return get_libre(body)
+        return JsonResponse({"libreAPI": get_libre(body['id'])}, safe=False)

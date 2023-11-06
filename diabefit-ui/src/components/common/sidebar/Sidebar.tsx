@@ -14,6 +14,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import SettingsIcon from "@mui/icons-material/Settings";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
 import { clearProfile, getProfile } from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";
@@ -54,6 +55,12 @@ const sidebarNavItems: ISidebarNav[] = [
     icon: <AddShoppingCartIcon />,
     to: "/product",
     section: "product",
+  },
+  {
+    display: "Your Data",
+    icon: <ManageAccountsIcon />,
+    to: "/data",
+    section: "data",
   },
   {
     display: "Setting",

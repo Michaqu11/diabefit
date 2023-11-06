@@ -15,6 +15,8 @@ import { Box, Button } from "@mui/material";
 import { getProfile, saveProfile } from "./store/sessionStorage";
 import EmptyLayout from "./components/layout/EmptyLayout";
 import { SnackbarProvider } from "notistack";
+import { account } from "./api/login";
+import YourData from "./pages/YourData";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>();
@@ -45,6 +47,7 @@ const App: React.FC = () => {
         .then((res: { data: any }) => {
           saveProfile(res.data);
           setProfile(res.data);
+          account(res.data);
         })
         .catch((err: any) => console.log(err));
     }
@@ -62,6 +65,7 @@ const App: React.FC = () => {
                 <Route path="/entry" element={<NewEntry />} />
                 <Route path="/bolus" element={<NewBolus />} />
                 <Route path="/product" element={<NewProduct />} />
+                <Route path="/data" element={<YourData />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/add/:id/:meal" element={<AddProduct />} />
               </Routes>
