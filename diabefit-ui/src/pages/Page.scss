@@ -13,3 +13,15 @@
   padding: 20px;
   margin-top: 5px;
 }
+.center-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.save-your-data-button {
+  position: absolute;
+  right: 0;
+  // float: right;
+  padding: 12px 12px;
+}

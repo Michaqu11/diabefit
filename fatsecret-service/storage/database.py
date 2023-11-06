@@ -22,17 +22,17 @@ def set_user(userId):
 
     result = db.child("users").child(userId).set({
         "settings": {
-            "diabetesType": 0,
+            "diabetesType": 1,
             "insulin": {
-                "actingTime": 0,
-                "offsetTime": 0,
+                "actingTime": "04:30",
+                "offsetTime": "01:00",
             },
-            "insulinCorrection": 0,
+            "insulinCorrection": 40,
             "targetRange": {
                 "from": 80,
                 "to": 120
             },
-            "units": [0] * 24
+            "units": [0.1] * 24
         },
         "libreAPI": ""
     })
@@ -100,7 +100,6 @@ def get_user_insulin(userId):
 
 def set_user_settings(body):
     db = firebase.database()
-
     if is_user_exist(body['id']):
         result = db.child("users").child(body['id']).child("settings").update(body["settings"])
         return result is not None
@@ -111,8 +110,8 @@ def get_user_libre_api(userId):
     user = get_user_data(userId)
     if user:
         result = user['libreAPI']
-        return {"libreAPI": result}
-    return {"libreAPI": None}
+        return result
+    return None
 
 
 def set_user_libre_api(body):
