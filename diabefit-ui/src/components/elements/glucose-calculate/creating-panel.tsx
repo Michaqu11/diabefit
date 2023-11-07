@@ -33,6 +33,7 @@ import {
 } from "../../../shared/calculator/glucose-calculator";
 import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydrate-exchange-calculator";
 import { useSnackbar } from "notistack";
+import { getLibreData } from "../../../api/libre-api";
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
   setOpenCalculate: (value: React.SetStateAction<ICalculatePanel>) => void;
@@ -58,10 +59,21 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const tempCorrectionInsulin = React.useRef<number>(0);
 
   React.useEffect(() => {
-    setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
+    async function fetchData() {
+      try {
+        const getBloodSugar = await getLibreData();
+        setBloodSugar(getBloodSugar);
+      } catch {
+        setBloodSugar("");
+      }
+    }
     setBloodSugar("");
+    setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
     setFoodInsulin("");
     setCorrectionnsulin("");
+    if (props.openCalculate.open) {
+      fetchData();
+    }
   }, [props.openCalculate]);
 
   const { enqueueSnackbar } = useSnackbar();

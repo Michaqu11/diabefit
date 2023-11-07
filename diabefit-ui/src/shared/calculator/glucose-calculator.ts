@@ -1,15 +1,14 @@
 import dayjs from "dayjs";
 import { getSettings } from "../../store/sessionStorage";
 
-const settings = getSettings();
-
 export const calculateFood = (carbohydrateExchange: number) => {
-
+  const settings = getSettings();
   const time = dayjs().get('hour')
   return carbohydrateExchange * settings.units[time];
 };
 
 export const calculateCorrection = (sugar: number) => {
+  const settings = getSettings();
   if (sugar > settings.targetRange.to) {
     return (sugar - settings.targetRange.to) / settings.insulinCorrection;
   }
