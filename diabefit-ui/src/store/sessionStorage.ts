@@ -46,7 +46,7 @@ export const saveLibreAPIInSessionStorage = (libreAPI: string) => {
 
 export const getSettings = () => {
   const data = getData();
-  return data.settings;
+  return data?.settings;
 }
 
 
