@@ -43,3 +43,14 @@ export const saveLibreAPIInSessionStorage = (libreAPI: string) => {
   tempData.libreAPI = libreAPI;
   sessionStorage.setItem("data", JSON.stringify(tempData));
 };
+
+export const getSettings = () => {
+  const data = getData();
+  return data.settings;
+}
+
+
+export const getLibreAPI = () => {
+  const data = getData();
+  return data.libreAPI;
+}

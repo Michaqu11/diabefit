@@ -1,15 +1,17 @@
-// TODO: get units from user storage
-const temp_units = 1.0;
-const one_correction_unit = 40;
-const temp_range = [100, 140];
+import dayjs from "dayjs";
+import { getSettings } from "../../store/sessionStorage";
+
+const settings = getSettings();
 
 export const calculateFood = (carbohydrateExchange: number) => {
-  return carbohydrateExchange * temp_units;
+
+  const time = dayjs().get('hour')
+  return carbohydrateExchange * settings.units[time];
 };
 
 export const calculateCorrection = (sugar: number) => {
-  if (sugar > temp_range[1]) {
-    return (sugar - temp_range[1]) / one_correction_unit;
+  if (sugar > settings.targetRange.to) {
+    return (sugar - settings.targetRange.to) / settings.insulinCorrection;
   }
   return 0;
 };
