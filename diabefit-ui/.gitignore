@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 .firebase
+/src/config/firebaseConfig/firebaseConfig.ts
 
 # testing
 /coverage

@@ -63,13 +63,13 @@ def login(request):
     if request.method == 'POST':
         body_unicode = request.body.decode('utf-8')
         body = json.loads(body_unicode)
-        user = is_user_exist(body['id'])
+        user = is_user_exist(body['id'], body['token'])
         if not user:
-            result = set_user(body['id'])
+            result = set_user(body['id'], body['token'])
         else:
             result = {
-                "settings": all_settings(body['id']),
-                "libreAPI": get_libre(body['id'])
+                "settings": all_settings(body['id'], body['token']),
+                "libreAPI": get_libre(body['id'], body['token'])
             }
 
         return JsonResponse(result, safe=False)
@@ -79,7 +79,7 @@ def login(request):
 @csrf_exempt
 def units(request):
     result = {
-        "units": get_user_units(request.GET.get('id'), request.GET.get('hour'))
+        "units": get_user_units(request.GET.get('id'), request.GET.get('hour'),  request.GET.get('token'))
     }
 
     return JsonResponse(result, safe=False)
@@ -88,7 +88,7 @@ def units(request):
 @csrf_exempt
 def all_units(request):
     result = {
-        "units": get_user_all_units(request.GET.get('id'))
+        "units": get_user_all_units(request.GET.get('id'),  request.GET.get('token'))
     }
 
     return JsonResponse(result, safe=False)
@@ -97,7 +97,7 @@ def all_units(request):
 @csrf_exempt
 def insulin_correction(request):
     result = {
-        "insulinCorrection": get_user_insulin_correction(request.GET.get('id'))
+        "insulinCorrection": get_user_insulin_correction(request.GET.get('id'),  request.GET.get('token'))
     }
 
     return JsonResponse(result, safe=False)
@@ -105,26 +105,26 @@ def insulin_correction(request):
 
 @csrf_exempt
 def insulin(request):
-    result = get_user_insulin(request.GET.get('id'))
+    result = get_user_insulin(request.GET.get('id'), request.GET.get('token'))
 
     return JsonResponse(result, safe=False)
 
 
 @csrf_exempt
 def range(request):
-    result = get_user_target_range(request.GET.get('id'))
+    result = get_user_target_range(request.GET.get('id'), request.GET.get('token'))
 
     return JsonResponse(result, safe=False)
 
 
 @csrf_exempt
-def all_settings(id):
+def all_settings(id, token):
     result = {
-        "diabetesType": get_user_diabetes_type(id),
-        "units": get_user_all_units(id),
-        "insulinCorrection": get_user_insulin_correction(id),
-        "insulin": get_user_insulin(id),
-        "targetRange": get_user_target_range(id)
+        "diabetesType": get_user_diabetes_type(id, token),
+        "units": get_user_all_units(id, token),
+        "insulinCorrection": get_user_insulin_correction(id, token),
+        "insulin": get_user_insulin(id, token),
+        "targetRange": get_user_target_range(id, token)
     }
 
     return result
@@ -143,7 +143,7 @@ def settings(request):
     if request.method == 'POST':
         return set_settings(body)
     else:
-        return JsonResponse(all_settings(body['id']), safe=False)
+        return JsonResponse(all_settings(body['id'], body['token']), safe=False)
 
 
 @csrf_exempt
@@ -153,8 +153,8 @@ def set_libre(body):
 
 
 @csrf_exempt
-def get_libre(id):
-    api = get_user_libre_api(id)
+def get_libre(id, token):
+    api = get_user_libre_api(id, token)
     return api
 
 
@@ -165,4 +165,4 @@ def libre(request):
     if request.method == 'POST':
         return set_libre(body)
     else:
-        return JsonResponse({"libreAPI": get_libre(body['id'])}, safe=False)
+        return JsonResponse({"libreAPI": get_libre(body['id'], body['token'])}, safe=False)

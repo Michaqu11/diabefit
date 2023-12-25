@@ -1,13 +1,14 @@
 import axios from "axios";
 import { IProfile } from "../types/profile";
-import { saveData } from "../store/sessionStorage";
-
-const SERVICE_URL = "http://127.0.0.1:8000";
+import { getToken, saveData } from "../store/sessionStorage";
+import { IAllData } from "../types/settings";
+import { SERVICE_URL } from "../config/data";
 
 export const account = async (profile: IProfile) => {
+  const token = getToken()
   const { data } = await axios.post(
     `${SERVICE_URL}/login`,
-    { id: profile.id },
+    { id: profile.uid, token: token },
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -16,5 +17,5 @@ export const account = async (profile: IProfile) => {
     },
   );
   saveData(data);
-  return data;
+  return data as IAllData;
 };

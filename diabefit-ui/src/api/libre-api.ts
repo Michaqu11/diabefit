@@ -1,14 +1,13 @@
 import axios from "axios";
 import { getLibreAPI } from "../store/sessionStorage";
-
-const SERVICE_URL = "https://api-eu.libreview.io/llu/connections";
+import { LIBRE_API_URL } from "../config/data";
 
 export const getLibreData = async () => {
 
     const token = getLibreAPI();
 
     const { data } = await axios.get(
-    SERVICE_URL,
+    LIBRE_API_URL,
     {
         headers: {
         "Access-Control-Allow-Origin": "*",

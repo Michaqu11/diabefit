@@ -1,6 +1,6 @@
 import axios from "axios";
+import { SERVICE_URL } from "../config/data";
 
-const SERVICE_URL = "https://diabefit.pythonanywhere.com/";
 
 export const searchFood = async (foodName: string, pageNumber: number) => {
   const { data } = await axios.post(

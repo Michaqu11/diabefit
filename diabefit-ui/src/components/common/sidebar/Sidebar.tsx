@@ -18,7 +18,9 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
 import { clearProfile, getProfile } from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";
-import { googleLogout } from "@react-oauth/google";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../config/firebase"
+import { IProfile } from "../../../types/profile";
 
 interface IChildProps {
   toggleDrawer: (arg: boolean) => void;
@@ -71,10 +73,14 @@ const sidebarNavItems: ISidebarNav[] = [
 ];
 
 const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
-  const [profile] = useState<any>(getProfile());
+  const [profile] = useState<IProfile>(getProfile());
 
-  const logOut = () => {
-    googleLogout();
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.error(err);
+    }
     clearProfile();
     window.location.reload();
   };
@@ -86,9 +92,9 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <Avatar src={profile.picture} />
+                <Avatar src={profile.photoURL} />
               </ListItemIcon>
-              <ListItemText primary={profile.given_name} />
+              <ListItemText primary={profile.displayName} />
             </ListItemButton>
           </ListItem>
           <Grid container>

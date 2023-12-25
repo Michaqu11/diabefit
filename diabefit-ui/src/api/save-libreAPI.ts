@@ -1,17 +1,20 @@
 import axios from "axios";
 import {
   getProfileId,
+  getToken,
   saveLibreAPIInSessionStorage,
 } from "../store/sessionStorage";
+import { SERVICE_URL } from "../config/data";
 
-const SERVICE_URL = "http://127.0.0.1:8000";
 
 export const saveLibreAPI = async (libreAPI: string) => {
+  const token = getToken()
   const { data } = await axios.post(
     `${SERVICE_URL}/libreAPI`,
     {
       id: getProfileId(),
       libreAPI: libreAPI,
+      token
     },
     {
       headers: {
