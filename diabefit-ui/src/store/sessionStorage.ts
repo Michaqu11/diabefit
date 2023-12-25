@@ -17,7 +17,15 @@ export const getProfileId = (): string => {
   const profile: IProfile = JSON.parse(
     sessionStorage.getItem("profile") as string,
   );
-  return profile.id;
+  return profile.uid;
+};
+
+export const saveToken = (token: string) => {
+  sessionStorage.setItem("token", JSON.stringify(token));
+}
+
+export const getToken = (): string => {
+  return JSON.parse(sessionStorage.getItem("token") as string);
 };
 
 export const saveData = (settings: IAllData) => {

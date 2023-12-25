@@ -17,8 +17,8 @@ nextcord-ext-menus==1.5.6
 pandas==2.0.0
 quart==0.18.3
 yt-dlp==2023.3.4
-requests==2.31.0
+requests===2.11.1
 lxml==4.9.3
 cssselect==1.2.0
-urllib3==1.19.1
-requests-toolbelt==0.10.1
+urllib3==1.26.18
+requests-toolbelt==0.7.0
