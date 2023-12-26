@@ -36,6 +36,8 @@ import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydra
 import { useSnackbar } from "notistack";
 import { getLibreData } from "../../../api/libre-api";
 import CloseIcon from '@mui/icons-material/Close';
+import './creating-panel.scss'
+
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -159,7 +161,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
                 </IconButton>
               }
             >
-              Sugar was pasted from the Libre app
+              Sugar was pasted using Libre API
             </Alert>
           </Collapse>
 
