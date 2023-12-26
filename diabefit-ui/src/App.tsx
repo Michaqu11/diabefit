@@ -10,7 +10,7 @@ import AddProduct from "./pages/AddProduct";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
 import { Box, Button } from "@mui/material";
-import { getProfile, saveProfile, saveToken } from "./store/sessionStorage";
+import { getData, getProfile, saveProfile, saveToken } from "./store/sessionStorage";
 import EmptyLayout from "./components/layout/EmptyLayout";
 import { SnackbarProvider } from "notistack";
 import { account } from "./api/login";
@@ -25,7 +25,7 @@ const App: React.FC = () => {
   const [token, setToken] = useState<string>('');
   const [profile, setProfile] = useState<any>(getProfile());
   const [loginStatus, setLogin] = useState<boolean>(profile !== null);
-  const [data, setData] = useState<IAllData | null>(null)
+  const [data, setData] = useState<IAllData | null>(getData())
 
 
   const signInWithGoogle = async () => {

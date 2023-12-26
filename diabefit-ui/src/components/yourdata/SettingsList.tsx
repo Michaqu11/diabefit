@@ -46,7 +46,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
   const [insulinCorrectionError, setInsulinCorrectionError] =
     useState<boolean>(false);
   const [insulinCorrection, setInsulinCorrection] = useState<number | null>(
-    settings.diabetesType,
+    settings.insulinCorrection,
   );
   const actingTimeFormatter =
     settings?.insulin?.actingTime.split(":") ?? "00:00";
@@ -144,9 +144,8 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
   };
 
   const stepToTime = () => {
-    return `${activeStep < 10 ? `0${activeStep}` : activeStep}:00 - ${
-      activeStep + 1 < 10 ? `0${activeStep + 1}` : activeStep + 1
-    }:00`;
+    return `${activeStep < 10 ? `0${activeStep}` : activeStep}:00 - ${activeStep + 1 < 10 ? `0${activeStep + 1}` : activeStep + 1
+      }:00`;
   };
 
   useEffect(() => {

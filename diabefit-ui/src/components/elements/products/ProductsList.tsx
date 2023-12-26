@@ -88,11 +88,10 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       <div key={meal.mealName}>
         <ListItem
           style={{
-            backgroundColor: `${
-              checked.includes(meal.id)
+            backgroundColor: `${checked.includes(meal.id)
                 ? "rgba(30,130,192,0.1)"
                 : "rgb(255,255,255)"
-            }`,
+              }`,
           }}
           secondaryAction={
             <BpCheckbox
@@ -126,20 +125,20 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     const total_results = meals.foods_search.total_results ?? 0;
     const result = meals.foods_search.results
       ? meals.foods_search.results.food.map((meal: any) => {
-          const serving = meal.servings.serving[0];
-          return {
-            mealName: meal.food_name,
-            displayName: meal.food_name
-              .slice(0, 35)
-              .concat(meal.food_name.length > 35 ? "..." : ""),
-            id: meal.food_id,
-            grams: serving.metric_serving_amount,
-            kcal: serving.calories,
-            prot: serving.protein,
-            fats: serving.fat,
-            carbs: serving.carbohydrate,
-          };
-        })
+        const serving = meal.servings.serving[0];
+        return {
+          mealName: meal.food_name,
+          displayName: meal.food_name
+            .slice(0, 35)
+            .concat(meal.food_name.length > 35 ? "..." : ""),
+          id: meal.food_id,
+          grams: serving.metric_serving_amount,
+          kcal: serving.calories,
+          prot: serving.protein,
+          fats: serving.fat,
+          carbs: serving.carbohydrate,
+        };
+      })
       : undefined;
     setHasMore(result && total_results ? result.length < total_results : false);
     return result;
@@ -148,8 +147,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const setProps = (mealsProps: IMealElement[] | undefined) => {
     const products = mealsProps
       ? mealsProps.map((meal: IMealElement, index: number) => {
-          return renderRow(meal, index !== mealsProps.length - 1);
-        })
+        return renderRow(meal, index !== mealsProps.length - 1);
+      })
       : empty();
     setProducts(products);
   };
@@ -203,7 +202,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
             loader={<p style={{ textAlign: "center" }}>Loading...</p>}
             endMessage={
               <p style={{ textAlign: "center" }}>
-                <b>No more data to load.</b>
+                {meals?.length ? <b>No more data to load.</b> : null}
               </p>
             }
           >
