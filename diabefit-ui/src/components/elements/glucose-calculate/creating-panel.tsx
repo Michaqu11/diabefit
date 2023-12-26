@@ -16,6 +16,7 @@ import {
   Divider,
   FormControl,
   FormHelperText,
+  IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
@@ -34,6 +35,8 @@ import {
 import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydrate-exchange-calculator";
 import { useSnackbar } from "notistack";
 import { getLibreData } from "../../../api/libre-api";
+import CloseIcon from '@mui/icons-material/Close';
+
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
   setOpenCalculate: (value: React.SetStateAction<ICalculatePanel>) => void;
@@ -55,6 +58,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
 
   const [alertOpen, setAlertOpen] = React.useState(false);
 
+  const [libreAlertInformation, setLibreAlertInformation] = React.useState(false);
+
   const tempFoodInsulin = React.useRef<number>(0);
   const tempCorrectionInsulin = React.useRef<number>(0);
 
@@ -62,7 +67,9 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     async function fetchData() {
       try {
         const getBloodSugar = await getLibreData();
+        setLibreAlertInformation(true)
         setBloodSugar(getBloodSugar);
+        setTimeout(() => setLibreAlertInformation(false), 5000);
       } catch {
         setBloodSugar("");
       }
@@ -135,6 +142,27 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             />
           </LocalizationProvider>
 
+          <Collapse in={libreAlertInformation}>
+            <Alert
+              icon={false}
+              severity="info"
+              action={
+                <IconButton
+                  aria-label="close"
+                  color="inherit"
+                  size="small"
+                  onClick={() => {
+                    setLibreAlertInformation(false);
+                  }}
+                >
+                  <CloseIcon fontSize="inherit" />
+                </IconButton>
+              }
+            >
+              Sugar was pasted from the Libre app
+            </Alert>
+          </Collapse>
+
           <FormControl variant="outlined">
             <InputLabel htmlFor="component-simple">Blood sugar</InputLabel>
             <OutlinedInput
@@ -159,6 +187,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               aria-describedby="outlined-sugar-text"
             />
           </FormControl>
+
           <Collapse in={alertOpen}>
             <Alert
               severity="success"
