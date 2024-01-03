@@ -35,9 +35,8 @@ import {
 import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydrate-exchange-calculator";
 import { useSnackbar } from "notistack";
 import { getLibreData } from "../../../api/libre-api";
-import CloseIcon from '@mui/icons-material/Close';
-import './creating-panel.scss'
-
+import CloseIcon from "@mui/icons-material/Close";
+import "./creating-panel.scss";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -60,7 +59,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
 
   const [alertOpen, setAlertOpen] = React.useState(false);
 
-  const [libreAlertInformation, setLibreAlertInformation] = React.useState(false);
+  const [libreAlertInformation, setLibreAlertInformation] =
+    React.useState(false);
 
   const tempFoodInsulin = React.useRef<number>(0);
   const tempCorrectionInsulin = React.useRef<number>(0);
@@ -69,7 +69,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     async function fetchData() {
       try {
         const getBloodSugar = await getLibreData();
-        setLibreAlertInformation(true)
+        setLibreAlertInformation(true);
         setBloodSugar(getBloodSugar);
         setTimeout(() => setLibreAlertInformation(false), 5000);
       } catch {

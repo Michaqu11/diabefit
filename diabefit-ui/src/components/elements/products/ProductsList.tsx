@@ -29,7 +29,9 @@ type Props = {
 const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
   const [openCustomiseMealDialog, setOpenCustomiseMealDialog] = useState(false);
-  const [customiseMeal, setCustomiseMeal] = useState<IMealElement | undefined>(undefined);
+  const [customiseMeal, setCustomiseMeal] = useState<IMealElement | undefined>(
+    undefined,
+  );
 
   const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as
     | IDay
@@ -82,7 +84,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
 
   const saveMeal = (meal: IMealElement) => {
     addMeal(dayID, Number(eDayID), meal);
-  }
+  };
 
   const uncheckMeal = (mealId: string) => {
     const currentIndex = checked.indexOf(mealId);
@@ -91,7 +93,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     newChecked.splice(currentIndex, 1);
     removeMeal(dayID, Number(eDayID), mealId);
     setChecked(newChecked);
-  }
+  };
 
   const details = (extension: IMealElement) => {
     return (
@@ -107,10 +109,11 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       <div key={meal.mealName}>
         <ListItem
           style={{
-            backgroundColor: `${checked.includes(meal.id)
-              ? "rgba(30,130,192,0.1)"
-              : "rgb(255,255,255)"
-              }`,
+            backgroundColor: `${
+              checked.includes(meal.id)
+                ? "rgba(30,130,192,0.1)"
+                : "rgb(255,255,255)"
+            }`,
           }}
           secondaryAction={
             <BpCheckbox
@@ -124,7 +127,12 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         >
           <ListItemButton>
             <ListItemText className="productdetail">
-              <Tooltip title={meal.mealName} enterDelay={1000} leaveDelay={100} placement="bottom-start">
+              <Tooltip
+                title={meal.mealName}
+                enterDelay={1000}
+                leaveDelay={100}
+                placement="bottom-start"
+              >
                 <div>{meal.displayName}</div>
               </Tooltip>
               <Typography component={"div"} sx={{ color: "text.secondary" }}>
@@ -146,27 +154,27 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     const total_results = meals.foods_search.total_results ?? 0;
     const result = meals.foods_search.results
       ? meals.foods_search.results.food.map((meal: any) => {
-        const serving = setupServingsData(meal.servings.serving);
-        return {
-          mealName: meal.food_name,
-          displayName: meal.food_name
-            .slice(0, 30)
-            .concat(meal.food_name.length > 30 ? "..." : ""),
-          id: meal.food_id,
-          grams: serving.metric_serving_amount,
-          kcal: serving.calories,
-          prot: serving.protein,
-          fats: serving.fat,
-          carbs: serving.carbohydrate,
-          base: {
+          const serving = setupServingsData(meal.servings.serving);
+          return {
+            mealName: meal.food_name,
+            displayName: meal.food_name
+              .slice(0, 30)
+              .concat(meal.food_name.length > 30 ? "..." : ""),
+            id: meal.food_id,
             grams: serving.metric_serving_amount,
             kcal: serving.calories,
             prot: serving.protein,
             fats: serving.fat,
-            carbs: serving.carbohydrate
-          }
-        };
-      })
+            carbs: serving.carbohydrate,
+            base: {
+              grams: serving.metric_serving_amount,
+              kcal: serving.calories,
+              prot: serving.protein,
+              fats: serving.fat,
+              carbs: serving.carbohydrate,
+            },
+          };
+        })
       : undefined;
     setHasMore(result && total_results ? result.length < total_results : false);
     return result;
@@ -175,8 +183,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const setProps = (mealsProps: IMealElement[] | undefined) => {
     const products = mealsProps
       ? mealsProps.map((meal: IMealElement, index: number) => {
-        return renderRow(meal, index !== mealsProps.length - 1);
-      })
+          return renderRow(meal, index !== mealsProps.length - 1);
+        })
       : empty();
     setProducts(products);
   };
@@ -242,7 +250,14 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
           empty("Search for products")
         )}
       </div>
-      <CustomMealDialog meal={customiseMeal} setMeal={setCustomiseMeal} open={openCustomiseMealDialog} setOpen={setOpenCustomiseMealDialog} uncheckMeal={uncheckMeal} saveMeal={saveMeal} />
+      <CustomMealDialog
+        meal={customiseMeal}
+        setMeal={setCustomiseMeal}
+        open={openCustomiseMealDialog}
+        setOpen={setOpenCustomiseMealDialog}
+        uncheckMeal={uncheckMeal}
+        saveMeal={saveMeal}
+      />
     </>
   );
 };
