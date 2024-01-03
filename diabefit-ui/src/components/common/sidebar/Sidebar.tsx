@@ -16,10 +16,14 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
-import { clearData, clearProfile, getProfile } from "../../../store/sessionStorage";
+import {
+  clearData,
+  clearProfile,
+  getProfile,
+} from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";
 import { signOut } from "firebase/auth";
-import { auth } from "../../../config/firebase"
+import { auth } from "../../../config/firebase";
 import { IProfile } from "../../../types/profile";
 
 interface IChildProps {

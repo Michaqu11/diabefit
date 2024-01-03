@@ -3,7 +3,7 @@ import { getSettings } from "../../store/sessionStorage";
 
 export const calculateFood = (carbohydrateExchange: number) => {
   const settings = getSettings();
-  const time = dayjs().get('hour')
+  const time = dayjs().get("hour");
   return carbohydrateExchange * settings.units[time];
 };
 

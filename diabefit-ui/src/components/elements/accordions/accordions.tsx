@@ -139,14 +139,14 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
             ? ` Units ${units.short}u ${value.kcal} kcal | C ${value.carbs}g`
             : `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
           : width >= 310
-            ? units
-              ? ` ${units.short}u | ${value.kcal} kcal`
-              : `${value.kcal} kcal | C ${value.carbs}g`
-            : width >= 250
-              ? units
-                ? `${units.short}u`
-                : `${value.kcal} kcal`
-              : ""}
+          ? units
+            ? ` ${units.short}u | ${value.kcal} kcal`
+            : `${value.kcal} kcal | C ${value.carbs}g`
+          : width >= 250
+          ? units
+            ? `${units.short}u`
+            : `${value.kcal} kcal`
+          : ""}
       </p>
     );
   };
@@ -194,8 +194,9 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   };
 
   const routeHandler = (dayId: number, element: IDay) => {
-    return `add/${dayId}/${Object.values(EDays).indexOf(element.name as unknown as EDays) + 1
-      }`;
+    return `add/${dayId}/${
+      Object.values(EDays).indexOf(element.name as unknown as EDays) + 1
+    }`;
   };
 
   const [openCalculate, setOpenCalculate] = React.useState<ICalculatePanel>({
@@ -250,7 +251,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
             aria-controls={day.name + "-content"}
             id={day.name}
           >
-            <Typography sx={{ minWidth: '70px' }}>{day.name}</Typography>
+            <Typography sx={{ minWidth: "70px" }}>{day.name}</Typography>
             {day.meals.length ? (
               <Grid container justifyContent="space-between">
                 <Grid sx={{ display: "flex", justifyContent: "center" }}>
@@ -315,7 +316,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                   day.meals,
                   dayId.toString(),
                   Object.values(EDays).indexOf(day.name as unknown as EDays) +
-                  1,
+                    1,
                 )}
                 changedData={changedData}
               />

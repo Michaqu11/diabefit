@@ -13,5 +13,5 @@ export interface IMealElement {
     prot: number;
     fats: number;
     carbs: number;
-  }
+  };
 }

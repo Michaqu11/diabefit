@@ -22,7 +22,7 @@ export const getProfileId = (): string => {
 
 export const saveToken = (token: string) => {
   sessionStorage.setItem("token", JSON.stringify(token));
-}
+};
 
 export const getToken = (): string => {
   return JSON.parse(sessionStorage.getItem("token") as string);
@@ -55,10 +55,9 @@ export const saveLibreAPIInSessionStorage = (libreAPI: string) => {
 export const getSettings = () => {
   const data = getData();
   return data?.settings;
-}
-
+};
 
 export const getLibreAPI = () => {
   const data = getData();
   return data.libreAPI;
-}
+};

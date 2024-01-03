@@ -144,8 +144,9 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
   };
 
   const stepToTime = () => {
-    return `${activeStep < 10 ? `0${activeStep}` : activeStep}:00 - ${activeStep + 1 < 10 ? `0${activeStep + 1}` : activeStep + 1
-      }:00`;
+    return `${activeStep < 10 ? `0${activeStep}` : activeStep}:00 - ${
+      activeStep + 1 < 10 ? `0${activeStep + 1}` : activeStep + 1
+    }:00`;
   };
 
   useEffect(() => {
