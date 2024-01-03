@@ -18,6 +18,8 @@ import {
   removeMeal,
 } from "../../../store/mealsStorage";
 import { IDay } from "../../../types/days";
+import { setupServingsData } from "./utils/ProductsListUtils";
+import CustomMealDialog from "./utils/CustomMealDialog";
 
 type Props = {
   searchKey: string;
@@ -25,6 +27,16 @@ type Props = {
 
 const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
+  const [openCustomiseMealDialog, setOpenCustomiseMealDialog] = useState(false);
+  const [customiseMeal, setCustomiseMeal] = useState<IMealElement | undefined>(undefined);
+
+  const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as
+    | IDay
+    | undefined;
+
+  const [checked, setChecked] = useState<string[]>(
+    checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
+  );
 
   const empty = (info: string = "No products to display") => {
     return (
@@ -35,14 +47,6 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       </ListItem>
     );
   };
-
-  const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as
-    | IDay
-    | undefined;
-
-  const [checked, setChecked] = useState<string[]>(
-    checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
-  );
 
   const [products, setProducts] = useState<JSX.Element[] | JSX.Element>(
     empty(),
@@ -61,7 +65,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
 
     if (currentIndex === -1) {
       newChecked.push(meal.id);
-      addMeal(dayID, Number(eDayID), meal);
+      setCustomiseMeal(meal);
+      setOpenCustomiseMealDialog(true);
     } else {
       newChecked.splice(currentIndex, 1);
       removeMeal(dayID, Number(eDayID), meal.id);
@@ -74,10 +79,23 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     return <Divider />;
   };
 
+  const saveMeal = (meal: IMealElement) => {
+    addMeal(dayID, Number(eDayID), meal);
+  }
+
+  const uncheckMeal = (mealId: string) => {
+    const currentIndex = checked.indexOf(mealId);
+    const newChecked = [...checked];
+
+    newChecked.splice(currentIndex, 1);
+    removeMeal(dayID, Number(eDayID), mealId);
+    setChecked(newChecked);
+  }
+
   const details = (extension: IMealElement) => {
     return (
       <span>
-        P {extension.prot}g F {extension.fats}gC {extension.carbs}g (
+        P {extension.prot}g F {extension.fats}g C {extension.carbs}g (
         {extension.kcal}kcal)
       </span>
     );
@@ -89,8 +107,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         <ListItem
           style={{
             backgroundColor: `${checked.includes(meal.id)
-                ? "rgba(30,130,192,0.1)"
-                : "rgb(255,255,255)"
+              ? "rgba(30,130,192,0.1)"
+              : "rgb(255,255,255)"
               }`,
           }}
           secondaryAction={
@@ -125,7 +143,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     const total_results = meals.foods_search.total_results ?? 0;
     const result = meals.foods_search.results
       ? meals.foods_search.results.food.map((meal: any) => {
-        const serving = meal.servings.serving[0];
+        const serving = setupServingsData(meal.servings.serving);
         return {
           mealName: meal.food_name,
           displayName: meal.food_name
@@ -137,6 +155,13 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
           prot: serving.protein,
           fats: serving.fat,
           carbs: serving.carbohydrate,
+          base: {
+            grams: serving.metric_serving_amount,
+            kcal: serving.calories,
+            prot: serving.protein,
+            fats: serving.fat,
+            carbs: serving.carbohydrate
+          }
         };
       })
       : undefined;
@@ -182,37 +207,40 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   }, [searchKey]);
 
   return (
-    <div>
-      {searchKey ? (
-        <Grid
-          className="products-list"
-          sx={{
-            width: "100%",
-            bgcolor: "background.paper",
-            position: "relative",
-            overflow: "auto",
-            paddingTop: 0,
-          }}
-        >
-          <InfiniteScroll
-            dataLength={meals?.length ?? 0}
-            next={loadMore}
-            hasMore={hasMore}
-            height={600}
-            loader={<p style={{ textAlign: "center" }}>Loading...</p>}
-            endMessage={
-              <p style={{ textAlign: "center" }}>
-                {meals?.length ? <b>No more data to load.</b> : null}
-              </p>
-            }
+    <>
+      <div>
+        {searchKey ? (
+          <Grid
+            className="products-list"
+            sx={{
+              width: "100%",
+              bgcolor: "background.paper",
+              position: "relative",
+              overflow: "auto",
+              paddingTop: 0,
+            }}
           >
-            {products}
-          </InfiniteScroll>
-        </Grid>
-      ) : (
-        empty("Search for products")
-      )}
-    </div>
+            <InfiniteScroll
+              dataLength={meals?.length ?? 0}
+              next={loadMore}
+              hasMore={hasMore}
+              height={600}
+              loader={<p style={{ textAlign: "center" }}>Loading...</p>}
+              endMessage={
+                <p style={{ textAlign: "center" }}>
+                  {meals?.length ? <b>No more data to load.</b> : null}
+                </p>
+              }
+            >
+              {products}
+            </InfiniteScroll>
+          </Grid>
+        ) : (
+          empty("Search for products")
+        )}
+      </div>
+      <CustomMealDialog meal={customiseMeal} setMeal={setCustomiseMeal} open={openCustomiseMealDialog} setOpen={setOpenCustomiseMealDialog} uncheckMeal={uncheckMeal} saveMeal={saveMeal} />
+    </>
   );
 };
 

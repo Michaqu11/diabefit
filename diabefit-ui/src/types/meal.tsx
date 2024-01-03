@@ -7,4 +7,11 @@ export interface IMealElement {
   prot: number;
   fats: number;
   carbs: number;
+  base: {
+    grams: number;
+    kcal: number;
+    prot: number;
+    fats: number;
+    carbs: number;
+  }
 }
