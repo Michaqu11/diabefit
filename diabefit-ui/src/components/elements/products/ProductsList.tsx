@@ -4,6 +4,7 @@ import {
   ListItem,
   ListItemButton,
   ListItemText,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -123,7 +124,9 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         >
           <ListItemButton>
             <ListItemText className="productdetail">
-              {meal.displayName}
+              <Tooltip title={meal.mealName} enterDelay={1000} leaveDelay={100} placement="bottom-start">
+                <div>{meal.displayName}</div>
+              </Tooltip>
               <Typography component={"div"} sx={{ color: "text.secondary" }}>
                 {details(meal)}
               </Typography>
@@ -147,8 +150,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         return {
           mealName: meal.food_name,
           displayName: meal.food_name
-            .slice(0, 35)
-            .concat(meal.food_name.length > 35 ? "..." : ""),
+            .slice(0, 30)
+            .concat(meal.food_name.length > 30 ? "..." : ""),
           id: meal.food_id,
           grams: serving.metric_serving_amount,
           kcal: serving.calories,
