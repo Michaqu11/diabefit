@@ -29,13 +29,14 @@ const CustomizedAccordions: React.FC<Props> = ({
         {elementsProps &&
           elementsProps.map((e) => {
             return (
-              <ListItem style={{ padding: "2px 4px" }} key={e.header}>
+              <ListItem style={{ padding: "2px 8px 2px 12px" }} key={e.header}>
                 <ListItemText primary={e.header} secondary={e.secondary} />
                 <IconButton
                   edge="end"
                   color="inherit"
                   aria-label="close"
                   size="small"
+                  className="products-detail-remove-button"
                   onClick={() => removeMealElement(e.dayID, e.dayIndex, e.id)}
                 >
                   <CloseIcon />
