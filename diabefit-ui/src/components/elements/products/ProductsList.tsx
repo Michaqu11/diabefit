@@ -21,10 +21,26 @@ import {
 import { IDay } from "../../../types/days";
 import { setupServingsData } from "./utils/ProductsListUtils";
 import CustomMealDialog from "./utils/CustomMealDialog";
+import styled from 'styled-components';
 
 type Props = {
   searchKey: string;
 };
+
+const ListItemTextWrapper = styled.div`
+  max-height: 50px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  padding-left: 16px;
+  padding-right: 48px;
+`
+
 
 const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
@@ -109,11 +125,10 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       <div key={meal.mealName}>
         <ListItem
           style={{
-            backgroundColor: `${
-              checked.includes(meal.id)
-                ? "rgba(30,130,192,0.1)"
-                : "rgb(255,255,255)"
-            }`,
+            backgroundColor: `${checked.includes(meal.id)
+              ? "rgba(30,130,192,0.1)"
+              : "rgb(255,255,255)"
+              }`,
           }}
           secondaryAction={
             <BpCheckbox
@@ -125,7 +140,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
           }
           disablePadding
         >
-          <ListItemButton>
+          <ListItemTextWrapper>
             <ListItemText className="productdetail">
               <Tooltip
                 title={meal.mealName}
@@ -139,7 +154,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
                 {details(meal)}
               </Typography>
             </ListItemText>
-          </ListItemButton>
+          </ListItemTextWrapper>
         </ListItem>
         {divider && displayDivider()}
       </div>
@@ -154,27 +169,27 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     const total_results = meals.foods_search.total_results ?? 0;
     const result = meals.foods_search.results
       ? meals.foods_search.results.food.map((meal: any) => {
-          const serving = setupServingsData(meal.servings.serving);
-          return {
-            mealName: meal.food_name,
-            displayName: meal.food_name
-              .slice(0, 30)
-              .concat(meal.food_name.length > 30 ? "..." : ""),
-            id: meal.food_id,
+        const serving = setupServingsData(meal.servings.serving);
+        return {
+          mealName: meal.food_name,
+          displayName: meal.food_name
+            .slice(0, 30)
+            .concat(meal.food_name.length > 30 ? "..." : ""),
+          id: meal.food_id,
+          grams: serving.metric_serving_amount,
+          kcal: serving.calories,
+          prot: serving.protein,
+          fats: serving.fat,
+          carbs: serving.carbohydrate,
+          base: {
             grams: serving.metric_serving_amount,
             kcal: serving.calories,
             prot: serving.protein,
             fats: serving.fat,
             carbs: serving.carbohydrate,
-            base: {
-              grams: serving.metric_serving_amount,
-              kcal: serving.calories,
-              prot: serving.protein,
-              fats: serving.fat,
-              carbs: serving.carbohydrate,
-            },
-          };
-        })
+          },
+        };
+      })
       : undefined;
     setHasMore(result && total_results ? result.length < total_results : false);
     return result;
@@ -183,8 +198,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const setProps = (mealsProps: IMealElement[] | undefined) => {
     const products = mealsProps
       ? mealsProps.map((meal: IMealElement, index: number) => {
-          return renderRow(meal, index !== mealsProps.length - 1);
-        })
+        return renderRow(meal, index !== mealsProps.length - 1);
+      })
       : empty();
     setProducts(products);
   };
