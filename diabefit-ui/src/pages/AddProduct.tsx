@@ -10,7 +10,7 @@ import { Button, Grid, IconButton, Menu, MenuItem } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { EDays } from "../types/days";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 const AddProduct: React.FC = () => {
   let { id, meal } = useParams();
@@ -33,8 +33,10 @@ const AddProduct: React.FC = () => {
   const close = (e: String) => {
     setMealName(e);
     setAnchorEl(null);
-    navigate(`../add/${id}/${Object.values(EDays).indexOf(e as unknown as EDays) + 1
-      }`, { replace: true });
+    navigate(
+      `../add/${id}/${Object.values(EDays).indexOf(e as unknown as EDays) + 1}`,
+      { replace: true },
+    );
   };
   const handleClose = () => {
     setAnchorEl(null);
