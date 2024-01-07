@@ -49,9 +49,16 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     undefined,
   );
 
-  const checkedData = readSpecificDayMeal(dayID, Number(eDayID)) as
+  const [checkedData, setCheckedData] = useState(readSpecificDayMeal(dayID, Number(eDayID)) as
     | IDay
-    | undefined;
+    | undefined)
+
+  useEffect(() => {
+    const newCheckData = readSpecificDayMeal(dayID, Number(eDayID));
+    setCheckedData(readSpecificDayMeal(dayID, Number(eDayID)))
+    setChecked(newCheckData ? newCheckData.meals.map((meal: IMealElement) => meal.id) : [],)
+  }, [dayID, eDayID])
+
 
   const [checked, setChecked] = useState<string[]>(
     checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
@@ -76,7 +83,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
 
   useEffect(() => {
     setProps(meals);
-  }, [checked, meals]);
+  }, [checked, checkedData, meals]);
 
   const handleToggle = (meal: IMealElement) => () => {
     const currentIndex = checked.indexOf(meal.id);

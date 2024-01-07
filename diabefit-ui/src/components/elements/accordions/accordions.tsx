@@ -30,6 +30,9 @@ type Props = {
 const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   const [days, setDays] = React.useState<IDay[]>([]);
 
+  const currentDay = React.useRef(dayId)
+
+
   React.useEffect(() => {
     setDays(
       readDayMeal(dayId.toString()) ?? [
@@ -71,6 +74,15 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
         },
       ],
     );
+
+    if (currentDay.current !== dayId)
+      setExpanded(
+        expanded.map((exp) => {
+          return { ...exp, status: false }
+        }),
+      );
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dayId]);
 
   const changedData = (id: number) => {
@@ -139,14 +151,14 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
             ? ` Units ${units.short}u ${value.kcal} kcal | C ${value.carbs}g`
             : `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
           : width >= 310
-          ? units
-            ? ` ${units.short}u | ${value.kcal} kcal`
-            : `${value.kcal} kcal | C ${value.carbs}g`
-          : width >= 250
-          ? units
-            ? `${units.short}u`
-            : `${value.kcal} kcal`
-          : ""}
+            ? units
+              ? ` ${units.short}u | ${value.kcal} kcal`
+              : `${value.kcal} kcal | C ${value.carbs}g`
+            : width >= 250
+              ? units
+                ? `${units.short}u`
+                : `${value.kcal} kcal`
+              : ""}
       </p>
     );
   };
@@ -194,9 +206,8 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
   };
 
   const routeHandler = (dayId: number, element: IDay) => {
-    return `add/${dayId}/${
-      Object.values(EDays).indexOf(element.name as unknown as EDays) + 1
-    }`;
+    return `add/${dayId}/${Object.values(EDays).indexOf(element.name as unknown as EDays) + 1
+      }`;
   };
 
   const [openCalculate, setOpenCalculate] = React.useState<ICalculatePanel>({
@@ -316,7 +327,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                   day.meals,
                   dayId.toString(),
                   Object.values(EDays).indexOf(day.name as unknown as EDays) +
-                    1,
+                  1,
                 )}
                 changedData={changedData}
               />
