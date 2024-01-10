@@ -51,7 +51,7 @@ const App: React.FC = () => {
 
       const loadData = async () => {
         const newData = await account(user);
-        setData(newData);
+        newData && setData(newData);
       };
 
       loadData();
