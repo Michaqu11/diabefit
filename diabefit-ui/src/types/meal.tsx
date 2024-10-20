@@ -15,3 +15,11 @@ export interface IMealElement {
     carbs: number;
   };
 }
+
+export const EMPTY_BASE = {
+  grams: 0,
+  kcal: 0,
+  prot: 0,
+  fats: 0,
+  carbs: 0,
+};

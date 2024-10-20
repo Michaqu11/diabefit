@@ -6,7 +6,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import BpCheckbox from "./Checkbox";
 import "./ProductsList.scss";
 import { searchFood } from "../../../api/fatsecret-api";
@@ -21,6 +21,7 @@ import { IDay } from "../../../types/days";
 import { setupServingsData } from "./utils/ProductsListUtils";
 import CustomMealDialog from "./utils/CustomMealDialog";
 import styled from "styled-components";
+import { CreateCustomMeal } from "./custom/CreateCustomMeal";
 
 type Props = {
   searchKey: string;
@@ -42,8 +43,8 @@ const ListItemTextWrapper = styled.div`
 
 const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
-  const [openCustomiseMealDialog, setOpenCustomiseMealDialog] = useState(false);
-  const [customiseMeal, setCustomiseMeal] = useState<IMealElement | undefined>(
+  const [openCustomizeMealDialog, setOpenCustomizeMealDialog] = useState(false);
+  const [customizeMeal, setCustomizeMeal] = useState<IMealElement | undefined>(
     undefined,
   );
 
@@ -65,12 +66,21 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
   );
 
-  const empty = (info: string = "No products to display") => {
+  const empty = (info: string = "No products to display", subInfo?: string) => {
     return (
-      <ListItem component="div" disablePadding sx={{ marginTop: "50px" }}>
+      <ListItem
+        component="div"
+        disablePadding
+        sx={{ marginTop: "10px", display: "flex", flexDirection: "column" }}
+      >
         <ListItemText style={{ display: "flex", justifyContent: "center" }}>
           <span style={{ fontSize: "1.5rem" }}>{info}</span>
         </ListItemText>
+        {subInfo ? (
+          <ListItemText style={{ display: "flex", justifyContent: "center" }}>
+            <span style={{ fontSize: "1.5rem" }}>{subInfo}</span>
+          </ListItemText>
+        ) : null}
       </ListItem>
     );
   };
@@ -82,29 +92,24 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
   const [pageNumber, setPageNumber] = useState<number>(0);
   const [hasMore, setHasMore] = useState<boolean>(true);
 
-  useEffect(() => {
-    setProps(meals);
-  }, [checked, checkedData, meals]);
+  const handleToggle = useCallback(
+    (meal: IMealElement) => () => {
+      const currentIndex = checked.indexOf(meal.id);
+      const newChecked = [...checked];
 
-  const handleToggle = (meal: IMealElement) => () => {
-    const currentIndex = checked.indexOf(meal.id);
-    const newChecked = [...checked];
+      if (currentIndex === -1) {
+        newChecked.push(meal.id);
+        setCustomizeMeal(meal);
+        setOpenCustomizeMealDialog(true);
+      } else {
+        newChecked.splice(currentIndex, 1);
+        removeMeal(dayID, Number(eDayID), meal.id);
+      }
 
-    if (currentIndex === -1) {
-      newChecked.push(meal.id);
-      setCustomiseMeal(meal);
-      setOpenCustomiseMealDialog(true);
-    } else {
-      newChecked.splice(currentIndex, 1);
-      removeMeal(dayID, Number(eDayID), meal.id);
-    }
-
-    setChecked(newChecked);
-  };
-
-  const displayDivider = () => {
-    return <Divider />;
-  };
+      setChecked(newChecked);
+    },
+    [checked, dayID, eDayID],
+  );
 
   const saveMeal = (meal: IMealElement) => {
     addMeal(dayID, Number(eDayID), meal);
@@ -125,48 +130,6 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         P {extension.prot}g F {extension.fats}g C {extension.carbs}g (
         {extension.kcal}kcal)
       </span>
-    );
-  };
-
-  const renderRow = (meal: IMealElement, divider: boolean) => {
-    return (
-      <div key={meal.mealName}>
-        <ListItem
-          style={{
-            backgroundColor: `${
-              checked.includes(meal.id)
-                ? "rgba(30,130,192,0.1)"
-                : "rgb(255,255,255)"
-            }`,
-          }}
-          secondaryAction={
-            <BpCheckbox
-              edge="end"
-              onChange={handleToggle(meal)}
-              checked={checked.includes(meal.id)}
-              inputProps={{ "aria-labelledby": meal.id }}
-            />
-          }
-          disablePadding
-        >
-          <ListItemTextWrapper>
-            <ListItemText className="productdetail">
-              <Tooltip
-                title={meal.mealName}
-                enterDelay={1000}
-                leaveDelay={100}
-                placement="bottom-start"
-              >
-                <div>{meal.displayName}</div>
-              </Tooltip>
-              <Typography component={"div"} sx={{ color: "text.secondary" }}>
-                {details(meal)}
-              </Typography>
-            </ListItemText>
-          </ListItemTextWrapper>
-        </ListItem>
-        {divider && displayDivider()}
-      </div>
     );
   };
 
@@ -204,15 +167,6 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     return result;
   };
 
-  const setProps = (mealsProps: IMealElement[] | undefined) => {
-    const products = mealsProps
-      ? mealsProps.map((meal: IMealElement, index: number) => {
-          return renderRow(meal, index !== mealsProps.length - 1);
-        })
-      : empty();
-    setProducts(products);
-  };
-
   const loadMore = async () => {
     const res = await formatProductsData(searchKey, pageNumber + 1);
 
@@ -231,6 +185,60 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       return true;
     });
   };
+
+  const renderRow = useCallback(
+    (meal: IMealElement, divider: boolean) => {
+      return (
+        <div key={meal.mealName}>
+          <ListItem
+            style={{
+              backgroundColor: `${
+                checked.includes(meal.id)
+                  ? "rgba(30,130,192,0.1)"
+                  : "rgb(255,255,255)"
+              }`,
+            }}
+            secondaryAction={
+              <BpCheckbox
+                edge="end"
+                onChange={handleToggle(meal)}
+                checked={checked.includes(meal.id)}
+                inputProps={{ "aria-labelledby": meal.id }}
+              />
+            }
+            disablePadding
+          >
+            <ListItemTextWrapper>
+              <ListItemText className="productdetail">
+                <Tooltip
+                  title={meal.mealName}
+                  enterDelay={1000}
+                  leaveDelay={100}
+                  placement="bottom-start"
+                >
+                  <div>{meal.displayName}</div>
+                </Tooltip>
+                <Typography component={"div"} sx={{ color: "text.secondary" }}>
+                  {details(meal)}
+                </Typography>
+              </ListItemText>
+            </ListItemTextWrapper>
+          </ListItem>
+          {divider && <Divider />}
+        </div>
+      );
+    },
+    [checked, handleToggle],
+  );
+
+  useEffect(() => {
+    const products = meals
+      ? meals.map((meal: IMealElement, index: number) => {
+          return renderRow(meal, index !== meals.length - 1);
+        })
+      : empty();
+    setProducts(products);
+  }, [checked, checkedData, meals, renderRow]);
 
   useEffect(() => {
     const searchFoodProps = async () => {
@@ -271,14 +279,17 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
             </InfiniteScroll>
           </Grid>
         ) : (
-          empty("Search for products")
+          <>
+            {empty("Search for products", "or")}
+            <CreateCustomMeal setMeal={saveMeal} />
+          </>
         )}
       </div>
       <CustomMealDialog
-        meal={customiseMeal}
-        setMeal={setCustomiseMeal}
-        open={openCustomiseMealDialog}
-        setOpen={setOpenCustomiseMealDialog}
+        meal={customizeMeal}
+        setMeal={setCustomizeMeal}
+        open={openCustomizeMealDialog}
+        setOpen={setOpenCustomizeMealDialog}
         uncheckMeal={uncheckMeal}
         saveMeal={saveMeal}
       />

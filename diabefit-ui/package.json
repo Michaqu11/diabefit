@@ -81,10 +81,12 @@
   },
   "devDependencies": {
     "@types/crypto-js": "^4.1.1",
+    "@types/uuid": "^10.0.0",
     "eslint": "^8.46.0",
     "eslint-config-prettier": "^8.9.0",
     "eslint-plugin-prettier": "^5.0.0",
     "prettier": "^3.0.0",
-    "sass": "^1.62.0"
+    "sass": "^1.62.0",
+    "uuid": "^10.0.0"
   }
 }

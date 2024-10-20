@@ -13,6 +13,7 @@ import {
   TextField,
 } from "@mui/material";
 import { formatMealToCustomGrams } from "./ProductsListUtils";
+import { addedMealNotification } from "./AddedMealNotification";
 
 type Props = {
   meal: IMealElement | undefined;
@@ -59,6 +60,7 @@ const CustomMealDialog: React.FC<Props> = ({
   const handleAccept = () => {
     reset();
     meal && saveMeal(meal);
+    addedMealNotification();
   };
 
   const updateMealNutrition = (grams: number) => {
