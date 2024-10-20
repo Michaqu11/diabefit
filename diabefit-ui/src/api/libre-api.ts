@@ -1,12 +1,13 @@
 import axios from "axios";
 import { getLibreAPI } from "../store/sessionStorage";
-import { LIBRE_API_SERVICE_URL } from "../config/data";
+import { LIBRE_API_URL } from "../config/data";
+
 
 export const getLibreData = async () => {
   const token = getLibreAPI();
 
   const { data } = await axios.get(
-    LIBRE_API_SERVICE_URL + "/libreConnection?token=" + token,
+    LIBRE_API_URL,
     {
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -15,6 +16,9 @@ export const getLibreData = async () => {
         "Access-Control-Allow-Headers":
           "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control",
         "Content-Type": "application/json",
+        "authorization": `Bearer ${token}`,
+        "version": '4.7.0',
+        "product": 'llu.android'
       },
     },
   );
