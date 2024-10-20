@@ -9,9 +9,7 @@ import {
   DialogContentText,
   DialogTitle,
   Grid,
-  InputAdornment,
   Paper,
-  Stack,
   TextField,
 } from "@mui/material";
 import { formatMealToCustomGrams } from "./ProductsListUtils";
