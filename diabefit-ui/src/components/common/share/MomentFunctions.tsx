@@ -7,34 +7,33 @@ export interface DatesList {
 }
 
 const getDateSubtract = (sub: number, unix?: number): DatesList => {
-  // const momentTemp = unix ? moment(unix) : moment()
-  const momentTemp = moment().subtract(sub, "days");
+  const day = moment().subtract(sub, "days");
+
   return {
-    date: momentTemp.format("ddd DD"),
-    id: momentTemp.startOf("day").valueOf().toString(),
-    unix: momentTemp.startOf("day").valueOf() / 100000,
+    date: day.format("ddd DD"),
+    id: day.startOf("day").valueOf().toString(),
+    unix: day.startOf("day").valueOf() / 100000,
   };
 };
 
 const getDateAddition = (sub: number, unix?: number): DatesList => {
-  // const momentTemp = unix ? moment(unix) : moment()
-  const momentTemp = moment().add(sub, "days");
+  const day = moment().add(sub, "days");
   return {
-    date: momentTemp.format("ddd DD"),
-    id: momentTemp.startOf("day").valueOf().toString(),
-    unix: momentTemp.startOf("day").valueOf() / 100000,
+    date: day.format("ddd DD"),
+    id: day.startOf("day").valueOf().toString(),
+    unix: day.startOf("day").valueOf() / 100000,
   };
 };
 
 const getNow = (unix?: number) => {
-  const momentTemp = unix ? moment(unix) : moment();
+  const day = unix ? moment(unix) : moment();
 
-  return momentTemp.startOf("day").valueOf().toString();
+  return day.startOf("day").valueOf().toString();
 };
 
 const encodeShortDate = (unix?: number) => {
-  const momentTemp = unix ? moment(unix) : moment();
-  return momentTemp.startOf("day").valueOf() / 100000;
+  const day = unix ? moment(unix) : moment();
+  return day.startOf("day").valueOf() / 100000;
 };
 
 const decodeShortDate = (unix: number) => {

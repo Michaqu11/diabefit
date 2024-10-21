@@ -12,7 +12,6 @@ export default function useDrag() {
 
   const dragStop = React.useCallback(
     () =>
-      // NOTE: need some delay so item under cursor won't be clicked
       window.requestAnimationFrame(() => {
         setDragging(false);
         setClicked(false);

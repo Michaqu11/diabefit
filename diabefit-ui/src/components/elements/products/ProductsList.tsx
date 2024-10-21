@@ -21,7 +21,7 @@ import { IDay } from "../../../types/days";
 import { setupServingsData } from "./utils/ProductsListUtils";
 import CustomMealDialog from "./utils/CustomMealDialog";
 import styled from "styled-components";
-import { CreateCustomMeal } from "./custom/CreateCustomMeal";
+import { CustomProductCard } from "./custom/CustomProductCard";
 
 type Props = {
   searchKey: string;
@@ -281,7 +281,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         ) : (
           <>
             {empty("Search for products", "or")}
-            <CreateCustomMeal setMeal={saveMeal} />
+            <CustomProductCard setProduct={saveMeal} />
           </>
         )}
       </div>

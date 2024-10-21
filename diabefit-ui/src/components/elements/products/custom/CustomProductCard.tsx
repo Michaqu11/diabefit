@@ -12,11 +12,11 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { addedMealNotification } from "../utils/AddedMealNotification";
 
-interface CustomMealDialogProps {
-  setMeal: (meal: IMealElement) => void;
+interface CustomProductProps {
+  setProduct: (meal: IMealElement) => void;
 }
 
-type CustomMealType = {
+type CustomProductType = {
   mealName: string;
   grams: number;
   kcal: number;
@@ -26,30 +26,30 @@ type CustomMealType = {
 };
 
 type ErrorFields = {
-  [K in keyof CustomMealType as `${K}Error`]: boolean;
+  [K in keyof CustomProductType as `${K}Error`]: boolean;
 };
 
 const validateNumberInput = (
-  field: keyof CustomMealType,
+  field: keyof CustomProductType,
   value: string,
-  setMealData: React.Dispatch<
-    React.SetStateAction<CustomMealType & ErrorFields>
+  setData: React.Dispatch<
+    React.SetStateAction<CustomProductType & ErrorFields>
   >,
 ) => {
   const parsedNumber = Number(value);
 
-  setMealData((prevState) => {
+  setData((prevState) => {
     const newFieldError = `${field}Error` as keyof ErrorFields;
 
     return {
       ...prevState,
       [field]: parsedNumber > 0 ? parsedNumber : "",
       [newFieldError]: !(parsedNumber >= 0),
-    } as CustomMealType & ErrorFields;
+    } as CustomProductType & ErrorFields;
   });
 };
 
-const initialMealData: CustomMealType & ErrorFields = {
+const initialProductData: CustomProductType & ErrorFields = {
   mealName: "",
   mealNameError: false,
   grams: 0,
@@ -64,20 +64,20 @@ const initialMealData: CustomMealType & ErrorFields = {
   carbsError: false,
 };
 
-export const CreateCustomMeal: React.FC<CustomMealDialogProps> = ({
-  setMeal,
+export const CustomProductCard: React.FC<CustomProductProps> = ({
+  setProduct,
 }) => {
-  const [mealData, setMealData] = useState(initialMealData);
+  const [productData, setProductData] = useState(initialProductData);
 
   const reset = () => {
-    setMealData(initialMealData);
+    setProductData(initialProductData);
   };
 
   const confirm = () => {
     reset();
-    setMeal({
-      ...mealData,
-      displayName: mealData.mealName,
+    setProduct({
+      ...productData,
+      displayName: productData.mealName,
       id: uuidv4(),
       base: EMPTY_BASE,
     });
@@ -99,37 +99,37 @@ export const CreateCustomMeal: React.FC<CustomMealDialogProps> = ({
               justifyContent: "center",
             }}
           >
-            Create a custom meal
+            Create a custom product
           </Typography>
 
           <Container fixed sx={{ padding: "0px", margin: "10px 0px" }}>
             <TextField
               sx={{ width: "100%", margin: "10px 0" }}
-              label="Meal Name"
+              label="Product Name"
               variant="outlined"
-              value={mealData.mealName}
+              value={productData.mealName}
               onChange={(e) => {
-                setMealData((prevState) => ({
+                setProductData((prevState) => ({
                   ...prevState,
                   mealName: e.target.value,
                   mealNameError: e.target.value.length === 0,
                 }));
               }}
-              error={mealData.mealNameError}
+              error={productData.mealNameError}
             />
 
             <TextField
               sx={{ width: "100%", margin: "10px 0" }}
               label="Carbohydrates (g)"
               variant="outlined"
-              value={mealData.carbs}
+              value={productData.carbs}
               type="number"
               inputProps={{
                 step: "1",
               }}
-              error={mealData.kcalError}
+              error={productData.kcalError}
               onChange={(e) =>
-                validateNumberInput("carbs", e.target.value, setMealData)
+                validateNumberInput("carbs", e.target.value, setProductData)
               }
             />
 
@@ -137,14 +137,14 @@ export const CreateCustomMeal: React.FC<CustomMealDialogProps> = ({
               sx={{ width: "100%", margin: "10px 0" }}
               label="Calories (kcal)"
               variant="outlined"
-              value={mealData.kcal}
+              value={productData.kcal}
               type="number"
               inputProps={{
                 step: "1",
               }}
-              error={mealData.kcalError}
+              error={productData.kcalError}
               onChange={(e) =>
-                validateNumberInput("kcal", e.target.value, setMealData)
+                validateNumberInput("kcal", e.target.value, setProductData)
               }
             />
 
@@ -152,14 +152,14 @@ export const CreateCustomMeal: React.FC<CustomMealDialogProps> = ({
               sx={{ width: "100%", margin: "10px 0" }}
               label="Protein (g)"
               variant="outlined"
-              value={mealData.prot}
+              value={productData.prot}
               type="number"
               inputProps={{
                 step: "1",
               }}
-              error={mealData.kcalError}
+              error={productData.kcalError}
               onChange={(e) =>
-                validateNumberInput("prot", e.target.value, setMealData)
+                validateNumberInput("prot", e.target.value, setProductData)
               }
             />
 
@@ -167,14 +167,14 @@ export const CreateCustomMeal: React.FC<CustomMealDialogProps> = ({
               sx={{ width: "100%", margin: "10px 0" }}
               label="Fats (g)"
               variant="outlined"
-              value={mealData.fats}
+              value={productData.fats}
               type="number"
               inputProps={{
                 step: "1",
               }}
-              error={mealData.kcalError}
+              error={productData.kcalError}
               onChange={(e) =>
-                validateNumberInput("fats", e.target.value, setMealData)
+                validateNumberInput("fats", e.target.value, setProductData)
               }
             />
 
@@ -182,14 +182,14 @@ export const CreateCustomMeal: React.FC<CustomMealDialogProps> = ({
               sx={{ width: "100%", margin: "10px 0" }}
               label="Amount (g)"
               variant="outlined"
-              value={mealData.grams}
+              value={productData.grams}
               type="number"
               inputProps={{
                 step: "1",
               }}
-              error={mealData.gramsError}
+              error={productData.gramsError}
               onChange={(e) =>
-                validateNumberInput("grams", e.target.value, setMealData)
+                validateNumberInput("grams", e.target.value, setProductData)
               }
             />
           </Container>

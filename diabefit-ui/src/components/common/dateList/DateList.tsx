@@ -38,11 +38,11 @@ const DateList: React.FC<Props> = ({ dayId, setDay }) => {
 
   const date = () => {
     let result: DatesList[] = [];
-    for (var i = 15; i > 0; i--) {
+    for (var i = 20; i > 0; i--) {
       result.push(getDateSubtract(i, decodeShortDate(dayId)));
     }
 
-    for (i = 0; i <= 15; i++) {
+    for (i = 0; i <= 10; i++) {
       result.push(getDateAddition(i, decodeShortDate(dayId)));
     }
 

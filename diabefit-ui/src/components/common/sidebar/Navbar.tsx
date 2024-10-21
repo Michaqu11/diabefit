@@ -2,12 +2,12 @@ import * as React from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Sidebar from "./Sidebar";
 
-type Props = {
+interface NavbarProps {
   stateValue: boolean;
   onStateChange: (state: boolean) => void;
 };
 
-const Navbar: React.FC<Props> = ({ stateValue }) => {
+const Navbar: React.FC<NavbarProps> = ({ stateValue }) => {
   const [state, setState] = React.useState(stateValue);
 
   React.useEffect(() => {
