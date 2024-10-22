@@ -1,5 +1,5 @@
 import * as React from "react";
-import dayjs from "dayjs";
+import dayjs, { Dayjs } from "dayjs";
 import {
   Alert,
   AlertTitle,
@@ -21,10 +21,7 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
-import {
-  LocalizationProvider,
-  MobileDateTimePicker,
-} from "@mui/x-date-pickers";
+import { LocalizationProvider, MobileTimePicker } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ICalculatePanel } from "../../../types/days";
 import CalculateIcon from "@mui/icons-material/Calculate";
@@ -37,6 +34,7 @@ import { useSnackbar } from "notistack";
 import { getLibreData } from "../../../api/libre-api";
 import CloseIcon from "@mui/icons-material/Close";
 import "./creating-panel.scss";
+import { useEffect, useRef, useState } from "react";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -49,23 +47,21 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     props.setOpenCalculate({ open: false, dayId: undefined, day: undefined });
   };
 
-  const [bloodSugar, setBloodSugar] = React.useState<number | string>("");
-  const [carbs, setCarbs] = React.useState<number | string>("");
+  const [selectedDate, setSelectedDate] = useState(dayjs(new Date()));
+  const [bloodSugar, setBloodSugar] = useState<number | string>("");
+  const [carbs, setCarbs] = useState<number | string>("");
+  const [foodInsulin, setFoodInsulin] = useState<number | string>("");
+  const [correctionInsulin, setCorrectionInsulin] = useState<number | string>(
+    "",
+  );
 
-  const [foodInsulin, setFoodInsulin] = React.useState<number | string>("");
-  const [correctionInsulin, setCorrectionnsulin] = React.useState<
-    number | string
-  >("");
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [libreAlertInformation, setLibreAlertInformation] = useState(false);
 
-  const [alertOpen, setAlertOpen] = React.useState(false);
+  const foodInsulinMetric = useRef<number>(0);
+  const correctionInsulinMetric = useRef<number>(0);
 
-  const [libreAlertInformation, setLibreAlertInformation] =
-    React.useState(false);
-
-  const tempFoodInsulin = React.useRef<number>(0);
-  const tempCorrectionInsulin = React.useRef<number>(0);
-
-  React.useEffect(() => {
+  useEffect(() => {
     async function fetchData() {
       try {
         const getBloodSugar = await getLibreData();
@@ -79,7 +75,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     setBloodSugar("");
     setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
     setFoodInsulin("");
-    setCorrectionnsulin("");
+    setCorrectionInsulin("");
     if (props.openCalculate.open) {
       fetchData();
     }
@@ -93,8 +89,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
         bloodSugar as number,
         carbs as number,
       );
-      tempFoodInsulin.current = food;
-      tempCorrectionInsulin.current = correction;
+      foodInsulinMetric.current = food;
+      correctionInsulinMetric.current = correction;
       setAlertOpen(true);
     } else
       enqueueSnackbar("Sugar and carbs are required!", {
@@ -103,20 +99,31 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
       });
   };
 
+  const handleDateChange = (value: Dayjs | null) => {
+    setSelectedDate(value ?? dayjs(new Date()));
+  };
+
   const acceptGlucose = () => {
-    setFoodInsulin(tempFoodInsulin.current);
-    setCorrectionnsulin(tempCorrectionInsulin.current);
+    setFoodInsulin(foodInsulinMetric.current);
+    setCorrectionInsulin(correctionInsulinMetric.current);
     setAlertOpen(false);
   };
 
   const getResult = () => {
     return roundUnits(
-      (tempFoodInsulin.current ?? 0) + (tempCorrectionInsulin.current ?? 0),
+      (foodInsulinMetric.current ?? 0) + (correctionInsulinMetric.current ?? 0),
     );
   };
   const saveCalculation = () => {
     const openCalculate = { ...props.openCalculate };
-    if (openCalculate.day) openCalculate.day.units = { short: getResult() };
+    if (openCalculate.day)
+      openCalculate.day.calculatorData = {
+        units: {
+          short: getResult(),
+        },
+        glucose: Number(bloodSugar),
+        date: selectedDate.toDate(),
+      };
     props.saveGlucose(openCalculate);
     handleCalculateClickClose();
   };
@@ -136,11 +143,12 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             gap: "10px",
           }}
         >
-          <div></div>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <MobileDateTimePicker
-              label="Date"
-              defaultValue={dayjs(new Date())}
+            <MobileTimePicker
+              label="Time"
+              value={selectedDate}
+              onChange={handleDateChange}
+              ampm={false}
             />
           </LocalizationProvider>
 
@@ -243,9 +251,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <InputLabel htmlFor="component-simple">Insulin (foods)</InputLabel>
             <OutlinedInput
               value={foodInsulin}
-              onChange={(food) =>
-                setCorrectionnsulin(Number(food.target.value))
-              }
+              onChange={(food) => setFoodInsulin(Number(food.target.value))}
               label="Insulin (foods)"
               aria-describedby="outlined-sugar-text"
             />
@@ -259,7 +265,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <OutlinedInput
               value={correctionInsulin}
               onChange={(correction) =>
-                setCorrectionnsulin(Number(correction.target.value))
+                setCorrectionInsulin(Number(correction.target.value))
               }
               label="Insulin (correction)"
               aria-describedby="outlined-sugar-text"

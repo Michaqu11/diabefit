@@ -5,7 +5,7 @@ import Sidebar from "./Sidebar";
 interface NavbarProps {
   stateValue: boolean;
   onStateChange: (state: boolean) => void;
-};
+}
 
 const Navbar: React.FC<NavbarProps> = ({ stateValue }) => {
   const [state, setState] = React.useState(stateValue);

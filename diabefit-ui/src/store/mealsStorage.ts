@@ -1,3 +1,4 @@
+import { CalculatorData } from "../types/days";
 import { IMealElement } from "../types/meal";
 import { AllMeal, mockAllDays } from "./storagesTypes";
 
@@ -89,15 +90,71 @@ export const readSpecificDayMeal = (dayID: string, dayIndex: number) => {
   return undefined;
 };
 
-export const addUnits = (dayID: string, dayIndex: number, unit: number) => {
+export const calculateData = (
+  dayID: string,
+  dayIndex: number,
+  calculatorData: CalculatorData,
+) => {
   const mealsFromStore = localStorage.getItem("meals");
   let allMeals = {} as AllMeal;
   if (mealsFromStore) {
     allMeals = JSON.parse(mealsFromStore) as AllMeal;
-    const newUnits = {
-      short: unit,
-    };
-    allMeals[dayID][dayIndex - 1].units = newUnits;
+    allMeals[dayID][dayIndex - 1].calculatorData = calculatorData;
     localStorage.setItem("meals", JSON.stringify(allMeals));
+  }
+};
+
+export const exportCSVData = () => {
+  const mealsFromStore = localStorage.getItem("meals");
+  if (mealsFromStore) {
+    const mealsData: AllMeal = JSON.parse(mealsFromStore);
+
+    let csvContent =
+      "ID;Day;Meal Name;Display Name;Grams;Kcal;Protein;Fats;Carbs;Glucose;Units Short;Units Long;Date\n";
+
+    Object.keys(mealsData).forEach((key) => {
+      const dayArray = mealsData[key];
+      dayArray.forEach((day) => {
+        const dayName = day.name;
+
+        day.meals.forEach((meal) => {
+          const { mealName, displayName, grams, kcal, prot, fats, carbs } =
+            meal;
+          const glucose = day.calculatorData?.glucose || "";
+          const unitsShort = day.calculatorData?.units.short
+            ? `${day.calculatorData.units.short}`
+            : "";
+          const unitsLong = day.calculatorData?.units.long
+            ? `${day.calculatorData.units.long}`
+            : "";
+          const date = day.calculatorData?.date
+            ? new Date(day.calculatorData.date).toLocaleString()
+            : "";
+
+          csvContent += `${key};${dayName};${mealName};${displayName};${grams};${kcal};${prot};${fats};${carbs};${glucose};${unitsShort};${unitsLong};${date}\n`;
+        });
+      });
+    });
+
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "data.csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+};
+
+export const exportJSONData = () => {
+  const mealsFromStore = localStorage.getItem("meals");
+  if (mealsFromStore) {
+    const blob = new Blob([mealsFromStore], { type: "text/json" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "data.json";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 };

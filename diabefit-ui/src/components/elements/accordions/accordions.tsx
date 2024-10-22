@@ -19,7 +19,7 @@ import {
   IValues,
   UnitsType,
 } from "../../../types/days";
-import { addUnits, readDayMeal } from "../../../store/mealsStorage";
+import { calculateData, readDayMeal } from "../../../store/mealsStorage";
 import { IMealElement } from "../../../types/meal";
 import CalculatePanel from "../glucose-calculate/creating-panel";
 
@@ -39,37 +39,37 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
           id: 1,
           name: EDays.BREAKFAST,
           meals: [],
-          units: null,
+          calculatorData: null,
         },
         {
           id: 2,
           name: EDays.SNACK_1,
           meals: [],
-          units: null,
+          calculatorData: null,
         },
         {
           id: 3,
           name: EDays.LUNCH,
           meals: [],
-          units: null,
+          calculatorData: null,
         },
         {
           id: 4,
           name: EDays.SNACK_2,
           meals: [],
-          units: null,
+          calculatorData: null,
         },
         {
           id: 5,
           name: EDays.DINNER,
           meals: [],
-          units: null,
+          calculatorData: null,
         },
         {
           id: 6,
           name: EDays.SNACK_3,
           meals: [],
-          units: null,
+          calculatorData: null,
         },
       ],
     );
@@ -139,7 +139,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
 
   const details = (
     meals: IMealElement[] | undefined,
-    units: UnitsType | null,
+    units: UnitsType | undefined,
   ) => {
     if (!meals) return <div></div>;
     const value: IValues = summaryNutritionalValues(meals);
@@ -220,12 +220,12 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
     if (
       calculatePanel.day?.id !== undefined &&
       calculatePanel.dayId !== undefined &&
-      calculatePanel.day?.units
+      calculatePanel.day?.calculatorData !== null
     )
-      addUnits(
+      calculateData(
         calculatePanel.dayId.toString(),
         calculatePanel.day?.id,
-        calculatePanel.day?.units?.short,
+        calculatePanel.day?.calculatorData,
       );
   };
 
@@ -270,7 +270,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     component={"span"}
                     sx={{ color: "text.secondary" }}
                   >
-                    {details(day.meals, day.units)}
+                    {details(day.meals, day.calculatorData?.units)}
                   </Typography>
                   <IconButton
                     className={"MyIconButton"}

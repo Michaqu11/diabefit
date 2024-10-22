@@ -18,16 +18,22 @@ interface IDayElement {
   fats: number;
   carbs: number;
 }
-interface UnitsType {
+
+type UnitsType = {
   short: number;
   long?: number;
+};
+interface CalculatorData {
+  glucose: number;
+  units: UnitsType;
+  date: Date;
 }
 
 interface IDay {
   id: number;
   name: string;
   meals: IMealElement[];
-  units: UnitsType | null;
+  calculatorData: CalculatorData | null;
 }
 
 interface IElement {
@@ -56,5 +62,6 @@ export type {
   IValues,
   ICalculatePanel,
   UnitsType,
+  CalculatorData,
 };
 export { EDays };

@@ -135,21 +135,6 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
             <TextField
               sx={{ width: "100%", margin: "10px 0" }}
-              label="Calories (kcal)"
-              variant="outlined"
-              value={productData.kcal}
-              type="number"
-              inputProps={{
-                step: "1",
-              }}
-              error={productData.kcalError}
-              onChange={(e) =>
-                validateNumberInput("kcal", e.target.value, setProductData)
-              }
-            />
-
-            <TextField
-              sx={{ width: "100%", margin: "10px 0" }}
               label="Protein (g)"
               variant="outlined"
               value={productData.prot}
@@ -175,6 +160,21 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
               error={productData.kcalError}
               onChange={(e) =>
                 validateNumberInput("fats", e.target.value, setProductData)
+              }
+            />
+
+            <TextField
+              sx={{ width: "100%", margin: "10px 0" }}
+              label="Calories (kcal)"
+              variant="outlined"
+              value={productData.kcal}
+              type="number"
+              inputProps={{
+                step: "1",
+              }}
+              error={productData.kcalError}
+              onChange={(e) =>
+                validateNumberInput("kcal", e.target.value, setProductData)
               }
             />
 

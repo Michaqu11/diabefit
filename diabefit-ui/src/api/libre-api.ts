@@ -13,6 +13,10 @@ export const getLibreData = async () => {
       "Access-Control-Allow-Headers":
         "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control",
       "Content-Type": "application/json",
+      "accept-encoding": "gzip, deflate, br, zstd",
+      "cache-control": "no-cache",
+      connection: "Keep-Alive",
+      "content-type": "application/json",
       authorization: `Bearer ${token}`,
       version: "4.7.0",
       product: "llu.android",
