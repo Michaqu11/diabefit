@@ -1,1 +1,4 @@
 .firebase
+
+# Local Netlify folder
+.netlify

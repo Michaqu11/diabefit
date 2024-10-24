@@ -1,3 +1,4 @@
 export const SERVICE_URL = "https://diabefit.pythonanywhere.com";
-export const LIBRE_API_SERVICE_URL = "https://real-red-panther-tam.cyclic.app";
+export const PROXY_SERVER_URL =
+  "https://diabefit.netlify.app/.netlify/functions/api";
 export const LIBRE_API_URL = "https://api-eu.libreview.io/llu/connections";
