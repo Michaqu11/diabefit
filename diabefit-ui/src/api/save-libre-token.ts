@@ -2,18 +2,17 @@ import axios from "axios";
 import {
   getProfileId,
   getToken,
-  saveSettingsInSessionStorage,
+  saveLibreAPIInSessionStorage,
 } from "../store/sessionStorage";
-import { ISettings } from "../types/settings";
 import { PROXY_SERVER_URL } from "../config/data";
 
-export const saveSettings = async (settings: ISettings) => {
+export const saveLibreToken = async (libreAPI: string) => {
   const token = getToken();
   const { data } = await axios.post(
-    `${PROXY_SERVER_URL}/saveSettings`,
+    `${PROXY_SERVER_URL}/libreToken`,
     {
       id: getProfileId(),
-      settings: settings,
+      libreAPI: libreAPI,
       token,
     },
     {
@@ -22,6 +21,6 @@ export const saveSettings = async (settings: ISettings) => {
       },
     },
   );
-  saveSettingsInSessionStorage(settings);
+  saveLibreAPIInSessionStorage(libreAPI);
   return data;
 };
