@@ -10,27 +10,21 @@ import AddProduct from "./pages/AddProduct";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
 import { Box, Button } from "@mui/material";
-import {
-  getData,
-  getProfile,
-  saveProfile,
-  saveToken,
-} from "./store/sessionStorage";
+import { getProfile, saveProfile, saveToken } from "./store/sessionStorage";
 import EmptyLayout from "./components/layout/EmptyLayout";
 import { SnackbarProvider } from "notistack";
 import { account } from "./api/login";
 import YourData from "./pages/YourData";
 import { auth, googleProvider } from "./config/firebase";
 import { signInWithPopup } from "firebase/auth";
-import { IAllData } from "./types/settings";
+import { logOut } from "./api/logout";
+import { isTokenExpired } from "./config/tokenValidator";
 
 const App: React.FC = () => {
   const [user, setUser] = useState<any>();
   const [token, setToken] = useState<string>("");
   const [profile, setProfile] = useState<any>(getProfile());
   const [loginStatus, setLogin] = useState<boolean>(profile !== null);
-  const [data, setData] = useState<IAllData | null>(getData());
-
   const signInWithGoogle = async () => {
     try {
       const response = await signInWithPopup(auth, googleProvider);
@@ -44,19 +38,26 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    if (user) {
+    const loadData = async (profile: any) => {
+      await account(profile);
+    };
+
+    if (user && !profile) {
       saveProfile(user);
       saveToken(token);
       setProfile(user);
 
-      const loadData = async () => {
-        const newData = await account(user);
-        newData && setData(newData);
-      };
-
-      loadData();
+      loadData(user);
+    } else if (!user && profile && !token) {
+      const tokenManager = profile.stsTokenManager;
+      if (!isTokenExpired(tokenManager)) {
+        setToken(tokenManager.accessToken);
+        loadData(profile);
+      } else {
+        logOut();
+      }
     }
-  }, [token, user]);
+  }, [profile, token, user]);
 
   return (
     <SnackbarProvider maxSnack={2} autoHideDuration={2000}>
@@ -70,12 +71,7 @@ const App: React.FC = () => {
                 <Route path="/entry" element={<NewEntry />} />
                 <Route path="/bolus" element={<NewBolus />} />
                 <Route path="/product" element={<NewProduct />} />
-                <Route
-                  path="/data"
-                  element={
-                    data != null ? <YourData /> : <Navigate replace to={"/"} />
-                  }
-                />
+                <Route path="/data" element={<YourData />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/add/:id/:meal" element={<AddProduct />} />
               </Routes>

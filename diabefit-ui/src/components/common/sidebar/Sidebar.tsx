@@ -16,15 +16,10 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
-import {
-  clearData,
-  clearProfile,
-  getProfile,
-} from "../../../store/sessionStorage";
+import { getProfile } from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";
-import { signOut } from "firebase/auth";
-import { auth } from "../../../config/firebase";
 import { IProfile } from "../../../types/profile";
+import { logOut } from "../../../api/logout";
 
 interface IChildProps {
   toggleDrawer: (arg: boolean) => void;
@@ -78,17 +73,6 @@ const sidebarNavItems: ISidebarNav[] = [
 
 const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
   const [profile] = useState<IProfile>(getProfile());
-
-  const logOut = async () => {
-    try {
-      await signOut(auth);
-    } catch (err) {
-      console.error(err);
-    }
-    clearProfile();
-    clearData();
-    window.location.reload();
-  };
 
   return (
     <Box sx={{ width: 250 }} onKeyDown={() => toggleDrawer(false)}>

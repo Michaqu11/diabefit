@@ -10,7 +10,7 @@ import ClickTooltip from "../common/tooltip/ClickTooltip";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { useEffect, useState } from "react";
 import "./SettingsList.scss";
-import { saveLibreAPI } from "../../api/save-libreAPI";
+import { saveLibreToken } from "../../api/save-libre-token";
 import { VariantType } from "notistack";
 
 interface LibreListProps {
@@ -25,7 +25,7 @@ const LibreList: React.FC<LibreListProps> = (props) => {
 
   useEffect(() => {
     if (props.saveData != null && libreToken !== "") {
-      saveLibreAPI(libreToken);
+      saveLibreToken(libreToken);
       props.saveDataMessage("success");
     } else if (props.saveData !== null) {
       props.saveDataMessage("error");

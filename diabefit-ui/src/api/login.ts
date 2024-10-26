@@ -2,22 +2,18 @@ import axios from "axios";
 import { IProfile } from "../types/profile";
 import { getToken, saveData } from "../store/sessionStorage";
 import { IAllData } from "../types/settings";
-import { SERVICE_URL } from "../config/data";
+import { PROXY_SERVER_URL } from "../config/data";
 
 const RETRY = 3;
 const RETRY_DELAY = 2000;
+
 const getData = async (uid: string, token: string) => {
   const { data } = await axios.post(
-    `${SERVICE_URL}/login`,
+    `${PROXY_SERVER_URL}/login`,
     { id: uid, token: token },
     {
       headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
-        "Access-Control-Allow-Headers":
-          "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, If-Modified-Since, X-File-Name, Cache-Control",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", // Ensuring JSON content type
       },
     },
   );
