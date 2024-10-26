@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Setting from "./pages/Setting";
 import MasterLayout from "./components/layout/MasterLayout";
 import NewEntry from "./pages/NewEntry";

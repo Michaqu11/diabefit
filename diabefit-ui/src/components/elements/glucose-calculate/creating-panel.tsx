@@ -21,7 +21,8 @@ import {
   InputLabel,
   OutlinedInput,
 } from "@mui/material";
-import { LocalizationProvider, MobileTimePicker } from "@mui/x-date-pickers";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { ICalculatePanel } from "../../../types/days";
 import CalculateIcon from "@mui/icons-material/Calculate";
@@ -35,12 +36,22 @@ import { getLibreData } from "../../../api/libre-api";
 import CloseIcon from "@mui/icons-material/Close";
 import "./creating-panel.scss";
 import { useEffect, useRef, useState } from "react";
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
   setOpenCalculate: (value: React.SetStateAction<ICalculatePanel>) => void;
   saveGlucose: (calculatePanel: ICalculatePanel) => void;
 }
+
+const LIBRE_SUCCESS_INFORMATION = {
+  message: "Glucose was pasted using Libre API",
+  severity: "info",
+};
+const LIBRE_ERROR_INFORMATION = {
+  message: "Failed to retrieve glucose data from Libre API.",
+  severity: "error",
+};
 
 const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const handleCalculateClickClose = () => {
@@ -56,28 +67,35 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   );
 
   const [alertOpen, setAlertOpen] = useState(false);
-  const [libreAlertInformation, setLibreAlertInformation] = useState(false);
-
+  const [displayLibreAlert, setDisplayLibreAlert] = useState(false);
+  const [libreAlertInformation, setLibreAlertInformation] = useState(
+    LIBRE_SUCCESS_INFORMATION,
+  );
   const foodInsulinMetric = useRef<number>(0);
   const correctionInsulinMetric = useRef<number>(0);
 
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const getBloodSugar = await getLibreData();
-        setLibreAlertInformation(true);
-        setBloodSugar(getBloodSugar);
-        setTimeout(() => setLibreAlertInformation(false), 5000);
-      } catch {
-        setBloodSugar("");
-      }
+  const getBloodSugar = async () => {
+    try {
+      const bloodSugar = await getLibreData();
+      setLibreAlertInformation(LIBRE_SUCCESS_INFORMATION);
+      setDisplayLibreAlert(true);
+      setBloodSugar(bloodSugar);
+      setTimeout(() => setDisplayLibreAlert(false), 5000);
+    } catch {
+      setDisplayLibreAlert(true);
+      setLibreAlertInformation(LIBRE_ERROR_INFORMATION);
+      setTimeout(() => setDisplayLibreAlert(false), 5000);
+      setBloodSugar("");
     }
+  };
+
+  useEffect(() => {
     setBloodSugar("");
     setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
     setFoodInsulin("");
     setCorrectionInsulin("");
     if (props.openCalculate.open) {
-      fetchData();
+      getBloodSugar();
     }
   }, [props.openCalculate]);
 
@@ -144,49 +162,66 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
           }}
         >
           <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <MobileTimePicker
-              label="Time"
+            <TimePicker
               value={selectedDate}
               onChange={handleDateChange}
               ampm={false}
             />
           </LocalizationProvider>
 
-          <Collapse in={libreAlertInformation}>
+          <Collapse in={displayLibreAlert}>
             <Alert
               icon={false}
-              severity="info"
+              severity={libreAlertInformation.severity as "info" | "error"}
               action={
                 <IconButton
                   aria-label="close"
                   color="inherit"
                   size="small"
                   onClick={() => {
-                    setLibreAlertInformation(false);
+                    setDisplayLibreAlert(false);
                   }}
                 >
                   <CloseIcon fontSize="inherit" />
                 </IconButton>
               }
             >
-              Sugar was pasted using Libre API
+              {libreAlertInformation.message}
             </Alert>
           </Collapse>
 
-          <FormControl variant="outlined">
-            <InputLabel htmlFor="component-simple">Blood sugar</InputLabel>
-            <OutlinedInput
-              value={bloodSugar}
-              onChange={(sugar) => setBloodSugar(Number(sugar.target.value))}
-              label="Blood sugar"
-              endAdornment={
-                <InputAdornment position="end">mg/dL</InputAdornment>
-              }
-              aria-describedby="outlined-sugar-text"
-            />
-            <FormHelperText id="outlined-sugar-text"></FormHelperText>
-          </FormControl>
-
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "flex-end",
+              overflow: "visible !important",
+            }}
+          >
+            <FormControl variant="outlined">
+              <InputLabel htmlFor="component-simple">Blood sugar</InputLabel>
+              <OutlinedInput
+                value={bloodSugar}
+                onChange={(sugar) => setBloodSugar(Number(sugar.target.value))}
+                label="Blood sugar"
+                endAdornment={
+                  <InputAdornment position="end">mg/dL</InputAdornment>
+                }
+                aria-describedby="outlined-sugar-text"
+              />
+              <FormHelperText id="outlined-sugar-text"></FormHelperText>
+            </FormControl>
+            <div
+              style={{ height: "50px", display: "flex", alignItems: "center" }}
+            >
+              <IconButton
+                aria-label="refresh"
+                onClick={getBloodSugar}
+                size="small"
+              >
+                <RefreshIcon />
+              </IconButton>
+            </div>
+          </Box>
           <FormControl variant="outlined">
             <InputLabel htmlFor="component-simple">Carbs</InputLabel>
             <OutlinedInput
