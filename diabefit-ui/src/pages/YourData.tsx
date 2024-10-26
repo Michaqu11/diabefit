@@ -1,5 +1,7 @@
 import {
   Button,
+  CircularProgress,
+  Container,
   Grid,
   Paper,
   Tab,
@@ -35,50 +37,64 @@ const YourData: React.FC = () => {
 
   return (
     <Grid container justifyContent="center">
-      <Paper
-        elevation={!Mobile ? 0 : 1}
-        sx={{
-          width: "80%",
-          maxWidth: "1000px",
-          position: Mobile ? "relative" : "",
-        }}
-      >
-        <div className="save-your-data-button">
-          <Button
-            size="small"
-            sx={{ padding: "0px", minWidth: "0px" }}
-            onClick={() => saveDataClick(true)}
-          >
-            <SaveOutlinedIcon sx={{ fontSize: 30 }} />
-          </Button>
-        </div>
-        <div className={!Mobile ? "container-mobile" : "container-desktop"}>
-          <div className="center-card">
-            <Typography variant="h5" gutterBottom>
-              Set your Information
-            </Typography>
-            <Tabs value={tab} onChange={tabChange} aria-label="tabs">
-              <Tab label="Settings" />
-              <Tab label="Libre" />
-            </Tabs>
-            {tab === 0 ? (
-              <SettingsList
-                settings={data.settings}
-                saveData={saveData}
-                setSaveData={setSaveData}
-                saveDataMessage={saveDataMessage}
-              />
-            ) : (
-              <LibreList
-                libreAPI={data.libreAPI}
-                saveData={saveData}
-                setSaveData={setSaveData}
-                saveDataMessage={saveDataMessage}
-              />
-            )}
+      {data ? (
+        <Paper
+          elevation={!Mobile ? 0 : 1}
+          sx={{
+            width: "80%",
+            maxWidth: "1000px",
+            position: Mobile ? "relative" : "",
+          }}
+        >
+          <div className="save-your-data-button">
+            <Button
+              size="small"
+              sx={{ padding: "0px", minWidth: "0px" }}
+              onClick={() => saveDataClick(true)}
+            >
+              <SaveOutlinedIcon sx={{ fontSize: 30 }} />
+            </Button>
           </div>
-        </div>
-      </Paper>
+          <div className={!Mobile ? "container-mobile" : "container-desktop"}>
+            <div className="center-card">
+              <Typography variant="h5" gutterBottom>
+                Set your Information
+              </Typography>
+              <Tabs value={tab} onChange={tabChange} aria-label="tabs">
+                <Tab label="Settings" />
+                <Tab label="Libre" />
+              </Tabs>
+              {tab === 0 ? (
+                <SettingsList
+                  settings={data.settings}
+                  saveData={saveData}
+                  setSaveData={setSaveData}
+                  saveDataMessage={saveDataMessage}
+                />
+              ) : (
+                <LibreList
+                  libreAPI={data.libreAPI}
+                  saveData={saveData}
+                  setSaveData={setSaveData}
+                  saveDataMessage={saveDataMessage}
+                />
+              )}
+            </div>
+          </div>
+        </Paper>
+      ) : (
+        <Container
+          sx={{
+            width: "100%",
+            height: "300px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CircularProgress size={80} />
+        </Container>
+      )}
     </Grid>
   );
 };

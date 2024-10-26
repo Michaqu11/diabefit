@@ -6,6 +6,7 @@ import { PROXY_SERVER_URL } from "../config/data";
 
 const RETRY = 3;
 const RETRY_DELAY = 2000;
+
 const getData = async (uid: string, token: string) => {
   const { data } = await axios.post(
     `${PROXY_SERVER_URL}/login`,

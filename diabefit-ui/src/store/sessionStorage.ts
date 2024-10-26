@@ -2,30 +2,30 @@ import { IProfile } from "../types/profile";
 import { IAllData, ISettings } from "../types/settings";
 
 export const saveProfile = (profile: IProfile) => {
-  sessionStorage.setItem("profile", JSON.stringify(profile));
+  localStorage.setItem("profile", JSON.stringify(profile));
 };
 
 export const getProfile = (): IProfile => {
-  return JSON.parse(sessionStorage.getItem("profile") as string);
+  return JSON.parse(localStorage.getItem("profile") as string);
 };
 
 export const clearProfile = () => {
-  sessionStorage.removeItem("profile");
+  localStorage.removeItem("profile");
 };
 
 export const getProfileId = (): string => {
   const profile: IProfile = JSON.parse(
-    sessionStorage.getItem("profile") as string,
+    localStorage.getItem("profile") as string,
   );
   return profile.uid;
 };
 
 export const saveToken = (token: string) => {
-  sessionStorage.setItem("token", JSON.stringify(token));
+  localStorage.setItem("token", JSON.stringify(token));
 };
 
 export const getToken = (): string => {
-  return JSON.parse(sessionStorage.getItem("token") as string);
+  return JSON.parse(localStorage.getItem("token") as string);
 };
 
 export const saveData = (settings: IAllData) => {
