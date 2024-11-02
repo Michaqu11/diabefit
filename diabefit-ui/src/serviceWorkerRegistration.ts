@@ -81,6 +81,9 @@ function registerValidSW(swUrl: string, config?: Config) {
                   "tabs for this page are closed. See https://cra.link/PWA.",
               );
 
+              // Display the banner
+              showUpdateBanner();
+
               // Execute callback
               if (config && config.onUpdate) {
                 config.onUpdate(registration);
@@ -103,6 +106,25 @@ function registerValidSW(swUrl: string, config?: Config) {
     .catch((error) => {
       console.error("Error during service worker registration:", error);
     });
+}
+
+function showUpdateBanner() {
+  const banner = document.createElement("div");
+  banner.style.position = "fixed";
+  banner.style.bottom = "0";
+  banner.style.width = "100%";
+  banner.style.backgroundColor = "#f8d7da";
+  banner.style.color = "#721c24";
+  banner.style.textAlign = "center";
+  banner.style.padding = "10px";
+  banner.style.zIndex = "1000";
+  banner.innerText = "New update available! Click here to update.";
+
+  document.body.appendChild(banner);
+
+  banner.addEventListener("click", () => {
+    window.location.reload();
+  });
 }
 
 function checkValidServiceWorker(swUrl: string, config?: Config) {
