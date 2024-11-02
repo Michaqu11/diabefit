@@ -7,8 +7,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import { ReactElement, useState } from "react";
-
+import { ReactElement } from "react";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import HomeIcon from "@mui/icons-material/Home";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
@@ -18,9 +17,8 @@ import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
 import { getProfile } from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";
-import { IProfile } from "../../../types/profile";
 import { logOut } from "../../../api/logout";
-
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 interface IChildProps {
   toggleDrawer: (arg: boolean) => void;
 }
@@ -72,8 +70,7 @@ const sidebarNavItems: ISidebarNav[] = [
 ];
 
 const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
-  const [profile] = useState<IProfile>(getProfile());
-
+  const profile = getProfile();
   return (
     <Box sx={{ width: 250 }} onKeyDown={() => toggleDrawer(false)}>
       {profile ? (
@@ -81,7 +78,13 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
           <ListItem disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                <Avatar src={profile.photoURL} />
+                {profile.photoURL ? (
+                  <Avatar src={profile.photoURL} />
+                ) : (
+                  <Avatar>
+                    <PermIdentityOutlinedIcon />
+                  </Avatar>
+                )}
               </ListItemIcon>
               <ListItemText primary={profile.displayName} />
             </ListItemButton>

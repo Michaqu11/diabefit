@@ -10,59 +10,61 @@ import AddProduct from "./pages/AddProduct";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
 import { Box, Button } from "@mui/material";
-import { getProfile, saveProfile, saveToken } from "./store/sessionStorage";
+import {
+  getProfile,
+  removeToken,
+  saveProfile,
+  saveToken,
+} from "./store/sessionStorage";
 import EmptyLayout from "./components/layout/EmptyLayout";
 import { SnackbarProvider } from "notistack";
 import { account } from "./api/login";
 import YourData from "./pages/YourData";
 import { auth, googleProvider } from "./config/firebase";
-import { signInWithPopup } from "firebase/auth";
-import { logOut } from "./api/logout";
-import { isTokenExpired } from "./config/tokenValidator";
+import { signInWithPopup, User } from "firebase/auth";
 
 const App: React.FC = () => {
-  const [user, setUser] = useState<any>();
-  const [token, setToken] = useState<string>("");
-  const [profile, setProfile] = useState<any>(getProfile());
-  const [loginStatus, setLogin] = useState<boolean>(profile !== null);
+  const [profile, setProfile] = useState<User | null>(getProfile());
+  const [loginStatus, setLogin] = useState<boolean>(false);
+
   const signInWithGoogle = async () => {
     try {
-      const response = await signInWithPopup(auth, googleProvider);
-      setLogin(true);
-      const token = await response.user?.getIdToken();
-      setToken(token);
-      setUser(response.user);
+      const { user } = await signInWithPopup(auth, googleProvider);
+
+      if (user) {
+        const token = await user.getIdToken();
+        const tokenExpirationTime = (await user.getIdTokenResult())
+          .expirationTime;
+        saveToken(token, tokenExpirationTime);
+        saveProfile(user);
+        await account(user);
+
+        setLogin(true);
+        setProfile(user);
+      } else {
+        removeToken();
+      }
     } catch (err) {
       console.error(err);
+      removeToken();
     }
   };
 
+  
   useEffect(() => {
-    const loadData = async (profile: any) => {
-      await account(profile);
-    };
-
-    if (user && !profile) {
-      saveProfile(user);
-      saveToken(token);
-      setProfile(user);
-
-      loadData(user);
-    } else if (!user && profile && !token) {
-      const tokenManager = profile.stsTokenManager;
-      if (!isTokenExpired(tokenManager)) {
-        setToken(tokenManager.accessToken);
-        loadData(profile);
-      } else {
-        logOut();
+    const manageAccount = async () => {
+      if (profile && !loginStatus) {
+        setLogin(true);
+        await account(profile);
       }
-    }
-  }, [profile, token, user]);
+    };
+    manageAccount();
+  }, [loginStatus, profile]);
 
   return (
     <SnackbarProvider maxSnack={2} autoHideDuration={2000}>
       <div className="root">
-        {profile ? (
+        {loginStatus ? (
           <>
             <MasterLayout />
             <div className="router">

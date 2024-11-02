@@ -1,12 +1,14 @@
-import { IProfile } from "../types/profile";
+import { User } from "firebase/auth";
 import { IAllData, ISettings } from "../types/settings";
 
-export const saveProfile = (profile: IProfile) => {
+export const saveProfile = (profile: User) => {
   localStorage.setItem("profile", JSON.stringify(profile));
 };
 
-export const getProfile = (): IProfile => {
-  return JSON.parse(localStorage.getItem("profile") as string);
+export const getProfile = (): User | null => {
+  return localStorage.getItem("profile")
+    ? JSON.parse(localStorage.getItem("profile") as string)
+    : null;
 };
 
 export const clearProfile = () => {
@@ -14,18 +16,27 @@ export const clearProfile = () => {
 };
 
 export const getProfileId = (): string => {
-  const profile: IProfile = JSON.parse(
-    localStorage.getItem("profile") as string,
-  );
+  const profile: User = JSON.parse(localStorage.getItem("profile") as string);
   return profile.uid;
 };
 
-export const saveToken = (token: string) => {
-  localStorage.setItem("token", JSON.stringify(token));
+export const saveToken = (token: string, tokenExpirationTime?: string) => {
+  localStorage.setItem("token", token);
+  tokenExpirationTime &&
+    localStorage.setItem("tokenExpirationTime", tokenExpirationTime);
 };
 
-export const getToken = (): string => {
-  return JSON.parse(localStorage.getItem("token") as string);
+export const removeToken = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("tokenExpirationTime");
+};
+
+export const getToken = () => {
+  return localStorage.getItem("token");
+};
+
+export const getTokenExpirationTime = () => {
+  return localStorage.getItem("tokenExpirationTime");
 };
 
 export const saveData = (settings: IAllData) => {

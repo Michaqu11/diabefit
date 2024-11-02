@@ -7,3 +7,9 @@ import { firebaseConfig } from "./firebaseConfig/firebaseConfig.ts";
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+
+// setPersistence(auth, 'LOCAL')
+//   .then(() => {
+//     const provider = new GoogleAuthProvider();
+//     return signInWithPopup(auth, provider);
+//   })
