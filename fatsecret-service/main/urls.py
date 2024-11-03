@@ -14,4 +14,5 @@ urlpatterns = [
     path("settings", views.insulin, name="settings"),
     path("libreAPI", views.libre, name="libre"),
     path("libre/connection", views.libreConnection, name="libreConnection"),
+    path("ownProduct", views.own_product, name="ownProduct"),
 ]

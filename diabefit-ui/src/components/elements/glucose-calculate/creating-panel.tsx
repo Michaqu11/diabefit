@@ -132,12 +132,15 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
       (foodInsulinMetric.current ?? 0) + (correctionInsulinMetric.current ?? 0),
     );
   };
+
   const saveCalculation = () => {
     const openCalculate = { ...props.openCalculate };
     if (openCalculate.day)
       openCalculate.day.calculatorData = {
         units: {
-          short: getResult(),
+          short: roundUnits(
+            (Number(foodInsulin) || 0) + (Number(correctionInsulin) || 0),
+          ),
         },
         glucose: Number(bloodSugar),
         date: selectedDate.toDate(),
@@ -200,8 +203,12 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <FormControl variant="outlined">
               <InputLabel htmlFor="component-simple">Blood sugar</InputLabel>
               <OutlinedInput
-                value={bloodSugar}
+                value={bloodSugar === 0 ? "" : bloodSugar}
                 onChange={(sugar) => setBloodSugar(Number(sugar.target.value))}
+                type="number"
+                inputProps={{
+                  step: "1",
+                }}
                 label="Blood sugar"
                 endAdornment={
                   <InputAdornment position="end">mg/dL</InputAdornment>
@@ -227,7 +234,11 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <OutlinedInput
               value={carbs}
               label="Carbs"
-              onChange={(carb) => setCarbs(Number(carb.target.value))}
+              type="number"
+              inputProps={{
+                step: "0.1",
+              }}
+              onChange={(event) => setCarbs(event.target.value === '' ? '' : parseFloat(event.target.value))}
               endAdornment={<InputAdornment position="end">WW</InputAdornment>}
               aria-describedby="outlined-sugar-text"
             />
@@ -286,8 +297,12 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <InputLabel htmlFor="component-simple">Insulin (foods)</InputLabel>
             <OutlinedInput
               value={foodInsulin}
-              onChange={(food) => setFoodInsulin(Number(food.target.value))}
+              onChange={(food) => setFoodInsulin(food.target.value === '' ? '' : parseFloat(food.target.value))}
               label="Insulin (foods)"
+              type="number"
+              inputProps={{
+                step: "0.1",
+              }}
               aria-describedby="outlined-sugar-text"
             />
             <FormHelperText id="outlined-sugar-text"></FormHelperText>
@@ -300,8 +315,12 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <OutlinedInput
               value={correctionInsulin}
               onChange={(correction) =>
-                setCorrectionInsulin(Number(correction.target.value))
+                setCorrectionInsulin(correction.target.value === '' ? '' : parseFloat(correction.target.value))
               }
+              type="number"
+              inputProps={{
+                step: "0.1",
+              }}
               label="Insulin (correction)"
               aria-describedby="outlined-sugar-text"
             />

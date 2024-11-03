@@ -76,6 +76,65 @@ router.post('/saveSettings', async (req, res) => {
   res.json(data);
 });
 
+router.post('/ownProduct', async (req, res) => {
+  const { id, ownProduct, token } = req.body;
+
+  if (!id || !ownProduct || !token) {
+    return res.status(400).json({ error: `Missing uid or ownProduct or token` });
+  }
+
+  const { data } = await axios.post(
+    `${SERVICE_URL}/ownProduct`,
+    { id, ownProduct, token },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      }
+    },
+  );
+
+  res.json(data);
+});
+
+
+router.get('/ownProduct', async (req, res) => {
+  const { id, token } = req.query;
+
+  if (!id || !token) {
+    return res.status(400).json({ error: `Missing uid  or token` });
+  }
+
+  const { data } = await axios.get(
+    `${SERVICE_URL}/ownProduct?id=${id}&token=${token}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      }
+    },
+  );
+
+  res.json(data);
+});
+
+router.delete('/ownProduct', async (req, res) => {
+  const { id, displayName, token } = req.query;
+
+  if (!id || !token) {
+    return res.status(400).json({ error: `Missing uid  or token` });
+  }
+
+  const { data } = await axios.delete(
+    `${SERVICE_URL}/ownProduct?id=${id}&displayName=${displayName}&token=${token}`,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      }
+    },
+  );
+
+  res.json(data);
+});
+
 
 router.post('/food', async (req, res) => {
   const { foodName, pageNumber } = req.body;

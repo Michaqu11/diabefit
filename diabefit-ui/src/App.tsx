@@ -50,7 +50,6 @@ const App: React.FC = () => {
     }
   };
 
-  
   useEffect(() => {
     const manageAccount = async () => {
       if (profile && !loginStatus) {

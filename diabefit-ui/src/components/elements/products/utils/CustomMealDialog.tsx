@@ -16,11 +16,11 @@ import { formatMealToCustomGrams } from "./ProductsListUtils";
 import { addedMealNotification } from "./AddedMealNotification";
 
 type Props = {
-  meal: IMealElement | undefined;
-  setMeal: (value: React.SetStateAction<IMealElement | undefined>) => void;
+  meal?: IMealElement | undefined;
+  setMeal?: (value: React.SetStateAction<IMealElement | undefined>) => void;
   open: boolean;
   setOpen: (value: React.SetStateAction<boolean>) => void;
-  uncheckMeal: (mealId: string) => void;
+  uncheckMeal?: (mealId: string) => void;
   saveMeal: (meal: IMealElement) => void;
 };
 
@@ -54,7 +54,7 @@ const CustomMealDialog: React.FC<Props> = ({
 
   const handleCancel = () => {
     reset();
-    meal && uncheckMeal(meal.id);
+    meal && uncheckMeal && uncheckMeal(meal.id);
   };
 
   const handleAccept = () => {
@@ -65,7 +65,7 @@ const CustomMealDialog: React.FC<Props> = ({
 
   const updateMealNutrition = (grams: number) => {
     const newMeal = meal && formatMealToCustomGrams(meal, grams);
-    setMeal(newMeal);
+    setMeal && setMeal(newMeal);
   };
 
   return (

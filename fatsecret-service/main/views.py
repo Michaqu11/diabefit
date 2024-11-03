@@ -9,10 +9,13 @@ from rauth.service import OAuth1Service
 
 
 from storage.database import (
+    delete_user_own_product,
+    get_user_own_products,
     is_user_exist,
     get_user_insulin_correction,
     get_user_units,
     get_user_insulin,
+    push_user_own_product,
     set_user,
     get_user_all_units,
     set_user_settings,
@@ -214,4 +217,30 @@ def libre(request):
     else:
         return JsonResponse(
             {"libreAPI": get_libre(body["id"], body["token"])}, safe=False
+        )
+
+@csrf_exempt
+def push_food(body):
+    result = push_user_own_product(body)
+    return JsonResponse({"result": result}, safe=False)
+
+@csrf_exempt
+def own_product(request):
+    if request.method == "POST":
+        body_unicode = request.body.decode("utf-8")
+        body = json.loads(body_unicode)
+        return push_food(body)
+    elif request.method == "DELETE":
+        user_id = request.GET.get('id')
+        display_name = request.GET.get('displayName')
+        token = request.GET.get('token')
+        result = delete_user_own_product(user_id, display_name, token)
+        return JsonResponse(
+            {"result": result}, safe=False
+        )
+    else:
+        user_id = request.GET.get('id') 
+        token = request.GET.get('token')
+        return JsonResponse(
+            {"ownProduct": get_user_own_products(user_id, token)}, safe=False
         )

@@ -7,23 +7,25 @@ import {
   Typography,
 } from "@mui/material";
 import React, { useCallback, useEffect, useState } from "react";
-import BpCheckbox from "./Checkbox";
+import BpCheckbox from "../Checkbox";
 import "./ProductsList.scss";
-import { searchFood } from "../../../api/fatsecret-api";
+import { searchFood } from "../../../../api/fatsecret-api";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { IMealElement } from "../../../types/meal";
+import { IMealElement } from "../../../../types/meal";
 import {
-  addMeal,
   readSpecificDayMeal,
   removeMeal,
-} from "../../../store/mealsStorage";
-import { IDay } from "../../../types/days";
-import { setupServingsData } from "./utils/ProductsListUtils";
-import CustomMealDialog from "./utils/CustomMealDialog";
+  saveMeal,
+} from "../../../../store/mealsStorage";
+import { IDay } from "../../../../types/days";
+import { setupServingsData } from "../utils/ProductsListUtils";
+import CustomMealDialog from "../utils/CustomMealDialog";
 import styled from "styled-components";
-import { CustomProductCard } from "./custom/CustomProductCard";
+import { emptyList } from "./emptyList";
 
 type Props = {
+  dayID: string;
+  eDayID: string;
   searchKey: string;
 };
 
@@ -41,8 +43,7 @@ const ListItemTextWrapper = styled.div`
   padding-right: 48px;
 `;
 
-const ProductsList: React.FC<Props> = ({ searchKey }) => {
-  const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
+const ProductsList: React.FC<Props> = ({ searchKey, dayID, eDayID }) => {
   const [openCustomizeMealDialog, setOpenCustomizeMealDialog] = useState(false);
   const [customizeMeal, setCustomizeMeal] = useState<IMealElement | undefined>(
     undefined,
@@ -66,27 +67,8 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
   );
 
-  const empty = (info: string = "No products to display", subInfo?: string) => {
-    return (
-      <ListItem
-        component="div"
-        disablePadding
-        sx={{ marginTop: "10px", display: "flex", flexDirection: "column" }}
-      >
-        <ListItemText style={{ display: "flex", justifyContent: "center" }}>
-          <span style={{ fontSize: "1.5rem" }}>{info}</span>
-        </ListItemText>
-        {subInfo ? (
-          <ListItemText style={{ display: "flex", justifyContent: "center" }}>
-            <span style={{ fontSize: "1.5rem" }}>{subInfo}</span>
-          </ListItemText>
-        ) : null}
-      </ListItem>
-    );
-  };
-
   const [products, setProducts] = useState<JSX.Element[] | JSX.Element>(
-    empty(),
+    emptyList(),
   );
   const [meals, setMeals] = useState<IMealElement[]>();
   const [pageNumber, setPageNumber] = useState<number>(0);
@@ -110,10 +92,6 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
     },
     [checked, dayID, eDayID],
   );
-
-  const saveMeal = (meal: IMealElement) => {
-    addMeal(dayID, Number(eDayID), meal);
-  };
 
   const uncheckMeal = (mealId: string) => {
     const currentIndex = checked.indexOf(mealId);
@@ -236,7 +214,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
       ? meals.map((meal: IMealElement, index: number) => {
           return renderRow(meal, index !== meals.length - 1);
         })
-      : empty();
+      : emptyList();
     setProducts(products);
   }, [checked, checkedData, meals, renderRow]);
 
@@ -279,10 +257,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
             </InfiniteScroll>
           </Grid>
         ) : (
-          <>
-            {empty("Search for products", "or")}
-            <CustomProductCard setProduct={saveMeal} />
-          </>
+          <>{emptyList("Search for products")}</>
         )}
       </div>
       <CustomMealDialog
@@ -291,7 +266,7 @@ const ProductsList: React.FC<Props> = ({ searchKey }) => {
         open={openCustomizeMealDialog}
         setOpen={setOpenCustomizeMealDialog}
         uncheckMeal={uncheckMeal}
-        saveMeal={saveMeal}
+        saveMeal={(meal: IMealElement) => saveMeal(meal, dayID, eDayID)}
       />
     </>
   );

@@ -29,7 +29,7 @@ const CustomizedAccordions: React.FC<Props> = ({
         {elementsProps &&
           elementsProps.map((e) => {
             return (
-              <ListItem style={{ padding: "2px 8px 2px 12px" }} key={e.header}>
+              <ListItem style={{ padding: "2px 8px 2px 12px" }} key={e.id}>
                 <ListItemText primary={e.header} secondary={e.secondary} />
                 <IconButton
                   edge="end"
