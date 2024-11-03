@@ -171,7 +171,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
 
     return elements.map((el: IMealElement) => {
       return {
-        header: `${el.mealName} (${el.grams}g)`,
+        header: `${el.mealName} ${el.quick ? "(Quick)" : ""}`,
         secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g ${el.kcal} kcal`,
         id: el.id,
         dayIndex: dayIndex,

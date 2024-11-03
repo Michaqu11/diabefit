@@ -138,3 +138,47 @@ def set_user_libre_api(body):
         )
         return result is not None
     return False
+
+def push_user_own_product(body):
+    db = firebase.database()
+
+    if is_user_exist(body["id"], body["token"]):
+        user_foods = db.child("users").child(body["id"]).child("ownProduct").get(token=body["token"]).val()
+        
+        if user_foods is None:
+            user_foods = []
+
+        display_name_to_replace = body["ownProduct"].get("displayName")
+        
+        for index, product in enumerate(user_foods):
+            if product.get("displayName") == display_name_to_replace:
+                user_foods[index] = body["ownProduct"]
+                break
+        else:
+            user_foods.append(body["ownProduct"])
+            
+        db.child("users").child(body["id"]).update({"ownProduct": user_foods}, token=body["token"])
+        return True
+        
+    return False
+
+def get_user_own_products(userId, token):
+    user = get_user_data(userId, token)
+    if user:
+        result = user["ownProduct"]
+        return result
+    return None
+
+
+def delete_user_own_product(user_id, display_name, token):
+    db = firebase.database()
+    
+    if is_user_exist(user_id, token):
+        user_foods = db.child("users").child(user_id).child("ownProduct").get(token=token).val()
+        if user_foods is not None:
+            updated_foods = [product for product in user_foods if product.get("displayName") != display_name]
+            if len(updated_foods) != len(user_foods):
+                db.child("users").child(user_id).update({"ownProduct": updated_foods}, token=token)
+                return True
+
+    return False

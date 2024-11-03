@@ -14,6 +14,7 @@ export interface IMealElement {
     fats: number;
     carbs: number;
   };
+  quick?: boolean;
 }
 
 export const EMPTY_BASE = {

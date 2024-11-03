@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { IMealElement } from "../../../../types/meal";
+import { EMPTY_BASE, IMealElement } from "../../../../types/meal";
 import { Button, Container, TextField } from "@mui/material";
 
 import { v4 as uuidv4 } from "uuid";
@@ -7,17 +7,14 @@ import {
   addedMealNotification,
   errorAddedMealNotification,
 } from "../utils/AddedMealNotification";
-import { saveOwnProduct } from "../../../../api/save-own-product";
 import { calculateCalories } from "./calculateCalories";
 
-interface CustomProductProps {
+interface QuickAddProps {
   setProduct: (meal: IMealElement) => void;
-  getProducts: () => Promise<void>;
 }
 
 type CustomProductFields = {
   mealName: string;
-  grams: number;
   kcal: number;
   prot: number;
   fats: number;
@@ -29,7 +26,6 @@ type ErrorFields = {
 };
 
 type CustomProductType = CustomProductFields & ErrorFields;
-// & { save: boolean };
 
 const validateNumberInput = (
   field: keyof CustomProductFields,
@@ -53,10 +49,8 @@ const validateNumberInput = (
 };
 
 const initialProductData: CustomProductType = {
-  mealName: "",
-  mealNameError: true,
-  grams: 100,
-  gramsError: false,
+  mealName: "Quick",
+  mealNameError: false,
   kcal: 0,
   kcalError: false,
   prot: 0,
@@ -65,13 +59,9 @@ const initialProductData: CustomProductType = {
   fatsError: false,
   carbs: 0,
   carbsError: false,
-  // save: false,
 };
 
-export const CustomProductCard: React.FC<CustomProductProps> = ({
-  setProduct,
-  getProducts,
-}) => {
+export const QuickAdd: React.FC<QuickAddProps> = ({ setProduct }) => {
   const [productData, setProductData] = useState(initialProductData);
 
   const reset = () => {
@@ -79,41 +69,28 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
   };
 
   const confirm = () => {
-    const {
-      mealNameError,
-      gramsError,
-      protError,
-      fatsError,
-      carbsError,
-      // save,
-      ...values
-    } = productData;
+    const { mealNameError, protError, fatsError, carbsError, ...values } =
+      productData;
     if (
-      [mealNameError, gramsError, protError, fatsError, carbsError].some(
-        (error) => error,
-      )
+      [mealNameError, protError, fatsError, carbsError].some((error) => error)
     ) {
       errorAddedMealNotification();
     } else {
       reset();
 
       const base = {
-        grams: values.grams,
-        carbs: values.carbs,
-        prot: values.prot,
-        kcal: values.kcal === 0 ? calculateCalories(values) : values.kcal,
-        fats: values.fats,
+        ...EMPTY_BASE,
+        ...values,
       };
 
       const newProduct = {
-        ...values,
+        ...base,
         displayName: productData.mealName,
         id: uuidv4(),
         base: base,
-        kcal: base.kcal,
+        kcal: values.kcal === 0 ? calculateCalories(base) : values.kcal,
+        quick: true,
       };
-
-      saveOwnProduct(newProduct).then(() => getProducts());
 
       setProduct(newProduct);
       addedMealNotification();
@@ -197,41 +174,6 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
             validateNumberInput("kcal", e.target.value, setProductData)
           }
         />
-
-        <TextField
-          sx={{ width: "100%", margin: "10px 0" }}
-          label="Amount (g)"
-          variant="outlined"
-          value={productData.grams === 0 ? "" : productData.grams}
-          type="number"
-          inputProps={{
-            step: "1",
-          }}
-          error={productData.gramsError}
-          onChange={(e) =>
-            validateNumberInput("grams", e.target.value, setProductData, false)
-          }
-        />
-        {/* <FormControlLabel
-          control={
-            <Checkbox
-              checked={productData.save}
-              onChange={(_, checked: boolean) => {
-                setProductData((prevState) => ({
-                  ...prevState,
-                  save: checked,
-                }));
-                validateNumberInput(
-                  "grams",
-                  `${productData.grams}`,
-                  setProductData,
-                  checked ? false : true,
-                );
-              }}
-            />
-          }
-          label="Remember product"
-        /> */}
       </Container>
       <Container sx={{ display: "flex", justifyContent: "right", p: 0 }}>
         <Button onClick={reset}>Reset</Button>

@@ -2,16 +2,19 @@ import InputBase from "@mui/material/InputBase";
 import Paper from "@mui/material/Paper";
 import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
-import FilterListOutlinedIcon from "@mui/icons-material/FilterListOutlined";
 import ClearIcon from "@mui/icons-material/Clear";
 import React from "react";
-
 type Props = {
   searchKey: string;
   setSearchKey: (state: string) => void;
+  children: React.ReactNode;
 };
 
-const SearchInput: React.FC<Props> = ({ searchKey, setSearchKey }) => {
+const SearchInput: React.FC<Props> = ({
+  searchKey,
+  setSearchKey,
+  children,
+}) => {
   return (
     <Paper
       elevation={1}
@@ -43,9 +46,7 @@ const SearchInput: React.FC<Props> = ({ searchKey, setSearchKey }) => {
         <ClearIcon />
       </IconButton>
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-      <IconButton sx={{ p: "10px" }} aria-label="filter">
-        <FilterListOutlinedIcon />
-      </IconButton>
+      {children}
     </Paper>
   );
 };

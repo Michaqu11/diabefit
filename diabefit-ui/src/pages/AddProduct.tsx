@@ -3,14 +3,55 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useParams } from "react-router-dom";
 import "./Page.scss";
 import SearchInput from "../components/elements/products/search/SearchInput";
-import ProductsList from "../components/elements/products/ProductsList";
+import ProductsList from "../components/elements/products/productsList/ProductsList";
 import Divider from "@mui/material/Divider";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { Button, Grid, IconButton, Menu, MenuItem } from "@mui/material";
+import {
+  Button,
+  Container,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  IconButton,
+  Menu,
+  MenuItem,
+} from "@mui/material";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { EDays } from "../types/days";
 import { useNavigate } from "react-router-dom";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddIcon from "@mui/icons-material/Add";
+import { CustomProductCard } from "../components/elements/products/custom/CustomProductCard";
+import { IMealElement } from "../types/meal";
+import { saveMeal } from "../store/mealsStorage";
+import CloseIcon from "@mui/icons-material/Close";
+import { getOwnProduct } from "../api/get-own-product";
+import OwnProductsList from "../components/elements/products/productsList/OwnProductsList";
+import CustomMealDialog from "../components/elements/products/utils/CustomMealDialog";
+import { QuickAdd } from "../components/elements/products/custom/QuickAdd";
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
+
+function CustomTabPanel(props: TabPanelProps) {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`tabpanel-${index}`}
+      {...other}
+    >
+      {children}
+    </div>
+  );
+}
 
 const AddProduct: React.FC = () => {
   let { id, meal } = useParams();
@@ -22,7 +63,15 @@ const AddProduct: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [searchKey, setSearchKey] = useState<string>("");
 
+  const [isFavoriteSelected, setIsFavoriteSelected] = useState(0);
+
+  const [dayID, eDayID] = window.location.pathname.slice(5).split("/");
   const open = Boolean(anchorEl);
+
+  const [ownProducts, setOwnProducts] = useState<IMealElement[]>([]);
+  const [openCustomizeMealDialog, setOpenCustomizeMealDialog] = useState<
+    IMealElement | undefined
+  >(undefined);
 
   const navigate = useNavigate();
 
@@ -38,8 +87,29 @@ const AddProduct: React.FC = () => {
       { replace: true },
     );
   };
+
+  const getProducts = useCallback(async () => {
+    const products = await getOwnProduct();
+    setOwnProducts(products);
+  }, []);
+
+  useEffect(() => {
+    getProducts();
+  }, [getProducts]);
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const [openDialogProduct, setOpenDialogProduct] = useState(false);
+  const [openDialogQuickAdd, setOpenDialogQuickAdd] = useState(false);
+
+  const handleCloseDialogQuickAdd = () => {
+    setOpenDialogQuickAdd(false);
+  };
+
+  const handleCloseDialogProduct = () => {
+    setOpenDialogProduct(false);
   };
 
   return (
@@ -72,9 +142,38 @@ const AddProduct: React.FC = () => {
           </Grid>
         </Grid>
         <div className={!Mobile ? "container-mobile" : "container-desktop"}>
-          <SearchInput searchKey={searchKey} setSearchKey={setSearchKey} />
+          <SearchInput searchKey={searchKey} setSearchKey={setSearchKey}>
+            <IconButton
+              type="button"
+              sx={{ p: "10px" }}
+              aria-label="search"
+              onClick={() =>
+                setIsFavoriteSelected((isFavoriteSelected) =>
+                  isFavoriteSelected === 0 ? 1 : 0,
+                )
+              }
+              color="primary"
+            >
+              {isFavoriteSelected === 0 ? (
+                <FavoriteBorderIcon />
+              ) : (
+                <FavoriteIcon />
+              )}
+            </IconButton>
+          </SearchInput>
           <Divider sx={{ marginTop: "10px" }} />
-          <ProductsList searchKey={searchKey} />
+          <CustomTabPanel value={isFavoriteSelected} index={0}>
+            <ProductsList searchKey={searchKey} dayID={dayID} eDayID={eDayID} />
+          </CustomTabPanel>
+          <CustomTabPanel value={isFavoriteSelected} index={1}>
+            <OwnProductsList
+              ownProducts={ownProducts}
+              getProducts={getProducts}
+              searchKey={searchKey}
+              dayID={dayID}
+              eDayID={eDayID}
+            />
+          </CustomTabPanel>
         </div>
       </Paper>
       <Menu
@@ -94,6 +193,109 @@ const AddProduct: React.FC = () => {
             </div>
           ))}
       </Menu>
+      <Dialog onClose={handleCloseDialogProduct} open={openDialogProduct}>
+        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+          Create a custom product
+        </DialogTitle>
+
+        <IconButton
+          aria-label="close"
+          onClick={handleCloseDialogProduct}
+          sx={(theme) => ({
+            position: "absolute",
+            right: 8,
+            top: 13,
+            color: theme.palette.grey[500],
+          })}
+        >
+          <CloseIcon />
+        </IconButton>
+        <DialogContent dividers>
+          <CustomProductCard
+            setProduct={(meal: IMealElement) => {
+              // saveMeal(meal, dayID, eDayID);
+              handleCloseDialogProduct();
+              setOpenCustomizeMealDialog(meal);
+            }}
+            getProducts={getProducts}
+          />
+        </DialogContent>
+      </Dialog>
+
+      <Dialog onClose={handleCloseDialogQuickAdd} open={openDialogQuickAdd}>
+        <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
+          Quick Add
+        </DialogTitle>
+
+        <IconButton
+          aria-label="close"
+          onClick={handleCloseDialogQuickAdd}
+          sx={(theme) => ({
+            position: "absolute",
+            right: 8,
+            top: 13,
+            color: theme.palette.grey[500],
+          })}
+        >
+          <CloseIcon />
+        </IconButton>
+        <DialogContent dividers>
+          <QuickAdd
+            setProduct={(meal: IMealElement) => {
+              saveMeal(meal, dayID, eDayID);
+              handleCloseDialogQuickAdd();
+            }}
+          />
+        </DialogContent>
+      </Dialog>
+
+      <Container
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          display: "flex",
+          justifyContent: "center",
+          width: '100%',
+          p: '0 !important',
+        }}
+      >
+        <Paper
+          sx={{
+            display: "flex",
+            justifyContent: "space-around",
+            width: "100%",
+            padding: "8px",
+          }}
+          elevation={3}
+        >
+          <Button
+            variant="text"
+            size="small"
+            onClick={() => setOpenDialogProduct(true)}
+            startIcon={<AddIcon />}
+          >
+            New Product
+          </Button>
+
+          <Button
+            variant="text"
+            size="small"
+            onClick={() => setOpenDialogQuickAdd(true)}
+            startIcon={<AddIcon />}
+          >
+            Quick Add
+          </Button>
+        </Paper>
+      </Container>
+      <CustomMealDialog
+        meal={openCustomizeMealDialog}
+        setMeal={setOpenCustomizeMealDialog}
+        open={openCustomizeMealDialog !== undefined}
+        setOpen={() => setOpenCustomizeMealDialog(undefined)}
+        saveMeal={(meal: IMealElement) => saveMeal(meal, dayID, eDayID)}
+      />
     </>
   );
 };

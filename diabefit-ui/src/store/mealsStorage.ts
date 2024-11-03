@@ -28,11 +28,7 @@ const putMealIntoDay = (
   return allMeals;
 };
 
-export const addMeal = (
-  dayID: string,
-  dayIndex: number,
-  meal: IMealElement,
-) => {
+const addMeal = (dayID: string, dayIndex: number, meal: IMealElement) => {
   const mealsFromStore = localStorage.getItem("meals");
   let allMeals = {} as AllMeal;
   let setItem = true;
@@ -54,6 +50,10 @@ export const addMeal = (
     const result = putMealIntoDay(dayID, dayIndex, meal, allMeals);
     localStorage.setItem("meals", JSON.stringify(result));
   }
+};
+
+export const saveMeal = (meal: IMealElement, dayID: string, eDayID: string) => {
+  addMeal(dayID, Number(eDayID), meal);
 };
 
 export const removeMeal = (dayID: string, dayIndex: number, id: string) => {
