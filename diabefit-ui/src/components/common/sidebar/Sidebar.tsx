@@ -11,7 +11,6 @@ import { ReactElement } from "react";
 import BloodtypeIcon from "@mui/icons-material/Bloodtype";
 import HomeIcon from "@mui/icons-material/Home";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import { Link } from "react-router-dom";
@@ -38,22 +37,16 @@ const sidebarNavItems: ISidebarNav[] = [
     section: "",
   },
   {
-    display: "New Entry",
-    icon: <BloodtypeIcon />,
-    to: "/entry",
-    section: "entry",
-  },
-  {
     display: "New Bolus",
     icon: <VaccinesIcon />,
     to: "/bolus",
     section: "bolus",
   },
   {
-    display: "New Product",
-    icon: <AddShoppingCartIcon />,
-    to: "/product",
-    section: "product",
+    display: "New Entry",
+    icon: <BloodtypeIcon />,
+    to: "/entry",
+    section: "entry",
   },
   {
     display: "Your Data",

@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { encodeShortDate } from "../../components/common/share/MomentFunctions";
 import CustomizedAccordions from "../../components/elements/accordions/accordions";
+import CorrectionAccordions from "../../components/elements/accordions/correctionAccordions";
 
 const Home: React.FC = () => {
   const Mobile = useMediaQuery("(min-width:700px)");
@@ -36,6 +37,7 @@ const Home: React.FC = () => {
       <DateList dayId={dayId} setDay={(event) => setDay(event)} />
       <div className={!Mobile ? "container-mobile" : "container-desktop"}>
         <CustomizedAccordions dayId={dayId} />
+        <CorrectionAccordions dayId={dayId} />
       </div>
     </Paper>
   );
