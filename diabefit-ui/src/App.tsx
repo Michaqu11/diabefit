@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 import Setting from "./pages/Setting";
 import MasterLayout from "./components/layout/MasterLayout";
 import NewEntry from "./pages/NewEntry";
-import NewProduct from "./pages/NewProduct";
 import NewBolus from "./pages/NewBolus";
 import Home from "./pages/home/Home";
 import AddProduct from "./pages/AddProduct";
@@ -71,7 +70,6 @@ const App: React.FC = () => {
                 <Route index element={<Home />} />
                 <Route path="/entry" element={<NewEntry />} />
                 <Route path="/bolus" element={<NewBolus />} />
-                <Route path="/product" element={<NewProduct />} />
                 <Route path="/data" element={<YourData />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/add/:id/:meal" element={<AddProduct />} />
