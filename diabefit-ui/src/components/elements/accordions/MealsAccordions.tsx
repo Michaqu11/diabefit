@@ -11,23 +11,17 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
-import {
-  EDays,
-  ICalculatePanel,
-  IDay,
-  IElement,
-  IValues,
-  UnitsType,
-} from "../../../types/days";
+import { EDays, ICalculatePanel, IDay } from "../../../types/days";
 import { calculateData, readDayMeal } from "../../../store/mealsStorage";
-import { IMealElement } from "../../../types/meal";
 import CalculatePanel from "../glucose-calculate/creating-panel";
+import { details, elements } from "./utils";
 
 type Props = {
   dayId: number;
+  width: number;
 };
 
-const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
+const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
   const [days, setDays] = React.useState<IDay[]>([]);
 
   const currentDay = React.useRef(dayId);
@@ -95,89 +89,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
           ),
         );
     }
-  };
-
-  function format2Decimals(num: number) {
-    return Math.round(num * 100) / 100;
-  }
-
-  const summaryNutritionalValues = (elements: IMealElement[] | undefined) => {
-    let kcal = 0,
-      prot = 0,
-      fats = 0,
-      carbs = 0;
-
-    elements &&
-      elements.forEach((element: IMealElement) => {
-        kcal += Number(element.kcal);
-        prot += Number(element.prot);
-        fats += Number(element.fats);
-        carbs += Number(element.carbs);
-      });
-
-    return {
-      kcal: format2Decimals(kcal),
-      prot: format2Decimals(prot),
-      fats: format2Decimals(fats),
-      carbs: format2Decimals(carbs),
-    };
-  };
-
-  const [width, setWidth] = React.useState<number>(window.innerWidth);
-
-  function handleWindowSizeChange() {
-    setWidth(window.innerWidth);
-  }
-
-  React.useEffect(() => {
-    window.addEventListener("resize", handleWindowSizeChange);
-
-    return () => {
-      window.removeEventListener("resize", handleWindowSizeChange);
-    };
-  }, []);
-
-  const details = (
-    meals: IMealElement[] | undefined,
-    units: UnitsType | undefined,
-  ) => {
-    if (!meals) return <div></div>;
-    const value: IValues = summaryNutritionalValues(meals);
-    return (
-      <p className="summary">
-        {width >= 450
-          ? units
-            ? ` Units ${units.short}u ${value.kcal} kcal | C ${value.carbs}g`
-            : `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
-          : width >= 310
-          ? units
-            ? ` ${units.short}u | ${value.kcal} kcal`
-            : `${value.kcal} kcal | C ${value.carbs}g`
-          : width >= 250
-          ? units
-            ? `${units.short}u`
-            : `${value.kcal} kcal`
-          : ""}
-      </p>
-    );
-  };
-
-  const elements = (
-    elements: IMealElement[] | undefined,
-    dayID: string,
-    dayIndex: number,
-  ): IElement[] | undefined => {
-    if (!elements) return undefined;
-
-    return elements.map((el: IMealElement) => {
-      return {
-        header: `${el.mealName} ${el.quick ? "(Quick)" : ""}`,
-        secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g ${el.kcal} kcal`,
-        id: el.id,
-        dayIndex: dayIndex,
-        dayID: dayID,
-      };
-    });
   };
 
   const [expanded, setExpanded] = React.useState<
@@ -270,7 +181,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     component={"span"}
                     sx={{ color: "text.secondary" }}
                   >
-                    {details(day.meals, day.calculatorData?.units)}
+                    {details(day.meals, day.calculatorData?.units, width)}
                   </Typography>
                   <IconButton
                     className={"MyIconButton"}
@@ -330,6 +241,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId }) => {
                     1,
                 )}
                 changedData={changedData}
+                allowItemRemoval={true}
               />
             </AccordionDetails>
           ) : (

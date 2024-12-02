@@ -1,6 +1,6 @@
 import Paper from "@mui/material/Paper";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import "./Page.scss";
 import SearchInput from "../components/elements/products/search/SearchInput";
 import ProductsList from "../components/elements/products/productsList/ProductsList";
@@ -32,6 +32,7 @@ import { getOwnProduct } from "../api/get-own-product";
 import OwnProductsList from "../components/elements/products/productsList/OwnProductsList";
 import CustomMealDialog from "../components/elements/products/utils/CustomMealDialog";
 import { QuickAdd } from "../components/elements/products/custom/QuickAdd";
+import { addTemporaryMeals } from "../store/customMealsStorage";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -74,6 +75,9 @@ const AddProduct: React.FC = () => {
   >(undefined);
 
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const isNewEntry = location.pathname.includes("entry");
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -83,7 +87,9 @@ const AddProduct: React.FC = () => {
     setMealName(e);
     setAnchorEl(null);
     navigate(
-      `../add/${id}/${Object.values(EDays).indexOf(e as unknown as EDays) + 1}`,
+      `..${isNewEntry ? "entry/" : ""}/add/${id}/${
+        Object.values(EDays).indexOf(e as unknown as EDays) + 1
+      }`,
       { replace: true },
     );
   };
@@ -112,6 +118,11 @@ const AddProduct: React.FC = () => {
     setOpenDialogProduct(false);
   };
 
+  const pathSegments = location.pathname.split("/").filter(Boolean);
+  const targetPath = isNewEntry
+    ? `/${pathSegments.slice(0, -3).join("/")}`
+    : "/";
+
   return (
     <>
       <Paper elevation={0} sx={{ margin: "5px" }}>
@@ -120,7 +131,7 @@ const AddProduct: React.FC = () => {
             <IconButton
               color="primary"
               component={Link}
-              to={`/`}
+              to={targetPath}
               state={{
                 id: id,
               }}
@@ -136,6 +147,8 @@ const AddProduct: React.FC = () => {
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
               onClick={handleClick}
+              disabled={isNewEntry}
+              color="primary"
             >
               {mealName}
             </Button>
@@ -163,7 +176,12 @@ const AddProduct: React.FC = () => {
           </SearchInput>
           <Divider sx={{ marginTop: "10px" }} />
           <CustomTabPanel value={isFavoriteSelected} index={0}>
-            <ProductsList searchKey={searchKey} dayID={dayID} eDayID={eDayID} />
+            <ProductsList
+              searchKey={searchKey}
+              dayID={dayID}
+              eDayID={eDayID}
+              isNewEntry={isNewEntry}
+            />
           </CustomTabPanel>
           <CustomTabPanel value={isFavoriteSelected} index={1}>
             <OwnProductsList
@@ -172,6 +190,7 @@ const AddProduct: React.FC = () => {
               searchKey={searchKey}
               dayID={dayID}
               eDayID={eDayID}
+              isNewEntry={isNewEntry}
             />
           </CustomTabPanel>
         </div>
@@ -213,7 +232,6 @@ const AddProduct: React.FC = () => {
         <DialogContent dividers>
           <CustomProductCard
             setProduct={(meal: IMealElement) => {
-              // saveMeal(meal, dayID, eDayID);
               handleCloseDialogProduct();
               setOpenCustomizeMealDialog(meal);
             }}
@@ -242,7 +260,9 @@ const AddProduct: React.FC = () => {
         <DialogContent dividers>
           <QuickAdd
             setProduct={(meal: IMealElement) => {
-              saveMeal(meal, dayID, eDayID);
+              isNewEntry
+                ? addTemporaryMeals(meal)
+                : saveMeal(meal, dayID, eDayID);
               handleCloseDialogQuickAdd();
             }}
           />
@@ -257,8 +277,8 @@ const AddProduct: React.FC = () => {
           right: 0,
           display: "flex",
           justifyContent: "center",
-          width: '100%',
-          p: '0 !important',
+          width: "100%",
+          p: "0 !important",
         }}
       >
         <Paper
@@ -294,7 +314,9 @@ const AddProduct: React.FC = () => {
         setMeal={setOpenCustomizeMealDialog}
         open={openCustomizeMealDialog !== undefined}
         setOpen={() => setOpenCustomizeMealDialog(undefined)}
-        saveMeal={(meal: IMealElement) => saveMeal(meal, dayID, eDayID)}
+        saveMeal={(meal: IMealElement) =>
+          isNewEntry ? addTemporaryMeals(meal) : saveMeal(meal, dayID, eDayID)
+        }
       />
     </>
   );

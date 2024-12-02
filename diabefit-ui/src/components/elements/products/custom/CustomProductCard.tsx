@@ -114,7 +114,6 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
       };
 
       saveOwnProduct(newProduct).then(() => getProducts());
-
       setProduct(newProduct);
       addedMealNotification();
     }

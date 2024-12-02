@@ -1,4 +1,8 @@
-import { AllCorrection, mockAllCorrections, CorrectionData } from "./storagesTypes"; 
+import {
+  AllCorrection,
+  mockAllCorrections,
+  CorrectionData,
+} from "./storagesTypes";
 
 const createCorrectionDay = (dayID: number): AllCorrection => {
   const newCorrection: AllCorrection = {};
@@ -48,7 +52,9 @@ export const removeCorrection = (dayID: number, id: string) => {
   if (correctionsFromStore) {
     const allCorrections = JSON.parse(correctionsFromStore) as AllCorrection;
     if (isCorrectionDayExist(dayID, allCorrections)) {
-      const updatedCorrections = allCorrections[dayID].filter((c) => c.id !== id);
+      const updatedCorrections = allCorrections[dayID].filter(
+        (c) => c.id !== id,
+      );
       allCorrections[dayID] = updatedCorrections;
       localStorage.setItem("corrections", JSON.stringify(allCorrections));
     }

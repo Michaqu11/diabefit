@@ -73,6 +73,7 @@ const App: React.FC = () => {
                 <Route path="/data" element={<YourData />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/add/:id/:meal" element={<AddProduct />} />
+                <Route path="/entry/add/:id/:meal" element={<AddProduct />} />
               </Routes>
             </div>
           </>

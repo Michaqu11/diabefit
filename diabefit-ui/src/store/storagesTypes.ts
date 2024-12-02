@@ -43,12 +43,11 @@ export const mockAllDays = [
   },
 ];
 
-
 export type CorrectionData = {
   id: string;
   time: Date;
   correctionInsulin: number;
-  bloodSugar: number;
+  glucose: number;
 };
 
 export type AllCorrection = {

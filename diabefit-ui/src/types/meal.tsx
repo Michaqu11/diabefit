@@ -24,3 +24,17 @@ export const EMPTY_BASE = {
   fats: 0,
   carbs: 0,
 };
+
+export const emptyMeal: IMealElement = {
+  mealName: "",
+  displayName: "",
+  id: "",
+  grams: 0,
+  kcal: 0,
+  prot: 0,
+  fats: 0,
+  carbs: 0,
+  base: {
+    ...EMPTY_BASE,
+  },
+};
