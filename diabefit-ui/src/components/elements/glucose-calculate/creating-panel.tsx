@@ -16,7 +16,6 @@ import {
   Divider,
   FormControl,
   FormHelperText,
-  IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
@@ -32,11 +31,9 @@ import {
 } from "../../../shared/calculator/glucose-calculator";
 import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydrate-exchange-calculator";
 import { useSnackbar } from "notistack";
-import { getLibreData } from "../../../api/libre-api";
-import CloseIcon from "@mui/icons-material/Close";
 import "./creating-panel.scss";
 import { useEffect, useRef, useState } from "react";
-import RefreshIcon from "@mui/icons-material/Refresh";
+import { GlucoseInput } from "../../common/share/GlucoseInput";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -44,22 +41,13 @@ interface CalculatePanelProps {
   saveGlucose: (calculatePanel: ICalculatePanel) => void;
 }
 
-const LIBRE_SUCCESS_INFORMATION = {
-  message: "Glucose was pasted using Libre API",
-  severity: "info",
-};
-const LIBRE_ERROR_INFORMATION = {
-  message: "Failed to retrieve glucose data from Libre API.",
-  severity: "error",
-};
-
 const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const handleCalculateClickClose = () => {
     props.setOpenCalculate({ open: false, dayId: undefined, day: undefined });
   };
 
   const [selectedDate, setSelectedDate] = useState(dayjs(new Date()));
-  const [bloodSugar, setBloodSugar] = useState<number | string>("");
+  const [glucose, setGlucose] = useState<number | string>("");
   const [carbs, setCarbs] = useState<number | string>("");
   const [foodInsulin, setFoodInsulin] = useState<number | string>("");
   const [correctionInsulin, setCorrectionInsulin] = useState<number | string>(
@@ -67,44 +55,22 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   );
 
   const [alertOpen, setAlertOpen] = useState(false);
-  const [displayLibreAlert, setDisplayLibreAlert] = useState(false);
-  const [libreAlertInformation, setLibreAlertInformation] = useState(
-    LIBRE_SUCCESS_INFORMATION,
-  );
+
   const foodInsulinMetric = useRef<number>(0);
   const correctionInsulinMetric = useRef<number>(0);
 
-  const getBloodSugar = async () => {
-    try {
-      const bloodSugar = await getLibreData();
-      setLibreAlertInformation(LIBRE_SUCCESS_INFORMATION);
-      setDisplayLibreAlert(true);
-      setBloodSugar(bloodSugar);
-      setTimeout(() => setDisplayLibreAlert(false), 5000);
-    } catch {
-      setDisplayLibreAlert(true);
-      setLibreAlertInformation(LIBRE_ERROR_INFORMATION);
-      setTimeout(() => setDisplayLibreAlert(false), 5000);
-      setBloodSugar("");
-    }
-  };
-
   useEffect(() => {
-    setBloodSugar("");
     setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
     setFoodInsulin("");
     setCorrectionInsulin("");
-    if (props.openCalculate.open) {
-      getBloodSugar();
-    }
   }, [props.openCalculate]);
 
   const { enqueueSnackbar } = useSnackbar();
 
   const calculateGlucoseEmit = () => {
-    if (bloodSugar && carbs) {
+    if (glucose && carbs) {
       const [food, correction] = calculateGlucose(
-        bloodSugar as number,
+        glucose as number,
         carbs as number,
       );
       foodInsulinMetric.current = food;
@@ -142,7 +108,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             (Number(foodInsulin) || 0) + (Number(correctionInsulin) || 0),
           ),
         },
-        glucose: Number(bloodSugar),
+        glucose: Number(glucose),
         date: selectedDate.toDate(),
       };
     props.saveGlucose(openCalculate);
@@ -172,73 +138,28 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             />
           </LocalizationProvider>
 
-          <Collapse in={displayLibreAlert}>
-            <Alert
-              icon={false}
-              severity={libreAlertInformation.severity as "info" | "error"}
-              action={
-                <IconButton
-                  aria-label="close"
-                  color="inherit"
-                  size="small"
-                  onClick={() => {
-                    setDisplayLibreAlert(false);
-                  }}
-                >
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
-              }
-            >
-              {libreAlertInformation.message}
-            </Alert>
-          </Collapse>
+          <GlucoseInput
+            glucose={glucose}
+            setGlucose={setGlucose}
+            loadGlucose={props.openCalculate.open}
+          />
 
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "flex-end",
-              overflow: "visible !important",
-            }}
-          >
-            <FormControl variant="outlined">
-              <InputLabel htmlFor="component-simple">Blood sugar</InputLabel>
-              <OutlinedInput
-                value={bloodSugar === 0 ? "" : bloodSugar}
-                onChange={(sugar) => setBloodSugar(Number(sugar.target.value))}
-                type="number"
-                inputProps={{
-                  step: "1",
-                }}
-                label="Blood sugar"
-                endAdornment={
-                  <InputAdornment position="end">mg/dL</InputAdornment>
-                }
-                aria-describedby="outlined-sugar-text"
-              />
-              <FormHelperText id="outlined-sugar-text"></FormHelperText>
-            </FormControl>
-            <div
-              style={{ height: "50px", display: "flex", alignItems: "center" }}
-            >
-              <IconButton
-                aria-label="refresh"
-                onClick={getBloodSugar}
-                size="small"
-              >
-                <RefreshIcon />
-              </IconButton>
-            </div>
-          </Box>
           <FormControl variant="outlined">
-            <InputLabel htmlFor="component-simple">Carbs</InputLabel>
+            <InputLabel htmlFor="component-simple">Carb Units</InputLabel>
             <OutlinedInput
               value={carbs}
-              label="Carbs"
+              label="Carb Units"
               type="number"
               inputProps={{
                 step: "0.1",
               }}
-              onChange={(event) => setCarbs(event.target.value === '' ? '' : parseFloat(event.target.value))}
+              onChange={(event) =>
+                setCarbs(
+                  event.target.value === ""
+                    ? ""
+                    : parseFloat(event.target.value),
+                )
+              }
               endAdornment={<InputAdornment position="end">WW</InputAdornment>}
               aria-describedby="outlined-sugar-text"
             />
@@ -297,7 +218,11 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <InputLabel htmlFor="component-simple">Insulin (foods)</InputLabel>
             <OutlinedInput
               value={foodInsulin}
-              onChange={(food) => setFoodInsulin(food.target.value === '' ? '' : parseFloat(food.target.value))}
+              onChange={(food) =>
+                setFoodInsulin(
+                  food.target.value === "" ? "" : parseFloat(food.target.value),
+                )
+              }
               label="Insulin (foods)"
               type="number"
               inputProps={{
@@ -315,7 +240,11 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <OutlinedInput
               value={correctionInsulin}
               onChange={(correction) =>
-                setCorrectionInsulin(correction.target.value === '' ? '' : parseFloat(correction.target.value))
+                setCorrectionInsulin(
+                  correction.target.value === ""
+                    ? ""
+                    : parseFloat(correction.target.value),
+                )
               }
               type="number"
               inputProps={{

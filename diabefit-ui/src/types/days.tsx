@@ -34,6 +34,7 @@ interface IDay {
   name: string;
   meals: IMealElement[];
   calculatorData: CalculatorData | null;
+  isElevate?: boolean;
 }
 
 interface IElement {

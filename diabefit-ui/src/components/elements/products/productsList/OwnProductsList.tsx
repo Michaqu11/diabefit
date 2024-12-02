@@ -23,6 +23,10 @@ import CustomMealDialog from "../utils/CustomMealDialog";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { removeOwnProduct } from "../../../../api/remove-own-product";
 import { removeAddedMealNotification } from "../utils/AddedMealNotification";
+import {
+  addTemporaryMeals,
+  getTemporaryMeals,
+} from "../../../../store/customMealsStorage";
 
 type Props = {
   dayID: string;
@@ -30,6 +34,7 @@ type Props = {
   searchKey: string;
   ownProducts: IMealElement[];
   getProducts: () => Promise<void>;
+  isNewEntry?: boolean;
 };
 
 const ListItemTextWrapper = styled.div`
@@ -52,25 +57,32 @@ const OwnProductsList: React.FC<Props> = ({
   eDayID,
   ownProducts,
   getProducts,
+  isNewEntry,
 }) => {
   const [openCustomizeMealDialog, setOpenCustomizeMealDialog] = useState(false);
   const [customizeMeal, setCustomizeMeal] = useState<IMealElement | undefined>(
     undefined,
   );
 
-  const [checkedData, setCheckedData] = useState(
-    readSpecificDayMeal(dayID, Number(eDayID)) as IDay | undefined,
+  const readData = useCallback(
+    () =>
+      isNewEntry
+        ? { meals: getTemporaryMeals() }
+        : (readSpecificDayMeal(dayID, Number(eDayID)) as IDay | undefined),
+    [dayID, eDayID, isNewEntry],
   );
 
+  const [checkedData, setCheckedData] = useState(readData());
+
   useEffect(() => {
-    const newCheckData = readSpecificDayMeal(dayID, Number(eDayID));
-    setCheckedData(readSpecificDayMeal(dayID, Number(eDayID)));
+    const newCheckData = readData();
+    setCheckedData(readData());
     setChecked(
       newCheckData
         ? newCheckData.meals.map((meal: IMealElement) => meal.id)
         : [],
     );
-  }, [dayID, eDayID]);
+  }, [dayID, eDayID, readData]);
 
   const [checked, setChecked] = useState<string[]>(
     checkedData ? checkedData.meals.map((meal: IMealElement) => meal.id) : [],
@@ -260,7 +272,9 @@ const OwnProductsList: React.FC<Props> = ({
         open={openCustomizeMealDialog}
         setOpen={setOpenCustomizeMealDialog}
         uncheckMeal={uncheckMeal}
-        saveMeal={(meal: IMealElement) => saveMeal(meal, dayID, eDayID)}
+        saveMeal={(meal: IMealElement) =>
+          isNewEntry ? addTemporaryMeals(meal) : saveMeal(meal, dayID, eDayID)
+        }
       />
     </>
   );
