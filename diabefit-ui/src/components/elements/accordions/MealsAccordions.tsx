@@ -21,6 +21,7 @@ import { calculateData, readDayMeal } from "../../../store/mealsStorage";
 import CalculatePanel from "../glucose-calculate/creating-panel";
 import { details, elements } from "./utils";
 import { useTranslation } from "react-i18next";
+import { getTranslatedDay } from "../../../config/translation/daysTranslated";
 
 type Props = {
   dayId: number;
@@ -40,42 +41,36 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
         {
           id: 1,
           name: EDays.BREAKFAST,
-          displayName: translatedDays[EDays.BREAKFAST],
           meals: [],
           calculatorData: null,
         },
         {
           id: 2,
           name: EDays.SNACK_1,
-          displayName: translatedDays[EDays.SNACK_1],
           meals: [],
           calculatorData: null,
         },
         {
           id: 3,
           name: EDays.LUNCH,
-          displayName: translatedDays[EDays.LUNCH],
           meals: [],
           calculatorData: null,
         },
         {
           id: 4,
           name: EDays.SNACK_2,
-          displayName: translatedDays[EDays.SNACK_2],
           meals: [],
           calculatorData: null,
         },
         {
           id: 5,
           name: EDays.DINNER,
-          displayName: translatedDays[EDays.DINNER],
           meals: [],
           calculatorData: null,
         },
         {
           id: 6,
           name: EDays.SNACK_3,
-          displayName: translatedDays[EDays.SNACK_3],
           meals: [],
           calculatorData: null,
         },
@@ -188,7 +183,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
             id={day.name}
           >
             <Typography sx={{ minWidth: "70px" }}>
-              {day.displayName ?? day.name}
+              {getTranslatedDay(day.name, t)}
             </Typography>
             {day.meals.length ? (
               <Grid container justifyContent="space-between">

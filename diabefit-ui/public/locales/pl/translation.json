@@ -23,7 +23,7 @@
     "home": {
         "bottomNavigation": {
             "entry": "Wpis",
-            "bolus": "Bolus",
+            "bolus": "Korekta",
             "elevate": "Podnieś"
         },
         "elevateDialog": {
@@ -38,6 +38,7 @@
             }
         },
         "labels": {
+            "correctionTitle": "Korekty",
             "correction": "Insulina korekcyjna:",
             "glucose": "Glukoza: ",
             "removeInfo": "Czy chcesz usunąć korektę?"
@@ -107,7 +108,8 @@
             "foodInsulin": "Insulina (jedzenie)",
             "correctionInsulin": "Insulina (korekta)"
         },
-        "saveButton": "Zapisz"
+        "saveButton": "Zapisz",
+        "customLabel": "Niestandardowy"
     },
     "newBolus": {
         "title": "Dodaj nowy bolus (korekta insuliny)",

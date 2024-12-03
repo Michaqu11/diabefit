@@ -66,7 +66,7 @@ const NewEntry = () => {
 
   const [customMeal, setCustomMeal] = React.useState<IDay>({
     id: allDayMeals?.length ?? 1,
-    name: `Custom ${id + 1}`,
+    name:`${t('newEntry.customLabel')} ${id + 1}`,
     meals: getTemporaryMeals(),
     calculatorData: null,
   });

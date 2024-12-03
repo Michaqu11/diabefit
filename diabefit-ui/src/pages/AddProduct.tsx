@@ -19,7 +19,7 @@ import {
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import { EDays, TranslatedDays } from "../types/days";
+import { EDays } from "../types/days";
 import { useNavigate } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -34,6 +34,7 @@ import CustomMealDialog from "../components/elements/products/utils/CustomMealDi
 import { QuickAdd } from "../components/elements/products/custom/QuickAdd";
 import { addTemporaryMeals } from "../store/customMealsStorage";
 import { useTranslation } from "react-i18next";
+import { getTranslatedDay } from "../config/translation/daysTranslated";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -54,25 +55,6 @@ function CustomTabPanel(props: TabPanelProps) {
     </div>
   );
 }
-
-const getDayFromString = (day: String): EDays | undefined => {
-  if (Object.values(EDays).includes(day as EDays)) {
-    return day as EDays; // Konwersja na wartość enumu
-  }
-  return undefined; // Jeśli 'day' nie jest wartością enumu, zwróć undefined
-};
-
-const getTranslatedDay = (dayKey: String, t: any): String => {
-  const translatedDays = TranslatedDays(t);
-
-  const dayEnum = getDayFromString(dayKey);
-
-  if (dayEnum && translatedDays.hasOwnProperty(dayEnum)) {
-    return translatedDays[dayEnum];
-  } else {
-    return dayKey;
-  }
-};
 
 const AddProduct: React.FC = () => {
   const { t } = useTranslation();

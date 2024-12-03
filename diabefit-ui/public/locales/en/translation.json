@@ -26,6 +26,7 @@
             }
         },
         "labels": {
+            "correctionTitle": "Corrections",
             "correction": "Correction Insulin:",
             "glucose": "Glucose: ",
             "removeInfo": "Czy chcesz usunąć korektę?"
@@ -107,7 +108,8 @@
             "foodInsulin": "Insulin (foods)",
             "correctionInsulin": "Insulin (correction)"
         },
-        "saveButton": "Save"
+        "saveButton": "Save",
+        "customLabel": "Custom"
     },
     "newBolus": {
         "title":"Add New Bolus (Insulin Correction)",
