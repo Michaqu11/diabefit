@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { encodeShortDate } from "../../components/common/share/MomentFunctions";
 import CustomizedAccordions from "../../components/elements/accordions/MealsAccordions";
-import CorrectionAccordions from "../../components/elements/accordions/CorrectionAccordions";
+import CorrectionAccordions from "../../components/elements/accordions/correctionAccordions";
 import { BottomButtons } from "./BottomButtons";
 import { CustomMealAccordions } from "../../components/elements/accordions/CustomMealsAccordions";
 const Home: React.FC = () => {

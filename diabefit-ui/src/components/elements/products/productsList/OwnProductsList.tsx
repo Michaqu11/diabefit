@@ -27,6 +27,7 @@ import {
   addTemporaryMeals,
   getTemporaryMeals,
 } from "../../../../store/customMealsStorage";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   dayID: string;
@@ -59,6 +60,8 @@ const OwnProductsList: React.FC<Props> = ({
   getProducts,
   isNewEntry,
 }) => {
+  const { t } = useTranslation();
+
   const [openCustomizeMealDialog, setOpenCustomizeMealDialog] = useState(false);
   const [customizeMeal, setCustomizeMeal] = useState<IMealElement | undefined>(
     undefined,
@@ -124,14 +127,20 @@ const OwnProductsList: React.FC<Props> = ({
     setChecked(newChecked);
   };
 
-  const details = (extension: IMealElement) => {
-    return (
-      <span>
-        P {extension.prot}g F {extension.fats}g C {extension.carbs}g (
-        {extension.kcal}kcal)
-      </span>
-    );
-  };
+  const details = useCallback(
+    (extension: IMealElement) => {
+      return (
+        <span>
+          {t("share.nutritionalValues.prot")} {extension.prot}g{" "}
+          {t("share.nutritionalValues.fats")} {extension.fats}g{" "}
+          {t("share.nutritionalValues.carbs")} {extension.carbs}g (
+          {extension.kcal}
+          {t("share.nutritionalValues.kcal")})
+        </span>
+      );
+    },
+    [t],
+  );
 
   const formatProductsData = useCallback(
     (searchKey: string): IMealElement[] | undefined => {
@@ -185,7 +194,7 @@ const OwnProductsList: React.FC<Props> = ({
                     removeOwnProduct(meal.displayName).then(() =>
                       getProducts(),
                     );
-                    removeAddedMealNotification();
+                    removeAddedMealNotification(t);
                   }}
                 >
                   <DeleteIcon />
@@ -220,7 +229,7 @@ const OwnProductsList: React.FC<Props> = ({
         </div>
       );
     },
-    [checked, getProducts, handleToggle],
+    [checked, details, getProducts, handleToggle, t],
   );
 
   useEffect(() => {
@@ -255,10 +264,14 @@ const OwnProductsList: React.FC<Props> = ({
           next={() => {}}
           hasMore={false}
           height={600}
-          loader={<p style={{ textAlign: "center" }}>Loading...</p>}
+          loader={
+            <p style={{ textAlign: "center" }}>
+              {t("addProduct.list.loading")}
+            </p>
+          }
           endMessage={
             <p style={{ textAlign: "center" }}>
-              {meals?.length ? <b>No more data to load.</b> : null}
+              {meals?.length ? <b>{t("addProduct.list.noMoreData")}</b> : null}
             </p>
           }
         >

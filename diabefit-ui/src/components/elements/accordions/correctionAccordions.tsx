@@ -14,6 +14,7 @@ import {
 import DividerWithText from "../../common/share/DividerWithText";
 import ConfirmDialog from "../../common/share/ConfirmDialog";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   dayId: number;
@@ -41,11 +42,13 @@ const CorrectionAccordions: React.FC<Props> = ({ dayId }) => {
 
   const [dialogData, setDialogData] = useState<string | null>(null);
 
+  const { t } = useTranslation();
+
   return (
     <div>
       {corrections.length ? <DividerWithText text="Corrections" /> : null}
       {corrections.length
-        ? corrections.map((correction, index) => (
+        ? corrections.map((correction) => (
             <Accordion
               key={correction.id}
               sx={{
@@ -74,11 +77,13 @@ const CorrectionAccordions: React.FC<Props> = ({ dayId }) => {
               </AccordionSummary>
               <AccordionDetails sx={{ padding: "0px 15px" }}>
                 <Typography>
-                  <strong>Correction Insulin:</strong>{" "}
-                  {correction.correctionInsulin} u
+                  <strong>{t("home.labels.correction")}</strong>{" "}
+                  {correction.correctionInsulin}{" "}
+                  {t("share.glucoseInput.insulinUnits")}
                 </Typography>
                 <Typography>
-                  <strong>Blood Sugar:</strong> {correction.glucose} mg/dL
+                  <strong>{t("home.labels.glucose")}</strong>{" "}
+                  {correction.glucose} {t("share.glucoseInput.glucoseUnits")}
                 </Typography>
               </AccordionDetails>
             </Accordion>
@@ -86,7 +91,7 @@ const CorrectionAccordions: React.FC<Props> = ({ dayId }) => {
         : null}
       <ConfirmDialog
         open={dialogData !== null}
-        text="Do you want to remove the correction?"
+        text={t("home.labels.removeInfo")}
         setOpen={() => setDialogData(null)}
         onConfirm={() => handleDelete(dialogData ?? "")}
       />

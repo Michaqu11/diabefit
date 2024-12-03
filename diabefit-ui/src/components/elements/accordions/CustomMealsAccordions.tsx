@@ -16,6 +16,7 @@ import AccordionDetail from "./accordionDetail";
 import DividerWithText from "../../common/share/DividerWithText";
 import ConfirmDialog from "../../common/share/ConfirmDialog";
 import { useState } from "react";
+import { t } from "i18next";
 
 type Props = {
   dayId: number;
@@ -48,7 +49,9 @@ export const CustomMealAccordions: React.FC<Props> = ({ dayId, width }) => {
 
   return (
     <div>
-      {meals.length ? <DividerWithText text="Custom meals" /> : null}
+      {meals.length ? (
+        <DividerWithText text={t("home.accordions.customMealsTitle")} />
+      ) : null}
       {meals.length
         ? meals.map((meal, index) => (
             <Accordion
@@ -62,8 +65,7 @@ export const CustomMealAccordions: React.FC<Props> = ({ dayId, width }) => {
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-                aria-controls={`correction-content-${meal.id}`}
-                id={`correction-${meal.id}`}
+          
                 sx={{ maxHeight: "50px" }}
               >
                 <span
@@ -82,6 +84,7 @@ export const CustomMealAccordions: React.FC<Props> = ({ dayId, width }) => {
                       meal.meals,
                       meal.calculatorData?.units,
                       width,
+                      t,
                       meal.isElevate,
                     )}
                   </Typography>
@@ -100,6 +103,7 @@ export const CustomMealAccordions: React.FC<Props> = ({ dayId, width }) => {
                     meal.meals,
                     dayId.toString(),
                     meal.id,
+                    t,
                   )}
                   removeBackground
                   allowItemRemoval={false}
@@ -110,7 +114,7 @@ export const CustomMealAccordions: React.FC<Props> = ({ dayId, width }) => {
         : null}
       <ConfirmDialog
         open={dialogData !== null}
-        text="Do you want to remove the custom meal?"
+        text={t("home.accordions.confirmRemove")}
         setOpen={() => setDialogData(null)}
         onConfirm={() => handleDelete(dialogData ?? 0)}
       />

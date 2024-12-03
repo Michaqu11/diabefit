@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import { formatMealToCustomGrams } from "./ProductsListUtils";
 import { addedMealNotification } from "./AddedMealNotification";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   meal?: IMealElement | undefined;
@@ -43,6 +44,8 @@ const CustomMealDialog: React.FC<Props> = ({
   uncheckMeal,
   saveMeal,
 }) => {
+  const { t } = useTranslation();
+
   const [amountInput, setAmountInput] = useState<number | string>(100);
   const [amountInputError, setAmountInputError] = useState(false);
 
@@ -60,7 +63,7 @@ const CustomMealDialog: React.FC<Props> = ({
   const handleAccept = () => {
     reset();
     meal && saveMeal(meal);
-    addedMealNotification();
+    addedMealNotification(t);
   };
 
   const updateMealNutrition = (grams: number) => {
@@ -72,27 +75,39 @@ const CustomMealDialog: React.FC<Props> = ({
     <React.Fragment>
       <Dialog open={open} onClose={handleCancel}>
         <DialogTitle sx={{ padding: "8px 24px" }}>
-          Configure your meal
+          {t("addProduct.dialog.configureMealLabel")}
         </DialogTitle>
         <DialogContent>
           {meal ? (
             <>
               <DialogContentText>
-                Enter the weight for the <b>{meal.displayName}</b> product
+                {t("addProduct.dialog.header")} <b>{meal.displayName}</b>
               </DialogContentText>
               <Container fixed sx={{ padding: "0px", margin: "10px 0px" }}>
                 <Grid container spacing={1}>
                   <Grid item xs={3}>
-                    {StyledNutrition("Calories", meal.kcal)}
+                    {StyledNutrition(
+                      t("addProduct.dialog.nutrition.kcal"),
+                      meal.kcal,
+                    )}
                   </Grid>
                   <Grid item xs={3}>
-                    {StyledNutrition("Fat", meal.fats)}
+                    {StyledNutrition(
+                      t("addProduct.dialog.nutrition.fats"),
+                      meal.fats,
+                    )}
                   </Grid>
                   <Grid item xs={3}>
-                    {StyledNutrition("Carbs", meal.carbs)}
+                    {StyledNutrition(
+                      t("addProduct.dialog.nutrition.carbs"),
+                      meal.carbs,
+                    )}
                   </Grid>
                   <Grid item xs={3}>
-                    {StyledNutrition("Protein", meal.prot)}
+                    {StyledNutrition(
+                      t("addProduct.dialog.nutrition.prot"),
+                      meal.prot,
+                    )}
                   </Grid>
                 </Grid>
               </Container>
@@ -101,7 +116,7 @@ const CustomMealDialog: React.FC<Props> = ({
 
           <TextField
             sx={{ width: "100%", margin: "10px 0px  0px  0px" }}
-            label="Amount (grams)"
+            label={t("addProduct.dialog.grams")}
             variant="outlined"
             value={amountInput}
             type="number"
@@ -124,8 +139,12 @@ const CustomMealDialog: React.FC<Props> = ({
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleCancel}>Cancel</Button>
-          <Button onClick={handleAccept}>Accept</Button>
+          <Button onClick={handleCancel}>
+            {t("addProduct.dialog.cancelButton")}
+          </Button>
+          <Button onClick={handleAccept}>
+            {t("addProduct.dialog.acceptButton")}
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

@@ -9,6 +9,7 @@ import {
 } from "../utils/AddedMealNotification";
 import { saveOwnProduct } from "../../../../api/save-own-product";
 import { calculateCalories } from "./calculateCalories";
+import { useTranslation } from "react-i18next";
 
 interface CustomProductProps {
   setProduct: (meal: IMealElement) => void;
@@ -72,6 +73,8 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
   setProduct,
   getProducts,
 }) => {
+  const { t } = useTranslation();
+
   const [productData, setProductData] = useState(initialProductData);
 
   const reset = () => {
@@ -93,7 +96,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
         (error) => error,
       )
     ) {
-      errorAddedMealNotification();
+      errorAddedMealNotification(t);
     } else {
       reset();
 
@@ -115,7 +118,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
       saveOwnProduct(newProduct).then(() => getProducts());
       setProduct(newProduct);
-      addedMealNotification();
+      addedMealNotification(t);
     }
   };
 
@@ -124,7 +127,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
       <Container fixed sx={{ p: 0 }}>
         <TextField
           sx={{ width: "100%", margin: "10px 0" }}
-          label="Product Name"
+          label={t("addProduct.inputs.mealName")}
           variant="outlined"
           value={productData.mealName}
           onChange={(e) => {
@@ -139,7 +142,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
         <TextField
           sx={{ width: "100%", margin: "10px 0" }}
-          label="Carbohydrates (g)"
+          label={t("addProduct.inputs.carbs")}
           variant="outlined"
           value={productData.carbs === 0 ? "" : productData.carbs}
           type="number"
@@ -154,7 +157,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
         <TextField
           sx={{ width: "100%", margin: "10px 0" }}
-          label="Protein (g)"
+          label={t("addProduct.inputs.prot")}
           variant="outlined"
           value={productData.prot === 0 ? "" : productData.prot}
           type="number"
@@ -169,7 +172,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
         <TextField
           sx={{ width: "100%", margin: "10px 0" }}
-          label="Fats (g)"
+          label={t("addProduct.inputs.fats")}
           variant="outlined"
           value={productData.fats === 0 ? "" : productData.fats}
           type="number"
@@ -184,7 +187,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
         <TextField
           sx={{ width: "100%", margin: "10px 0" }}
-          label="Calories (kcal)"
+          label={t("addProduct.inputs.kcal")}
           variant="outlined"
           value={productData.kcal === 0 ? "" : productData.kcal}
           type="number"
@@ -199,7 +202,7 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
 
         <TextField
           sx={{ width: "100%", margin: "10px 0" }}
-          label="Amount (g)"
+          label={t("addProduct.inputs.grams")}
           variant="outlined"
           value={productData.grams === 0 ? "" : productData.grams}
           type="number"
@@ -233,8 +236,10 @@ export const CustomProductCard: React.FC<CustomProductProps> = ({
         /> */}
       </Container>
       <Container sx={{ display: "flex", justifyContent: "right", p: 0 }}>
-        <Button onClick={reset}>Reset</Button>
-        <Button onClick={confirm}>Confirm</Button>
+        <Button onClick={reset}>{t("addProduct.inputs.resetButton")}</Button>
+        <Button onClick={confirm}>
+          {t("addProduct.inputs.confirmButton")}
+        </Button>
       </Container>
     </React.Fragment>
   );

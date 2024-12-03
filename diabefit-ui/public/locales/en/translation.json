@@ -1,0 +1,200 @@
+{
+    "appName": "Diabefit",
+    "sidepanel": {
+        "home": "Home",
+        "logOut": "Log out",
+        "newBolus": "New Bolus",
+        "newEntry": "New Entry",
+        "yourData": "Your Data",
+        "settings": "Settings"
+    },
+    "home": {
+        "bottomNavigation": {
+            "entry": "Entry",
+            "bolus": "Bolus",
+            "elevate": "Elevate"
+        },
+        "elevateDialog": {
+            "mealName": "Elevate",
+            "customMealName": "Custom",
+            "title": "Elevate blood sugar",
+            "inputs": {
+                "carbsUnits": "Carbs Units",
+                "carbsUnitsMetric": "CU",
+                "cancelButton": "Cancel",
+                "saveButton":"Save"
+            }
+        },
+        "labels": {
+            "correction": "Correction Insulin:",
+            "glucose": "Glucose: ",
+            "removeInfo": "Czy chcesz usunąć korektę?"
+        },
+        "accordions": {
+            "customMealsTitle": "Custom meals",
+            "confirmRemove": "Do you want to remove the custom meal?"
+        },
+        "days": {
+            "breakfast": "Breakfast",
+            "snack1": "Snack I",
+            "lunch": "Lunch",
+            "snack2": "Snack II",
+            "dinner": "Dinner",
+            "snack3": "Snack III"
+          }
+    },
+    "calculatePanel": {
+        "title": "New entry",
+        "warningMessage": "Sugar and carbs are required!",
+        "inputs": {
+            "carbsUnits": "Carbs Units",
+            "carbsUnitsMetric": "CU",
+            "foodInsulin": "Insulin (foods)",
+            "correctionInsulin": "Insulin (correction)",
+            "cancelButton": "Cancel",
+            "saveButton":"Save"
+        }
+    },
+    "addProduct":{
+        "title": "Create a custom product",
+        "bottomNavigation": {
+            "quick": "Quick Add",
+            "product": " New Product"
+        },
+        "inputs": {
+            "quickMealName": "Quick",
+            "mealName": "Product Name",
+            "carbs": "Carbohydrates (g)",
+            "prot": "Protein (g)",
+            "fats": "Fats (g)",
+            "kcal": "Calories (kcal)",
+            "grams": "Amount (g)",
+            "resetButton": "Reset",
+            "confirmButton": "Confirm"
+        },
+        "searchPlaceHolder": "Search Product",
+        "emptyListLabel": "No products to display",
+        "searchLabel": "Search for products",
+        "list": {
+            "loading":"Loading...",
+            "noMoreData": "No more data to load."
+        },
+        "dialog": {
+            "configureMealLabel": "Configure your meal",
+            "header": " Enter the weight for the ",
+            "grams": "Amount (g)",
+            "cancelButton": "Cancel",
+            "acceptButton": "Accept",
+            "nutrition": {
+                "kcal": "Calories",
+                "fats": "Fats",
+                "carbs": "Carbs",
+                "prot": "Protein"
+            }
+        },
+        "notifications": {
+            "add": "The product has been added to the list!",
+            "error":"There was an error adding the product to the list!",
+            "remove":"The product has been successfully removed from the database!"
+        }
+    },
+    "newEntry": {
+        "title": "New Entry",
+        "productsLabel": "Products",
+        "emptyProducts": "No meals added",
+        "inputs": {
+            "carbsUnits": "Carbs Units",
+            "foodInsulin": "Insulin (foods)",
+            "correctionInsulin": "Insulin (correction)"
+        },
+        "saveButton": "Save"
+    },
+    "newBolus": {
+        "title":"Add New Bolus (Insulin Correction)",
+        "inputs": {
+            "correctionInsulin": "Insulin Correction",
+            "units": "units",
+            "saveButton": "Save"
+        }
+    },
+    "yourData": {
+        "title": "Set your Information",
+        "tabs": {
+            "settings": "Settings",
+            "libre": "Libre"
+        },
+        "inputs": {
+            "diabetesType": "Diabetes Type",
+            "insulinCorrection": "Insulin Correction",
+            "actingTime": "Acting insulin time",
+            "offsetTime": "Offset insulin time",
+            "rangeLabel": "Target Range",
+            "unitsLabel": "Set Units",
+            "allDayButton": "All Day",
+            "timeDependentButton": "Time-dependent",
+            "libreLabel": "Freestyle Libre Token",
+            "libreInformation": "Upload your Libre Token to automatically read your blood glucose"
+        },
+        "unitsDialog": {
+            "title": "Units",
+            "message": "How much insulin do you usually inject for 1 CU?",
+            "units": "Units",
+            "nextButton": "Next",
+            "backButton": "Back",
+            "cancelButton": "Cancel",
+            "saveButton": "Save"
+        },
+        "snackbars": {
+            "success": "Data has been successfully saved",
+            "error": "There was a problem saving the data"
+        }
+    },
+    "settings": {
+        "title": "Settings",
+        "exportDataLabel": "Export data:",
+        "languageLabel": "Language:"
+    },
+    "login": {
+        "signIn": "Sign in with Google 🚀"
+    },
+    "share": {
+        "glucoseInput": {
+            "glucoseLabel": "Glucose",
+            "carbsUnitsValue": "CU",
+            "messages": {
+                "success": "Glucose was pasted using Libre API",
+                "error":  "Failed to retrieve glucose data from Libre API."
+            },
+            "fullInsulinUnits": "Units",
+            "insulinUnits": "u",
+            "glucoseUnits": "mg/dL"
+        },
+        "nutritionalValues": {
+            "kcal": "Kcal",
+            "prot": "P",
+            "fats": "F",
+            "carbs": "C"
+        },
+        "nutritionalFullValues": {
+            "kcal": "Kcal",
+            "prot": "Prot.",
+            "fats": "Fats",
+            "carbs": "Carbs"
+        },
+        "bolusCalculator": {
+            "title": "Bolus Calculator",
+            "calculateButton": "Calculate",
+            "acceptButton": "Accept",
+            "dismissButton":"Dismiss",
+            "adviceLabel": "Bolus advice",
+            "units": "units"
+        },
+        "buttons": {
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        },
+        "googleDialogInfo": "Use Google's location service?",
+        "isElevateLabel": "(Elevate)",
+        "isQuickLabel": "(Quick)"
+    }
+  }

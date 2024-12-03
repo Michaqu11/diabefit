@@ -15,7 +15,11 @@ import LibreList from "../components/yourdata/LibreList";
 import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
 import { getData } from "../store/sessionStorage";
 import { VariantType, enqueueSnackbar } from "notistack";
+import { useTranslation } from "react-i18next";
+
 const YourData: React.FC = () => {
+  const { t } = useTranslation();
+
   const Mobile = useMediaQuery("(min-width:700px)");
   const [tab, setTab] = useState(0);
   const tabChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -30,9 +34,9 @@ const YourData: React.FC = () => {
 
   const saveDataMessage = (variant: VariantType) => {
     if (variant === "success")
-      enqueueSnackbar("Data has been successfully saved", { variant });
+      enqueueSnackbar(t("yourData.snackbars.success"), { variant });
     else if (variant === "error")
-      enqueueSnackbar("There was a problem saving the data", { variant });
+      enqueueSnackbar(t("yourData.snackbars.error"), { variant });
   };
 
   return (
@@ -58,11 +62,11 @@ const YourData: React.FC = () => {
           <div className={!Mobile ? "container-mobile" : "container-desktop"}>
             <div className="center-card">
               <Typography variant="h5" gutterBottom>
-                Set your Information
+                {t("yourData.title")}
               </Typography>
               <Tabs value={tab} onChange={tabChange} aria-label="tabs">
-                <Tab label="Settings" />
-                <Tab label="Libre" />
+                <Tab label={t("yourData.tabs.settings")} />
+                <Tab label={t("yourData.tabs.libre")} />
               </Tabs>
               {tab === 0 ? (
                 <SettingsList

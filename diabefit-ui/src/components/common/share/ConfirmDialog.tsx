@@ -5,6 +5,7 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useTranslation } from "react-i18next";
 
 interface ConfirmDialogProps {
   open: boolean;
@@ -19,6 +20,8 @@ export default function ConfirmDialog(props: ConfirmDialogProps) {
     props.setOpen(false);
   };
 
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={props.open}
@@ -27,7 +30,7 @@ export default function ConfirmDialog(props: ConfirmDialogProps) {
       aria-describedby="alert-dialog-description"
     >
       <DialogTitle id="alert-dialog-title">
-        {"Use Google's location service?"}
+        {t("share.googleDialogInfo")}
       </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
@@ -35,9 +38,11 @@ export default function ConfirmDialog(props: ConfirmDialogProps) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => props.setOpen(false)}>Cancel</Button>
+        <Button onClick={() => props.setOpen(false)}>
+          {t("share.buttons.cancel")}
+        </Button>
         <Button onClick={confirm} autoFocus>
-          Confirm
+          {t("share.buttons.confirm")}
         </Button>
       </DialogActions>
     </Dialog>

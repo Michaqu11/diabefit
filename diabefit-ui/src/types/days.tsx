@@ -9,6 +9,15 @@ enum EDays {
   SNACK_3 = "Snack III",
 }
 
+export const TranslatedDays = (t: any) => ({
+  [EDays.BREAKFAST]: t("home.days.breakfast"),
+  [EDays.SNACK_1]: t("home.days.snack1"),
+  [EDays.LUNCH]: t("home.days.lunch"),
+  [EDays.SNACK_2]: t("home.days.snack2"),
+  [EDays.DINNER]: t("home.days.dinner"),
+  [EDays.SNACK_3]: t("home.days.snack3"),
+});
+
 interface IDayElement {
   mealName: string;
   id: string;
@@ -32,6 +41,7 @@ interface CalculatorData {
 interface IDay {
   id: number;
   name: string;
+  displayName?: string;
   meals: IMealElement[];
   calculatorData: CalculatorData | null;
   isElevate?: boolean;

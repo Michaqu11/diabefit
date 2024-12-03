@@ -4,6 +4,7 @@ import IconButton from "@mui/material/IconButton";
 import Divider from "@mui/material/Divider";
 import ClearIcon from "@mui/icons-material/Clear";
 import React from "react";
+import { useTranslation } from "react-i18next";
 type Props = {
   searchKey: string;
   setSearchKey: (state: string) => void;
@@ -15,6 +16,8 @@ const SearchInput: React.FC<Props> = ({
   setSearchKey,
   children,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Paper
       elevation={1}
@@ -30,7 +33,7 @@ const SearchInput: React.FC<Props> = ({
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
-        placeholder="Search Product"
+        placeholder={t("addProduct.searchPlaceHolder")}
         inputProps={{ "aria-label": "search product" }}
         value={searchKey}
         onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
