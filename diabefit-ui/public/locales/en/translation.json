@@ -112,7 +112,7 @@
         "customLabel": "Custom"
     },
     "newBolus": {
-        "title":"Add New Bolus (Insulin Correction)",
+        "title":"Add Insulin correction",
         "inputs": {
             "correctionInsulin": "Insulin Correction",
             "units": "units",

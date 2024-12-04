@@ -5,6 +5,8 @@ import {
   Button,
   Divider,
   FormControl,
+  Grid,
+  IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
@@ -17,9 +19,10 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { saveCorrection } from "../store/bolusStorage";
 import { encodeShortDate } from "../components/common/share/MomentFunctions";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GlucoseInput } from "../components/common/share/GlucoseInput";
 import { useTranslation } from "react-i18next";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const NewBolus: React.FC = () => {
   const { t } = useTranslation();
@@ -53,9 +56,27 @@ const NewBolus: React.FC = () => {
       elevation={3}
       style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}
     >
-      <Typography variant="h6" align="center" gutterBottom>
-        {t("newBolus.title")}
-      </Typography>
+      <Grid
+        container
+        justifyContent="flex-start"
+        style={{ justifyContent: "flex-start" }}
+      >
+        <Grid item xs={1} container justifyContent="flex-start">
+          <IconButton
+            color="primary"
+            component={Link}
+            to={"/"}
+            aria-label="back"
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+        </Grid>
+        <Grid item xs={10} container justifyContent="center">
+          <Typography variant="h6" align="center" gutterBottom>
+            {t("newBolus.title")}
+          </Typography>
+        </Grid>
+      </Grid>
       <Divider style={{ marginBottom: "20px" }} />
       <Box display="flex" flexDirection="column" gap="10px">
         <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -46,7 +46,9 @@ const CorrectionAccordions: React.FC<Props> = ({ dayId }) => {
 
   return (
     <div>
-      {corrections.length ? <DividerWithText text={t("home.labels.correctionTitle")} /> : null}
+      {corrections.length ? (
+        <DividerWithText text={t("home.labels.correctionTitle")} />
+      ) : null}
       {corrections.length
         ? corrections.map((correction) => (
             <Accordion

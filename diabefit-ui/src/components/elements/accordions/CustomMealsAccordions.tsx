@@ -65,7 +65,6 @@ export const CustomMealAccordions: React.FC<Props> = ({ dayId, width }) => {
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
-          
                 sx={{ maxHeight: "50px" }}
               >
                 <span
