@@ -33,6 +33,8 @@ import OwnProductsList from "../components/elements/products/productsList/OwnPro
 import CustomMealDialog from "../components/elements/products/utils/CustomMealDialog";
 import { QuickAdd } from "../components/elements/products/custom/QuickAdd";
 import { addTemporaryMeals } from "../store/customMealsStorage";
+import { useTranslation } from "react-i18next";
+import { getTranslatedDay } from "../config/translation/daysTranslated";
 interface TabPanelProps {
   children?: React.ReactNode;
   index: number;
@@ -55,6 +57,8 @@ function CustomTabPanel(props: TabPanelProps) {
 }
 
 const AddProduct: React.FC = () => {
+  const { t } = useTranslation();
+
   let { id, meal } = useParams();
   const Mobile = useMediaQuery("(min-width:700px)");
 
@@ -150,7 +154,7 @@ const AddProduct: React.FC = () => {
               disabled={isNewEntry}
               color="primary"
             >
-              {mealName}
+              {getTranslatedDay(mealName, t)}
             </Button>
           </Grid>
         </Grid>
@@ -208,13 +212,15 @@ const AddProduct: React.FC = () => {
           .filter((e: String) => e !== mealName)
           .map((e: String, index: number) => (
             <div key={index}>
-              <MenuItem onClick={() => close(e)}>{e}</MenuItem>
+              <MenuItem onClick={() => close(e)}>
+                {getTranslatedDay(e, t)}
+              </MenuItem>
             </div>
           ))}
       </Menu>
       <Dialog onClose={handleCloseDialogProduct} open={openDialogProduct}>
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Create a custom product
+          {t("addProduct.title")}
         </DialogTitle>
 
         <IconButton
@@ -242,7 +248,7 @@ const AddProduct: React.FC = () => {
 
       <Dialog onClose={handleCloseDialogQuickAdd} open={openDialogQuickAdd}>
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
-          Quick Add
+          {t("addProduct.bottomNavigation.quick")}
         </DialogTitle>
 
         <IconButton
@@ -296,7 +302,7 @@ const AddProduct: React.FC = () => {
             onClick={() => setOpenDialogProduct(true)}
             startIcon={<AddIcon />}
           >
-            New Product
+            {t("addProduct.bottomNavigation.product")}
           </Button>
 
           <Button
@@ -305,7 +311,7 @@ const AddProduct: React.FC = () => {
             onClick={() => setOpenDialogQuickAdd(true)}
             startIcon={<AddIcon />}
           >
-            Quick Add
+            {t("addProduct.bottomNavigation.quick")}
           </Button>
         </Paper>
       </Container>

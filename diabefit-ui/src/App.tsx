@@ -21,10 +21,13 @@ import { account } from "./api/login";
 import YourData from "./pages/YourData";
 import { auth, googleProvider } from "./config/firebase";
 import { signInWithPopup, User } from "firebase/auth";
+import { useTranslation } from "react-i18next";
 
 const App: React.FC = () => {
   const [profile, setProfile] = useState<User | null>(getProfile());
   const [loginStatus, setLogin] = useState<boolean>(false);
+
+  const { t } = useTranslation();
 
   const signInWithGoogle = async () => {
     try {
@@ -91,7 +94,7 @@ const App: React.FC = () => {
                 size="large"
                 onClick={() => signInWithGoogle()}
               >
-                Sign in with Google 🚀
+                {t("login.signIn")}
               </Button>
             </Box>
           </>

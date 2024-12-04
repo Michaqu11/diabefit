@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import "./SettingsList.scss";
 import { saveLibreToken } from "../../api/save-libre-token";
 import { VariantType } from "notistack";
+import { useTranslation } from "react-i18next";
 
 interface LibreListProps {
   libreAPI: string;
@@ -22,7 +23,7 @@ interface LibreListProps {
 
 const LibreList: React.FC<LibreListProps> = (props) => {
   const [libreToken, setLibreToken] = useState<string>(props.libreAPI);
-
+  const { t } = useTranslation();
   useEffect(() => {
     if (props.saveData != null && libreToken !== "") {
       saveLibreToken(libreToken);
@@ -40,7 +41,7 @@ const LibreList: React.FC<LibreListProps> = (props) => {
         <ListItem alignItems="flex-start">
           <FormControl variant="outlined" sx={{ width: "100%" }}>
             <InputLabel htmlFor="component-simple">
-              Freestyle Libre Token
+              {t("yourData.inputs.libreLabel")}
             </InputLabel>
             <OutlinedInput
               value={libreToken}
@@ -49,11 +50,11 @@ const LibreList: React.FC<LibreListProps> = (props) => {
                 <InputAdornment position="end">
                   <ClickTooltip
                     icon={InfoOutlinedIcon}
-                    title="Upload your Libre Token to automatically read your blood glucose"
+                    title={t("yourData.inputs.libreInformation")}
                   />
                 </InputAdornment>
               }
-              label="Freestyle Libre Token"
+              label={t("yourData.inputs.libreLabel")}
             />
           </FormControl>
         </ListItem>

@@ -19,8 +19,11 @@ import { encodeShortDate } from "../components/common/share/MomentFunctions";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 import { GlucoseInput } from "../components/common/share/GlucoseInput";
+import { useTranslation } from "react-i18next";
 
 const NewBolus: React.FC = () => {
+  const { t } = useTranslation();
+
   const [glucose, setGlucose] = React.useState<number | string>("");
   const [correctionInsulin, setCorrectionInsulin] = React.useState<
     number | string
@@ -51,7 +54,7 @@ const NewBolus: React.FC = () => {
       style={{ padding: "20px", maxWidth: "400px", margin: "auto" }}
     >
       <Typography variant="h6" align="center" gutterBottom>
-        Add New Bolus (Insulin Correction)
+        {t("newBolus.title")}
       </Typography>
       <Divider style={{ marginBottom: "20px" }} />
       <Box display="flex" flexDirection="column" gap="10px">
@@ -67,7 +70,7 @@ const NewBolus: React.FC = () => {
 
         <FormControl variant="outlined">
           <InputLabel htmlFor="correction-insulin-input">
-            Insulin Correction
+            {t("newBolus.inputs.correctionInsulin")}
           </InputLabel>
           <OutlinedInput
             id="correction-insulin-input"
@@ -81,14 +84,18 @@ const NewBolus: React.FC = () => {
             inputProps={{
               step: "0.1",
             }}
-            label="Insulin Correction"
-            endAdornment={<InputAdornment position="end">units</InputAdornment>}
+            label={t("newBolus.inputs.correctionInsulin")}
+            endAdornment={
+              <InputAdornment position="end">
+                {t("newBolus.inputs.units")}
+              </InputAdornment>
+            }
           />
         </FormControl>
 
         <Box display="flex" justifyContent=" flex-end">
           <Button variant="outlined" color="primary" onClick={handleSave}>
-            Save
+            {t("newBolus.inputs.saveButton")}
           </Button>
         </Box>
       </Box>

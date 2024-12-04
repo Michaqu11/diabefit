@@ -27,6 +27,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 import { saveSettings } from "../../api/save-settings";
 import { VariantType } from "notistack";
+import { useTranslation } from "react-i18next";
 
 interface SettingsListProps {
   settings: ISettings;
@@ -37,6 +38,7 @@ interface SettingsListProps {
 
 const SettingsList: React.FC<SettingsListProps> = (props) => {
   const settings = props.settings;
+  const { t } = useTranslation();
 
   const [diabetesTypeError, setDiabetesTypeError] = useState<boolean>(false);
   const [diabetesType, setDiabetesType] = useState<number | null>(
@@ -80,7 +82,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
   );
   const [allDayUnits, setAllDayUnits] = useState<number[]>(Array(24).fill(0.0));
 
-  const singlueUnitValidation = (
+  const singleUnitValidation = (
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) => {
     const parsedFloat = parseFloat(e.target.value);
@@ -191,7 +193,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
         <ListItem alignItems="flex-start">
           <TextField
             sx={{ width: "100%" }}
-            label="Diabetes Type"
+            label={t("yourData.inputs.diabetesType")}
             variant="outlined"
             value={diabetesType}
             type="number"
@@ -216,7 +218,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
         <ListItem alignItems="flex-start">
           <TextField
             sx={{ width: "100%" }}
-            label="Insulin Correction"
+            label={t("yourData.inputs.insulinCorrection")}
             variant="outlined"
             value={insulinCorrection}
             type="number"
@@ -242,7 +244,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
           <div className="time-picker">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <TimeField
-                label="Acting inuslin time"
+                label={t("yourData.inputs.actingTime")}
                 value={actingTime}
                 onChange={(newValue) => setActingTime(newValue)}
                 format="HH:mm"
@@ -254,7 +256,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
           <div className="time-picker">
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <TimeField
-                label="Offset inuslin time"
+                label={t("yourData.inputs.offsetTime")}
                 value={offsetTime}
                 onChange={(newValue) => setOffsetTime(newValue)}
                 format="HH:mm"
@@ -263,9 +265,10 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
           </div>
         </ListItem>
         <ListItem alignItems="flex-start" sx={{ flexDirection: "column" }}>
-          <Typography gutterBottom>Target Range</Typography>
+          <Typography gutterBottom>
+            {t("yourData.inputs.rangeLabel")}
+          </Typography>
           <Slider
-            getAriaLabel={() => "Temperature range"}
             value={range}
             onChange={(event: Event, newValue: number | number[]) =>
               setRange(newValue as number[])
@@ -279,7 +282,9 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
           />
         </ListItem>
         <ListItem sx={{ flexDirection: "column", alignItems: "flex-start" }}>
-          <Typography gutterBottom>Set Units</Typography>
+          <Typography gutterBottom>
+            {t("yourData.inputs.unitsLabel")}
+          </Typography>
           <Grid
             sx={{
               display: "flex",
@@ -290,20 +295,18 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
             }}
           >
             <Button variant="outlined" onClick={() => handleDialogOpen(true)}>
-              All Day
+              {t("yourData.inputs.allDayButton")}
             </Button>
             <Button variant="outlined" onClick={() => handleDialogOpen(false)}>
-              Time-dependent
+              {t("yourData.inputs.timeDependentButton")}
             </Button>
           </Grid>
         </ListItem>
       </List>
       <Dialog open={openUnitsDialog} onClose={handleDialogClose}>
-        <DialogTitle>Units</DialogTitle>
+        <DialogTitle>{t("yourData.unitsDialog.title")}</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            How much inuslin do you usually inject for 1 WW?
-          </DialogContentText>
+          <DialogContentText>{t("yourData.unitsDialog.message")}</DialogContentText>
           <Grid
             sx={{
               marginTop: "20px",
@@ -315,7 +318,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
             {isAllDay ? (
               <>
                 <TextField
-                  label="Units"
+                  label={t("yourData.unitsDialog.units")}
                   variant="outlined"
                   value={singleUnit}
                   type="number"
@@ -323,7 +326,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
                     step: "0.1",
                   }}
                   InputLabelProps={{ shrink: true }}
-                  onChange={singlueUnitValidation}
+                  onChange={singleUnitValidation}
                   error={singleUnitError}
                 />
               </>
@@ -341,7 +344,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
                       onClick={handleNext}
                       disabled={activeStep === 23}
                     >
-                      Next
+                      {t("yourData.unitsDialog.nextButton")}
                       {theme.direction === "rtl" ? (
                         <KeyboardArrowLeft />
                       ) : (
@@ -360,7 +363,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
                       ) : (
                         <KeyboardArrowLeft />
                       )}
-                      Back
+                      {t("yourData.unitsDialog.backButton")}
                     </Button>
                   }
                 />
@@ -370,7 +373,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
                   {stepToTime()}
                 </Typography>
                 <TextField
-                  label="Units"
+                  label={t("yourData.unitsDialog.units")}
                   variant="outlined"
                   value={singleUnit}
                   type="number"
@@ -378,7 +381,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
                     step: "0.1",
                   }}
                   InputLabelProps={{ shrink: true }}
-                  onChange={singlueUnitValidation}
+                  onChange={singleUnitValidation}
                   error={singleUnitError}
                 />
               </>
@@ -386,7 +389,9 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
           </Grid>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
+          <Button onClick={handleDialogClose}>
+            {t("yourData.unitsDialog.cancelButton")}
+          </Button>
           <Button
             onClick={saveUnits}
             disabled={
@@ -395,7 +400,7 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
                 (activeStep !== 23 || (activeStep === 23 && singleUnitError)))
             }
           >
-            Save
+            {t("yourData.unitsDialog.saveButton")}
           </Button>
         </DialogActions>
       </Dialog>

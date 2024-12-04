@@ -34,6 +34,7 @@ import { useSnackbar } from "notistack";
 import "./creating-panel.scss";
 import { useEffect, useRef, useState } from "react";
 import { GlucoseInput } from "../../common/share/GlucoseInput";
+import { useTranslation } from "react-i18next";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -42,13 +43,15 @@ interface CalculatePanelProps {
 }
 
 const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
+  const { t } = useTranslation();
+
   const handleCalculateClickClose = () => {
     props.setOpenCalculate({ open: false, dayId: undefined, day: undefined });
   };
 
   const [selectedDate, setSelectedDate] = useState(dayjs(new Date()));
   const [glucose, setGlucose] = useState<number | string>("");
-  const [carbs, setCarbs] = useState<number | string>("");
+  const [carbsUnits, setCarbsUnits] = useState<number | string>("");
   const [foodInsulin, setFoodInsulin] = useState<number | string>("");
   const [correctionInsulin, setCorrectionInsulin] = useState<number | string>(
     "",
@@ -60,7 +63,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const correctionInsulinMetric = useRef<number>(0);
 
   useEffect(() => {
-    setCarbs(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
+    setCarbsUnits(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
     setFoodInsulin("");
     setCorrectionInsulin("");
   }, [props.openCalculate]);
@@ -68,16 +71,16 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const { enqueueSnackbar } = useSnackbar();
 
   const calculateGlucoseEmit = () => {
-    if (glucose && carbs) {
+    if (glucose && carbsUnits) {
       const [food, correction] = calculateGlucose(
         glucose as number,
-        carbs as number,
+        carbsUnits as number,
       );
       foodInsulinMetric.current = food;
       correctionInsulinMetric.current = correction;
       setAlertOpen(true);
     } else
-      enqueueSnackbar("Sugar and carbs are required!", {
+      enqueueSnackbar(t("calculatePanel.warningMessage"), {
         preventDuplicate: true,
         variant: "warning",
       });
@@ -118,7 +121,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   return (
     <Dialog open={props.openCalculate.open} onClose={handleCalculateClickClose}>
       <DialogTitle style={{ textAlign: "center", marginBottom: "10px" }}>
-        New entry
+        {t("calculatePanel.title")}
       </DialogTitle>
       <Divider />
       <DialogContent>
@@ -145,22 +148,28 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
           />
 
           <FormControl variant="outlined">
-            <InputLabel htmlFor="component-simple">Carb Units</InputLabel>
+            <InputLabel htmlFor="component-simple">
+              {t("calculatePanel.inputs.carbsUnits")}
+            </InputLabel>
             <OutlinedInput
-              value={carbs}
-              label="Carb Units"
+              value={carbsUnits}
+              label={t("calculatePanel.inputs.carbsUnits")}
               type="number"
               inputProps={{
                 step: "0.1",
               }}
               onChange={(event) =>
-                setCarbs(
+                setCarbsUnits(
                   event.target.value === ""
                     ? ""
                     : parseFloat(event.target.value),
                 )
               }
-              endAdornment={<InputAdornment position="end">WW</InputAdornment>}
+              endAdornment={
+                <InputAdornment position="end">
+                  {t("calculatePanel.inputs.carbsUnitsMetric")}
+                </InputAdornment>
+              }
               aria-describedby="outlined-sugar-text"
             />
           </FormControl>
@@ -172,20 +181,22 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               action={
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <Button color="inherit" size="small" onClick={acceptGlucose}>
-                    Accept
+                    {t("share.bolusCalculator.acceptButton")}
                   </Button>
                   <Button
                     color="inherit"
                     size="small"
                     onClick={() => setAlertOpen(false)}
                   >
-                    Dismiss
+                    {t("share.bolusCalculator.dismissButton")}
                   </Button>
                 </div>
               }
             >
-              <strong>Bolus advice</strong>
-              <AlertTitle>{getResult()} units</AlertTitle>
+              <strong>{t("share.bolusCalculator.adviceLabel")}</strong>
+              <AlertTitle>
+                {getResult()} {t("share.bolusCalculator.units")}
+              </AlertTitle>
             </Alert>
           </Collapse>
           <Divider />
@@ -198,7 +209,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
                 padding: "10px",
               }}
             >
-              <CalculateIcon color="primary" /> Bolus Calculator
+              <CalculateIcon color="primary" />{" "}
+              {t("share.bolusCalculator.title")}
             </CardContent>
             <Divider />
             <CardActions
@@ -209,13 +221,15 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               }}
             >
               <Button variant="text" onClick={calculateGlucoseEmit}>
-                Calculate
+                {t("share.bolusCalculator.calculateButton")}
               </Button>
             </CardActions>
           </Card>
 
           <FormControl variant="outlined">
-            <InputLabel htmlFor="component-simple">Insulin (foods)</InputLabel>
+            <InputLabel htmlFor="component-simple">
+              {t("calculatePanel.inputs.foodInsulin")}
+            </InputLabel>
             <OutlinedInput
               value={foodInsulin}
               onChange={(food) =>
@@ -223,7 +237,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
                   food.target.value === "" ? "" : parseFloat(food.target.value),
                 )
               }
-              label="Insulin (foods)"
+              label={t("calculatePanel.inputs.foodInsulin")}
               type="number"
               inputProps={{
                 step: "0.1",
@@ -235,7 +249,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
 
           <FormControl variant="outlined">
             <InputLabel htmlFor="component-simple">
-              Insulin (correction)
+              {t("calculatePanel.inputs.correctionInsulin")}
             </InputLabel>
             <OutlinedInput
               value={correctionInsulin}
@@ -250,7 +264,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               inputProps={{
                 step: "0.1",
               }}
-              label="Insulin (correction)"
+              label={t("calculatePanel.inputs.correctionInsulin")}
               aria-describedby="outlined-sugar-text"
             />
             <FormHelperText id="outlined-sugar-text"></FormHelperText>
@@ -258,8 +272,12 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleCalculateClickClose}>Cancel</Button>
-        <Button onClick={saveCalculation}>Save</Button>
+        <Button onClick={handleCalculateClickClose}>
+          {t("calculatePanel.inputs.cancelButton")}
+        </Button>
+        <Button onClick={saveCalculation}>
+          {t("calculatePanel.inputs.saveButton")}
+        </Button>
       </DialogActions>
     </Dialog>
   );

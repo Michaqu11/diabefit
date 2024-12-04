@@ -39,11 +39,14 @@ import {
 import { IDay } from "../types/days";
 import { calculateCarbsForAllMeals } from "../shared/calculator/carbohydrate-exchange-calculator";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NewEntry = () => {
+  const { t } = useTranslation();
+
   const [selectedDate, setSelectedDate] = useState(dayjs(new Date()));
   const [glucose, setGlucose] = useState<number | string>("");
-  const [carbs, setCarbs] = useState<number | string>("");
+  const [carbsUnits, setCarbsUnits] = useState<number | string>("");
   const [foodInsulin, setFoodInsulin] = useState<number | string>("");
   const [correctionInsulin, setCorrectionInsulin] = useState<number | string>(
     "",
@@ -63,22 +66,22 @@ const NewEntry = () => {
 
   const [customMeal, setCustomMeal] = React.useState<IDay>({
     id: allDayMeals?.length ?? 1,
-    name: `Custom ${id + 1}`,
+    name:`${t('newEntry.customLabel')} ${id + 1}`,
     meals: getTemporaryMeals(),
     calculatorData: null,
   });
 
   const calculateGlucoseEmit = () => {
-    if (glucose && carbs) {
+    if (glucose && carbsUnits) {
       const [food, correction] = calculateGlucose(
         glucose as number,
-        carbs as number,
+        carbsUnits as number,
       );
       foodInsulinMetric.current = food;
       correctionInsulinMetric.current = correction;
       setAlertOpen(true);
     } else
-      enqueueSnackbar("Sugar and carbs are required!", {
+      enqueueSnackbar("Sugar and carbsUnits are required!", {
         preventDuplicate: true,
         variant: "warning",
       });
@@ -127,7 +130,7 @@ const NewEntry = () => {
   };
 
   React.useEffect(() => {
-    setCarbs(calculateCarbsForAllMeals(customMeal.meals));
+    setCarbsUnits(calculateCarbsForAllMeals(customMeal.meals));
   }, [customMeal]);
 
   return (
@@ -136,7 +139,7 @@ const NewEntry = () => {
       style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}
     >
       <Typography variant="h6" align="center" gutterBottom>
-        New entry
+        {t("newEntry.title")}
       </Typography>
       <Divider />
       <Box
@@ -160,7 +163,6 @@ const NewEntry = () => {
         <Divider />
 
         <div className="Products">
-          <div>Products: </div>
           <ListBasedView
             customMeal={customMeal}
             setCustomMeal={setCustomMeal}
@@ -169,20 +171,22 @@ const NewEntry = () => {
         </div>
 
         <FormControl variant="outlined">
-          <InputLabel htmlFor="component-simple">Carbs</InputLabel>
+          <InputLabel htmlFor="component-simple">
+            {t("newEntry.inputs.carbsUnits")}
+          </InputLabel>
           <OutlinedInput
-            value={carbs}
-            label="Carbs"
+            value={carbsUnits}
+            label={t("newEntry.inputs.carbsUnits")}
             type="number"
             inputProps={{
               step: "0.1",
             }}
             onChange={(event) =>
-              setCarbs(
+              setCarbsUnits(
                 event.target.value === "" ? "" : parseFloat(event.target.value),
               )
             }
-            endAdornment={<InputAdornment position="end">WW</InputAdornment>}
+            endAdornment={<InputAdornment position="end"></InputAdornment>}
           />
         </FormControl>
 
@@ -193,20 +197,22 @@ const NewEntry = () => {
             action={
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <Button color="inherit" size="small" onClick={acceptGlucose}>
-                  Accept
+                  {t("share.bolusCalculator.acceptButton")}
                 </Button>
                 <Button
                   color="inherit"
                   size="small"
                   onClick={() => setAlertOpen(false)}
                 >
-                  Dismiss
+                  {t("share.bolusCalculator.dismissButton")}
                 </Button>
               </div>
             }
           >
-            <strong>Bolus advice</strong>
-            <AlertTitle>{getResult()} units</AlertTitle>
+            <strong>{t("share.bolusCalculator.adviceLabel")}</strong>
+            <AlertTitle>
+              {getResult()} {t("share.bolusCalculator.units")}
+            </AlertTitle>
           </Alert>
         </Collapse>
         <Divider />
@@ -219,7 +225,7 @@ const NewEntry = () => {
               padding: "10px",
             }}
           >
-            <CalculateIcon color="primary" /> Bolus Calculator
+            <CalculateIcon color="primary" /> {t("share.bolusCalculator.title")}
           </CardContent>
           <Divider />
           <CardActions
@@ -230,13 +236,15 @@ const NewEntry = () => {
             }}
           >
             <Button variant="text" onClick={calculateGlucoseEmit}>
-              Calculate
+              {t("share.bolusCalculator.calculateButton")}
             </Button>
           </CardActions>
         </Card>
 
         <FormControl variant="outlined">
-          <InputLabel htmlFor="component-simple">Insulin (foods)</InputLabel>
+          <InputLabel htmlFor="component-simple">
+            {t("newEntry.inputs.foodInsulin")}
+          </InputLabel>
           <OutlinedInput
             value={foodInsulin}
             onChange={(food) =>
@@ -244,7 +252,7 @@ const NewEntry = () => {
                 food.target.value === "" ? "" : parseFloat(food.target.value),
               )
             }
-            label="Insulin (foods)"
+            label={t("newEntry.inputs.foodInsulin")}
             type="number"
             inputProps={{
               step: "0.1",
@@ -254,7 +262,7 @@ const NewEntry = () => {
 
         <FormControl variant="outlined">
           <InputLabel htmlFor="component-simple">
-            Insulin (correction)
+            {t("newEntry.inputs.correctionInsulin")}
           </InputLabel>
           <OutlinedInput
             value={correctionInsulin}
@@ -265,7 +273,7 @@ const NewEntry = () => {
                   : parseFloat(correction.target.value),
               )
             }
-            label="Insulin (correction)"
+            label={t("newEntry.inputs.correctionInsulin")}
             type="number"
             inputProps={{
               step: "0.1",
@@ -275,7 +283,7 @@ const NewEntry = () => {
 
         <Box style={{ display: "flex", justifyContent: "right" }}>
           <Button variant="contained" onClick={saveCalculation}>
-            Save
+            {t("newEntry.saveButton")}
           </Button>
         </Box>
       </Box>

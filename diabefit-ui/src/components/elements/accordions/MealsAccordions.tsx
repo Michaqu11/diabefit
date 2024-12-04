@@ -11,10 +11,17 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
-import { EDays, ICalculatePanel, IDay } from "../../../types/days";
+import {
+  EDays,
+  ICalculatePanel,
+  IDay,
+  TranslatedDays,
+} from "../../../types/days";
 import { calculateData, readDayMeal } from "../../../store/mealsStorage";
 import CalculatePanel from "../glucose-calculate/creating-panel";
 import { details, elements } from "./utils";
+import { useTranslation } from "react-i18next";
+import { getTranslatedDay } from "../../../config/translation/daysTranslated";
 
 type Props = {
   dayId: number;
@@ -23,10 +30,12 @@ type Props = {
 
 const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
   const [days, setDays] = React.useState<IDay[]>([]);
-
   const currentDay = React.useRef(dayId);
 
+  const { t } = useTranslation();
+
   React.useEffect(() => {
+    const translatedDays = TranslatedDays(t);
     setDays(
       readDayMeal(dayId.toString()) ?? [
         {
@@ -76,7 +85,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
       );
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dayId]);
+  }, [dayId, t]);
 
   const changedData = (id: number) => {
     const meals = readDayMeal(dayId.toString());
@@ -173,7 +182,9 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
             aria-controls={day.name + "-content"}
             id={day.name}
           >
-            <Typography sx={{ minWidth: "70px" }}>{day.name}</Typography>
+            <Typography sx={{ minWidth: "70px" }}>
+              {getTranslatedDay(day.name, t)}
+            </Typography>
             {day.meals.length ? (
               <Grid container justifyContent="space-between">
                 <Grid sx={{ display: "flex", justifyContent: "center" }}>
@@ -181,7 +192,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
                     component={"span"}
                     sx={{ color: "text.secondary" }}
                   >
-                    {details(day.meals, day.calculatorData?.units, width)}
+                    {details(day.meals, day.calculatorData?.units, width, t)}
                   </Typography>
                   <IconButton
                     className={"MyIconButton"}
@@ -239,6 +250,7 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
                   dayId.toString(),
                   Object.values(EDays).indexOf(day.name as unknown as EDays) +
                     1,
+                  t,
                 )}
                 changedData={changedData}
                 allowItemRemoval={true}

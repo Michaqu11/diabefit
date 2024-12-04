@@ -1,0 +1,202 @@
+{
+    "appName": "Diabefit",
+    "sidepanel": {
+      "home": "Strona główna",
+      "logOut": "Wyloguj",
+      "newBolus": "Nowy Bolus",
+      "newEntry": "Nowy Wpis",
+      "yourData": "Twoje Dane",
+      "settings": "Ustawienia"
+    },
+    "calculatePanel": {
+        "title": "Nowy wpis",
+        "warningMessage": "Wymagane są cukier i węglowodany!",
+        "inputs": {
+            "carbsUnits": "Wymienniki węglowodanowe",
+            "carbsUnitsMetric": "WW",
+            "foodInsulin": "Insulina (posiłki)",
+            "correctionInsulin": "Insulina (korekta)",
+            "cancelButton": "Anuluj",
+            "saveButton": "Zapisz"
+        }
+    },
+    "home": {
+        "bottomNavigation": {
+            "entry": "Wpis",
+            "bolus": "Korekta",
+            "elevate": "Podnieś"
+        },
+        "elevateDialog": {
+            "mealName": "Podnieś",
+            "customMealName": "Niestandardowy",
+            "title": "Podnieś poziom cukru we krwi",
+            "inputs": {
+                "carbsUnits": "Wymienniki węglowodanowe",
+                "carbsUnitsMetric": "WW",
+                "cancelButton": "Anuluj",
+                "saveButton": "Zapisz"
+            }
+        },
+        "labels": {
+            "correctionTitle": "Korekty",
+            "correction": "Insulina korekcyjna:",
+            "glucose": "Glukoza: ",
+            "removeInfo": "Czy chcesz usunąć korektę?"
+        },
+        "accordions": {
+            "customMealsTitle": "Niestandardowe posiłki",
+            "confirmRemove": "Czy chcesz usunąć niestandardowy posiłek?"
+        },
+        "days": {
+            "breakfast": "Śniadanie",
+            "snack1": "Przekąska I",
+            "lunch": "Obiad",
+            "snack2": "Przekąska II",
+            "dinner": "Kolacja",
+            "snack3": "Przekąska III"
+        }
+    },
+    "addProduct": {
+        "title": "Utwórz własny produkt",
+        "bottomNavigation": {
+            "quick": "Szybkie dodanie",
+            "product": "Nowy produkt"
+        },
+        "inputs": {
+            "quickMealName": "Szybki",
+            "mealName": "Nazwa produktu",
+            "carbs": "Węglowodany (g)",
+            "prot": "Białko (g)",
+            "fats": "Tłuszcze (g)",
+            "kcal": "Kalorie (kcal)",
+            "grams": "Ilość (g)",
+            "resetButton": "Resetuj",
+            "confirmButton": "Potwierdź"
+        },
+        "searchPlaceHolder": "Wyszukaj produkty",
+        "emptyListLabel": "Brak produktów do wyświetlenia",
+        "searchLabel": "Wyszukaj produkty",
+        "list": {
+            "loading": "Ładowanie...",
+            "noMoreData": "Brak więcej danych do załadowania."
+        },
+        "dialog": {
+            "configureMealLabel": "Skonfiguruj swój posiłek",
+            "header": " Wprowadź wagę dla ",
+            "grams": "Ilość (g)",
+            "cancelButton": "Anuluj",
+            "acceptButton": "Akceptuj",
+            "nutrition": {
+                "kcal": "Kalorie",
+                "fats": "Tłuszcze",
+                "carbs": "Węglowodany",
+                "prot": "Białko"
+            }
+        },
+        "notifications": {
+            "add": "Produkt został dodany do listy!",
+            "error": "Wystąpił błąd podczas dodawania produktu do listy!",
+            "remove": "Produkt został pomyślnie usunięty z bazy danych!"
+        }
+    },
+    "newEntry": {
+        "title": "Nowy wpis",
+        "productsLabel": "Produkty",
+        "emptyProducts": "Brak dodanych posiłków",
+        "inputs": {
+            "carbsUnits": "Wymienniki węglowodanowe",
+            "foodInsulin": "Insulina (jedzenie)",
+            "correctionInsulin": "Insulina (korekta)"
+        },
+        "saveButton": "Zapisz",
+        "customLabel": "Niestandardowy"
+    },
+    "newBolus": {
+        "title": "Dodaj nowy bolus (korekta insuliny)",
+        "inputs": {
+            "correctionInsulin": "Korekta insuliny",
+            "units": "jednostki",
+            "saveButton": "Zapisz"
+        }
+    },
+    "yourData": {
+        "title": "Ustaw swoje informacje",
+        "tabs": {
+            "settings": "Ustawienia",
+            "libre": "Libre"
+        },
+        "inputs": {
+            "diabetesType": "Typ cukrzycy",
+            "insulinCorrection": "Korekta insuliny",
+            "actingTime": "Czas działania insuliny",
+            "offsetTime": "Czas opóźnienia insuliny",
+            "rangeLabel": "Zakres docelowy",
+            "unitsLabel": "Ustaw jednostki",
+            "allDayButton": "Cały dzień",
+            "timeDependentButton": "Zależne od czasu",
+            "libreLabel": "Freestyle Libre Token",
+            "libreInformation": "Prześlij swój token Libre, aby automatycznie odczytywać poziom glukozy we krwi"
+        },
+        "unitsDialog": {
+            "title": "Jednostki",
+            "message": "Ile insuliny zazwyczaj podajesz na 1 WW?",
+            "units": "Jednostki",
+            "nextButton": "Dalej",
+            "backButton": "Wstecz",
+            "cancelButton": "Anuluj",
+            "saveButton": "Zapisz"
+        },
+        "snackbars": {
+            "success": "Dane zostały pomyślnie zapisane",
+            "error": "Wystąpił problem podczas zapisywania danych"
+        }
+    },
+    "settings": {
+        "title": "Ustawienia",
+        "exportDataLabel": "Pobierz dane:",
+        "languageLabel": "Język:"
+    },
+    "login": {
+        "signIn": "Zaloguj się przez Google 🚀"
+    },
+    "share": {
+        "glucoseInput": {
+            "glucoseLabel": "Glukoza",
+            "carbsUnitsValue": "WW",
+            "messages": {
+                "success": "Poziom glukozy został wklejony za pomocą API Libre",
+                "error": "Nie udało się pobrać danych o poziomie glukozy z API Libre."
+            },
+            "fullInsulinUnits": "Jedn.",
+            "insulinUnits": "u",
+            "glucoseUnits": "mg/dL"
+        },
+        "nutritionalValues": {
+            "kcal": "Kcal",
+            "prot": "B",
+            "fats": "T",
+            "carbs": "W"
+        },
+        "nutritionalFullValues": {
+            "kcal": "Kcal",
+            "prot": "Biał.",
+            "fats": "Tłus.",
+            "carbs": "Węgl."
+        },
+        "bolusCalculator": {
+            "title": "Kalkulator bolusa",
+            "calculateButton": "Oblicz",
+            "acceptButton": "Akceptuj",
+            "dismissButton": "Odrzuć",
+            "adviceLabel": "Zalecenie dotyczące bolusa",
+            "units": "u"
+        },
+        "buttons": {
+            "confirm": "Potwierdź",
+            "cancel": "Anuluj"
+        },
+        "googleDialogInfo": "Czy chcesz skorzystać z usługi lokalizacyjnej Google?",
+        "isElevateLabel":"(Podnoszenie)",
+        "isQuickLabel": "(Szybki)"
+    }
+  }

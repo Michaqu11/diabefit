@@ -24,6 +24,7 @@ import {
 } from "../../store/customMealsStorage";
 import { emptyMeal, IMealElement } from "../../types/meal";
 import { IDay } from "../../types/days";
+import { useTranslation } from "react-i18next";
 
 interface ElevateDialogProps {
   isOpen: boolean;
@@ -32,6 +33,8 @@ interface ElevateDialogProps {
 }
 
 export const ElevateDialog = (props: ElevateDialogProps) => {
+  const { t } = useTranslation();
+
   const [carbsUnits, setCarbsUnits] = useState<number | string>("");
   const [selectedDate, setSelectedDate] = useState(dayjs(new Date()));
   const [glucose, setGlucose] = useState<number | string>("");
@@ -47,14 +50,14 @@ export const ElevateDialog = (props: ElevateDialogProps) => {
     const meal: IMealElement = {
       ...emptyMeal,
       id: id.toString(),
-      mealName: `Elevate ${id + 1}`,
-      displayName: `Elevate ${id + 1}`,
+      mealName: `${t("home.elevateDialog.mealName")} ${id + 1}`,
+      displayName: `${t("home.elevateDialog.mealName")} ${id + 1}`,
       carbs: typeof carbsUnits == "number" ? carbsUnits * 10 : 0,
     };
 
     const customMeal: IDay = {
       id,
-      name: `Custom ${id}`,
+      name: `${t("home.elevateDialog.customMealName")} ${id}`,
       meals: [meal],
       calculatorData: {
         glucose: typeof glucose == "number" ? glucose : 0,
@@ -74,7 +77,7 @@ export const ElevateDialog = (props: ElevateDialogProps) => {
   return (
     <Dialog open={props.isOpen} onClose={props.setIsOpen}>
       <DialogTitle style={{ textAlign: "center", marginBottom: "10px" }}>
-        Elevate blood sugar
+        {t("home.elevateDialog.title")}
       </DialogTitle>
       <Divider />
       <DialogContent>
@@ -103,10 +106,12 @@ export const ElevateDialog = (props: ElevateDialogProps) => {
             }}
           >
             <FormControl variant="outlined">
-              <InputLabel htmlFor="component-simple">Carb Units</InputLabel>
+              <InputLabel htmlFor="component-simple">
+                {t("home.elevateDialog.inputs.carbsUnits")}
+              </InputLabel>
               <OutlinedInput
                 value={carbsUnits}
-                label="Carb Units"
+                label={t("home.elevateDialog.inputs.carbsUnits")}
                 type="number"
                 inputProps={{
                   step: "0.1",
@@ -119,7 +124,9 @@ export const ElevateDialog = (props: ElevateDialogProps) => {
                   )
                 }
                 endAdornment={
-                  <InputAdornment position="end">CU</InputAdornment>
+                  <InputAdornment position="end">
+                    {t("home.elevateDialog.inputs.carbsUnitsMetric")}
+                  </InputAdornment>
                 }
                 aria-describedby="outlined-sugar-text"
               />
@@ -143,8 +150,12 @@ export const ElevateDialog = (props: ElevateDialogProps) => {
         </Box>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => props.setIsOpen(false)}>Cancel</Button>
-        <Button onClick={saveElevate}>Save</Button>
+        <Button onClick={() => props.setIsOpen(false)}>
+          {t("home.elevateDialog.inputs.cancelButton")}
+        </Button>
+        <Button onClick={saveElevate}>
+          {t("home.elevateDialog.inputs.saveButton")}
+        </Button>
       </DialogActions>
     </Dialog>
   );

@@ -18,52 +18,55 @@ import { getProfile } from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";
 import { logOut } from "../../../api/logout";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import { useTranslation } from "react-i18next";
 interface IChildProps {
   toggleDrawer: (arg: boolean) => void;
 }
 
 interface ISidebarNav {
-  display: string;
+  displayKey: string;
   icon: ReactElement;
   to: string;
   section: string;
 }
 
-const sidebarNavItems: ISidebarNav[] = [
-  {
-    display: "Home",
-    icon: <HomeIcon />,
-    to: "/",
-    section: "",
-  },
-  {
-    display: "New Bolus",
-    icon: <VaccinesIcon />,
-    to: "/bolus",
-    section: "bolus",
-  },
-  {
-    display: "New Entry",
-    icon: <BloodtypeIcon />,
-    to: "/entry",
-    section: "entry",
-  },
-  {
-    display: "Your Data",
-    icon: <ManageAccountsIcon />,
-    to: "/data",
-    section: "data",
-  },
-  {
-    display: "Setting",
-    icon: <SettingsIcon />,
-    to: "/setting",
-    section: "setting",
-  },
-];
-
 const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
   const profile = getProfile();
+  const { t } = useTranslation();
+
+  const sidebarNavItems: ISidebarNav[] = [
+    {
+      displayKey: "sidepanel.home",
+      icon: <HomeIcon />,
+      to: "/",
+      section: "",
+    },
+    {
+      displayKey: "sidepanel.newEntry",
+      icon: <BloodtypeIcon />,
+      to: "/entry",
+      section: "entry",
+    },
+    {
+      displayKey: "sidepanel.newBolus",
+      icon: <VaccinesIcon />,
+      to: "/bolus",
+      section: "bolus",
+    },
+    {
+      displayKey: "sidepanel.yourData",
+      icon: <ManageAccountsIcon />,
+      to: "/data",
+      section: "data",
+    },
+    {
+      displayKey: "sidepanel.settings",
+      icon: <SettingsIcon />,
+      to: "/setting",
+      section: "setting",
+    },
+  ];
+
   return (
     <Box sx={{ width: 250 }} onKeyDown={() => toggleDrawer(false)}>
       {profile ? (
@@ -90,7 +93,7 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
                 size="small"
                 onClick={logOut}
               >
-                Log out
+                {t("sidepanel.logOut")}
               </Button>
             </Grid>
           </Grid>
@@ -102,7 +105,7 @@ const Sidebar: React.FC<IChildProps> = ({ toggleDrawer }) => {
               <ListItem disablePadding sx={{ paddingTop: "5px" }}>
                 <ListItemButton>
                   <ListItemIcon>{item.icon}</ListItemIcon>
-                  <ListItemText primary={item.display} />
+                  <ListItemText primary={t(item.displayKey)} />
                 </ListItemButton>
               </ListItem>
             </Link>

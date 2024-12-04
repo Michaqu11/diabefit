@@ -5,9 +5,12 @@ import LocalDrinkIcon from "@mui/icons-material/LocalDrink";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
 import { ElevateDialog } from "./ElevateDialog";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 export const BottomButtons = ({ dayId }: { dayId: number }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
   const [openElevateDialog, setOpenElevateDialog] = useState(false);
 
   return (
@@ -39,7 +42,7 @@ export const BottomButtons = ({ dayId }: { dayId: number }) => {
             onClick={() => navigate("entry")}
             startIcon={<BloodtypeIcon />}
           >
-            Entry
+            {t("home.bottomNavigation.entry")}
           </Button>
           <Button
             variant="text"
@@ -47,7 +50,7 @@ export const BottomButtons = ({ dayId }: { dayId: number }) => {
             onClick={() => navigate("bolus")}
             startIcon={<VaccinesIcon />}
           >
-            Bolus
+            {t("home.bottomNavigation.bolus")}
           </Button>
           <Button
             variant="text"
@@ -55,7 +58,7 @@ export const BottomButtons = ({ dayId }: { dayId: number }) => {
             onClick={() => setOpenElevateDialog(true)}
             startIcon={<LocalDrinkIcon />}
           >
-            Elevate
+            {t("home.bottomNavigation.elevate")}
           </Button>
         </Paper>
       </Container>

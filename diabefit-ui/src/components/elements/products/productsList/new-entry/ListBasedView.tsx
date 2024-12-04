@@ -16,6 +16,7 @@ import {
   removeTemporaryMeal,
 } from "../../../../../store/customMealsStorage";
 import { Divider } from "@mui/material";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   dayId: number;
@@ -28,6 +29,8 @@ const ListBasedView: React.FC<Props> = ({
   setCustomMeal,
   dayId,
 }) => {
+  const { t } = useTranslation();
+
   const summaryNutritionalValues = (elements: IMealElement[] | undefined) => {
     let kcal = 0,
       prot = 0,
@@ -72,14 +75,16 @@ const ListBasedView: React.FC<Props> = ({
           id="panel1a-header"
         >
           <ListItemText
-            primary={customMeal.name}
+            primary={t("newEntry.productsLabel")}
             secondary={
               customMeal.meals.length > 0
-                ? `${summary.kcal} kcal | 
-                       P: ${summary.prot}g 
-                       F: ${summary.fats}g 
-                       C: ${summary.carbs}g`
-                : "No meals added"
+                ? `${summary.kcal} ${t("share.nutritionalValues.kcal")} | 
+                       ${t("share.nutritionalValues.prot")}: ${summary.prot}g 
+                        ${t("share.nutritionalValues.fats")}: ${summary.fats}g 
+                        ${t("share.nutritionalValues.carbs")}: ${
+                          summary.carbs
+                        }g`
+                : t("newEntry.emptyProducts")
             }
           />
         </AccordionSummary>
@@ -102,7 +107,15 @@ const ListBasedView: React.FC<Props> = ({
                     >
                       <ListItemText
                         primary={meal.mealName}
-                        secondary={`Kcal: ${meal.kcal}, P: ${meal.prot}g, F: ${meal.fats}g, C: ${meal.carbs}g`}
+                        secondary={` ${t("share.nutritionalValues.kcal")}: ${
+                          meal.kcal
+                        },  ${t("share.nutritionalValues.prot")}: ${
+                          meal.prot
+                        }g,  ${t("share.nutritionalValues.fats")}: ${
+                          meal.fats
+                        }g,  ${t("share.nutritionalValues.carbs")}: ${
+                          meal.carbs
+                        }g`}
                       />
                       <IconButton
                         edge="end"

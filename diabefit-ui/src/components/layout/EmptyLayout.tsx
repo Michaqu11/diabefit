@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import "./MasterLayout.scss";
 import { Outlet } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 280;
 
@@ -60,6 +61,8 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const PersistentDrawerLeft: React.FC<PersistentDrawerLeftProps> = ({
   login,
 }) => {
+  const { t } = useTranslation();
+
   const [open] = React.useState(false);
 
   const clearState = () => {
@@ -81,7 +84,7 @@ const PersistentDrawerLeft: React.FC<PersistentDrawerLeftProps> = ({
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div" onClick={clearState}>
-            Diabefit
+            {t("appName")}
           </Typography>
         </Toolbar>
       </AppBar>

@@ -26,6 +26,7 @@ import {
   addTemporaryMeals,
   getTemporaryMeals,
 } from "../../../../store/customMealsStorage";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   dayID: string;
@@ -54,6 +55,8 @@ const ProductsList: React.FC<Props> = ({
   eDayID,
   isNewEntry,
 }) => {
+  const { t } = useTranslation();
+
   const readData = useCallback(
     () =>
       isNewEntry
@@ -118,14 +121,20 @@ const ProductsList: React.FC<Props> = ({
     setChecked(newChecked);
   };
 
-  const details = (extension: IMealElement) => {
-    return (
-      <span>
-        P {extension.prot}g F {extension.fats}g C {extension.carbs}g (
-        {extension.kcal}kcal)
-      </span>
-    );
-  };
+  const details = useCallback(
+    (extension: IMealElement) => {
+      return (
+        <span>
+          {t("share.nutritionalValues.prot")} {extension.prot}g{" "}
+          {t("share.nutritionalValues.fats")} {extension.fats}g{" "}
+          {t("share.nutritionalValues.carbs")} {extension.carbs}g (
+          {extension.kcal}
+          {t("share.nutritionalValues.kcal")})
+        </span>
+      );
+    },
+    [t],
+  );
 
   const formatProductsData = async (
     searchKey: string,
@@ -181,7 +190,7 @@ const ProductsList: React.FC<Props> = ({
   };
 
   const renderRow = useCallback(
-    (meal: IMealElement, divider: boolean) => {
+    (t: any, meal: IMealElement, divider: boolean) => {
       return (
         <div key={meal.mealName}>
           <ListItem
@@ -222,17 +231,17 @@ const ProductsList: React.FC<Props> = ({
         </div>
       );
     },
-    [checked, handleToggle],
+    [checked, details, handleToggle],
   );
 
   useEffect(() => {
     const products = meals
       ? meals.map((meal: IMealElement, index: number) => {
-          return renderRow(meal, index !== meals.length - 1);
+          return renderRow(t, meal, index !== meals.length - 1);
         })
       : emptyList();
     setProducts(products);
-  }, [checked, checkedData, meals, renderRow]);
+  }, [checked, checkedData, meals, renderRow, t]);
 
   useEffect(() => {
     const searchFoodProps = async () => {
@@ -262,10 +271,16 @@ const ProductsList: React.FC<Props> = ({
               next={loadMore}
               hasMore={hasMore}
               height={600}
-              loader={<p style={{ textAlign: "center" }}>Loading...</p>}
+              loader={
+                <p style={{ textAlign: "center" }}>
+                  {t("addProduct.list.loading")}
+                </p>
+              }
               endMessage={
                 <p style={{ textAlign: "center" }}>
-                  {meals?.length ? <b>No more data to load.</b> : null}
+                  {meals?.length ? (
+                    <b>{t("addProduct.list.noMoreData")}</b>
+                  ) : null}
                 </p>
               }
             >
@@ -273,7 +288,7 @@ const ProductsList: React.FC<Props> = ({
             </InfiniteScroll>
           </Grid>
         ) : (
-          <>{emptyList("Search for products")}</>
+          <>{emptyList(t("addProduct.searchLabel"))}</>
         )}
       </div>
       <CustomMealDialog

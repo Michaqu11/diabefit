@@ -33,28 +33,45 @@ export const details = (
   meals: IMealElement[] | undefined,
   units: UnitsType | undefined,
   width: number,
+  t: any,
   isElevate?: boolean,
 ) => {
   if (!meals) return <div></div>;
   const value: IValues = summaryNutritionalValues(meals);
   if (isElevate) {
-    return <p className="summary">C {value.carbs}g (Elevate)</p>;
+    return (
+      <p className="summary">
+        C {value.carbs}g {t("share.isElevateLabel")}
+      </p>
+    );
   }
 
   return (
     <p className="summary">
       {width >= 450
         ? units
-          ? `Units ${units.short}u ${value.kcal} kcal | C ${value.carbs}g`
-          : `${value.kcal} kcal | P ${value.prot}g F ${value.fats}g C ${value.carbs}g`
+          ? `${t("share.glucoseInput.fullInsulinUnits")} ${units.short}u ${
+              value.kcal
+            } ${t("share.nutritionalValues.kcal")} | ${t(
+              "share.nutritionalValues.carbs",
+            )} ${value.carbs}g`
+          : `${value.kcal}  ${t("share.nutritionalValues.kcal")} | ${t(
+              "share.nutritionalValues.prot",
+            )} ${value.prot}g ${t("share.nutritionalValues.fats")} ${
+              value.fats
+            }g ${t("share.nutritionalValues.carbs")} ${value.carbs}g`
         : width >= 310
         ? units
-          ? ` ${units.short}u | ${value.kcal} kcal`
-          : `${value.kcal} kcal | C ${value.carbs}g`
+          ? ` ${units.short}u | ${value.kcal} ${t(
+              "share.nutritionalValues.kcal",
+            )}`
+          : `${value.kcal} ${t("share.nutritionalValues.kcal")} | ${t(
+              "share.nutritionalValues.carbs",
+            )} ${value.carbs}g`
         : width >= 250
         ? units
           ? `${units.short}u`
-          : `${value.kcal} kcal`
+          : `${value.kcal}  ${t("share.nutritionalValues.kcal")}`
         : ""}
     </p>
   );
@@ -64,13 +81,18 @@ export const elements = (
   elements: IMealElement[] | undefined,
   dayID: string,
   dayIndex: number,
+  t: any,
 ): IElement[] | undefined => {
   if (!elements) return undefined;
 
   return elements.map((el: IMealElement) => {
     return {
-      header: `${el.mealName} ${el.quick ? "(Quick)" : ""}`,
-      secondary: `Prot. ${el.prot} Fats ${el.fats}g Crabs ${el.carbs}g ${el.kcal} kcal`,
+      header: `${el.mealName} ${el.quick ? `${t("share.isQuickLabel")}` : ""}`,
+      secondary: `${t("share.nutritionalFullValues.prot")} ${el.prot} ${t(
+        "share.nutritionalFullValues.fats",
+      )} ${el.fats}g ${t("share.nutritionalFullValues.carbs")} ${el.carbs}g ${
+        el.kcal
+      } ${t("share.nutritionalFullValues.kcal")}`,
       id: el.id,
       dayIndex: dayIndex,
       dayID: dayID,
