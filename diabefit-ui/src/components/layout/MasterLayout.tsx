@@ -9,7 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Navbar from "../common/sidebar/Navbar";
 import "./MasterLayout.scss";
-import { Outlet } from "react-router";
+import { Outlet, useNavigate } from "react-router";
 
 const drawerWidth = 280;
 
@@ -56,6 +56,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 const PersistentDrawerLeft: React.FC = () => {
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -72,6 +73,7 @@ const PersistentDrawerLeft: React.FC = () => {
   };
 
   const clearState = () => {
+    navigate("/");
     window.location.reload();
   };
 

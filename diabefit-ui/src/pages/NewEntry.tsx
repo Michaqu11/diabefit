@@ -11,6 +11,8 @@ import {
   Collapse,
   Divider,
   FormControl,
+  Grid,
+  IconButton,
   InputAdornment,
   InputLabel,
   OutlinedInput,
@@ -38,8 +40,9 @@ import {
 } from "../store/customMealsStorage";
 import { IDay } from "../types/days";
 import { calculateCarbsForAllMeals } from "../shared/calculator/carbohydrate-exchange-calculator";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 
 const NewEntry = () => {
   const { t } = useTranslation();
@@ -66,7 +69,7 @@ const NewEntry = () => {
 
   const [customMeal, setCustomMeal] = React.useState<IDay>({
     id: allDayMeals?.length ?? 1,
-    name:`${t('newEntry.customLabel')} ${id + 1}`,
+    name: `${t("newEntry.customLabel")} ${id + 1}`,
     meals: getTemporaryMeals(),
     calculatorData: null,
   });
@@ -138,9 +141,27 @@ const NewEntry = () => {
       elevation={3}
       style={{ padding: "20px", maxWidth: "600px", margin: "auto" }}
     >
-      <Typography variant="h6" align="center" gutterBottom>
-        {t("newEntry.title")}
-      </Typography>
+      <Grid
+        container
+        justifyContent="flex-start"
+        style={{ justifyContent: "flex-start" }}
+      >
+        <Grid item xs={1} container justifyContent="flex-start">
+          <IconButton
+            color="primary"
+            component={Link}
+            to={"/"}
+            aria-label="back"
+          >
+            <ArrowBackIosNewIcon />
+          </IconButton>
+        </Grid>
+        <Grid item xs={10} container justifyContent="center">
+          <Typography variant="h6" align="center" gutterBottom>
+            {t("newEntry.title")}
+          </Typography>
+        </Grid>
+      </Grid>
       <Divider />
       <Box
         style={{

@@ -112,7 +112,7 @@
         "customLabel": "Niestandardowy"
     },
     "newBolus": {
-        "title": "Dodaj nowy bolus (korekta insuliny)",
+        "title": "Dodaj korekte insuliny",
         "inputs": {
             "correctionInsulin": "Korekta insuliny",
             "units": "jednostki",
