@@ -2,6 +2,7 @@ const express = require('express');
 const serverless = require('serverless-http');
 const cors = require('cors');
 const axios = require('axios');
+const crypto = require('crypto');
 
 
 const app = express();
@@ -37,18 +38,9 @@ router.post('/login', async (req, res) => {
 });
 
 
-async function generateSHA256Digest(userId) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(userId);
-
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
-
-  const hashArray = Array.from(new Uint8Array(hashBuffer)); // Create an array of bytes
-  const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
-  
-  return hashHex;
+function generateSHA256Digest(userId) {
+  return crypto.createHash('sha256').update(userId, 'utf8').digest('hex');
 }
-
 
 const validateConnection = async (libreAPI) => {
 
@@ -112,7 +104,7 @@ router.post('/libreData', async (req, res) => {
     },
   );
 
-  res.json(data);
+  res.json(data.result == true ? libreData : data.result);
 });
 
 router.post('/saveSettings', async (req, res) => {
