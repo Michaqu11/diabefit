@@ -134,8 +134,9 @@
             "unitsLabel": "Ustaw jednostki",
             "allDayButton": "Cały dzień",
             "timeDependentButton": "Zależne od czasu",
-            "libreLabel": "Freestyle Libre Token",
-            "libreInformation": "Prześlij swój token Libre, aby automatycznie odczytywać poziom glukozy we krwi"
+            "libreEmail": "Freestyle Libre Email",
+            "librePassword": "Freestyle Libre Hasło",
+            "libreInformation": "Prześlij swoje dane Libre, aby automatycznie odczytywać poziom glukozy we krwi"
         },
         "unitsDialog": {
             "title": "Jednostki",

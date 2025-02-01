@@ -1,5 +1,5 @@
 import { User } from "firebase/auth";
-import { IAllData, ISettings } from "../types/settings";
+import { IAllData, ISettings, LibreData } from "../types/settings";
 
 export const saveProfile = (profile: User) => {
   localStorage.setItem("profile", JSON.stringify(profile));
@@ -57,7 +57,7 @@ export const saveSettingsInSessionStorage = (settings: ISettings) => {
   sessionStorage.setItem("data", JSON.stringify(tempData));
 };
 
-export const saveLibreAPIInSessionStorage = (libreAPI: string) => {
+export const saveLibreAPIInSessionStorage = (libreAPI: LibreData) => {
   const tempData = getData();
   tempData.libreAPI = libreAPI;
   sessionStorage.setItem("data", JSON.stringify(tempData));

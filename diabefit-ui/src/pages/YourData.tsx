@@ -77,7 +77,7 @@ const YourData: React.FC = () => {
                 />
               ) : (
                 <LibreList
-                  libreAPI={data.libreAPI}
+                  libreData={data.libreAPI}
                   saveData={saveData}
                   setSaveData={setSaveData}
                   saveDataMessage={saveDataMessage}

@@ -1,5 +1,11 @@
+export type LibreData = {
+  email: string;
+  password: string;
+  token?: string;
+  userId?: string;
+};
 export interface IAllData {
-  libreAPI: string;
+  libreAPI: LibreData;
   settings: {
     diabetesType: number;
     insulin: {

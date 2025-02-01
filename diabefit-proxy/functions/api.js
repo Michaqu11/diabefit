@@ -36,16 +36,75 @@ router.post('/login', async (req, res) => {
   res.json(data);
 });
 
-router.post('/libreToken', async (req, res) => {
+
+async function generateSHA256Digest(userId) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(userId);
+
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // Create an array of bytes
+  const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+  
+  return hashHex;
+}
+
+
+const validateConnection = async (libreAPI) => {
+
+  const headers = {
+    'Content-Type': 'application/json',
+    'Accept': '*/*',
+    'version': '4.12.0',
+    'product': 'llu.android',
+    'Cache-Control': 'no-cache',
+  };
+
+  const body = {
+    "email": libreAPI.email,
+    "password": libreAPI.password,
+  }
+
+  const axiosConfig = {
+    headers,
+  };
+
+  try {
+    return await axios.post('https://api-eu.libreview.io/llu/auth/login', body, axiosConfig);
+  } catch (error) {
+    return 'Error'
+  }
+}
+
+router.post('/libreData', async (req, res) => {
   const { id, libreAPI, token } = req.body;
 
   if (!id || !libreAPI || !token) {
     return res.status(400).json({ error: `Missing uid or libreAPI or token` });
   }
 
+  const response = await validateConnection(libreAPI);
+
+  if(response == "Error" || response.data.status != 0){ 
+    return res.status(400).json({ error: 'Error with authorization. Please validate your email and password.' });
+  }
+
+  const _data = response.data.data;
+
+  const _id = _data.user.id;
+  const _token = _data.authTicket.token;
+  const _userId = await generateSHA256Digest(_id);
+
+  const libreData = {
+    "userId": _userId,
+    "token": _token,
+    "email": libreAPI.email,
+    "password": libreAPI.password,
+  }
+
   const { data } = await axios.post(
     `${SERVICE_URL}/libreAPI`,
-    { id, libreAPI, token },
+    { id, libreAPI: libreData, token },
     {
       headers: {
         "Content-Type": "application/json",
@@ -67,7 +126,7 @@ router.post('/saveSettings', async (req, res) => {
     `${SERVICE_URL}/settings`,
     { id, settings, token },
     {
-      headers: {
+     headers: {
         "Content-Type": "application/json",
       }
     },
@@ -151,15 +210,16 @@ router.post('/food', async (req, res) => {
   res.json(data);
 });
 
-router.get('/glucose', async (req, res) => {
-  const token = req.query.token;
+router.post('/glucose', async (req, res) => {
+  const {libreAPI } = req.body;
 
   const headers = {
     'Content-Type': 'application/json',
     'Accept': '*/*',
-    'version': '4.7.0',
+    'version': '4.12.0',
     'product': 'llu.android',
-    'authorization': `Bearer ${token}`,
+    'Account-Id': `${libreAPI.userId}`,
+    'authorization': `Bearer ${libreAPI.token}`,
   };
 
   const axiosConfig = {
