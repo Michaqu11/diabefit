@@ -134,8 +134,9 @@
             "unitsLabel": "Set Units",
             "allDayButton": "All Day",
             "timeDependentButton": "Time-dependent",
-            "libreLabel": "Freestyle Libre Token",
-            "libreInformation": "Upload your Libre Token to automatically read your blood glucose"
+            "libreEmail": "Freestyle Libre Email",
+            "librePassword": "Freestyle Libre Password",
+            "libreInformation": "Upload your Libre data to automatically read your blood glucose"
         },
         "unitsDialog": {
             "title": "Units",
