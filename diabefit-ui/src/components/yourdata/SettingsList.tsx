@@ -306,7 +306,9 @@ const SettingsList: React.FC<SettingsListProps> = (props) => {
       <Dialog open={openUnitsDialog} onClose={handleDialogClose}>
         <DialogTitle>{t("yourData.unitsDialog.title")}</DialogTitle>
         <DialogContent>
-          <DialogContentText>{t("yourData.unitsDialog.message")}</DialogContentText>
+          <DialogContentText>
+            {t("yourData.unitsDialog.message")}
+          </DialogContentText>
           <Grid
             sx={{
               marginTop: "20px",
