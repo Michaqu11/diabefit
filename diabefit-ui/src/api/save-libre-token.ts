@@ -28,6 +28,6 @@ export const saveLibreToken = async (libreAPI: LibreData) => {
     return new Error(data.error);
   }
 
-  saveLibreAPIInSessionStorage(libreAPI);
+  saveLibreAPIInSessionStorage(data);
   return data;
 };
