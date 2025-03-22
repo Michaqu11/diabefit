@@ -1,0 +1,4176 @@
+{
+    "17296344": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Ah Ah Almond Berry Smoothie - Kids",
+                    "displayName": "Ah Ah Almond Berry Smoothie - ...",
+                    "id": "86131535",
+                    "grams": null,
+                    "kcal": 26000,
+                    "prot": 700,
+                    "fats": 1300,
+                    "carbs": 3400,
+                    "base": {
+                        "grams": null,
+                        "kcal": 26000,
+                        "prot": 700,
+                        "fats": 1300,
+                        "carbs": 3400
+                    }
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17298072": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Cheese Pizza",
+                    "displayName": "Cheese Pizza",
+                    "id": "4881",
+                    "grams": 200,
+                    "kcal": 552,
+                    "prot": 24.6,
+                    "fats": 23.4,
+                    "carbs": 60.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 276,
+                        "prot": 12.3,
+                        "fats": 11.7,
+                        "carbs": 30.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6.1
+                },
+                "glucose": 156,
+                "date": "2024-10-25T08:31:57.001Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17298936": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Cheese Pizza",
+                    "displayName": "Cheese Pizza",
+                    "id": "4881",
+                    "grams": 200,
+                    "kcal": 552,
+                    "prot": 24.6,
+                    "fats": 23.4,
+                    "carbs": 60.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 276,
+                        "prot": 12.3,
+                        "fats": 11.7,
+                        "carbs": 30.3
+                    }
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17299800": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Protein Crisps",
+                    "displayName": "Protein Crisps",
+                    "id": "86704669",
+                    "grams": 50,
+                    "kcal": 268,
+                    "prot": 8.9,
+                    "fats": 10.7,
+                    "carbs": 32.1,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 536,
+                        "prot": 17.9,
+                        "fats": 21.4,
+                        "carbs": 64.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.2
+                },
+                "glucose": 143,
+                "date": "2024-10-27T11:30:19.713Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17300700": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Chleb",
+                    "mealNameError": false,
+                    "grams": 0,
+                    "gramsError": false,
+                    "kcal": 0,
+                    "kcalError": false,
+                    "prot": 0,
+                    "protError": false,
+                    "fats": 0,
+                    "fatsError": false,
+                    "carbs": 15,
+                    "carbsError": false,
+                    "displayName": "Chleb",
+                    "id": "9fd55255-02db-4c92-ab35-d9e5c01a6af7",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 0
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.8
+                },
+                "glucose": 197,
+                "date": "2024-10-28T09:01:02.479Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17304156": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Thnn",
+                    "mealNameError": false,
+                    "grams": 0,
+                    "gramsError": false,
+                    "kcal": 0,
+                    "kcalError": false,
+                    "prot": 0,
+                    "protError": false,
+                    "fats": 0,
+                    "fatsError": false,
+                    "carbs": 20,
+                    "carbsError": false,
+                    "displayName": "Thnn",
+                    "id": "e0a72a06-8f6b-40a4-a9c8-9e3f148f1124",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 0
+                    }
+                },
+                {
+                    "mealName": "Cheese Pizza",
+                    "displayName": "Cheese Pizza",
+                    "id": "4881",
+                    "grams": 100,
+                    "kcal": 276,
+                    "prot": 12.3,
+                    "fats": 11.7,
+                    "carbs": 30.3,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 276,
+                        "prot": 12.3,
+                        "fats": 11.7,
+                        "carbs": 30.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 124,
+                "date": "2024-10-31T23:36:43.238Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17305884": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Pierożki gyoza",
+                    "grams": 230,
+                    "kcal": 340,
+                    "kcalError": false,
+                    "prot": 13.1,
+                    "fats": 5.3,
+                    "carbs": 57.5,
+                    "displayName": "Pierożki gyoza",
+                    "id": "7b53e362-eb3c-48b3-b984-3f4282a8b9dd",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 25,
+                        "prot": 5.7,
+                        "kcal": 148,
+                        "fats": 2.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 152,
+                "date": "2024-11-03T19:48:54.837Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17306748": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 50,
+                    "kcal": 45,
+                    "prot": 0.6,
+                    "fats": 0.1,
+                    "carbs": 11.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 149,
+                "date": "2024-11-04T08:11:42.734Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.1
+                },
+                "glucose": 129,
+                "date": "2024-11-04T10:33:43.145Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 15,
+                        "fats": 7.8,
+                        "grams": 100,
+                        "kcal": 160.6,
+                        "prot": 7.6
+                    },
+                    "carbs": 30,
+                    "displayName": "Jogurt z płatkami ",
+                    "fats": 15.6,
+                    "grams": 200,
+                    "id": "6696d054-1fe2-49f7-a073-9295e0965ce5",
+                    "kcal": 321,
+                    "kcalError": false,
+                    "mealName": "Jogurt z płatkami ",
+                    "prot": 15.2
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 112,
+                "date": "2024-11-04T12:50:49.489Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 240,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 60,
+                    "mealName": "Tortilla",
+                    "kcalError": false,
+                    "displayName": "Tortilla",
+                    "id": "6d318a32-9215-47f2-8a81-8ba017a6f642",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 60,
+                        "mealName": "Tortilla",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 50,
+                    "kcal": 45,
+                    "prot": 0.6,
+                    "fats": 0.1,
+                    "carbs": 11.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.1
+                },
+                "glucose": 119,
+                "date": "2024-11-04T17:22:01.187Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [
+                {
+                    "mealName": "White Bread",
+                    "displayName": "White Bread",
+                    "id": "3433",
+                    "grams": 100,
+                    "kcal": 266,
+                    "prot": 7.6,
+                    "fats": 3.3,
+                    "carbs": 50.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 266,
+                        "prot": 7.6,
+                        "fats": 3.3,
+                        "carbs": 50.6
+                    }
+                },
+                {
+                    "mealName": "Salmon",
+                    "displayName": "Salmon",
+                    "id": "2057",
+                    "grams": 50,
+                    "kcal": 73,
+                    "prot": 10.8,
+                    "fats": 3,
+                    "carbs": 0,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 146,
+                        "prot": 21.6,
+                        "fats": 5.9,
+                        "carbs": 0
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4.5
+                },
+                "glucose": 170,
+                "date": "2024-11-04T20:01:24.022Z"
+            }
+        }
+    ],
+    "17307612": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 33.8,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.5,
+                    "grams": 65,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 183,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.7
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.4
+                },
+                "glucose": 127,
+                "date": "2024-11-05T09:33:53.443Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 60,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 15,
+                    "mealName": "Jableczka",
+                    "kcalError": false,
+                    "displayName": "Jableczka",
+                    "id": "2748f007-a87b-417c-bc6c-5ef3bc06cde6",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 15,
+                        "mealName": "Jableczka",
+                        "kcalError": false
+                    },
+                    "quick": true
+                },
+                {
+                    "grams": 0,
+                    "kcal": 112,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 28,
+                    "mealName": "Tortilla",
+                    "kcalError": false,
+                    "displayName": "Tortilla",
+                    "id": "9efb1af1-29e3-4a68-8e35-4707b0880614",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 28,
+                        "mealName": "Tortilla",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4.3
+                },
+                "glucose": 121,
+                "date": "2024-11-05T13:07:16.408Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 120,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 30,
+                    "mealName": "Kfc",
+                    "kcalError": false,
+                    "displayName": "Kfc",
+                    "id": "44ae1832-3e1b-4775-956a-5092e4ca73b7",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 30,
+                        "mealName": "Kfc",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 0
+                },
+                "glucose": 132,
+                "date": "2024-11-05T14:34:08.428Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Cream of Pumpkin Soup",
+                    "displayName": "Cream of Pumpkin Soup",
+                    "id": "4487820",
+                    "grams": 300,
+                    "kcal": 135,
+                    "prot": 3.6,
+                    "fats": 8.1,
+                    "carbs": 13.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 45,
+                        "prot": 1.2,
+                        "fats": 2.7,
+                        "carbs": 4.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.4
+                },
+                "glucose": 132,
+                "date": "2024-11-05T17:34:46.990Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 52,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 3.9,
+                    "grams": 100,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 281,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 8.8
+                },
+                {
+                    "mealName": "Sliced Ham  (Regular, Approx. 11% Fat)",
+                    "displayName": "Sliced Ham  (Regular, Approx. ...",
+                    "id": "35144",
+                    "grams": 15,
+                    "kcal": 24,
+                    "prot": 2.5,
+                    "fats": 1.3,
+                    "carbs": 0.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 163,
+                        "prot": 16.6,
+                        "fats": 8.6,
+                        "carbs": 3.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5.3
+                },
+                "glucose": 176,
+                "date": "2024-11-05T20:13:51.052Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17308476": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 210,
+                "date": "2024-11-06T09:35:26.488Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 120,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 30,
+                    "mealName": "Ciasto ",
+                    "kcalError": false,
+                    "displayName": "Ciasto ",
+                    "id": "4b42ed13-a620-450f-8cb8-089ce319f70a",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 30,
+                        "mealName": "Ciasto ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.5
+                },
+                "glucose": 59,
+                "date": "2024-11-06T11:14:05.006Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Chicken Pad Thai",
+                    "displayName": "Chicken Pad Thai",
+                    "id": "6528100",
+                    "grams": 250,
+                    "kcal": 345,
+                    "prot": 15,
+                    "fats": 7,
+                    "carbs": 54.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 138,
+                        "prot": 6,
+                        "fats": 2.8,
+                        "carbs": 21.9
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6.2
+                },
+                "glucose": 136,
+                "date": "2024-11-06T13:09:24.051Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Cream of Pumpkin Soup",
+                    "displayName": "Cream of Pumpkin Soup",
+                    "id": "4487820",
+                    "grams": 400,
+                    "kcal": 180,
+                    "prot": 4.8,
+                    "fats": 10.8,
+                    "carbs": 18,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 45,
+                        "prot": 1.2,
+                        "fats": 2.7,
+                        "carbs": 4.5
+                    }
+                },
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 5.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 0.4,
+                    "grams": 10,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 28,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 0.9
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.3
+                },
+                "glucose": 178,
+                "date": "2024-11-06T16:45:00.762Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 25,
+                        "fats": 2.3,
+                        "grams": 100,
+                        "kcal": 148,
+                        "prot": 5.7
+                    },
+                    "carbs": 27.5,
+                    "displayName": "Pierożki gyoza",
+                    "fats": 2.5,
+                    "grams": 110,
+                    "id": "7b53e362-eb3c-48b3-b984-3f4282a8b9dd",
+                    "kcal": 163,
+                    "kcalError": false,
+                    "mealName": "Pierożki gyoza",
+                    "prot": 6.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.8
+                },
+                "glucose": 125,
+                "date": "2024-11-06T19:40:19.667Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17309340": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 36.4,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.7,
+                    "grams": 70,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 197,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 6.2
+                },
+                {
+                    "grams": 0,
+                    "kcal": 20,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 5,
+                    "mealName": "Quick",
+                    "kcalError": false,
+                    "displayName": "Quick",
+                    "id": "9e97a49e-5506-47fe-9ba0-20ab39ab4def",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 5,
+                        "mealName": "Quick",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4.1
+                },
+                "glucose": 124,
+                "date": "2024-11-07T08:34:12.249Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 400,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 100,
+                    "mealName": "McDonald ",
+                    "kcalError": false,
+                    "displayName": "McDonald ",
+                    "id": "8850e7e6-0edd-4687-8a78-d64f6d9b1f5a",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 100,
+                        "mealName": "McDonald ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 9
+                },
+                "glucose": 174,
+                "date": "2024-11-07T14:00:07.374Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 160,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 40,
+                    "mealName": "Burger",
+                    "kcalError": false,
+                    "displayName": "Burger",
+                    "id": "baeca129-b0e3-4994-8aa9-6d45ff6d6ec0",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 40,
+                        "mealName": "Burger",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4.8
+                },
+                "glucose": 155,
+                "date": "2024-11-07T19:58:18.217Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17310204": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 18.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 1.4,
+                    "grams": 35,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 98,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 3.1
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.7
+                },
+                "glucose": 154,
+                "date": "2024-11-08T08:31:46.112Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 140,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 35,
+                    "mealName": "Bułka ",
+                    "kcalError": false,
+                    "displayName": "Bułka ",
+                    "id": "ae347e70-b480-404c-8f0c-a12473eec9be",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 35,
+                        "mealName": "Bułka ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 147,
+                "date": "2024-11-08T10:45:45.466Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Bagel Chip",
+                    "displayName": "Bagel Chip",
+                    "id": "4364",
+                    "grams": 80,
+                    "kcal": 341,
+                    "prot": 7,
+                    "fats": 8.4,
+                    "carbs": 59.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 426,
+                        "prot": 8.8,
+                        "fats": 10.5,
+                        "carbs": 74.9
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6
+                },
+                "glucose": 104,
+                "date": "2024-11-08T14:57:52.642Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17311068": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.1
+                },
+                "glucose": 112,
+                "date": "2024-11-09T09:50:01.597Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 25,
+                        "fats": 2.3,
+                        "grams": 100,
+                        "kcal": 148,
+                        "prot": 5.7
+                    },
+                    "carbs": 52.5,
+                    "displayName": "Pierożki gyoza",
+                    "fats": 4.8,
+                    "grams": 210,
+                    "id": "7b53e362-eb3c-48b3-b984-3f4282a8b9dd",
+                    "kcal": 311,
+                    "kcalError": false,
+                    "mealName": "Pierożki gyoza",
+                    "prot": 12
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 105,
+                "date": "2024-11-09T14:25:16.361Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 80,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 20,
+                    "mealName": "Gołąbki ",
+                    "kcalError": false,
+                    "displayName": "Gołąbki ",
+                    "id": "0c9b29e6-78ca-4e1b-a108-c37073eeaa26",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 20,
+                        "mealName": "Gołąbki ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 150,
+                "date": "2024-11-09T18:00:24.341Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17311932": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 97,
+                "date": "2024-11-10T10:02:05.884Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 33.8,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.5,
+                    "grams": 65,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 183,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.7
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.4
+                },
+                "glucose": 178,
+                "date": "2024-11-10T20:26:16.779Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17312796": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 15.6,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 1.2,
+                    "grams": 30,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 84,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 2.6
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.8
+                },
+                "glucose": 117,
+                "date": "2024-11-11T09:04:37.071Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17315388": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 25,
+                        "fats": 2.3,
+                        "grams": 100,
+                        "kcal": 148,
+                        "prot": 5.7
+                    },
+                    "carbs": 75,
+                    "displayName": "Pierożki gyoza",
+                    "fats": 6.9,
+                    "grams": 300,
+                    "id": "7b53e362-eb3c-48b3-b984-3f4282a8b9dd",
+                    "kcal": 444,
+                    "kcalError": false,
+                    "mealName": "Pierożki gyoza",
+                    "prot": 17.1
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 7.5
+                },
+                "glucose": 136,
+                "date": "2024-11-14T16:09:04.019Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17325756": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 26,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 1.9,
+                    "grams": 50,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 141,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 4.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.6
+                },
+                "glucose": 142,
+                "date": "2024-11-26T11:24:46.173Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17330076": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17330940": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 15.6,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 1.2,
+                    "grams": 30,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 84,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 2.6
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 144,
+                "date": "2024-12-02T08:52:27.038Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 52,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 3.9,
+                    "grams": 100,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 281,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 8.8
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.3
+                },
+                "glucose": 130,
+                "date": "2024-12-02T12:30:19.602Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Bananas",
+                    "displayName": "Bananas",
+                    "id": "35755",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.5
+                },
+                "glucose": 120,
+                "date": "2024-12-02T16:00:10.490Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": {
+                "units": {
+                    "short": 20.8
+                },
+                "glucose": 191,
+                "date": "2024-12-02T00:31:27.204Z"
+            }
+        }
+    ],
+    "17331804": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 113,
+                "date": "2024-12-03T09:04:42.955Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17334396": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Cheese Pizza",
+                    "displayName": "Cheese Pizza",
+                    "id": "4881",
+                    "grams": 100,
+                    "kcal": 276,
+                    "prot": 12.3,
+                    "fats": 11.7,
+                    "carbs": 30.3,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 276,
+                        "prot": 12.3,
+                        "fats": 11.7,
+                        "carbs": 30.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 150,
+                "date": "2024-12-06T08:30:40.947Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17336124": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5.5
+                },
+                "glucose": 154,
+                "date": "2024-12-08T09:37:39.028Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Ziemniaki",
+                    "grams": 100,
+                    "kcal": 70,
+                    "kcalError": false,
+                    "prot": 1.6,
+                    "fats": 0,
+                    "carbs": 17,
+                    "displayName": "Ziemniaki",
+                    "id": "c09c4b4b-7abe-4d00-b6b5-11fe23f43983",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 17,
+                        "prot": 1.6,
+                        "kcal": 70,
+                        "fats": 0
+                    }
+                },
+                {
+                    "mealName": "Mięso kurczakowe ",
+                    "grams": 200,
+                    "kcal": 234,
+                    "kcalError": false,
+                    "prot": 44,
+                    "fats": 6,
+                    "carbs": 0,
+                    "displayName": "Mięso kurczakowe ",
+                    "id": "c3f1954e-873f-47e4-ace6-a1cc11e59c36",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 0,
+                        "prot": 22,
+                        "kcal": 117,
+                        "fats": 3
+                    }
+                },
+                {
+                    "mealName": "Sałatka obiadowa ",
+                    "grams": 70,
+                    "kcal": 17,
+                    "kcalError": false,
+                    "prot": 0.7,
+                    "fats": 0,
+                    "carbs": 2.8,
+                    "displayName": "Sałatka obiadowa ",
+                    "id": "83ccf6e7-d119-4b77-a451-8ed5ab55d80c",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 4,
+                        "prot": 1,
+                        "kcal": 24,
+                        "fats": 0
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 98,
+                "date": "2024-12-08T13:40:11.270Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.5
+                },
+                "glucose": 114,
+                "date": "2024-12-08T17:08:09.371Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17360316": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Pinsa z dodatkami ",
+                    "grams": 230,
+                    "kcal": 759,
+                    "kcalError": false,
+                    "prot": 34.5,
+                    "fats": 23,
+                    "carbs": 103.5,
+                    "displayName": "Pinsa z dodatkami ",
+                    "id": "d9a9c44b-d7e0-408c-b8bb-0e05d7eb9e1a",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 45,
+                        "prot": 15,
+                        "kcal": 330,
+                        "fats": 10
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 8
+                },
+                "glucose": 112,
+                "date": "2025-01-05T20:52:03.373Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17361180": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 124,
+                    "prot": 5,
+                    "fats": 4,
+                    "carbs": 17,
+                    "mealName": "Jogurt",
+                    "kcalError": false,
+                    "displayName": "Jogurt",
+                    "id": "931c54f5-5edb-440a-9e5b-31aa69ac7de6",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 5,
+                        "fats": 4,
+                        "carbs": 17,
+                        "mealName": "Jogurt",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.8
+                },
+                "glucose": 172,
+                "date": "2025-01-06T10:38:48.277Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 120,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 30,
+                    "mealName": "Szybki",
+                    "kcalError": false,
+                    "displayName": "Szybki",
+                    "id": "c66cc4af-3157-4d5f-bf31-ccfb9c48b0ec",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 30,
+                        "mealName": "Szybki",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 178,
+                "date": "2025-01-06T12:10:08.077Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17376732": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Egg",
+                    "displayName": "Egg",
+                    "id": "3092",
+                    "grams": 100,
+                    "kcal": 147,
+                    "prot": 12.6,
+                    "fats": 9.9,
+                    "carbs": 0.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 147,
+                        "prot": 12.6,
+                        "fats": 9.9,
+                        "carbs": 0.8
+                    }
+                },
+                {
+                    "mealName": "Fried Egg",
+                    "displayName": "Fried Egg",
+                    "id": "33797",
+                    "grams": 100,
+                    "kcal": 201,
+                    "prot": 13.6,
+                    "fats": 15.3,
+                    "carbs": 0.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 201,
+                        "prot": 13.6,
+                        "fats": 15.3,
+                        "carbs": 0.9
+                    }
+                },
+                {
+                    "base": {
+                        "carbs": 17,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 70,
+                        "prot": 1.6
+                    },
+                    "carbs": 17,
+                    "displayName": "Ziemniaki",
+                    "fats": 0,
+                    "grams": 100,
+                    "id": "c09c4b4b-7abe-4d00-b6b5-11fe23f43983",
+                    "kcal": 70,
+                    "kcalError": false,
+                    "mealName": "Ziemniaki",
+                    "prot": 1.6
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17383644": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17384508": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 15.6,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 1.2,
+                    "grams": 30,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 84,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 2.6
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.2
+                },
+                "glucose": 181,
+                "date": "2025-02-02T09:09:44.685Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 56,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 14,
+                    "mealName": "Szybki",
+                    "kcalError": false,
+                    "displayName": "Szybki",
+                    "id": "7674a863-5993-4530-8018-86baf47e9bdb",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 14,
+                        "mealName": "Szybki",
+                        "kcalError": false
+                    },
+                    "quick": true
+                },
+                {
+                    "mealName": "Frytki",
+                    "grams": 200,
+                    "kcal": 298,
+                    "kcalError": false,
+                    "prot": 6,
+                    "fats": 10,
+                    "carbs": 46,
+                    "displayName": "Frytki",
+                    "id": "35670b5c-c1ba-4e0d-9904-42463d8ff917",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 23,
+                        "prot": 3,
+                        "kcal": 149,
+                        "fats": 5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 116,
+                "date": "2025-02-02T13:51:48.146Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 80,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 20,
+                    "mealName": "Quick",
+                    "kcalError": false,
+                    "displayName": "Quick",
+                    "id": "53f82965-1c65-4a5d-a0a3-7c7c27e6afab",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 20,
+                        "mealName": "Quick",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 0.5
+                },
+                "glucose": 162,
+                "date": "2025-02-02T15:28:39.502Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 52,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 3.9,
+                    "grams": 100,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 281,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 8.8
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 148,
+                "date": "2025-02-02T19:25:54.158Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17385372": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 3.9,
+                        "grams": 100,
+                        "kcal": 281,
+                        "prot": 8.8
+                    },
+                    "carbs": 31.2,
+                    "displayName": "Chleb tostowy pszenny",
+                    "fats": 2.3,
+                    "grams": 60,
+                    "id": "7438c740-d9d4-47de-ae26-b492d5120077",
+                    "kcal": 169,
+                    "kcalError": false,
+                    "mealName": "Chleb tostowy pszenny",
+                    "prot": 5.3
+                },
+                {
+                    "mealName": "Egg",
+                    "displayName": "Egg",
+                    "id": "45771060",
+                    "grams": 20,
+                    "kcal": 28,
+                    "prot": 2.4,
+                    "fats": 2,
+                    "carbs": 0,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 140,
+                        "prot": 12,
+                        "fats": 10,
+                        "carbs": 0
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 159,
+                "date": "2025-02-03T08:37:25.165Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 15,
+                        "fats": 7.8,
+                        "grams": 100,
+                        "kcal": 160.6,
+                        "prot": 7.6
+                    },
+                    "carbs": 30,
+                    "displayName": "Jogurt z płatkami ",
+                    "fats": 15.6,
+                    "grams": 200,
+                    "id": "6696d054-1fe2-49f7-a073-9295e0965ce5",
+                    "kcal": 321,
+                    "kcalError": false,
+                    "mealName": "Jogurt z płatkami ",
+                    "prot": 15.2
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.5
+                },
+                "glucose": 104,
+                "date": "2025-02-03T12:05:22.171Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 140,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 35,
+                    "mealName": "Obiad ",
+                    "kcalError": false,
+                    "displayName": "Obiad ",
+                    "id": "2ae3e7b5-d7b1-47c3-b8b6-37e64c12dc0d",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 35,
+                        "mealName": "Obiad ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.5
+                },
+                "glucose": 143,
+                "date": "2025-02-03T13:17:16.659Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 60,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 15,
+                    "mealName": "Quick",
+                    "kcalError": false,
+                    "displayName": "Quick",
+                    "id": "002404ea-c97b-49e7-9af1-2aacc134507c",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 15,
+                        "mealName": "Quick",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 163,
+                "date": "2025-02-03T16:43:17.834Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Chleb",
+                    "grams": 120,
+                    "kcal": 310,
+                    "kcalError": false,
+                    "prot": 9.6,
+                    "fats": 2.4,
+                    "carbs": 62.4,
+                    "displayName": "Chleb",
+                    "id": "3c9a1d9a-c0d9-4db7-b337-aa28807a19bf",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 52,
+                        "prot": 8,
+                        "kcal": 258,
+                        "fats": 2
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5.3
+                },
+                "glucose": 170,
+                "date": "2025-02-03T20:20:34.806Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17386236": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 258,
+                        "prot": 8
+                    },
+                    "carbs": 19.2,
+                    "displayName": "Chleb",
+                    "fats": 0.7,
+                    "grams": 37,
+                    "id": "3c9a1d9a-c0d9-4db7-b337-aa28807a19bf",
+                    "kcal": 95,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 3
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.9
+                },
+                "glucose": 142,
+                "date": "2025-02-04T08:41:09.534Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 100,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 25,
+                    "mealName": "Quick obiad ",
+                    "kcalError": false,
+                    "displayName": "Quick obiad ",
+                    "id": "71009904-2039-4a4a-b11e-5e845c2569b6",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 25,
+                        "mealName": "Quick obiad ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.5
+                },
+                "glucose": 110,
+                "date": "2025-02-04T14:01:12.348Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Tomato Soup",
+                    "displayName": "Tomato Soup",
+                    "id": "6205",
+                    "grams": 200,
+                    "kcal": 84,
+                    "prot": 2.6,
+                    "fats": 2.4,
+                    "carbs": 14.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 42,
+                        "prot": 1.3,
+                        "fats": 1.2,
+                        "carbs": 7.3
+                    }
+                },
+                {
+                    "mealName": "Salami Pizza",
+                    "displayName": "Salami Pizza",
+                    "id": "4889947",
+                    "grams": 300,
+                    "kcal": 810,
+                    "prot": 28.8,
+                    "fats": 39.6,
+                    "carbs": 83.1,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 270,
+                        "prot": 9.6,
+                        "fats": 13.2,
+                        "carbs": 27.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 7
+                },
+                "glucose": 122,
+                "date": "2025-02-04T18:06:04.498Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [
+                {
+                    "mealName": "Ice Cream",
+                    "displayName": "Ice Cream",
+                    "id": "74597504",
+                    "grams": 40,
+                    "kcal": 112,
+                    "prot": 1.4,
+                    "fats": 7.8,
+                    "carbs": 9.1,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 280,
+                        "prot": 3.5,
+                        "fats": 19.4,
+                        "carbs": 22.8
+                    }
+                },
+                {
+                    "mealName": "Classic Potato Chips (28.3g)",
+                    "displayName": "Classic Potato Chips (28.3g)",
+                    "id": "1922115",
+                    "grams": 70,
+                    "kcal": 396,
+                    "prot": 5,
+                    "fats": 24.7,
+                    "carbs": 37.1,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 565,
+                        "prot": 7.1,
+                        "fats": 35.3,
+                        "carbs": 53
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.2
+                },
+                "glucose": 75,
+                "date": "2025-02-04T20:14:48.588Z"
+            }
+        }
+    ],
+    "17387100": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 258,
+                        "prot": 8
+                    },
+                    "carbs": 23.4,
+                    "displayName": "Chleb",
+                    "fats": 0.9,
+                    "grams": 45,
+                    "id": "3c9a1d9a-c0d9-4db7-b337-aa28807a19bf",
+                    "kcal": 116,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 3.6
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 173,
+                "date": "2025-02-05T08:49:52.314Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 15,
+                        "fats": 7.8,
+                        "grams": 100,
+                        "kcal": 160.6,
+                        "prot": 7.6
+                    },
+                    "carbs": 37.5,
+                    "displayName": "Jogurt z płatkami ",
+                    "fats": 19.5,
+                    "grams": 250,
+                    "id": "6696d054-1fe2-49f7-a073-9295e0965ce5",
+                    "kcal": 402,
+                    "kcalError": false,
+                    "mealName": "Jogurt z płatkami ",
+                    "prot": 19
+                },
+                {
+                    "mealName": "Pepperoni Pizza",
+                    "displayName": "Pepperoni Pizza",
+                    "id": "61851",
+                    "grams": 150,
+                    "kcal": 339,
+                    "prot": 16.2,
+                    "fats": 9.8,
+                    "carbs": 46.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 226,
+                        "prot": 10.8,
+                        "fats": 6.5,
+                        "carbs": 31.2
+                    }
+                },
+                {
+                    "grams": 0,
+                    "kcal": 100,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 25,
+                    "mealName": "Ciasto ",
+                    "kcalError": false,
+                    "displayName": "Ciasto ",
+                    "id": "df84d6c8-dce9-4ebe-8b25-8fdb8adc5211",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 25,
+                        "mealName": "Ciasto ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 10
+                },
+                "glucose": 171,
+                "date": "2025-02-05T11:18:26.261Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Cheese Pizza",
+                    "displayName": "Cheese Pizza",
+                    "id": "4881",
+                    "grams": 80,
+                    "kcal": 221,
+                    "prot": 9.8,
+                    "fats": 9.4,
+                    "carbs": 24.2,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 276,
+                        "prot": 12.3,
+                        "fats": 11.7,
+                        "carbs": 30.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.1
+                },
+                "glucose": 198,
+                "date": "2025-02-05T13:22:05.584Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 15,
+                        "fats": 7.8,
+                        "grams": 100,
+                        "kcal": 160.6,
+                        "prot": 7.6
+                    },
+                    "carbs": 19.5,
+                    "displayName": "Jogurt z płatkami ",
+                    "fats": 10.1,
+                    "grams": 130,
+                    "id": "6696d054-1fe2-49f7-a073-9295e0965ce5",
+                    "kcal": 209,
+                    "kcalError": false,
+                    "mealName": "Jogurt z płatkami ",
+                    "prot": 9.9
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 69,
+                "date": "2025-02-05T17:10:05.866Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 258,
+                        "prot": 8
+                    },
+                    "carbs": 26,
+                    "displayName": "Chleb",
+                    "fats": 1,
+                    "grams": 50,
+                    "id": "3c9a1d9a-c0d9-4db7-b337-aa28807a19bf",
+                    "kcal": 129,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 4
+                },
+                {
+                    "mealName": "Classic Potato Chips (28.3g)",
+                    "displayName": "Classic Potato Chips (28.3g)",
+                    "id": "1922115",
+                    "grams": 50,
+                    "kcal": 283,
+                    "prot": 3.5,
+                    "fats": 17.6,
+                    "carbs": 26.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 565,
+                        "prot": 7.1,
+                        "fats": 35.3,
+                        "carbs": 53
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 111,
+                "date": "2025-02-05T18:28:33.831Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [
+                {
+                    "mealName": "Bananas",
+                    "displayName": "Bananas",
+                    "id": "35755",
+                    "grams": 50,
+                    "kcal": 45,
+                    "prot": 0.6,
+                    "fats": 0.1,
+                    "carbs": 11.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 0.5
+                },
+                "glucose": 133,
+                "date": "2025-02-05T20:47:39.711Z"
+            }
+        }
+    ],
+    "17387964": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Chleb",
+                    "grams": 25,
+                    "kcal": 52,
+                    "kcalError": false,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 13,
+                    "displayName": "Chleb",
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 52,
+                        "prot": 0,
+                        "kcal": 208,
+                        "fats": 0
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 173,
+                "date": "2025-02-06T09:42:10.210Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 10.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 20,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 42,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1
+                },
+                "glucose": 0,
+                "date": "2025-02-06T11:07:42.527Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 100,
+                    "kcal": 274,
+                    "prot": 3.5,
+                    "fats": 14.1,
+                    "carbs": 35.7,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 114,
+                "date": "2025-02-06T12:47:58.384Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Popcorn Butter 100 Calorie Pop",
+                    "displayName": "Popcorn Butter 100 Calorie Pop",
+                    "id": "47765",
+                    "grams": 50,
+                    "kcal": 209,
+                    "prot": 4.2,
+                    "fats": 6.3,
+                    "carbs": 33.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 417,
+                        "prot": 8.3,
+                        "fats": 12.5,
+                        "carbs": 66.7
+                    }
+                },
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 10.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 20,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 42,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 133,
+                "date": "2025-02-06T20:00:10.340Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17388828": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 10.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 20,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 42,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 169,
+                "date": "2025-02-07T09:05:03.975Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 20.8,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 40,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 83,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 117,
+                "date": "2025-02-07T10:53:34.355Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Sushi",
+                    "displayName": "Sushi",
+                    "id": "5104",
+                    "grams": 250,
+                    "kcal": 358,
+                    "prot": 10.8,
+                    "fats": 1,
+                    "carbs": 74.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 143,
+                        "prot": 4.3,
+                        "fats": 0.4,
+                        "carbs": 29.9
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6.5
+                },
+                "glucose": 105,
+                "date": "2025-02-07T13:57:46.467Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 100,
+                    "kcal": 274,
+                    "prot": 3.5,
+                    "fats": 14.1,
+                    "carbs": 35.7,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 77,
+                "date": "2025-02-07T19:09:36.727Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17389692": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Hamburger (Single Patty with Condiments)",
+                    "displayName": "Hamburger (Single Patty with C...",
+                    "id": "39945",
+                    "grams": 100,
+                    "kcal": 257,
+                    "prot": 11.6,
+                    "fats": 9.2,
+                    "carbs": 32.3,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 257,
+                        "prot": 11.6,
+                        "fats": 9.2,
+                        "carbs": 32.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.2
+                },
+                "glucose": 128,
+                "date": "2025-02-08T11:00:25.547Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "White Rice with Pasta (Dry)",
+                    "displayName": "White Rice with Pasta (Dry)",
+                    "id": "39730",
+                    "grams": 80,
+                    "kcal": 294,
+                    "prot": 7.5,
+                    "fats": 1.9,
+                    "carbs": 60.2,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 368,
+                        "prot": 9.4,
+                        "fats": 2.4,
+                        "carbs": 75.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4.7
+                },
+                "glucose": 130,
+                "date": "2025-02-08T14:00:25.547Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Cheese Pizza",
+                    "displayName": "Cheese Pizza",
+                    "id": "4881",
+                    "grams": 200,
+                    "kcal": 552,
+                    "prot": 24.6,
+                    "fats": 23.4,
+                    "carbs": 60.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 276,
+                        "prot": 12.3,
+                        "fats": 11.7,
+                        "carbs": 30.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6
+                },
+                "glucose": 188,
+                "date": "2025-02-08T16:55:56.192Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 23.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 45,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 94,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 89,
+                "date": "2025-02-08T21:57:11.479Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17390556": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 10.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 20,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 42,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.4
+                },
+                "glucose": 113,
+                "date": "2025-02-09T09:29:24.605Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 120,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 30,
+                    "mealName": "Racuchy ",
+                    "kcalError": false,
+                    "displayName": "Racuchy ",
+                    "id": "289132c2-94fa-43e2-84f1-c44ba27a7487",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 30,
+                        "mealName": "Racuchy ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 121,
+                "date": "2025-02-09T11:45:18.333Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 200,
+                    "kcal": 548,
+                    "prot": 7,
+                    "fats": 28.2,
+                    "carbs": 71.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 7
+                },
+                "glucose": 100,
+                "date": "2025-02-09T14:01:29.823Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 160,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 40,
+                    "mealName": "Cissto",
+                    "kcalError": false,
+                    "displayName": "Cissto",
+                    "id": "e2ca0577-f24d-4d3f-9b51-20f05fe3659b",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 40,
+                        "mealName": "Cissto",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 93,
+                "date": "2025-02-09T15:18:29.823Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 10.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 20,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 42,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                },
+                {
+                    "mealName": "Peanut Butter",
+                    "displayName": "Peanut Butter",
+                    "id": "3384",
+                    "grams": 20,
+                    "kcal": 118,
+                    "prot": 5,
+                    "fats": 10.1,
+                    "carbs": 3.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 588,
+                        "prot": 25.1,
+                        "fats": 50.4,
+                        "carbs": 19.6
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 168,
+                "date": "2025-02-09T19:46:23.502Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17391420": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 7.8,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 15,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 31,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.1
+                },
+                "glucose": 134,
+                "date": "2025-02-10T08:48:14.237Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Bananas",
+                    "displayName": "Bananas",
+                    "id": "35755",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 1.5
+                },
+                "glucose": 106,
+                "date": "2025-02-10T11:18:48.938Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 120,
+                    "kcal": 329,
+                    "prot": 4.2,
+                    "fats": 16.9,
+                    "carbs": 42.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                },
+                {
+                    "grams": 0,
+                    "kcal": 60,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 15,
+                    "mealName": "Mięso ",
+                    "kcalError": false,
+                    "displayName": "Mięso ",
+                    "id": "fe6d22af-5e36-4e05-8e50-7b5034419b13",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 15,
+                        "mealName": "Mięso ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 104,
+                "date": "2025-02-10T13:16:05.761Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 130,
+                    "kcal": 356,
+                    "prot": 4.5,
+                    "fats": 18.3,
+                    "carbs": 46.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 130,
+                "date": "2025-02-10T20:06:20.503Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17393148": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 52,
+                        "fats": 0,
+                        "grams": 100,
+                        "kcal": 208,
+                        "prot": 0
+                    },
+                    "carbs": 10.4,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 20,
+                    "id": "f1165f44-0c1f-4756-bab8-7c7fcf3d4ea0",
+                    "kcal": 42,
+                    "kcalError": false,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.2
+                },
+                "glucose": 161,
+                "date": "2025-02-12T08:53:15.044Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 140,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 35,
+                    "mealName": "Ciasto ",
+                    "kcalError": false,
+                    "displayName": "Ciasto ",
+                    "id": "bbfd9325-e772-4cd8-986d-05f97888b137",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 35,
+                        "mealName": "Ciasto ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 123,
+                "date": "2025-02-12T11:12:36.719Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 120,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 30,
+                    "mealName": "Quick",
+                    "kcalError": false,
+                    "displayName": "Quick",
+                    "id": "491a0eee-d196-42d4-8a83-0a2a6fcf235f",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 30,
+                        "mealName": "Quick",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 109,
+                "date": "2025-02-12T13:05:03.499Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17394012": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 15,
+                        "fats": 7.8,
+                        "grams": 100,
+                        "kcal": 160.6,
+                        "prot": 7.6
+                    },
+                    "carbs": 15,
+                    "displayName": "Jogurt z płatkami ",
+                    "fats": 7.8,
+                    "grams": 100,
+                    "id": "6696d054-1fe2-49f7-a073-9295e0965ce5",
+                    "kcal": 160.6,
+                    "kcalError": false,
+                    "mealName": "Jogurt z płatkami ",
+                    "prot": 7.6
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.5
+                },
+                "glucose": 170,
+                "date": "2025-02-13T09:51:54.574Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Hamburger (Single Patty with Condiments)",
+                    "displayName": "Hamburger (Single Patty with C...",
+                    "id": "39945",
+                    "grams": 300,
+                    "kcal": 771,
+                    "prot": 34.8,
+                    "fats": 27.6,
+                    "carbs": 96.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 257,
+                        "prot": 11.6,
+                        "fats": 9.2,
+                        "carbs": 32.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 9
+                },
+                "glucose": 150,
+                "date": "2025-02-13T16:31:04.978Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17413884": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ]
+}

@@ -1,0 +1,3081 @@
+{
+    "17305884": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 0,
+                        "fats": 0,
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0
+                    },
+                    "carbs": 20,
+                    "displayName": "Chleb",
+                    "fats": 0,
+                    "grams": 100,
+                    "id": "0b2e972c-dd7e-4273-9b0e-25f147efef7b",
+                    "kcal": 0,
+                    "mealName": "Chleb",
+                    "prot": 0
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17316252": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Ysuwuw",
+                    "grams": 100,
+                    "kcal": 40,
+                    "kcalError": false,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 10,
+                    "displayName": "Ysuwuw",
+                    "id": "4fed6ab6-011a-4aac-aa07-b68d235bc5c1",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 10,
+                        "prot": 0,
+                        "kcal": 40,
+                        "fats": 0
+                    }
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17317116": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "mealName": "Chleb żytni ",
+                    "grams": 70,
+                    "kcal": 122,
+                    "kcalError": false,
+                    "prot": 2.1,
+                    "fats": 1.4,
+                    "carbs": 25.2,
+                    "displayName": "Chleb żytni ",
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "base": {
+                        "grams": 100,
+                        "carbs": 36,
+                        "prot": 3,
+                        "kcal": 174,
+                        "fats": 2
+                    }
+                },
+                {
+                    "mealName": "Salmon",
+                    "displayName": "Salmon",
+                    "id": "2057",
+                    "grams": 30,
+                    "kcal": 44,
+                    "prot": 6.5,
+                    "fats": 1.8,
+                    "carbs": 0,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 146,
+                        "prot": 21.6,
+                        "fats": 5.9,
+                        "carbs": 0
+                    }
+                },
+                {
+                    "mealName": "Avocado",
+                    "displayName": "Avocado",
+                    "id": "5387",
+                    "grams": 70,
+                    "kcal": 112,
+                    "prot": 1.4,
+                    "fats": 10.3,
+                    "carbs": 5.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 160,
+                        "prot": 2,
+                        "fats": 14.7,
+                        "carbs": 8.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 180,
+                "date": "2024-11-17T09:00:38.276Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato",
+                    "displayName": "Potato",
+                    "id": "5718",
+                    "grams": 100,
+                    "kcal": 104,
+                    "prot": 1.7,
+                    "fats": 2.4,
+                    "carbs": 19.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 104,
+                        "prot": 1.7,
+                        "fats": 2.4,
+                        "carbs": 19.4
+                    }
+                },
+                {
+                    "mealName": "Chicken",
+                    "displayName": "Chicken",
+                    "id": "1623",
+                    "grams": 100,
+                    "kcal": 237,
+                    "prot": 27.1,
+                    "fats": 13.5,
+                    "carbs": 0,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 237,
+                        "prot": 27.1,
+                        "fats": 13.5,
+                        "carbs": 0
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 165,
+                "date": "2024-11-17T14:13:18.162Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17318844": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 25.2,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.4,
+                    "grams": 70,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 122,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.1
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 123,
+                "date": "2024-11-18T08:35:45.278Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 200,
+                    "kcal": 548,
+                    "prot": 7,
+                    "fats": 28.2,
+                    "carbs": 71.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 25.2,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.4,
+                    "grams": 70,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 122,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.1
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 125,
+                "date": "2024-11-18T19:19:19.226Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17319708": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                },
+                {
+                    "mealName": "Gouda",
+                    "displayName": "Gouda",
+                    "id": "10904935",
+                    "grams": 40,
+                    "kcal": 240,
+                    "prot": 15.6,
+                    "fats": 19.8,
+                    "carbs": 1.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 601,
+                        "prot": 38.9,
+                        "fats": 49.5,
+                        "carbs": 3.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 90,
+                "date": "2024-11-19T08:50:07.903Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Kiwi Fruit",
+                    "displayName": "Kiwi Fruit",
+                    "id": "5431",
+                    "grams": 150,
+                    "kcal": 92,
+                    "prot": 1.7,
+                    "fats": 0.8,
+                    "carbs": 22,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 61,
+                        "prot": 1.1,
+                        "fats": 0.5,
+                        "carbs": 14.7
+                    }
+                },
+                {
+                    "mealName": "Yogurt",
+                    "displayName": "Yogurt",
+                    "id": "844",
+                    "grams": 100,
+                    "kcal": 99,
+                    "prot": 4,
+                    "fats": 1.1,
+                    "carbs": 18.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 99,
+                        "prot": 4,
+                        "fats": 1.1,
+                        "carbs": 18.6
+                    }
+                },
+                {
+                    "mealName": "Peanut Butter",
+                    "displayName": "Peanut Butter",
+                    "id": "3384",
+                    "grams": 40,
+                    "kcal": 235,
+                    "prot": 10,
+                    "fats": 20.2,
+                    "carbs": 7.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 588,
+                        "prot": 25.1,
+                        "fats": 50.4,
+                        "carbs": 19.6
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 103,
+                "date": "2024-11-19T10:50:06.260Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Mangos",
+                    "displayName": "Mangos",
+                    "id": "35863",
+                    "grams": 150,
+                    "kcal": 98,
+                    "prot": 0.8,
+                    "fats": 0.4,
+                    "carbs": 25.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 65,
+                        "prot": 0.5,
+                        "fats": 0.3,
+                        "carbs": 17
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 103,
+                "date": "2024-11-19T15:08:03.509Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17320572": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 93,
+                "date": "2024-11-20T09:00:40.122Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17321436": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 84,
+                "date": "2024-11-21T09:05:09.283Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17322300": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3.5
+                },
+                "glucose": 98,
+                "date": "2024-11-22T08:57:13.903Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17323164": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 125,
+                "date": "2024-11-23T08:36:58.080Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17324028": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 99,
+                "date": "2024-11-24T08:33:11.776Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato",
+                    "displayName": "Potato",
+                    "id": "5718",
+                    "grams": 150,
+                    "kcal": 156,
+                    "prot": 2.5,
+                    "fats": 3.6,
+                    "carbs": 29.1,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 104,
+                        "prot": 1.7,
+                        "fats": 2.4,
+                        "carbs": 19.4
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 134,
+                "date": "2024-11-24T13:42:23.775Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17324892": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 128,
+                "date": "2024-11-25T08:29:00.887Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 100,
+                    "kcal": 58,
+                    "prot": 0.4,
+                    "fats": 0.1,
+                    "carbs": 15.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 169,
+                "date": "2024-11-25T11:31:41.089Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17325756": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 113,
+                "date": "2024-11-26T08:41:04.048Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17326620": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 103,
+                "date": "2024-11-27T09:12:27.151Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Plain Pancakes",
+                    "displayName": "Plain Pancakes",
+                    "id": "39009",
+                    "grams": 280,
+                    "kcal": 636,
+                    "prot": 17.9,
+                    "fats": 27.2,
+                    "carbs": 79.2,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 227,
+                        "prot": 6.4,
+                        "fats": 9.7,
+                        "carbs": 28.3
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6
+                },
+                "glucose": 112,
+                "date": "2024-11-27T13:37:02.787Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17327484": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 102,
+                "date": "2024-11-28T08:50:49.882Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17330076": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 147,
+                "date": "2024-12-01T08:50:00.912Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17330940": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 30.6,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.7,
+                    "grams": 85,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 148,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.5
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 148,
+                "date": "2024-12-02T08:40:25.449Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17384508": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 56,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 14,
+                    "mealName": "Makaron do rosołu",
+                    "kcalError": false,
+                    "displayName": "Makaron do rosołu",
+                    "id": "00667291-a6be-4711-b868-674b30a2f816",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 14,
+                        "mealName": "Makaron do rosołu",
+                        "kcalError": false
+                    },
+                    "quick": true
+                },
+                {
+                    "mealName": "Potato",
+                    "displayName": "Potato",
+                    "id": "5718",
+                    "grams": 100,
+                    "kcal": 104,
+                    "prot": 1.7,
+                    "fats": 2.4,
+                    "carbs": 19.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 104,
+                        "prot": 1.7,
+                        "fats": 2.4,
+                        "carbs": 19.4
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 99,
+                "date": "2025-02-02T13:51:08.956Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 86,
+                "date": "2025-02-02T19:50:26.866Z"
+            }
+        }
+    ],
+    "17385372": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 109,
+                "date": "2025-02-03T08:12:38.483Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "White Rice",
+                    "displayName": "White Rice",
+                    "id": "4501",
+                    "grams": 100,
+                    "kcal": 129,
+                    "prot": 2.7,
+                    "fats": 0.3,
+                    "carbs": 27.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 129,
+                        "prot": 2.7,
+                        "fats": 0.3,
+                        "carbs": 27.9
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 105,
+                "date": "2025-02-03T13:32:25.433Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 46,
+                "date": "2025-02-03T16:02:10.253Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 145,
+                "date": "2025-02-03T19:03:41.986Z"
+            }
+        }
+    ],
+    "17386236": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 209,
+                "date": "2025-02-04T08:21:19.574Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 115,
+                    "kcal": 67,
+                    "prot": 0.5,
+                    "fats": 0.1,
+                    "carbs": 17.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 148,
+                "date": "2025-02-04T11:44:56.345Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 200,
+                    "kcal": 548,
+                    "prot": 7,
+                    "fats": 28.2,
+                    "carbs": 71.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 153,
+                "date": "2025-02-04T14:02:49.168Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Mangos",
+                    "displayName": "Mangos",
+                    "id": "35863",
+                    "grams": 50,
+                    "kcal": 33,
+                    "prot": 0.3,
+                    "fats": 0.1,
+                    "carbs": 8.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 65,
+                        "prot": 0.5,
+                        "fats": 0.3,
+                        "carbs": 17
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2.5
+                },
+                "glucose": 166,
+                "date": "2025-02-04T17:39:15.599Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 152,
+                "date": "2025-02-04T19:47:33.968Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 232,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 58,
+                    "mealName": "Doritosy ",
+                    "kcalError": false,
+                    "displayName": "Doritosy ",
+                    "id": "6f5e4864-81cc-4c1f-b111-158adf6296cf",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 58,
+                        "mealName": "Doritosy ",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 178,
+                "date": "2025-02-04T20:08:05.175Z"
+            }
+        }
+    ],
+    "17387100": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 146,
+                "date": "2025-02-05T08:38:30.218Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 150,
+                    "kcal": 87,
+                    "prot": 0.6,
+                    "fats": 0.2,
+                    "carbs": 23.3,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 136,
+                "date": "2025-02-05T11:17:11.412Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 200,
+                    "kcal": 548,
+                    "prot": 7,
+                    "fats": 28.2,
+                    "carbs": 71.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 123,
+                "date": "2025-02-05T13:21:53.332Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 111,
+                    "kcal": 99,
+                    "prot": 1.2,
+                    "fats": 0.3,
+                    "carbs": 25.3,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                },
+                {
+                    "mealName": "Apple",
+                    "displayName": "Apple",
+                    "id": "44911664",
+                    "grams": 250,
+                    "kcal": 178,
+                    "prot": 0,
+                    "fats": 1,
+                    "carbs": 42.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 71,
+                        "prot": 0,
+                        "fats": 0.4,
+                        "carbs": 17.1
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 136,
+                "date": "2025-02-05T16:08:51.566Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 171,
+                "date": "2025-02-05T18:00:27.431Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17387964": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 126,
+                "date": "2025-02-06T08:03:39.027Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 100,
+                    "kcal": 58,
+                    "prot": 0.4,
+                    "fats": 0.1,
+                    "carbs": 15.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 135,
+                "date": "2025-02-06T11:03:42.496Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Millet (Cooked)",
+                    "displayName": "Millet (Cooked)",
+                    "id": "4476",
+                    "grams": 100,
+                    "kcal": 118,
+                    "prot": 3.5,
+                    "fats": 1,
+                    "carbs": 23.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 118,
+                        "prot": 3.5,
+                        "fats": 1,
+                        "carbs": 23.6
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 131,
+                "date": "2025-02-06T13:21:28.895Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                },
+                {
+                    "mealName": "Apple",
+                    "displayName": "Apple",
+                    "id": "44911664",
+                    "grams": 100,
+                    "kcal": 71,
+                    "prot": 0,
+                    "fats": 0.4,
+                    "carbs": 17.1,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 71,
+                        "prot": 0,
+                        "fats": 0.4,
+                        "carbs": 17.1
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 129,
+                "date": "2025-02-06T15:59:26.584Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "mealName": "Rice Noodles (Cooked)",
+                    "displayName": "Rice Noodles (Cooked)",
+                    "id": "39799",
+                    "grams": 100,
+                    "kcal": 109,
+                    "prot": 0.9,
+                    "fats": 0.2,
+                    "carbs": 24.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 109,
+                        "prot": 0.9,
+                        "fats": 0.2,
+                        "carbs": 24.9
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 84,
+                "date": "2025-02-06T19:08:34.254Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17388828": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 150,
+                    "kcal": 87,
+                    "prot": 0.6,
+                    "fats": 0.2,
+                    "carbs": 23.3,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 134,
+                "date": "2025-02-07T11:32:00.966Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Millet (Cooked)",
+                    "displayName": "Millet (Cooked)",
+                    "id": "4476",
+                    "grams": 150,
+                    "kcal": 177,
+                    "prot": 5.3,
+                    "fats": 1.5,
+                    "carbs": 35.4,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 118,
+                        "prot": 3.5,
+                        "fats": 1,
+                        "carbs": 23.6
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 90,
+                "date": "2025-02-07T13:02:46.537Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 240,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 60,
+                    "mealName": "Quick",
+                    "kcalError": false,
+                    "displayName": "Quick",
+                    "id": "f74d6aec-24bc-4139-bb8d-478518bae667",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 60,
+                        "mealName": "Quick",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 6
+                },
+                "glucose": 152,
+                "date": "2025-02-07T18:34:05.081Z"
+            }
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17389692": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 111,
+                "date": "2025-02-08T07:35:25.781Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17390556": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 127,
+                "date": "2025-02-09T09:09:54.082Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Apples",
+                    "displayName": "Apples",
+                    "id": "35718",
+                    "grams": 150,
+                    "kcal": 78,
+                    "prot": 0.4,
+                    "fats": 0.3,
+                    "carbs": 20.7,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 52,
+                        "prot": 0.3,
+                        "fats": 0.2,
+                        "carbs": 13.8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 2
+                },
+                "glucose": 110,
+                "date": "2025-02-09T11:41:26.786Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "grams": 0,
+                    "kcal": 200,
+                    "prot": 0,
+                    "fats": 0,
+                    "carbs": 50,
+                    "mealName": "Quick",
+                    "kcalError": false,
+                    "displayName": "Quick",
+                    "id": "3938b3d2-2a40-41e5-80a8-bacc8876d2aa",
+                    "base": {
+                        "grams": 0,
+                        "kcal": 0,
+                        "prot": 0,
+                        "fats": 0,
+                        "carbs": 50,
+                        "mealName": "Quick",
+                        "kcalError": false
+                    },
+                    "quick": true
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 122,
+                "date": "2025-02-09T12:50:13.515Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17391420": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 158,
+                "date": "2025-02-10T07:58:33.562Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 200,
+                    "kcal": 116,
+                    "prot": 0.8,
+                    "fats": 0.2,
+                    "carbs": 31,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 117,
+                "date": "2025-02-10T11:09:09.131Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Potato French Fries",
+                    "displayName": "Potato French Fries",
+                    "id": "5762",
+                    "grams": 150,
+                    "kcal": 411,
+                    "prot": 5.3,
+                    "fats": 21.1,
+                    "carbs": 53.6,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 274,
+                        "prot": 3.5,
+                        "fats": 14.1,
+                        "carbs": 35.7
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 122,
+                "date": "2025-02-10T13:16:33.377Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [
+                {
+                    "mealName": "Banana",
+                    "displayName": "Banana",
+                    "id": "5388",
+                    "grams": 100,
+                    "kcal": 89,
+                    "prot": 1.1,
+                    "fats": 0.3,
+                    "carbs": 22.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 89,
+                        "prot": 1.1,
+                        "fats": 0.3,
+                        "carbs": 22.8
+                    }
+                },
+                {
+                    "mealName": "Apple",
+                    "displayName": "Apple",
+                    "id": "44911664",
+                    "grams": 150,
+                    "kcal": 107,
+                    "prot": 0,
+                    "fats": 0.6,
+                    "carbs": 25.7,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 71,
+                        "prot": 0,
+                        "fats": 0.4,
+                        "carbs": 17.1
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 114,
+                "date": "2025-02-10T16:35:36.049Z"
+            }
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17392284": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 136,
+                "date": "2025-02-11T08:45:35.513Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Berries",
+                    "displayName": "Berries",
+                    "id": "5492",
+                    "grams": 85,
+                    "kcal": 28,
+                    "prot": 0.6,
+                    "fats": 0.3,
+                    "carbs": 6.8,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 33,
+                        "prot": 0.7,
+                        "fats": 0.3,
+                        "carbs": 8
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 0
+                },
+                "glucose": 98,
+                "date": "2025-02-11T11:34:39.725Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Noodles",
+                    "displayName": "Noodles",
+                    "id": "4409",
+                    "grams": 50,
+                    "kcal": 69,
+                    "prot": 2.3,
+                    "fats": 1.1,
+                    "carbs": 12.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 137,
+                        "prot": 4.5,
+                        "fats": 2.1,
+                        "carbs": 25
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 115,
+                "date": "2025-02-11T14:04:21.453Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17393148": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 124,
+                "date": "2025-02-12T08:36:30.174Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [
+                {
+                    "mealName": "Noodles",
+                    "displayName": "Noodles",
+                    "id": "4409",
+                    "grams": 70,
+                    "kcal": 96,
+                    "prot": 3.1,
+                    "fats": 1.5,
+                    "carbs": 17.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 137,
+                        "prot": 4.5,
+                        "fats": 2.1,
+                        "carbs": 25
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 5
+                },
+                "glucose": 127,
+                "date": "2025-02-12T12:55:44.567Z"
+            }
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17394012": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 110,
+                "date": "2025-02-13T08:49:06.334Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [
+                {
+                    "mealName": "Pear",
+                    "displayName": "Pear",
+                    "id": "5457",
+                    "grams": 100,
+                    "kcal": 58,
+                    "prot": 0.4,
+                    "fats": 0.1,
+                    "carbs": 15.5,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 58,
+                        "prot": 0.4,
+                        "fats": 0.1,
+                        "carbs": 15.5
+                    }
+                },
+                {
+                    "mealName": "Kiwi",
+                    "displayName": "Kiwi",
+                    "id": "11020026",
+                    "grams": 100,
+                    "kcal": 61,
+                    "prot": 1.4,
+                    "fats": 0,
+                    "carbs": 14.9,
+                    "base": {
+                        "grams": 100,
+                        "kcal": 61,
+                        "prot": 1.4,
+                        "fats": 0,
+                        "carbs": 14.9
+                    }
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 3
+                },
+                "glucose": 151,
+                "date": "2025-02-13T11:53:33.714Z"
+            }
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17394876": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 174,
+                "date": "2025-02-14T08:28:09.613Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17395740": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 122,
+                "date": "2025-02-15T08:55:05.197Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ],
+    "17396604": [
+        {
+            "id": 1,
+            "name": "Breakfast",
+            "meals": [
+                {
+                    "base": {
+                        "carbs": 36,
+                        "fats": 2,
+                        "grams": 100,
+                        "kcal": 174,
+                        "prot": 3
+                    },
+                    "carbs": 28.8,
+                    "displayName": "Chleb żytni ",
+                    "fats": 1.6,
+                    "grams": 80,
+                    "id": "0aeeeaa7-a187-4172-bb8c-58700dd6019a",
+                    "kcal": 139,
+                    "kcalError": false,
+                    "mealName": "Chleb żytni ",
+                    "prot": 2.4
+                }
+            ],
+            "calculatorData": {
+                "units": {
+                    "short": 4
+                },
+                "glucose": 112,
+                "date": "2025-02-16T08:28:28.815Z"
+            }
+        },
+        {
+            "id": 2,
+            "name": "Snack I",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 3,
+            "name": "Lunch",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 4,
+            "name": "Snack II",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 5,
+            "name": "Dinner",
+            "meals": [],
+            "calculatorData": null
+        },
+        {
+            "id": 6,
+            "name": "Snack III",
+            "meals": [],
+            "calculatorData": null
+        }
+    ]
+}
