@@ -12,6 +12,7 @@ app.use(express.json())
 const router = express.Router();
 
 const SERVICE_URL = "https://diabefit.pythonanywhere.com";
+const SERVICE_AI_URL = "https://diabefitai.pythonanywhere.com";
 
 router.get('/', (req, res) => {
   res.send('App is running..');
@@ -228,5 +229,47 @@ router.post('/glucose', async (req, res) => {
   }
 });
 
+router.post('/model', async (req, res) => {
+  const { id, token, model } = req.body;
+
+  if (!id || !token) {
+    return res.status(400).json({ error: `Missing uid or token` });
+  }
+
+  const { data } = await axios.post(
+    `${SERVICE_AI_URL}/model`,
+    { id, token, model },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      }
+    },
+  );
+
+  res.json(data);
+});
+
+router.get('/model', async (req, res) => {
+  const { id, token } = req.body;
+
+  if (!id || !token) {
+    return res.status(400).json({ error: `Missing uid or token` });
+  }
+
+  const { data } = await axios.get(
+    `${SERVICE_AI_URL}/model`,
+    { id, token },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      }
+    },
+  );
+
+  res.json(data);
+});
+
 app.use('/.netlify/functions/api', router);
 module.exports.handler = serverless(app);
+
+

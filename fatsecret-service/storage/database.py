@@ -40,6 +40,7 @@ def set_user(userId, token):
                     "units": [0.1] * 24,
                 },
                 "libreAPI": "",
+                "model": "",
             },
             token=token,
         )
@@ -181,4 +182,25 @@ def delete_user_own_product(user_id, display_name, token):
                 db.child("users").child(user_id).update({"ownProduct": updated_foods}, token=token)
                 return True
 
+    return False
+
+
+def get_user_model(userId, token):
+    user = get_user_data(userId, token)
+    if user:
+        result = user["model"]
+        return result
+    return None
+
+
+def set_user_model(body):
+    db = firebase.database()
+
+    if is_user_exist(body["id"], body["token"]):
+        result = (
+            db.child("users")
+            .child(body["id"])
+            .update({"model": body["model"]}, token=body["token"])
+        )
+        return result is not None
     return False

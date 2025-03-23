@@ -15,4 +15,7 @@ urlpatterns = [
     path("libreAPI", views.libre, name="libre"),
     path("libre/connection", views.libreConnection, name="libreConnection"),
     path("ownProduct", views.own_product, name="ownProduct"),
+    path("model", views.model, name="model"),
+    path('train', views.train_model, name='train_model'),
+    path('predict', views.predict_dose, name='predict_dose'),
 ]
