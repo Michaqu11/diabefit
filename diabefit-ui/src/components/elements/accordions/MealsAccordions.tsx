@@ -35,7 +35,6 @@ const CustomizedAccordions: React.FC<Props> = ({ dayId, width }) => {
   const { t } = useTranslation();
 
   React.useEffect(() => {
-    const translatedDays = TranslatedDays(t);
     setDays(
       readDayMeal(dayId.toString()) ?? [
         {

@@ -4,6 +4,7 @@
         "home": "Home",
         "logOut": "Log out",
         "newBolus": "New Bolus",
+        "modelAI": "Diabefit AI",
         "newEntry": "New Entry",
         "yourData": "Your Data",
         "settings": "Settings"
@@ -156,6 +157,17 @@
         "title": "Settings",
         "exportDataLabel": "Export data:",
         "languageLabel": "Language:"
+    },
+    "modelAI": {
+        "title": "Diabefit AI",
+        "chooseFile": "Choose file",
+        "uploadFreestyleLibreReport": "Upload Glucose Report [CSV]",
+        "uploadJsonData": "Upload Meal Data [JSON]",
+        "submit": "Submit",
+        "notifications" : {
+            "success": "Model trained successfully",
+            "error": "There was a problem training the model"
+        }
     },
     "login": {
         "signIn": "Sign in with Google 🚀"
