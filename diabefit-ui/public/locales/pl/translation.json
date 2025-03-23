@@ -4,6 +4,7 @@
       "home": "Strona główna",
       "logOut": "Wyloguj",
       "newBolus": "Nowy Bolus",
+      "modelAI": "Diabefit AI",
       "newEntry": "Nowy Wpis",
       "yourData": "Twoje Dane",
       "settings": "Ustawienia"
@@ -156,6 +157,17 @@
         "title": "Ustawienia",
         "exportDataLabel": "Pobierz dane:",
         "languageLabel": "Język:"
+    },
+    "modelAI": {
+        "title": "Diabefit AI",
+        "chooseFile": "Wybierz plik",
+        "uploadFreestyleLibreReport": "Prześlij raport glukozy [CSV]",
+        "uploadJsonData": "Prześlij dane posiłków [JSON]",
+        "submit": "Prześlij",
+        "snackbars": {
+            "success": "Model został pomyślnie nauczony",
+            "error": "Wystąpił problem podczas uczenia modelu"
+        }
     },
     "login": {
         "signIn": "Zaloguj się przez Google 🚀"

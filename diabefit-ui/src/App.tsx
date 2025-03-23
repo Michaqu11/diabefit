@@ -5,6 +5,7 @@ import MasterLayout from "./components/layout/MasterLayout";
 import NewEntry from "./pages/NewEntry";
 import NewBolus from "./pages/NewBolus";
 import Home from "./pages/home/Home";
+import ModelAI from "./pages/ModelAI";
 import AddProduct from "./pages/AddProduct";
 import "boxicons/css/boxicons.min.css";
 import "./App.scss";
@@ -74,6 +75,7 @@ const App: React.FC = () => {
                 <Route path="/entry" element={<NewEntry />} />
                 <Route path="/bolus" element={<NewBolus />} />
                 <Route path="/data" element={<YourData />} />
+                <Route path="/ai" element={<ModelAI />} />
                 <Route path="/setting" element={<Setting />} />
                 <Route path="/add/:id/:meal" element={<AddProduct />} />
                 <Route path="/entry/add/:id/:meal" element={<AddProduct />} />

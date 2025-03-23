@@ -6,6 +6,7 @@ export type LibreData = {
 };
 export interface IAllData {
   libreAPI: LibreData;
+  model: string;
   settings: {
     diabetesType: number;
     insulin: {

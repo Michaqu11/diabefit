@@ -118,6 +118,7 @@ def login(request):
             result = {
                 "settings": all_settings(body["id"], body["token"]),
                 "libreAPI": get_libre(body["id"], body["token"]),
+                "model": get_model(body["id"], body["token"]),
             }
 
         return JsonResponse(result, safe=False)
