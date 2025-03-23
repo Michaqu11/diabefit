@@ -1,11 +1,11 @@
 import json
-
 import requests
-
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rauth.service import OAuth1Service
-
+import pickle
+import base64
+from .classifier import train_insulin_classifier, predict_insulin_dose 
 
 
 from storage.database import (
@@ -244,3 +244,85 @@ def own_product(request):
         return JsonResponse(
             {"ownProduct": get_user_own_products(user_id, token)}, safe=False
         )
+
+
+@csrf_exempt
+def train_model(request):
+    """
+    Endpoint to train the insulin classifier model using uploaded CSV and JSON files.
+    Returns the trained model and related data in the response.
+    Expects a POST request with 'csv_file' and 'json_file' in the form data.
+    """
+    if request.method == 'POST':
+        try:
+            # Check if files are provided in the request
+            if 'csv_file' not in request.FILES or 'json_file' not in request.FILES:
+                return JsonResponse({'status': 'error', 'message': 'CSV and JSON files are required'}, status=400)
+
+            # Get temporary file paths for uploaded files
+            csv_file_path = request.FILES['csv_file'].temporary_file_path()
+            json_file_path = request.FILES['json_file'].temporary_file_path()
+
+            # Optional parameters from the request (if provided)
+            params = json.loads(request.POST.get('params', '{}'))
+
+            # Train the model using the provided files
+            model_data = train_insulin_classifier(csv_file_path, json_file_path, params)
+
+            # Serialize the model_data dictionary to a binary format using pickle
+            serialized_model_data = pickle.dumps(model_data)
+
+            # Encode the binary data to base64 for safe JSON transmission
+            encoded_model_data = base64.b64encode(serialized_model_data).decode('utf-8')
+
+            return JsonResponse({
+                'status': 'success',
+                'message': 'Model trained successfully',
+                'model_data': encoded_model_data,
+                'cv_rmse': f"{model_data['model'].predict(model_data['X_test']).mean():.2f}"
+            })
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': f"Training failed: {str(e)}"}, status=400)
+    return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
+
+@csrf_exempt
+def predict_dose(request):
+    """
+    Endpoint to predict glucose and suggest insulin dose based on meal data.
+    Expects a POST request with JSON body containing model_data (from /train/) and meal details.
+    """
+    if request.method == 'POST':
+        try:
+            # Parse JSON data from request body
+            data = json.loads(request.body)
+            required_fields = ['model_data', 'glucose_pre', 'insulin', 'carbs', 'fats', 'prot', 'timestamp']
+            if not all(field in data for field in required_fields):
+                return JsonResponse({'status': 'error', 'message': 'Missing required fields'}, status=400)
+
+            # Decode the base64-encoded model_data back to binary
+            encoded_model_data = data['model_data']
+            serialized_model_data = base64.b64decode(encoded_model_data)
+
+            # Deserialize the binary data back to the model_data dictionary
+            model_data = pickle.loads(serialized_model_data)
+
+            # Extract meal data and make prediction
+            result = predict_insulin_dose(
+                model_data,
+                glucose_pre=float(data['glucose_pre']),
+                insulin=float(data['insulin']),
+                carbs=float(data['carbs']),
+                fats=float(data['fats']),
+                prot=float(data['prot']),
+                timestamp=data['timestamp']
+            )
+
+            return JsonResponse({
+                'status': 'success',
+                'data': result
+            })
+        except ValueError as e:
+            return JsonResponse({'status': 'error', 'message': f"Invalid input data: {str(e)}"}, status=400)
+        except Exception as e:
+            return JsonResponse({'status': 'error', 'message': f"Prediction failed: {str(e)}"}, status=400)
+    return JsonResponse({'status': 'error', 'message': 'Method not allowed'}, status=405)
