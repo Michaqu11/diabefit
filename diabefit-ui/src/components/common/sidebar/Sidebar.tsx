@@ -13,7 +13,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
 import SettingsIcon from "@mui/icons-material/Settings";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
+import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import { Link } from "react-router-dom";
 import { getProfile } from "../../../store/sessionStorage";
 import { Button, Grid } from "@mui/material";

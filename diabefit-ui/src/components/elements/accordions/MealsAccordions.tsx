@@ -11,12 +11,7 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import FunctionsOutlinedIcon from "@mui/icons-material/FunctionsOutlined";
 import { Link } from "react-router-dom";
-import {
-  EDays,
-  ICalculatePanel,
-  IDay,
-  TranslatedDays,
-} from "../../../types/days";
+import { EDays, ICalculatePanel, IDay } from "../../../types/days";
 import { calculateData, readDayMeal } from "../../../store/mealsStorage";
 import CalculatePanel from "../glucose-calculate/creating-panel";
 import { details, elements } from "./utils";

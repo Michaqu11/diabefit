@@ -73,7 +73,6 @@ export const getLibreAPI = () => {
   return data.libreAPI;
 };
 
-
 export const saveModelInSessionStorage = (model: string) => {
   const tempData = getData();
   tempData.model = model;
