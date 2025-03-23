@@ -23,6 +23,8 @@ from storage.database import (
     get_user_target_range,
     get_user_diabetes_type,
     get_user_libre_api,
+    get_user_model,
+    set_user_model,
 )
 
 consumer_key = "a10b021da4fa4e4abaf91c1f047ea9c6"
@@ -243,6 +245,29 @@ def own_product(request):
         token = request.GET.get('token')
         return JsonResponse(
             {"ownProduct": get_user_own_products(user_id, token)}, safe=False
+        )
+
+
+@csrf_exempt
+def set_model(body):
+    result = set_user_model(body)
+    return JsonResponse({"result": result}, safe=False)
+
+
+@csrf_exempt
+def get_model(id, token):
+    model = get_user_model(id, token)
+    return model
+
+@csrf_exempt
+def model(request):
+    body_unicode = request.body.decode("utf-8")
+    body = json.loads(body_unicode)
+    if request.method == "POST":
+        return set_model(body)
+    else:
+        return JsonResponse(
+            {"model": get_model(body["id"], body["token"])}, safe=False
         )
 
 
