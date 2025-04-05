@@ -81,7 +81,7 @@ const ModelAI: React.FC = () => {
         </Typography>
         <FormControlLabel
           control={<Switch checked={enabled} onChange={handleToggle} />}
-          label={t("modelAI.enableAI", "Enable AI")}
+          label={t("modelAI.enableAI")}
         />
       </Box>
       <Divider sx={{ pt: 1, pb: 1 }} />
@@ -111,7 +111,7 @@ const ModelAI: React.FC = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <Typography variant="body1">
-                  {t("modelAI.uploadJsonData", "Prześlij plik JSON data")}
+                  {t("modelAI.uploadJsonData")}
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={6}>
