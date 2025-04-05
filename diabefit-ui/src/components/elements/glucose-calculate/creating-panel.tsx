@@ -8,6 +8,7 @@ import {
   Card,
   CardActions,
   CardContent,
+  CircularProgress,
   Collapse,
   Dialog,
   DialogActions,
@@ -67,6 +68,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   const correctionInsulinMetric = useRef<number>(0);
 
   const [alertAIOpen, setAlertAIOpen] = useState(false);
+  const [isAIQueryLoading, setIsAIQueryLoading] = useState(false);
+
   const [insulinByAI, setInsulinByAI] = useState<number | undefined>(undefined);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -79,6 +82,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
       model &&
       localStorage.getItem("aiEnabled") === "true"
     ) {
+      setAlertAIOpen(true);
+      setIsAIQueryLoading(true);
       const [food, correction] = calculateGlucose(
         glucose as number,
         carbsUnits as number,
@@ -106,8 +111,9 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
       }
 
       setInsulinByAI(roundUnits(result.data.suggested_insulin));
-
-      setAlertAIOpen(true);
+      setTimeout(() => {
+        setIsAIQueryLoading(false);
+      }, 200);
     }
   }, [
     carbsUnits,
@@ -308,44 +314,51 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
                 <strong>{t("share.modelAI.adviceLabel")}</strong>
                 <span>{t("share.modelAI.poweredBy")}</span>
               </Box>
-              <AlertTitle
+
+              {isAIQueryLoading ? <AlertTitle    
                 style={{
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  marginTop: "5px",
-                }}
-              >
-                <span>
-                  {insulinByAI ?? 0} {t("share.modelAI.units")}
-                </span>
-                <div
+                    display: "flex",
+                    justifyContent: "center",
+                    paddingTop: "10px",
+                  }}><CircularProgress color="inherit" size="20px" /></AlertTitle> :
+                <AlertTitle
                   style={{
                     display: "flex",
                     flexDirection: "row",
-                    marginTop: "3px",
+                    justifyContent: "space-between",
                     alignItems: "center",
+                    marginTop: "5px",
                   }}
                 >
-                  <Button
-                    color="inherit"
-                    size="small"
-                    onClick={acceptAIGlucose}
-                  >
-                    {t("share.modelAI.acceptButton")}
-                  </Button>
-                  <Button
-                    color="inherit"
-                    size="small"
-                    onClick={() => {
-                      setAlertAIOpen(false);
+                  <span>
+                    {insulinByAI ?? 0} {t("share.modelAI.units")}
+                  </span>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginTop: "3px",
+                      alignItems: "center",
                     }}
                   >
-                    {t("share.modelAI.dismissButton")}
-                  </Button>
-                </div>
-              </AlertTitle>
+                    <Button
+                      color="inherit"
+                      size="small"
+                      onClick={acceptAIGlucose}
+                    >
+                      {t("share.modelAI.acceptButton")}
+                    </Button>
+                    <Button
+                      color="inherit"
+                      size="small"
+                      onClick={() => {
+                        setAlertAIOpen(false);
+                      }}
+                    >
+                      {t("share.modelAI.dismissButton")}
+                    </Button>
+                  </div>
+                </AlertTitle>}
             </Alert>
           </Collapse>
 

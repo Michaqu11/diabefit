@@ -165,6 +165,7 @@
         "uploadFreestyleLibreReport": "Upload Glucose Report [CSV]",
         "uploadJsonData": "Upload Meal Data [JSON]",
         "submit": "Submit",
+        "enableAI":"Enable AI",
         "notifications" : {
             "success": "Model trained successfully",
             "error": "There was a problem training the model"

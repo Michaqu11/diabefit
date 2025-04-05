@@ -166,6 +166,7 @@
         "uploadFreestyleLibreReport": "Prześlij raport glukozy [CSV]",
         "uploadJsonData": "Prześlij dane posiłków [JSON]",
         "submit": "Prześlij",
+        "enableAI": "Włącz AI",
         "snackbars": {
             "success": "Model został pomyślnie nauczony",
             "error": "Wystąpił problem podczas uczenia modelu"
