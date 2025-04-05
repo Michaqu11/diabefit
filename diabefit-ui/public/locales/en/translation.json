@@ -55,7 +55,8 @@
             "correctionInsulin": "Insulin (correction)",
             "cancelButton": "Cancel",
             "saveButton":"Save"
-        }
+        }, 
+        "errorAI": "There was an error with the AI model"
     },
     "addProduct":{
         "title": "Create a custom product",
@@ -202,6 +203,14 @@
             "acceptButton": "Accept",
             "dismissButton":"Dismiss",
             "adviceLabel": "Bolus advice",
+            "units": "units"
+        },
+        "modelAI": {
+            "title":"Diabefit AI",
+            "acceptButton": "Accept",
+            "dismissButton": "Dismiss",
+            "adviceLabel": "Bolus advice",
+            "poweredBy": "Powered by Diabefit® AI",
             "units": "units"
         },
         "buttons": {

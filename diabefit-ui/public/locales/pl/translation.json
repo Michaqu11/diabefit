@@ -19,7 +19,9 @@
             "correctionInsulin": "Insulina (korekta)",
             "cancelButton": "Anuluj",
             "saveButton": "Zapisz"
-        }
+        },
+        "errorAI": "Wystąpił błąd z modelem AI"
+        
     },
     "home": {
         "bottomNavigation": {
@@ -202,6 +204,14 @@
             "acceptButton": "Akceptuj",
             "dismissButton": "Odrzuć",
             "adviceLabel": "Zalecenie dotyczące bolusa",
+            "units": "u"
+        },
+        "modelAI": {
+            "title":"Diabefit AI",
+            "acceptButton": "Akceptuj",
+            "dismissButton": "Odrzuć",
+            "adviceLabel": "Zalecenie dotyczące bolusa przez Diabefit AI",
+            "poweredBy": "przez Diabefit® AI",
             "units": "u"
         },
         "buttons": {

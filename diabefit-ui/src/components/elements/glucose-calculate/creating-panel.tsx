@@ -29,12 +29,17 @@ import {
   calculateGlucose,
   roundUnits,
 } from "../../../shared/calculator/glucose-calculator";
-import { calculateCarbsForAllMeals } from "../../../shared/calculator/carbohydrate-exchange-calculator";
+import {
+  calculateCarbsForAllMeals,
+  calculateNutritionalValuesForAllMeals,
+} from "../../../shared/calculator/carbohydrate-exchange-calculator";
 import { useSnackbar } from "notistack";
 import "./creating-panel.scss";
 import { useEffect, useRef, useState } from "react";
 import { GlucoseInput } from "../../common/share/GlucoseInput";
 import { useTranslation } from "react-i18next";
+import { getModel } from "../../../store/sessionStorage";
+import { predictDose } from "../../../api/pedict-dose";
 
 interface CalculatePanelProps {
   openCalculate: ICalculatePanel;
@@ -58,9 +63,60 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
   );
 
   const [alertOpen, setAlertOpen] = useState(false);
-
   const foodInsulinMetric = useRef<number>(0);
   const correctionInsulinMetric = useRef<number>(0);
+
+  const [alertAIOpen, setAlertAIOpen] = useState(false);
+  const [insulinByAI, setInsulinByAI] = useState<number | undefined>(undefined);
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const predictDoseEmit = React.useCallback(async () => {
+    const model = getModel();
+    if (
+      glucose &&
+      carbsUnits &&
+      model &&
+      localStorage.getItem("aiEnabled") === "true"
+    ) {
+      const [food, correction] = calculateGlucose(
+        glucose as number,
+        carbsUnits as number,
+      );
+
+      const { carbs, fats, prot } = calculateNutritionalValuesForAllMeals(
+        props.openCalculate.day?.meals,
+      );
+      const result = await predictDose(
+        model,
+        glucose as number,
+        food + correction,
+        carbs,
+        fats,
+        prot,
+        selectedDate.toISOString(),
+      );
+
+      if (!result) {
+        enqueueSnackbar(t("calculatePanel.errorAI"), {
+          preventDuplicate: true,
+          variant: "error",
+        });
+        return;
+      }
+
+      setInsulinByAI(roundUnits(result.data.suggested_insulin));
+
+      setAlertAIOpen(true);
+    }
+  }, [
+    carbsUnits,
+    enqueueSnackbar,
+    glucose,
+    props.openCalculate.day?.meals,
+    selectedDate,
+    t,
+  ]);
 
   useEffect(() => {
     setCarbsUnits(calculateCarbsForAllMeals(props.openCalculate.day?.meals));
@@ -68,14 +124,18 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     setCorrectionInsulin("");
   }, [props.openCalculate]);
 
-  const { enqueueSnackbar } = useSnackbar();
+  useEffect(() => {
+    if (props.openCalculate.open) {
+      predictDoseEmit();
+    }
+  }, [predictDoseEmit, props.openCalculate.open]);
 
   const calculateGlucoseEmit = () => {
+    const [food, correction] = calculateGlucose(
+      glucose as number,
+      carbsUnits as number,
+    );
     if (glucose && carbsUnits) {
-      const [food, correction] = calculateGlucose(
-        glucose as number,
-        carbsUnits as number,
-      );
       foodInsulinMetric.current = food;
       correctionInsulinMetric.current = correction;
       setAlertOpen(true);
@@ -90,10 +150,17 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
     setSelectedDate(value ?? dayjs(new Date()));
   };
 
+  const acceptAIGlucose = () => {
+    setFoodInsulin(insulinByAI ?? 0);
+    setAlertOpen(false);
+    setAlertAIOpen(false);
+  };
+
   const acceptGlucose = () => {
     setFoodInsulin(foodInsulinMetric.current);
     setCorrectionInsulin(correctionInsulinMetric.current);
     setAlertOpen(false);
+    setAlertAIOpen(false);
   };
 
   const getResult = () => {
@@ -178,6 +245,8 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
             <Alert
               severity="success"
               color="info"
+              icon={false}
+              sx={{ px: 2 }}
               action={
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <Button color="inherit" size="small" onClick={acceptGlucose}>
@@ -186,7 +255,9 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
                   <Button
                     color="inherit"
                     size="small"
-                    onClick={() => setAlertOpen(false)}
+                    onClick={() => {
+                      setAlertOpen(false);
+                    }}
                   >
                     {t("share.bolusCalculator.dismissButton")}
                   </Button>
@@ -199,6 +270,7 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               </AlertTitle>
             </Alert>
           </Collapse>
+
           <Divider />
           <Card variant="outlined" style={{ marginBottom: "10px" }}>
             <CardContent
@@ -225,6 +297,57 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
               </Button>
             </CardActions>
           </Card>
+
+          <Collapse in={alertAIOpen}>
+            <Alert
+              icon={false}
+              severity="success"
+              sx={{ backgroundColor: "#f6f4f4", px: 2 }}
+            >
+              <Box sx={{ display: "flex", flexDirection: "row", gap: "5px" }}>
+                <strong>{t("share.modelAI.adviceLabel")}</strong>
+                <span>{t("share.modelAI.poweredBy")}</span>
+              </Box>
+              <AlertTitle
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  marginTop: "5px",
+                }}
+              >
+                <span>
+                  {insulinByAI ?? 0} {t("share.modelAI.units")}
+                </span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    marginTop: "3px",
+                    alignItems: "center",
+                  }}
+                >
+                  <Button
+                    color="inherit"
+                    size="small"
+                    onClick={acceptAIGlucose}
+                  >
+                    {t("share.modelAI.acceptButton")}
+                  </Button>
+                  <Button
+                    color="inherit"
+                    size="small"
+                    onClick={() => {
+                      setAlertAIOpen(false);
+                    }}
+                  >
+                    {t("share.modelAI.dismissButton")}
+                  </Button>
+                </div>
+              </AlertTitle>
+            </Alert>
+          </Collapse>
 
           <FormControl variant="outlined">
             <InputLabel htmlFor="component-simple">

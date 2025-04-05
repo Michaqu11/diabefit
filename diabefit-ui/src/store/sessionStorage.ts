@@ -78,3 +78,8 @@ export const saveModelInSessionStorage = (model: string) => {
   tempData.model = model;
   sessionStorage.setItem("data", JSON.stringify(tempData));
 };
+
+export const getModel = () => {
+  const data = getData();
+  return data.model;
+};
