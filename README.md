@@ -1,11 +1,17 @@
 # Diabefit
 
-[👉 Try the app here](https://diabefit.web.app/)
+[👉 Try the app here](https://diafite.web.app/)
 
 **Diabefit** is a smart and user-friendly tool designed to support people with type 1 diabetes (or anyone on intensive insulin therapy) in managing their condition. It simplifies bolus calculations, connects with FreeStyle Libre CGM, and uses AI to analyze glucose trends and suggest smarter insulin dosing.
 
 > 🎥 **Watch the promo video below** to see how Diabefit can make your daily diabetes management easier and less stressful!  
-> 
+
+
+https://github.com/user-attachments/assets/2656e0e7-d006-4a83-895b-f80c4b1ade0d
+
+
+
+
 ---
 
 ## 📁 Project Structure
