@@ -107,6 +107,9 @@ const CalculatePanel: React.FC<CalculatePanelProps> = (props) => {
           preventDuplicate: true,
           variant: "error",
         });
+
+        setIsAIQueryLoading(false);
+        setAlertAIOpen(false);
         return;
       }
 
