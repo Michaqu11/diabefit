@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Diabefit
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[👉 Try the app here](https://diabefit.web.app/)
 
-## Available Scripts
+**Diabefit** is a smart and user-friendly tool designed to support people with type 1 diabetes (or anyone on intensive insulin therapy) in managing their condition. It simplifies bolus calculations, connects with FreeStyle Libre CGM, and uses AI to analyze glucose trends and suggest smarter insulin dosing.
 
-In the project directory, you can run:
+> 🎥 **Watch the promo video below** to see how Diabefit can make your daily diabetes management easier and less stressful!  
+> 
+---
 
-### `npm start`
+## 📁 Project Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+This repository contains four main components:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `diabefit-ui`
+The frontend of the application, built with **React** and designed as a **Progressive Web App (PWA)**.
 
-### `npm test`
+Features:
+- Clean and responsive user interface
+- Integration with CGM (FreeStyle Libre)
+- Meal and bolus planning
+- Insulin-on-board (IOB) calculation
+- Built-in **AI engine** that suggests optimal bolus doses based on your glucose and meal history
+- Personalized user settings
+- Multilingual support (currently English and Polish) via **i18n**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+### `diabefit-proxy`
+A lightweight **Node.js proxy** used to:
+- Forward API calls to the Django backend
+- Safely communicate with the **LibreView API** for CGM data access
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `diabefit-service`
+The backend written in **Django**, handling:
+- Firebase-based authentication
+- Storage and retrieval of meals, insulin doses, and user data
+- REST API for frontend and AI integration
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+### `diabefit-ai-model`
+Exploratory and experimental AI models to improve bolus prediction.  
+Key points:
+- Various models were tested on real-world diabetes data
+- The most effective model was **XGBRegressor**, which provided consistent and sensible bolus dose predictions based on glucose, insulin, and meal history
+- This model is already integrated and live in the application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 🧠 AI Features
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Diabefit includes a working AI-based prediction engine that:
+- Learns from your past glucose, meals, and insulin data
+- Suggests personalized bolus doses at the right time
+- Helps uncover individual glucose trends
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> The AI model is already implemented and being improved over time.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🎓 About the Project
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Diabefit is not a certified medical device – it is intended for educational and research purposes.
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
